@@ -1,0 +1,724 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Css3实现各种图片效果 | error 404</title><meta name="keywords" content="CSS"><meta name="author" content="error 404"><meta name="copyright" content="error 404"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content=".demo-item-title {     margin: 60px 0 20px 0;      text-align: center; } .demo-pic-outer {     display: inline-block; }  .image-light{     margin: 60px auto;     border: 1px solid #d8d9d7; } .imag">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Css3实现各种图片效果">
+<meta property="og:url" content="http://xpnobug.github.io/css/index.html">
+<meta property="og:site_name" content="error 404">
+<meta property="og:description" content=".demo-item-title {     margin: 60px 0 20px 0;      text-align: center; } .demo-pic-outer {     display: inline-block; }  .image-light{     margin: 60px auto;     border: 1px solid #d8d9d7; } .imag">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://api.xygeng.cn/Bing/">
+<meta property="article:published_time" content="2021-03-31T14:56:45.055Z">
+<meta property="article:modified_time" content="2021-03-31T15:11:39.363Z">
+<meta property="article:author" content="error 404">
+<meta property="article:tag" content="CSS">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://api.xygeng.cn/Bing/"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://xpnobug.github.io/css/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2021-03-31 23:11:39'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="/css/Lete.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.4/clock.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">22</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">11</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/cxp/websc"><i class="fa-fw fas fa-infinity faa-shake animated"></i><span> navigation</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">error 404</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/cxp/websc"><i class="fa-fw fas fa-infinity faa-shake animated"></i><span> navigation</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Css3实现各种图片效果</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-03-31T14:56:45.055Z" title="Created 2021-03-31 22:56:45">2021-03-31</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2021-03-31T15:11:39.363Z" title="Updated 2021-03-31 23:11:39">2021-03-31</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/CSS/">CSS</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Css3实现各种图片效果"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><style>
+ 
+
+.demo-item-title {
+    margin: 60px 0 20px 0; 
+    text-align: center;
+}
+.demo-pic-outer {
+    display: inline-block;
+}
+
+.image-light{
+    margin: 60px auto;
+    border: 1px solid #d8d9d7;
+}
+.image-light,.image-light > img{
+    display: block;
+    width: 330px;
+    height: 475px;
+}
+/*父容器*/
+.image-light{
+    overflow: hidden;
+    position: relative; /*设置为相对*/
+}
+/*图片*/
+img{
+    border: none;
+}
+/*流光（采用伪类实现，当然也可以是子元素）*/
+.image-light:after{
+    content: '';
+    position: absolute; /*相对父级绝对定位*/
+    width: 80px;
+    height: 100%;
+    top: 0;
+    left: -200px;  /*起始位置*/
+    overflow: hidden;
+    z-index:9;
+    /*背景渐变（兼容性写法）*/
+    background: -moz-linear-gradient(left,rgba(255,255,255,0) 0,rgba(255,255,255,.3) 50%,rgba(255,255,255,0) 100%);
+    background: -webkit-gradient(linear,left top,right top,color-stop(0%,rgba(255,255,255,0)),color-stop(50%,rgba(255,255,255,.3)),color-stop(100%,rgba(255,255,255,0)));
+    background: -webkit-linear-gradient(left,rgba(255,255,255,0) 0,rgba(255,255,255,.3) 50%,rgba(255,255,255,0) 100%);
+    background: -o-linear-gradient(left,rgba(255,255,255,0) 0,rgba(255,255,255,.3)50%,rgba(255,255,255,0) 100%);
+    background: linear-gradient(left,rgba(255,255,255,0) 0,rgba(255,255,255,.3) 50%,rgba(255,255,255,0) 100%);
+    -webkit-transform: skewX(-25deg);/*倾斜*/
+    -moz-transform: skewX(-25deg);
+    transform: skewX(-25deg);
+}
+/*鼠标滑过*/
+.image-light:hover:after{
+    -webkit-transition: left 1s ease-in-out; /*过渡*/
+    transition: left 1s ease-in-out;
+    left: 500px; /*结束位置*/
+}
+
+.image-shadow{
+    position:relative;  /*设置为相对*/
+    margin: 60px auto;
+    z-index: 1;
+    width: 294px;
+    height: 413px;
+    background: #fff;
+    -webkit-transition: all .2s linear; /*渐变效果*/
+    transition: all .2s linear;
+}
+.image-shadow:hover{
+    z-index: 2; /*设置在顶层显示*/
+    -webkit-box-shadow: 0 15px 30px rgba(0,0,0,0.1);    /*添加阴影*/
+    box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+    -webkit-transform: translate3d(0, -2px, 0);     /*向上浮动*/
+    transform: translate3d(0, -2px, 0);
+}
+
+.mk-shadow img:hover{
+    -webkit-transform: scale(1);
+    -moz-transform: scale(1);
+    transform: scale(1);
+    -moz-box-shadow:0 3px 10px #888;
+    -webkit-box-shadow:0 3px 10px #888;
+    -webkit-transition:.3s;
+    -moz-transition:.3s;
+    -o-transition:.3s;
+    -ms-transition:.3s;
+}
+
+.avatar img{
+    height: 70px;
+    width: 70px;
+    border: 1px solid #fff;
+    -webkit-transition: .8s;
+    -moz-transition: .8s;
+    -o-transition: .8s;
+    -ms-transition: .8s;
+}
+.avatar img:hover{
+    -moz-box-shadow:0 3px 10px #888;
+    -webkit-box-shadow:0 3px 10px #888;
+    transform:rotate(720deg);
+    -webkit-transform:rotate(720deg);
+    -moz-transform:rotate(720deg);
+    -o-transform:rotate(720deg);
+    -ms-transform:rotate(720deg);
+    border-radius:35px;
+}
+
+.blur img{
+    width: 219px;
+    height: 316px;
+}
+.blur img:hover {
+    -webkit-transition:.3s;
+       -moz-transition:.3s;
+         -o-transition:.3s;
+        -ms-transition:.3s;
+    filter: url(blur.svg#blur); /* FireFox, Chrome, Opera */
+    -webkit-filter: blur(10px); /* Chrome, Opera */
+       -moz-filter: blur(10px);
+        -ms-filter: blur(10px);    
+            filter: blur(10px);
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, MakeShadow=false); /* IE6~IE9 */
+}
+
+/* 行者app图标效果 */
+
+.masthead{
+    width: 120px;
+    height: 120px;
+    border-radius: 15px;
+    -webkit-animation: downloadButton 2.5s infinite;
+    animation: downloadButton 2.5s infinite;
+    -webkit-transition: none;
+    transition: none
+}
+
+@-webkit-keyframes downloadButton{
+    from{
+        -webkit-box-shadow: 0 0 1px 2px rgba(1,1,1,0.1)
+    }50%{
+        -webkit-box-shadow: 0 0 25px 6px rgba(1,1,1,0.3)
+    }to{
+        -webkit-box-shadow: 0 0 1px 2px rgba(1,1,1,0.1)
+    }
+    
+}
+@keyframes downloadButton{
+    from{
+        box-shadow: 0 0 1px 2px rgba(1,1,1,0.1)
+    }50%{
+        box-shadow: 0 0 25px 6px rgba(1,1,1,0.3)
+    }to{
+        box-shadow: 0 0 1px 2px rgba(1,1,1,0.1)
+    }
+}
+
+/*弹动效果*/
+.bounce:hover {
+-webkit-animation:bounce 1s .1s ease both;
+-moz-animation:bounce 1s .1s ease both;
+}
+@-webkit-keyframes bounce {
+0% {
+-webkit-transform:scale(1)
+}
+10%, 20% {
+-webkit-transform:scale(0.8) rotate(-2deg)
+}
+30%, 50%, 70%, 90% {
+-webkit-transform:scale(1.1) rotate(2deg)
+}
+40%, 60%, 80% {
+-webkit-transform:scale(1.1) rotate(-2deg)
+}
+100% {
+-webkit-transform:scale(1) rotate(0)
+}
+}
+
+/* 边角卷起效果 */
+.hvr-curl-bottom-right {
+    display: inline-block;
+    vertical-align: middle;
+    -webkit-transform: perspective(1px) translateZ(0);
+    transform: perspective(1px) translateZ(0);
+    box-shadow: 0 0 1px transparent;
+    position: relative;
+}
+.hvr-curl-bottom-right:hover:before, 
+.hvr-curl-bottom-right:focus:before, 
+.hvr-curl-bottom-right:active:before {
+    width: 25px;
+    height: 25px;
+}
+.hvr-curl-bottom-right:before {
+    pointer-events: none;
+    position: absolute;
+    content: '';
+    height: 0;
+    width: 0;
+    bottom: 0;
+    right: 0;
+    background: white;
+    background: linear-gradient(315deg, white 45%, #aaa 50%, #ccc 56%, white 80%);
+    box-shadow: -1px -1px 1px rgba(0, 0, 0, 0.4);
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-property: width, height;
+    transition-property: width, height;
+}
+
+/* 滑过边角折起效果 https://www.cnblogs.com/xinpureZhu/p/4469678.html */
+.hover-folding {
+    position: relative;
+    cursor: pointer;
+    overflow: hidden;
+}
+.hover-folding:before {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    border: 0 solid;
+    border-color: #9b9b9b #fff;
+    border-color: rgba(0, 0, 0, 0.5) #fff;
+    -webkit-transition: border .5s ease; 
+       -moz-transition: border .5s ease; 
+        -ms-transition: border .5s ease; 
+         -o-transition: border .5s ease; 
+            transition: border .5s ease; 
+}
+
+.hover-folding:hover:before {
+    border-right-width:  50px;
+    border-bottom-width: 50px
+}
+</style>
+
+<!-- 百度统计 -->
+<script>
+var _hmt = _hmt || [];
+(function() {
+var hm = document.createElement("script");
+hm.src = "https://hm.baidu.com/hm.js?ea4269d8a00e95fdb9ee61e3041a8f98";
+var s = document.getElementsByTagName("script")[0]; 
+s.parentNode.insertBefore(hm, s);
+})();
+</script>
+
+<h3 class="demo-item-title">CSS3实现京东图片鼠标滑过流光效果</h3>
+<p style="text-align: center">滑动鼠标</p>
+<div class="image-light">
+    <img src="http://img13.360buyimg.com/da/jfs/t970/287/1389585584/39301/38fb781a/55d5f905N8b963394.jpg">
+</div>
+
+<h3 class="demo-item-title">CSS3实现小米商城浮动效果</h3>
+
+<div class="image-shadow">
+    <img src="https://i.loli.net/2019/04/25/5cc1665250fd8.jpg">
+</div>
+
+<h3 class="demo-item-title">鼠标滑过边角折起效果</h3>
+
+<div class="demo-pic-outer hover-folding">
+    <img src="https://i.loli.net/2019/04/25/5cc1665250fd8.jpg">
+</div>
+
+<h3 class="demo-item-title">CSS3实现边角卷起效果2</h3>
+
+<div class="hvr-curl-bottom-right">
+    <img src="https://i.loli.net/2019/04/25/5cc1665250fd8.jpg">
+</div>
+
+<h3 class="demo-item-title">鼠标滑过图片阴影效果</h3>
+
+<div class="mk-shadow">
+    <img src="https://i.loli.net/2019/04/25/5cc1665250fd8.jpg">
+</div>
+
+<h3 class="demo-item-title">鼠标滑过头像旋转变换效果</h3>
+
+<div class="avatar">
+    <img src="https://i.loli.net/2019/04/25/5cc16668cf72a.jpg">
+</div>
+
+<h3 class="demo-item-title">毛玻璃效果</h3>
+
+<div class="blur">
+    <img src="http://img20.360buyimg.com/da/jfs/t2995/250/2521550073/19290/ab657058/57af2ec8N50d43369.jpg">
+</div>
+
+<h3 class="demo-item-title">行者app图标阴影效果</h3>
+
+<img src="http://cdn.bi-ci.com/dist_v2/image/download/xingzhe_logo_v2.png" class="masthead">
+
+<h3 class="demo-item-title">图片弹动效果</h3>
+
+<img src="http://cdn.bi-ci.com/dist_v2/image/download/xingzhe_logo_v2.png" class="bounce">
+
+<br>
+
+
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br><span class="line">82</span><br><span class="line">83</span><br><span class="line">84</span><br><span class="line">85</span><br><span class="line">86</span><br><span class="line">87</span><br><span class="line">88</span><br><span class="line">89</span><br><span class="line">90</span><br><span class="line">91</span><br><span class="line">92</span><br><span class="line">93</span><br><span class="line">94</span><br><span class="line">95</span><br><span class="line">96</span><br><span class="line">97</span><br><span class="line">98</span><br><span class="line">99</span><br><span class="line">100</span><br><span class="line">101</span><br><span class="line">102</span><br><span class="line">103</span><br><span class="line">104</span><br><span class="line">105</span><br><span class="line">106</span><br><span class="line">107</span><br><span class="line">108</span><br><span class="line">109</span><br><span class="line">110</span><br><span class="line">111</span><br><span class="line">112</span><br><span class="line">113</span><br><span class="line">114</span><br><span class="line">115</span><br><span class="line">116</span><br><span class="line">117</span><br><span class="line">118</span><br><span class="line">119</span><br><span class="line">120</span><br><span class="line">121</span><br><span class="line">122</span><br><span class="line">123</span><br><span class="line">124</span><br><span class="line">125</span><br><span class="line">126</span><br><span class="line">127</span><br><span class="line">128</span><br><span class="line">129</span><br><span class="line">130</span><br><span class="line">131</span><br><span class="line">132</span><br><span class="line">133</span><br><span class="line">134</span><br><span class="line">135</span><br><span class="line">136</span><br><span class="line">137</span><br><span class="line">138</span><br><span class="line">139</span><br><span class="line">140</span><br><span class="line">141</span><br><span class="line">142</span><br><span class="line">143</span><br><span class="line">144</span><br><span class="line">145</span><br><span class="line">146</span><br><span class="line">147</span><br><span class="line">148</span><br><span class="line">149</span><br><span class="line">150</span><br><span class="line">151</span><br><span class="line">152</span><br><span class="line">153</span><br><span class="line">154</span><br><span class="line">155</span><br><span class="line">156</span><br><span class="line">157</span><br><span class="line">158</span><br><span class="line">159</span><br><span class="line">160</span><br><span class="line">161</span><br><span class="line">162</span><br><span class="line">163</span><br><span class="line">164</span><br><span class="line">165</span><br><span class="line">166</span><br><span class="line">167</span><br><span class="line">168</span><br><span class="line">169</span><br><span class="line">170</span><br><span class="line">171</span><br><span class="line">172</span><br><span class="line">173</span><br><span class="line">174</span><br><span class="line">175</span><br><span class="line">176</span><br><span class="line">177</span><br><span class="line">178</span><br><span class="line">179</span><br><span class="line">180</span><br><span class="line">181</span><br><span class="line">182</span><br><span class="line">183</span><br><span class="line">184</span><br><span class="line">185</span><br><span class="line">186</span><br><span class="line">187</span><br><span class="line">188</span><br><span class="line">189</span><br><span class="line">190</span><br><span class="line">191</span><br><span class="line">192</span><br><span class="line">193</span><br><span class="line">194</span><br><span class="line">195</span><br><span class="line">196</span><br><span class="line">197</span><br><span class="line">198</span><br><span class="line">199</span><br><span class="line">200</span><br><span class="line">201</span><br><span class="line">202</span><br><span class="line">203</span><br><span class="line">204</span><br><span class="line">205</span><br><span class="line">206</span><br><span class="line">207</span><br><span class="line">208</span><br><span class="line">209</span><br><span class="line">210</span><br><span class="line">211</span><br><span class="line">212</span><br><span class="line">213</span><br><span class="line">214</span><br><span class="line">215</span><br><span class="line">216</span><br><span class="line">217</span><br><span class="line">218</span><br><span class="line">219</span><br><span class="line">220</span><br><span class="line">221</span><br><span class="line">222</span><br><span class="line">223</span><br><span class="line">224</span><br><span class="line">225</span><br><span class="line">226</span><br><span class="line">227</span><br><span class="line">228</span><br><span class="line">229</span><br><span class="line">230</span><br><span class="line">231</span><br><span class="line">232</span><br><span class="line">233</span><br><span class="line">234</span><br><span class="line">235</span><br><span class="line">236</span><br><span class="line">237</span><br><span class="line">238</span><br><span class="line">239</span><br><span class="line">240</span><br><span class="line">241</span><br><span class="line">242</span><br><span class="line">243</span><br><span class="line">244</span><br><span class="line">245</span><br><span class="line">246</span><br><span class="line">247</span><br><span class="line">248</span><br><span class="line">249</span><br><span class="line">250</span><br><span class="line">251</span><br><span class="line">252</span><br><span class="line">253</span><br><span class="line">254</span><br><span class="line">255</span><br><span class="line">256</span><br><span class="line">257</span><br><span class="line">258</span><br><span class="line">259</span><br><span class="line">260</span><br><span class="line">261</span><br><span class="line">262</span><br><span class="line">263</span><br><span class="line">264</span><br><span class="line">265</span><br><span class="line">266</span><br><span class="line">267</span><br><span class="line">268</span><br><span class="line">269</span><br><span class="line">270</span><br><span class="line">271</span><br><span class="line">272</span><br><span class="line">273</span><br><span class="line">274</span><br><span class="line">275</span><br><span class="line">276</span><br><span class="line">277</span><br><span class="line">278</span><br><span class="line">279</span><br><span class="line">280</span><br><span class="line">281</span><br><span class="line">282</span><br><span class="line">283</span><br><span class="line">284</span><br><span class="line">285</span><br><span class="line">286</span><br><span class="line">287</span><br><span class="line">288</span><br><span class="line">289</span><br><span class="line">290</span><br><span class="line">291</span><br><span class="line">292</span><br><span class="line">293</span><br><span class="line">294</span><br><span class="line">295</span><br><span class="line">296</span><br><span class="line">297</span><br><span class="line">298</span><br><span class="line">299</span><br><span class="line">300</span><br><span class="line">301</span><br><span class="line">302</span><br><span class="line">303</span><br><span class="line">304</span><br><span class="line">305</span><br><span class="line">306</span><br><span class="line">307</span><br><span class="line">308</span><br><span class="line">309</span><br><span class="line">310</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">title</span>&gt;</span>CSS3实现各种图片效果<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span></span><br><span class="line"><span class="css">*&#123;<span class="attribute">margin</span>: <span class="number">0</span>;<span class="attribute">padding</span>: <span class="number">0</span>;<span class="attribute">font-family</span>: <span class="string">&#x27;微软雅黑&#x27;</span>,<span class="string">&#x27;Helvetica Neue&#x27;</span>, Arial, sans-serif&#125;</span></span><br><span class="line"><span class="css"><span class="selector-tag">body</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">background-color</span>: <span class="number">#f5f5f5</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">text-align</span>: center;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.demo-item-title &#123;</span><br><span class="line"><span class="css">    <span class="attribute">margin</span>: <span class="number">60px</span> <span class="number">0</span> <span class="number">20px</span> <span class="number">0</span>; </span></span><br><span class="line"><span class="css">    <span class="attribute">text-align</span>: center;</span></span><br><span class="line">&#125;</span><br><span class="line">.demo-pic-outer &#123;</span><br><span class="line"><span class="css">    <span class="attribute">display</span>: inline-block;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.image-light&#123;</span><br><span class="line"><span class="css">    <span class="attribute">margin</span>: <span class="number">60px</span> auto;</span></span><br><span class="line"><span class="css">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#d8d9d7</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-class">.image-light</span>,<span class="selector-class">.image-light</span> &gt; <span class="selector-tag">img</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">display</span>: block;</span></span><br><span class="line"><span class="css">    <span class="attribute">width</span>: <span class="number">330px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>: <span class="number">475px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="comment">/*父容器*/</span></span></span><br><span class="line">.image-light&#123;</span><br><span class="line"><span class="css">    <span class="attribute">overflow</span>: hidden;</span></span><br><span class="line"><span class="css">    <span class="attribute">position</span>: relative; <span class="comment">/*设置为相对*/</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="comment">/*图片*/</span></span></span><br><span class="line"><span class="css"><span class="selector-tag">img</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">border</span>: none;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="comment">/*流光（采用伪类实现，当然也可以是子元素）*/</span></span></span><br><span class="line">.image-light:after&#123;</span><br><span class="line"><span class="css">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">position</span>: absolute; <span class="comment">/*相对父级绝对定位*/</span></span></span><br><span class="line"><span class="css">    <span class="attribute">width</span>: <span class="number">80px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>: <span class="number">100%</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">top</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">left</span>: -<span class="number">200px</span>;  <span class="comment">/*起始位置*/</span></span></span><br><span class="line"><span class="css">    <span class="attribute">overflow</span>: hidden;</span></span><br><span class="line"><span class="css">    <span class="attribute">z-index</span>:<span class="number">9</span>;</span></span><br><span class="line"><span class="css">    <span class="comment">/*背景渐变（兼容性写法）*/</span></span></span><br><span class="line"><span class="css">    <span class="attribute">background</span>: <span class="built_in">-moz-linear-gradient</span>(left,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>) <span class="number">0</span>,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,.<span class="number">3</span>) <span class="number">50%</span>,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>) <span class="number">100%</span>);</span></span><br><span class="line"><span class="css">    <span class="attribute">background</span>: <span class="built_in">-webkit-gradient</span>(linear,left top,right top,<span class="built_in">color-stop</span>(<span class="number">0%</span>,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>)),<span class="built_in">color-stop</span>(<span class="number">50%</span>,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,.<span class="number">3</span>)),<span class="built_in">color-stop</span>(<span class="number">100%</span>,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>)));</span></span><br><span class="line"><span class="css">    <span class="attribute">background</span>: <span class="built_in">-webkit-linear-gradient</span>(left,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>) <span class="number">0</span>,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,.<span class="number">3</span>) <span class="number">50%</span>,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>) <span class="number">100%</span>);</span></span><br><span class="line"><span class="css">    <span class="attribute">background</span>: <span class="built_in">-o-linear-gradient</span>(left,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>) <span class="number">0</span>,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,.<span class="number">3</span>)<span class="number">50%</span>,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>) <span class="number">100%</span>);</span></span><br><span class="line"><span class="css">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(left,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>) <span class="number">0</span>,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,.<span class="number">3</span>) <span class="number">50%</span>,<span class="built_in">rgba</span>(<span class="number">255</span>,<span class="number">255</span>,<span class="number">255</span>,<span class="number">0</span>) <span class="number">100%</span>);</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">transform</span>: <span class="built_in">skewX</span>(-<span class="number">25deg</span>);<span class="comment">/*倾斜*/</span></span></span><br><span class="line"><span class="css">    -moz-<span class="attribute">transform</span>: <span class="built_in">skewX</span>(-<span class="number">25deg</span>);</span></span><br><span class="line"><span class="css">    <span class="attribute">transform</span>: <span class="built_in">skewX</span>(-<span class="number">25deg</span>);</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="comment">/*鼠标滑过*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.image-light</span><span class="selector-pseudo">:hover</span>:after&#123;</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">transition</span>: left <span class="number">1s</span> ease-in-out; <span class="comment">/*过渡*/</span></span></span><br><span class="line"><span class="css">    <span class="attribute">transition</span>: left <span class="number">1s</span> ease-in-out;</span></span><br><span class="line"><span class="css">    <span class="attribute">left</span>: <span class="number">500px</span>; <span class="comment">/*结束位置*/</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">.image-shadow&#123;</span><br><span class="line"><span class="css">    <span class="attribute">position</span>:relative;  <span class="comment">/*设置为相对*/</span></span></span><br><span class="line"><span class="css">    <span class="attribute">margin</span>: <span class="number">60px</span> auto;</span></span><br><span class="line"><span class="css">    <span class="attribute">z-index</span>: <span class="number">1</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">width</span>: <span class="number">294px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>: <span class="number">413px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">background</span>: <span class="number">#fff</span>;</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">transition</span>: all .<span class="number">2s</span> linear; <span class="comment">/*渐变效果*/</span></span></span><br><span class="line"><span class="css">    <span class="attribute">transition</span>: all .<span class="number">2s</span> linear;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-class">.image-shadow</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">z-index</span>: <span class="number">2</span>; <span class="comment">/*设置在顶层显示*/</span></span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">15px</span> <span class="number">30px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.1</span>);    <span class="comment">/*添加阴影*/</span></span></span><br><span class="line"><span class="css">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">15px</span> <span class="number">30px</span> <span class="built_in">rgba</span>(<span class="number">0</span>,<span class="number">0</span>,<span class="number">0</span>,<span class="number">0.1</span>);</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">transform</span>: <span class="built_in">translate3d</span>(<span class="number">0</span>, -<span class="number">2px</span>, <span class="number">0</span>);     <span class="comment">/*向上浮动*/</span></span></span><br><span class="line"><span class="css">    <span class="attribute">transform</span>: <span class="built_in">translate3d</span>(<span class="number">0</span>, -<span class="number">2px</span>, <span class="number">0</span>);</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="css"><span class="selector-class">.mk-shadow</span> <span class="selector-tag">img</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>);</span></span><br><span class="line"><span class="css">    -moz-<span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>);</span></span><br><span class="line"><span class="css">    <span class="attribute">transform</span>: <span class="built_in">scale</span>(<span class="number">1</span>);</span></span><br><span class="line"><span class="css">    -moz-<span class="attribute">box-shadow</span>:<span class="number">0</span> <span class="number">3px</span> <span class="number">10px</span> <span class="number">#888</span>;</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">box-shadow</span>:<span class="number">0</span> <span class="number">3px</span> <span class="number">10px</span> <span class="number">#888</span>;</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">transition</span>:.<span class="number">3s</span>;</span></span><br><span class="line"><span class="css">    -moz-<span class="attribute">transition</span>:.<span class="number">3s</span>;</span></span><br><span class="line"><span class="css">    -o-<span class="attribute">transition</span>:.<span class="number">3s</span>;</span></span><br><span class="line"><span class="css">    -ms-<span class="attribute">transition</span>:.<span class="number">3s</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="css"><span class="selector-class">.avatar</span> <span class="selector-tag">img</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>: <span class="number">70px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">width</span>: <span class="number">70px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">border</span>: <span class="number">1px</span> solid <span class="number">#fff</span>;</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">transition</span>: .<span class="number">8s</span>;</span></span><br><span class="line"><span class="css">    -moz-<span class="attribute">transition</span>: .<span class="number">8s</span>;</span></span><br><span class="line"><span class="css">    -o-<span class="attribute">transition</span>: .<span class="number">8s</span>;</span></span><br><span class="line"><span class="css">    -ms-<span class="attribute">transition</span>: .<span class="number">8s</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-class">.avatar</span> <span class="selector-tag">img</span><span class="selector-pseudo">:hover</span>&#123;</span></span><br><span class="line"><span class="css">    -moz-<span class="attribute">box-shadow</span>:<span class="number">0</span> <span class="number">3px</span> <span class="number">10px</span> <span class="number">#888</span>;</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">box-shadow</span>:<span class="number">0</span> <span class="number">3px</span> <span class="number">10px</span> <span class="number">#888</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">transform</span>:<span class="built_in">rotate</span>(<span class="number">720deg</span>);</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">transform</span>:<span class="built_in">rotate</span>(<span class="number">720deg</span>);</span></span><br><span class="line"><span class="css">    -moz-<span class="attribute">transform</span>:<span class="built_in">rotate</span>(<span class="number">720deg</span>);</span></span><br><span class="line"><span class="css">    -o-<span class="attribute">transform</span>:<span class="built_in">rotate</span>(<span class="number">720deg</span>);</span></span><br><span class="line"><span class="css">    -ms-<span class="attribute">transform</span>:<span class="built_in">rotate</span>(<span class="number">720deg</span>);</span></span><br><span class="line"><span class="css">    <span class="attribute">border-radius</span>:<span class="number">35px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="css"><span class="selector-class">.blur</span> <span class="selector-tag">img</span>&#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">width</span>: <span class="number">219px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>: <span class="number">316px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-class">.blur</span> <span class="selector-tag">img</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">transition</span>:.<span class="number">3s</span>;</span></span><br><span class="line"><span class="css">       -moz-<span class="attribute">transition</span>:.<span class="number">3s</span>;</span></span><br><span class="line"><span class="css">         -o-<span class="attribute">transition</span>:.<span class="number">3s</span>;</span></span><br><span class="line"><span class="css">        -ms-<span class="attribute">transition</span>:.<span class="number">3s</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">filter</span>: <span class="built_in">url</span>(<span class="string">blur.svg#blur</span>); <span class="comment">/* FireFox, Chrome, Opera */</span></span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">filter</span>: <span class="built_in">blur</span>(<span class="number">10px</span>); <span class="comment">/* Chrome, Opera */</span></span></span><br><span class="line"><span class="css">       -moz-<span class="attribute">filter</span>: <span class="built_in">blur</span>(<span class="number">10px</span>);</span></span><br><span class="line"><span class="css">        -ms-<span class="attribute">filter</span>: <span class="built_in">blur</span>(<span class="number">10px</span>);    </span></span><br><span class="line"><span class="css">            <span class="attribute">filter</span>: <span class="built_in">blur</span>(<span class="number">10px</span>);</span></span><br><span class="line"><span class="css">    <span class="attribute">filter</span>: progid:DXImageTransform.Microsoft.<span class="built_in">Blur</span>(PixelRadius=<span class="number">10</span>, MakeShadow=false); <span class="comment">/* IE6~IE9 */</span></span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="css"><span class="comment">/* 行者app图标效果 */</span></span></span><br><span class="line"></span><br><span class="line">.masthead&#123;</span><br><span class="line"><span class="css">    <span class="attribute">width</span>: <span class="number">120px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>: <span class="number">120px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">border-radius</span>: <span class="number">15px</span>;</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">animation</span>: downloadButton <span class="number">2.5s</span> infinite;</span></span><br><span class="line"><span class="css">    <span class="attribute">animation</span>: downloadButton <span class="number">2.5s</span> infinite;</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">transition</span>: none;</span></span><br><span class="line"><span class="css">    <span class="attribute">transition</span>: none</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="css"><span class="keyword">@-webkit-keyframes</span> downloadButton&#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">from</span>&#123;</span></span><br><span class="line"><span class="css">        -webkit-<span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">1px</span> <span class="number">2px</span> <span class="built_in">rgba</span>(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0.1</span>)</span></span><br><span class="line">    &#125;50%&#123;</span><br><span class="line"><span class="css">        -webkit-<span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">25px</span> <span class="number">6px</span> <span class="built_in">rgba</span>(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0.3</span>)</span></span><br><span class="line"><span class="css">    &#125;<span class="selector-tag">to</span>&#123;</span></span><br><span class="line"><span class="css">        -webkit-<span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">1px</span> <span class="number">2px</span> <span class="built_in">rgba</span>(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0.1</span>)</span></span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="keyword">@keyframes</span> downloadButton&#123;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">from</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">1px</span> <span class="number">2px</span> <span class="built_in">rgba</span>(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0.1</span>)</span></span><br><span class="line">    &#125;50%&#123;</span><br><span class="line"><span class="css">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">25px</span> <span class="number">6px</span> <span class="built_in">rgba</span>(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0.3</span>)</span></span><br><span class="line"><span class="css">    &#125;<span class="selector-tag">to</span>&#123;</span></span><br><span class="line"><span class="css">        <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">1px</span> <span class="number">2px</span> <span class="built_in">rgba</span>(<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">0.1</span>)</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="css"><span class="comment">/*弹动效果*/</span></span></span><br><span class="line"><span class="css"><span class="selector-class">.bounce</span><span class="selector-pseudo">:hover</span> &#123;</span></span><br><span class="line"><span class="css">-webkit-<span class="attribute">animation</span>:bounce <span class="number">1s</span> .<span class="number">1s</span> ease both;</span></span><br><span class="line"><span class="css">-moz-<span class="attribute">animation</span>:bounce <span class="number">1s</span> .<span class="number">1s</span> ease both;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="keyword">@-webkit-keyframes</span> bounce &#123;</span></span><br><span class="line">0% &#123;</span><br><span class="line"><span class="css">-webkit-<span class="attribute">transform</span>:<span class="built_in">scale</span>(<span class="number">1</span>)</span></span><br><span class="line">&#125;</span><br><span class="line">10%, 20% &#123;</span><br><span class="line"><span class="css">-webkit-<span class="attribute">transform</span>:<span class="built_in">scale</span>(<span class="number">0.8</span>) <span class="built_in">rotate</span>(-<span class="number">2deg</span>)</span></span><br><span class="line">&#125;</span><br><span class="line">30%, 50%, 70%, 90% &#123;</span><br><span class="line"><span class="css">-webkit-<span class="attribute">transform</span>:<span class="built_in">scale</span>(<span class="number">1.1</span>) <span class="built_in">rotate</span>(<span class="number">2deg</span>)</span></span><br><span class="line">&#125;</span><br><span class="line">40%, 60%, 80% &#123;</span><br><span class="line"><span class="css">-webkit-<span class="attribute">transform</span>:<span class="built_in">scale</span>(<span class="number">1.1</span>) <span class="built_in">rotate</span>(-<span class="number">2deg</span>)</span></span><br><span class="line">&#125;</span><br><span class="line">100% &#123;</span><br><span class="line"><span class="css">-webkit-<span class="attribute">transform</span>:<span class="built_in">scale</span>(<span class="number">1</span>) <span class="built_in">rotate</span>(<span class="number">0</span>)</span></span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="css"><span class="comment">/* 边角卷起效果 */</span></span></span><br><span class="line">.hvr-curl-bottom-right &#123;</span><br><span class="line"><span class="css">    <span class="attribute">display</span>: inline-block;</span></span><br><span class="line"><span class="css">    <span class="attribute">vertical-align</span>: middle;</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">transform</span>: <span class="built_in">perspective</span>(<span class="number">1px</span>) <span class="built_in">translateZ</span>(<span class="number">0</span>);</span></span><br><span class="line"><span class="css">    <span class="attribute">transform</span>: <span class="built_in">perspective</span>(<span class="number">1px</span>) <span class="built_in">translateZ</span>(<span class="number">0</span>);</span></span><br><span class="line"><span class="css">    <span class="attribute">box-shadow</span>: <span class="number">0</span> <span class="number">0</span> <span class="number">1px</span> transparent;</span></span><br><span class="line"><span class="css">    <span class="attribute">position</span>: relative;</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="css"><span class="selector-class">.hvr-curl-bottom-right</span><span class="selector-pseudo">:hover</span>:before, </span></span><br><span class="line"><span class="css"><span class="selector-class">.hvr-curl-bottom-right</span><span class="selector-pseudo">:focus</span>:before, </span></span><br><span class="line"><span class="css"><span class="selector-class">.hvr-curl-bottom-right</span><span class="selector-pseudo">:active</span>:before &#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">width</span>: <span class="number">25px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>: <span class="number">25px</span>;</span></span><br><span class="line">&#125;</span><br><span class="line">.hvr-curl-bottom-right:before &#123;</span><br><span class="line"><span class="css">    <span class="attribute">pointer-events</span>: none;</span></span><br><span class="line"><span class="css">    <span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="css">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">height</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">width</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">bottom</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">right</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">background</span>: white;</span></span><br><span class="line"><span class="css">    <span class="attribute">background</span>: <span class="built_in">linear-gradient</span>(<span class="number">315deg</span>, white <span class="number">45%</span>, <span class="number">#aaa</span> <span class="number">50%</span>, <span class="number">#ccc</span> <span class="number">56%</span>, white <span class="number">80%</span>);</span></span><br><span class="line"><span class="css">    <span class="attribute">box-shadow</span>: -<span class="number">1px</span> -<span class="number">1px</span> <span class="number">1px</span> <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.4</span>);</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">transition-duration</span>: <span class="number">0.3s</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">transition-duration</span>: <span class="number">0.3s</span>;</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">transition-property</span>: width, height;</span></span><br><span class="line"><span class="css">    <span class="attribute">transition-property</span>: width, height;</span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="css"><span class="comment">/* 滑过边角折起效果 https://www.cnblogs.com/xinpureZhu/p/4469678.html */</span></span></span><br><span class="line">.hover-folding &#123;</span><br><span class="line"><span class="css">    <span class="attribute">position</span>: relative;</span></span><br><span class="line"><span class="css">    <span class="attribute">cursor</span>: pointer;</span></span><br><span class="line"><span class="css">    <span class="attribute">overflow</span>: hidden;</span></span><br><span class="line">&#125;</span><br><span class="line">.hover-folding:before &#123;</span><br><span class="line"><span class="css">    <span class="attribute">content</span>: <span class="string">&#x27;&#x27;</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">position</span>: absolute;</span></span><br><span class="line"><span class="css">    <span class="attribute">top</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">right</span>: <span class="number">0</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">border</span>: <span class="number">0</span> solid;</span></span><br><span class="line"><span class="css">    <span class="attribute">border-color</span>: <span class="number">#9b9b9b</span> <span class="number">#fff</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">border-color</span>: <span class="built_in">rgba</span>(<span class="number">0</span>, <span class="number">0</span>, <span class="number">0</span>, <span class="number">0.5</span>) <span class="number">#fff</span>;</span></span><br><span class="line"><span class="css">    -webkit-<span class="attribute">transition</span>: border .<span class="number">5s</span> ease; </span></span><br><span class="line"><span class="css">       -moz-<span class="attribute">transition</span>: border .<span class="number">5s</span> ease; </span></span><br><span class="line"><span class="css">        -ms-<span class="attribute">transition</span>: border .<span class="number">5s</span> ease; </span></span><br><span class="line"><span class="css">         -o-<span class="attribute">transition</span>: border .<span class="number">5s</span> ease; </span></span><br><span class="line"><span class="css">            <span class="attribute">transition</span>: border .<span class="number">5s</span> ease; </span></span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="css"><span class="selector-class">.hover-folding</span><span class="selector-pseudo">:hover</span>:before &#123;</span></span><br><span class="line"><span class="css">    <span class="attribute">border-right-width</span>:  <span class="number">50px</span>;</span></span><br><span class="line"><span class="css">    <span class="attribute">border-bottom-width</span>: <span class="number">50px</span></span></span><br><span class="line">&#125;</span><br><span class="line"><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="comment">&lt;!-- 百度统计 --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> _hmt = _hmt || [];</span></span><br><span class="line"><span class="javascript">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> hm = <span class="built_in">document</span>.createElement(<span class="string">&quot;script&quot;</span>);</span></span><br><span class="line"><span class="javascript">hm.src = <span class="string">&quot;https://hm.baidu.com/hm.js?ea4269d8a00e95fdb9ee61e3041a8f98&quot;</span>;</span></span><br><span class="line"><span class="javascript"><span class="keyword">var</span> s = <span class="built_in">document</span>.getElementsByTagName(<span class="string">&quot;script&quot;</span>)[<span class="number">0</span>]; </span></span><br><span class="line">s.parentNode.insertBefore(hm, s);</span><br><span class="line">&#125;)();</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">&quot;demo-item-title&quot;</span>&gt;</span>CSS3实现京东图片鼠标滑过流光效果<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">style</span>=<span class="string">&quot;text-align: center&quot;</span>&gt;</span>滑动鼠标<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;image-light&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;http://img13.360buyimg.com/da/jfs/t970/287/1389585584/39301/38fb781a/55d5f905N8b963394.jpg&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">&quot;demo-item-title&quot;</span>&gt;</span>CSS3实现小米商城浮动效果<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;image-shadow&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://i.loli.net/2019/04/25/5cc1665250fd8.jpg&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">&quot;demo-item-title&quot;</span>&gt;</span>鼠标滑过边角折起效果<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;demo-pic-outer hover-folding&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://i.loli.net/2019/04/25/5cc1665250fd8.jpg&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">&quot;demo-item-title&quot;</span>&gt;</span>CSS3实现边角卷起效果2<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;hvr-curl-bottom-right&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://i.loli.net/2019/04/25/5cc1665250fd8.jpg&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">&quot;demo-item-title&quot;</span>&gt;</span>鼠标滑过图片阴影效果<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;mk-shadow&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://i.loli.net/2019/04/25/5cc1665250fd8.jpg&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">&quot;demo-item-title&quot;</span>&gt;</span>鼠标滑过头像旋转变换效果<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;avatar&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;https://i.loli.net/2019/04/25/5cc16668cf72a.jpg&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">&quot;demo-item-title&quot;</span>&gt;</span>毛玻璃效果<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">&quot;blur&quot;</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;http://img20.360buyimg.com/da/jfs/t2995/250/2521550073/19290/ab657058/57af2ec8N50d43369.jpg&quot;</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">&quot;demo-item-title&quot;</span>&gt;</span>行者app图标阴影效果<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;http://cdn.bi-ci.com/dist_v2/image/download/xingzhe_logo_v2.png&quot;</span> <span class="attr">class</span>=<span class="string">&quot;masthead&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">h3</span> <span class="attr">class</span>=<span class="string">&quot;demo-item-title&quot;</span>&gt;</span>图片弹动效果<span class="tag">&lt;/<span class="name">h3</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">img</span> <span class="attr">src</span>=<span class="string">&quot;http://cdn.bi-ci.com/dist_v2/image/download/xingzhe_logo_v2.png&quot;</span> <span class="attr">class</span>=<span class="string">&quot;bounce&quot;</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">br</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Css3实现各种图片效果</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="http://xpnobug.github.io/css/">http://xpnobug.github.io/css/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>error 404</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-03-31</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2021-03-31</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/CSS/">CSS</a></div><div class="post_share"><div class="social-share" data-image="https://api.xygeng.cn/Bing/" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/HappyBirthDay/"><img class="prev-cover" src="https://api.xygeng.cn/Bing/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">Previous Post</div><div class="prev_info">2020-04-01&amp;&amp;2021-04-01</div></div></a></div><div class="next-post pull-right"><a href="/%E5%A4%9A%E7%BA%BF%E7%A8%8B%E6%9C%89%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95%E9%83%BD%E6%98%AF%E4%BB%80%E4%B9%88%E5%90%8C%E6%AD%A5%E6%9C%89%E5%87%A0%E7%A7%8D%E5%AE%9E%E7%8E%B0%E6%96%B9%E6%B3%95,%E9%83%BD%E6%98%AF%E4%BB%80%E4%B9%88/"><img class="next-cover" src="https://api.xygeng.cn/Bing/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">多线程有几种实现方法,都是什么同步有几种实现方法,都是什么?</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">error 404</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">22</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">11</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xpnobug"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">No one can decide what you do, but you have to be very clear. Even if I did something wrong, I choose not to regret it.</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>Catalog</span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">1.</span> <span class="toc-text">CSS3实现京东图片鼠标滑过流光效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">2.</span> <span class="toc-text">CSS3实现小米商城浮动效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">3.</span> <span class="toc-text">鼠标滑过边角折起效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">4.</span> <span class="toc-text">CSS3实现边角卷起效果2</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">5.</span> <span class="toc-text">鼠标滑过图片阴影效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">6.</span> <span class="toc-text">鼠标滑过头像旋转变换效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">7.</span> <span class="toc-text">毛玻璃效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">8.</span> <span class="toc-text">行者app图标阴影效果</span></a></li><li class="toc-item toc-level-3"><a class="toc-link"><span class="toc-number">9.</span> <span class="toc-text">图片弹动效果</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/oracle/" title="Oracle数据库常用Sql语句大全"><img src="https://pic.baike.soso.com/ugc/baikepic2/19475/cut-20190530154601-1931591011_jpg_514_411_18227.jpg/300" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Oracle数据库常用Sql语句大全"/></a><div class="content"><a class="title" href="/oracle/" title="Oracle数据库常用Sql语句大全">Oracle数据库常用Sql语句大全</a><time datetime="2021-04-29T03:14:15.383Z" title="Created 2021-04-29 11:14:15">2021-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E9%AA%8C%E8%AF%81%E7%A0%81/" title="Java中文与数字随机验证码程序"><img src="https://pic.baike.soso.com/ugc/baikepic2/24081/cut-20190812153202-699885329_jpg_534_427_9592.jpg/300" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java中文与数字随机验证码程序"/></a><div class="content"><a class="title" href="/java%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E9%AA%8C%E8%AF%81%E7%A0%81/" title="Java中文与数字随机验证码程序">Java中文与数字随机验证码程序</a><time datetime="2021-04-29T03:14:00.930Z" title="Created 2021-04-29 11:14:00">2021-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="Java使用网易邮箱向QQ邮箱发送邮件"><img src="https://s1.ax1x.com/2020/08/01/aGnj2j.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java使用网易邮箱向QQ邮箱发送邮件"/></a><div class="content"><a class="title" href="/java%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="Java使用网易邮箱向QQ邮箱发送邮件">Java使用网易邮箱向QQ邮箱发送邮件</a><time datetime="2021-04-29T03:13:57.130Z" title="Created 2021-04-29 11:13:57">2021-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Shiro%E7%9F%A5%E8%AF%86%E7%82%B9/" title="Shiro知识点"><img src="http://image.wufazhuce.com/FrM45oLlRl8aW95py8ecF0SSrKl9" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Shiro知识点"/></a><div class="content"><a class="title" href="/Shiro%E7%9F%A5%E8%AF%86%E7%82%B9/" title="Shiro知识点">Shiro知识点</a><time datetime="2021-04-29T03:13:41.711Z" title="Created 2021-04-29 11:13:41">2021-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%B3%A8%E8%A7%A3%E5%88%86%E7%B1%BB/" title="No title"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/%E6%B3%A8%E8%A7%A3%E5%88%86%E7%B1%BB/" title="No title">No title</a><time datetime="2021-04-29T03:13:36.204Z" title="Created 2021-04-29 11:13:36">2021-04-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By error 404</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="Table Of Contents"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"></div><script>var gitcalendar = new Vue({
+  el: '#gitcalendar',
+  data: {
+    simplemode: true,
+    user: 'xpnobug',
+    fixed: 'fixed',
+    px: 'px',
+    x: '',
+    y: '',
+    span1: '',
+    span2: '',
+    month: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+    monthchange: [],
+    oneyearbeforeday: '',
+    thisday: '',
+    amonthago: '',
+    aweekago: '',
+    weekdatacore: 0,
+    datacore: 0,
+    total: 0,
+    datadate: '',
+    data: [],
+    positionplusdata: [],
+    firstweek: [],
+    lastweek: [],
+    beforeweek: [],
+    thisweekdatacore: 0,
+    mounthbeforeday: 0,
+    mounthfirstindex: 0,
+    crispedges: 'crispedges',
+    thisdayindex: 0,
+    amonthagoindex: 0,
+    amonthagoweek: [],
+    firstdate: [],
+    first2date: [],
+    montharrbefore: [],
+    monthindex: 0,
+    color: ['#ebedf0', '#f0fff4', '#dcffe4', '#bef5cb', '#85e89d', '#34d058', '#28a745', '#22863a', '#176f2c', '#165c26', '#144620']
+  },
+  methods: {
+    selectStyle(data, event) {
+      document.querySelector('.angle-wrapper').style.display = 'block'
+      this.span1 = data.date;
+      this.span2 = data.count;
+      this.x = event.clientX - 100;
+      this.y = event.clientY - 60
+    },
+    outStyle() {
+      document.querySelector('.angle-wrapper').style.display = 'none'
+    },
+    thiscolor(x) {
+      if (x === 0) {
+        let i = parseInt(x / 2);
+        return this.color[0]
+      } else if (x < 2) {
+        return this.color[1]
+      } else if (x < 20) {
+        let i = parseInt(x / 2);
+        return this.color[i]
+      } else {
+        return this.color[9]
+      }
+    },
+  }
+});
+var apiurl = 'python-github-calendar-api-seven.vercel.app' ? 'https://python-github-calendar-api-seven.vercel.app/api?' : 'https://githubapi.ryanchristian.dev/user/'
+var githubapiurl = apiurl + gitcalendar.user;
+//canvas绘图
+function responsiveChart() {
+  let c = document.getElementById("gitcanvas");
+  if (c) {
+    let cmessage = document.getElementById("gitmessage");
+    let ctx = c.getContext("2d");
+    c.width = document.getElementById("gitcalendarcanvasbox").offsetWidth;
+    let linemaxwitdh = 0.96 * c.width / gitcalendar.data.length;
+    c.height = 9 * linemaxwitdh;
+    let lineminwitdh = 0.8 * linemaxwitdh;
+    let setposition = {
+      x: 0.02 * c.width,
+      y: 0.025 * c.width
+    };
+    for (let week in gitcalendar.data) {
+      weekdata = gitcalendar.data[week];
+      for (let day in weekdata) {
+        let dataitem = {
+          date: "",
+          count: "",
+          x: 0,
+          y: 0
+        };
+        gitcalendar.positionplusdata.push(dataitem);
+        ctx.fillStyle = gitcalendar.thiscolor(weekdata[day].count);
+        setposition.y = Math.round(setposition.y * 100) / 100;
+        dataitem.date = weekdata[day].date;
+        dataitem.count = weekdata[day].count;
+        dataitem.x = setposition.x;
+        dataitem.y = setposition.y;
+        ctx.fillRect(setposition.x, setposition.y, lineminwitdh, lineminwitdh);
+        setposition.y = setposition.y + linemaxwitdh
+      };
+      setposition.y = 0.025 * c.width;
+      setposition.x = setposition.x + linemaxwitdh
+    };
+    ctx.font = "600  Arial";
+    ctx.fillStyle = '#aaa';
+    ctx.fillText("日", 0, 1.9 * linemaxwitdh);
+    ctx.fillText("二", 0, 3.9 * linemaxwitdh);
+    ctx.fillText("四", 0, 5.9 * linemaxwitdh);
+    ctx.fillText("六", 0, 7.9 * linemaxwitdh);
+    let monthindexlist = c.width / 24;
+    for (let index in gitcalendar.monthchange) {
+      ctx.fillText(gitcalendar.monthchange[index], monthindexlist, 0.7 * linemaxwitdh);
+      monthindexlist = monthindexlist + c.width / 12
+    };
+    cmessage.onmousemove = function(event) {
+      document.querySelector('.angle-wrapper').style.display = 'none'
+    };
+    c.onmousemove = function(event) {
+      document.querySelector('.angle-wrapper').style.display = 'none'
+      getMousePos(c, event);
+    };
+
+    function getMousePos(canvas, event) {
+      var rect = canvas.getBoundingClientRect();
+      var x = event.clientX - rect.left * (canvas.width / rect.width);
+      var y = event.clientY - rect.top * (canvas.height / rect.height);
+      //console.log("x:"+x+",y:"+y);
+      for (let item of gitcalendar.positionplusdata) {
+        let lenthx = x - item.x;
+        let lenthy = y - item.y;
+        //console.log(lenthx,lenthy);
+        if (0 < lenthx && lenthx < lineminwitdh) {
+          if (0 < lenthy && lenthy < lineminwitdh) {
+            //console.log(item.date,item.count)
+            document.querySelector('.angle-wrapper').style.display = 'block'
+            gitcalendar.span1 = item.date;
+            gitcalendar.span2 = item.count;
+            gitcalendar.x = event.clientX - 100;
+            gitcalendar.y = event.clientY - 60
+          }
+        }
+        //if(0< x - item.x <lineminwitdh&&0< y - item.y <lineminwitdh){
+        //console.log(item.count,item.date);
+        //}
+      }
+    }
+  }
+}
+//数据统计算法
+function addlastmonth() {
+  if (gitcalendar.thisdayindex === 0) {
+    thisweekcore(52);
+    thisweekcore(51);
+    thisweekcore(50);
+    thisweekcore(49);
+    thisweekcore(48);
+    gitcalendar.thisweekdatacore += gitcalendar.firstdate[6].count;
+    gitcalendar.amonthago = gitcalendar.firstdate[6].date
+  } else {
+    thisweekcore(52);
+    thisweekcore(51);
+    thisweekcore(50);
+    thisweekcore(49);
+    thisweek2core();
+    gitcalendar.amonthago = gitcalendar.first2date[gitcalendar.thisdayindex - 1].date
+  }
+};
+
+function thisweek2core() {
+  for (let i = gitcalendar.thisdayindex - 1; i < gitcalendar.first2date.length; i++) {
+    gitcalendar.thisweekdatacore += gitcalendar.first2date[i].count
+  }
+};
+
+function thisweekcore(index) {
+  for (let item of gitcalendar.data[index]) {
+    gitcalendar.thisweekdatacore += item.count
+  }
+};
+
+function addlastweek() {
+  for (let item of gitcalendar.lastweek) {
+    gitcalendar.weekdatacore += item.count
+  }
+};
+
+function addbeforeweek() {
+  for (let i = gitcalendar.thisdayindex; i < gitcalendar.beforeweek.length; i++) {
+    gitcalendar.weekdatacore += gitcalendar.beforeweek[i].count
+  }
+};
+
+function addweek(data) {
+  if (gitcalendar.thisdayindex === 6) {
+    gitcalendar.aweekago = gitcalendar.lastweek[0].date;
+    addlastweek()
+  } else {
+    lastweek = data.contributions[51];
+    gitcalendar.aweekago = lastweek[gitcalendar.thisdayindex + 1].date;
+    addlastweek();
+    addbeforeweek()
+  }
+}
+
+fetch(githubapiurl)
+  .then(data => data.json())
+  .then(data => {
+    gitcalendar.data = data.contributions;
+    gitcalendar.total = data.total;
+    gitcalendar.first2date = gitcalendar.data[48];
+    gitcalendar.firstdate = gitcalendar.data[47];
+    gitcalendar.firstweek = data.contributions[0];
+    gitcalendar.lastweek = data.contributions[52];
+    gitcalendar.beforeweek = data.contributions[51];
+    gitcalendar.thisdayindex = gitcalendar.lastweek.length - 1;
+    gitcalendar.thisday = gitcalendar.lastweek[gitcalendar.thisdayindex].date;
+    gitcalendar.oneyearbeforeday = gitcalendar.firstweek[0].date;
+    gitcalendar.monthindex = gitcalendar.thisday.substring(5, 7) * 1;
+    gitcalendar.montharrbefore = gitcalendar.month.splice(gitcalendar.monthindex, 12 - gitcalendar.monthindex);
+    gitcalendar.monthchange = gitcalendar.montharrbefore.concat(gitcalendar.month);
+    addweek(data);
+    addlastmonth();
+    responsiveChart();
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+
+//手机版更换为svg绘制
+if (document.getElementById("gitcalendarcanvasbox").offsetWidth < 500) {
+  gitcalendar.simplemode = false
+}
+
+//当改变窗口大小时重新绘制canvas
+window.onresize = function() {
+  if (gitcalendar.simplemode) responsiveChart()
+}
+
+//解决滚动滑轮时出现的标签显示
+window.onscroll = function() {
+  if (document.querySelector('.angle-wrapper')) {
+    document.querySelector('.angle-wrapper').style.display = 'none'
+  }
+};</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='all'|| 'all' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="http://xpnobug.github.io/categories/教程/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 教程干货 (3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="http://xpnobug.github.io/categories/Java面试题/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💡 面试题 (8)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><a class="magnet_link_more"  href="http://xpnobug.github.io/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><script data-pjax>function history_calendar_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-history"><div class="card-content"><div class="item-headline"><i class="fas fa-clock fa-spin"></i><span>那年今日</span></div><div id="history-baidu" style="height: 100px;overflow: hidden"><div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%"><div class="swiper-wrapper" id="history_container_wrapper" style="height:20px"></div></div></div></div>';
+                console.log('已挂载history_calendar')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='all'|| 'all' ==='all')){
+
+            history_calendar_injector_config()
+        } </script><script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/js/main.js"></script><script data-pjax>function electric_clock_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img id="card-clock-loading" src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-clock/clock/images/weather/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading" class="entered loading"></div></div></div></div></div>';
+                console.log('已挂载electric_clock')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='all'|| 'all' ==='all')){
+
+            electric_clock_injector_config()
+        } </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax  src="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.4/clock.js"></script><!-- hexo injector body_end end --></body></html>

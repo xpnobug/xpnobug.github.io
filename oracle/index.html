@@ -1,0 +1,1090 @@
+<!DOCTYPE html><html lang="en" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Oracle数据库常用Sql语句大全 | error 404</title><meta name="keywords" content="Oracle"><meta name="author" content="error 404"><meta name="copyright" content="error 404"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="referrer" content="no-referrer"><meta name="description" content="测试">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Oracle数据库常用Sql语句大全">
+<meta property="og:url" content="http://xpnobug.github.io/oracle/index.html">
+<meta property="og:site_name" content="error 404">
+<meta property="og:description" content="测试">
+<meta property="og:locale" content="en_US">
+<meta property="og:image" content="https://pic.baike.soso.com/ugc/baikepic2/19475/cut-20190530154601-1931591011_jpg_514_411_18227.jpg/300">
+<meta property="article:published_time" content="2021-04-29T03:14:15.383Z">
+<meta property="article:modified_time" content="2020-07-10T05:33:42.967Z">
+<meta property="article:author" content="error 404">
+<meta property="article:tag" content="Oracle">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://pic.baike.soso.com/ugc/baikepic2/19475/cut-20190530154601-1931591011_jpg_514_411_18227.jpg/300"><link rel="shortcut icon" href="/img/favicon.png"><link rel="canonical" href="http://xpnobug.github.io/oracle/"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = { 
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"簡"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false},
+  copy: {
+    success: 'Copy successfully',
+    error: 'Copy error',
+    noSupport: 'The browser does not support'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: 'days',
+  date_suffix: {
+    just: 'Just',
+    min: 'minutes ago',
+    hour: 'hours ago',
+    day: 'days ago',
+    month: 'months ago'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: undefined,
+  source: {
+    jQuery: 'https://cdn.jsdelivr.net/npm/jquery@latest/dist/jquery.min.js',
+    justifiedGallery: {
+      js: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/js/jquery.justifiedGallery.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/justifiedGallery/dist/css/justifiedGallery.min.css'
+    },
+    fancybox: {
+      js: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.js',
+      css: 'https://cdn.jsdelivr.net/npm/@fancyapps/fancybox@latest/dist/jquery.fancybox.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isanchor: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = { 
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: false,
+  postUpdate: '2020-07-10 13:33:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    })(window)</script><link rel="stylesheet" href="/css/Lete.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiperstyle.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/css/main.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.4/clock.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-double-row-display@1.00/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="author-avatar"><img class="avatar-img" src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data"><div class="data-item is-center"><div class="data-item-link"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">22</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">11</div></a></div></div><div class="data-item is-center"><div class="data-item-link"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div></div></div><hr/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/cxp/websc"><i class="fa-fw fas fa-infinity faa-shake animated"></i><span> navigation</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="not-top-img" id="page-header"><nav id="nav"><span id="blog_name"><a id="site-name" href="/">error 404</a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> Home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> Archives</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> Tags</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> Categories</span></a></div><div class="menus_item"><a class="site-page" href="/link/"><i class="fa-fw fas fa-link"></i><span> Link</span></a></div><div class="menus_item"><a class="site-page" href="/cxp/websc"><i class="fa-fw fas fa-infinity faa-shake animated"></i><span> navigation</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> About</span></a></div></div><div id="toggle-menu"><a class="site-page"><i class="fas fa-bars fa-fw"></i></a></div></div></nav></header><main class="layout" id="content-inner"><div id="post"><div id="post-info"><h1 class="post-title">Oracle数据库常用Sql语句大全</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">Created</span><time class="post-meta-date-created" datetime="2021-04-29T03:14:15.383Z" title="Created 2021-04-29 11:14:15">2021-04-29</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">Updated</span><time class="post-meta-date-updated" datetime="2020-07-10T05:33:42.967Z" title="Updated 2020-07-10 13:33:42">2020-07-10</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/Oracle/">Oracle</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Oracle数据库常用Sql语句大全"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">Post View:</span><span id="busuanzi_value_page_pv"></span></span></div></div></div><article class="post-content" id="article-container"><p><strong>一，数据控制语句 (DML)</strong> </p>
+<ol>
+<li>insert (往数据表里插入记录的语句)</li>
+</ol>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名(字段名<span class="number">1</span>, 字段名<span class="number">2</span>, ……) <span class="keyword">values</span>( 值<span class="number">1</span>, 值<span class="number">2</span>, ……);</span><br><span class="line"><span class="keyword">insert</span> <span class="keyword">into</span> 表名(字段名<span class="number">1</span>, 字段名<span class="number">2</span>, ……)  <span class="keyword">select</span> (字段名<span class="number">1</span>, 字段名<span class="number">2</span>, ……) <span class="keyword">from</span> 另外的表名;</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>字符串类型的字段值必须用单引号括起来, 例如: ’Hello Word’<br>如果字段值里包含单引号’ 需要进行字符串转换, 我们把它替换成两个单引号’’.<br>字符串类型的字段值超过定义的长度会出错, 最好在插入前进行长度校验.<br>日期字段的字段值可以用当前数据库的系统时间sysdate, 精确到秒<br>或者用字符串转换成日期型函数 to_date(‘2001-08-01’,’yyyy-MM-dd’)<br>to_date() 还有很多种日期格式, 可以参看ORACLE DOC.<br>年-月-日 小时:分钟:秒 的格式YYYY-MM-DD HH24:MI:SS<br>insert 时最大可操作的字符串长度小于等于4000个单字节, 如果要插入更长的字符串, 请考虑字段用CLOB类型,<br>方法借用ORACLE里自带的DBMS_LOB程序包.<br>insert 时如果要用到从1开始自动增长的序列号, 应该先建立一个序列号<br>create sequence 序列号的名称 (最好是表名+序列号标记) increment by 1  start  with  1<br>maxvalue 99999  cycle nocache;<br>其中最大的值按字段的长度来定, 如果定义的自动增长的序列号 NUMBER(6) , 最大值为999999<br>insert 语句插入这个字段值为: 序列号的名称.NEXTVAL</p>
+</blockquote>
+<ol start="2">
+<li>delete (删除数据表里记录的语句)<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">delete</span> <span class="keyword">from</span> 表名 <span class="keyword">where</span>  条件;</span><br></pre></td></tr></table></figure>
+<code>注意：</code>删除记录并不能释放ORACLE里被占用的数据块表空间. 它只把那些被删除的数据块标成unused.<br>如果确实要删除一个大表里的全部记录, 可以用 TRUNCATE 命令, 它可以释放占用的数据块表空间<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">truncate</span> <span class="keyword">table</span> 表名;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>此操作不可回退.truncate table</p>
+</blockquote>
+</li>
+</ol>
+<ol start="3">
+<li>update(修改数据表里记录的语句)<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">update 表名 <span class="keyword">set</span>字段名<span class="number">1</span><span class="operator">=</span>值<span class="number">1</span>, 字段名<span class="number">2</span><span class="operator">=</span>值<span class="number">2</span>, …… <span class="keyword">where</span>条件;</span><br></pre></td></tr></table></figure>
+如果修改的值N没有赋值或定义时, 将把原来的记录内容清为NULL, 最好在修改前进行非空校验;<br>值N超过定义的长度会出错, 最好在插入前进行长度校验..<br><code>注意事项</code>:<br>A，以上SQL语句对表都加上了行级锁,<br>确认完成后, 必须加上事物处理结束的命令 COMMIT 才能正式生效，否则改变不一定写入数据库里。<br>如果想撤回这些操作，可以用命令 ROLLBACK 复原。</li>
+</ol>
+<p>B，在运行INSERT, DELETE 和 UPDATE 语句前最好估算一下可能操作的记录范围，应该把它限定在较小 (一万条记录) 范围内，否则ORACLE处理这个事物用到很大的回退段。</p>
+<p>程序响应慢甚至失去响应. 如果记录数上十万以上这些操作，可以把这些SQL语句分段分次完成，其间加上COMMIT 确认事物处理。</p>
+<p><strong>二，数据定义 (DDL) 部分</strong></p>
+<ol>
+<li>create (创建表, 索引, 视图, 同义词, 过程, 函数, 数据库链接等)</li>
+</ol>
+<p>ORACLE常用的字段类型有<br>char                        固定长度的字符串<br>varchar2              可变长度的字符串<br>number(M,N)          数字型M是位数总长度, N是小数的长度<br>date                        日期类型</p>
+<p>创建表时要把较小的不为空的字段放在前面, 可能为空的字段放在后面</p>
+<p>创建表时可以用中文的字段名, 但最好还是用英文的字段名</p>
+<p>创建表时可以给字段加上默认值, 例如 DEFAULT SYSDATE</p>
+<p>这样每次插入和修改时, 不用程序操作这个字段都能得到动作的时间</p>
+<p>创建表时可以给字段加上约束条件</p>
+<p>例如 不允许重复 UNIQUE, 关键字 PRIMARY KEY</p>
+<p>2，alter (改变表, 索引, 视图等)</p>
+<p>改变表的名称</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名<span class="number">1</span>  <span class="keyword">TO</span> 表名<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>在表的后面增加一个字段</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span>表名 <span class="keyword">ADD</span> 字段名 字段名描述;</span><br></pre></td></tr></table></figure>
+
+<p>修改表里字段的定义描述</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span>表名 MODIFY字段名 字段名描述;</span><br></pre></td></tr></table></figure>
+
+<p>给表里的字段加上约束条件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> 约束名 <span class="keyword">PRIMARY</span> KEY (字段名);</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 <span class="keyword">ADD</span> <span class="keyword">CONSTRAINT</span> 约束名 <span class="keyword">UNIQUE</span> (字段名);</span><br></pre></td></tr></table></figure>
+
+<p>把表放在或取出数据库的内存区</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 CACHE;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">TABLE</span> 表名 NOCACHE;</span><br></pre></td></tr></table></figure>
+
+<p>3，DROP (删除表, 索引, 视图, 同义词, 过程, 函数, 数据库链接等)</p>
+<p>删除表和它所有的约束条件</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">DROP</span> <span class="keyword">TABLE</span> 表名 CASCADE CONSTRAINTS;</span><br></pre></td></tr></table></figure>
+
+<p>4，TRUNCATE (清空表里的所有记录, 保留表的结构)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">TRUNCATE</span> 表名;</span><br></pre></td></tr></table></figure>
+
+<p><strong>三，查询语句 (SELECT) 部分</strong></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>字段名<span class="number">1</span>, 字段名<span class="number">2</span>, …… <span class="keyword">FROM</span> 表名<span class="number">1</span>, [表名<span class="number">2</span>, ……] <span class="keyword">WHERE</span> 条件;</span><br></pre></td></tr></table></figure>
+
+<p>字段名可以带入函数</p>
+<p>  例如:  COUNT(*), MIN(字段名),  MAX(字段名),  AVG(字段名), DISTINCT(字段名),</p>
+<pre><code>       TO_CHAR(DATE字段名,&#39;YYYY-MM-DD HH24:MI:SS&#39;)
+</code></pre>
+<p>NVL(EXPR1, EXPR2)函数</p>
+<p>解释:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">IF EXPR1<span class="operator">=</span><span class="keyword">NULL</span></span><br><span class="line"></span><br><span class="line">                <span class="keyword">RETURN</span> EXPR2</span><br><span class="line"></span><br><span class="line"><span class="keyword">ELSE</span></span><br><span class="line"></span><br><span class="line">                       <span class="keyword">RETURN</span> EXPR1</span><br></pre></td></tr></table></figure>
+
+<p>DECODE(AA﹐V1﹐R1﹐V2﹐R2….)函数</p>
+<p>解释:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">IF AA<span class="operator">=</span>V1 <span class="keyword">THEN</span> <span class="keyword">RETURN</span> R1</span><br><span class="line"></span><br><span class="line">IF AA<span class="operator">=</span>V2 <span class="keyword">THEN</span> <span class="keyword">RETURN</span> R2</span><br><span class="line"></span><br><span class="line">..…</span><br><span class="line"></span><br><span class="line"><span class="keyword">ELSE</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">RETURN</span> <span class="keyword">NULL</span></span><br></pre></td></tr></table></figure>
+
+<p>LPAD(char1,n,char2)函数</p>
+<p>解释:</p>
+<p>字符char1按制定的位数n显示，不足的位数用char2字符串替换左边的空位</p>
+<p>字段名之间可以进行算术运算</p>
+<p>例如:  <code>(字段名1*字段名1)/3</code></p>
+<p>查询语句可以嵌套</p>
+<p>例如: <code>SELECT …… FROM</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">(<span class="keyword">SELECT</span> …… <span class="keyword">FROM</span>表名<span class="number">1</span>, [表名<span class="number">2</span>, ……] <span class="keyword">WHERE</span> 条件) <span class="keyword">WHERE</span> 条件<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>两个查询语句的结果可以做集合操作</p>
+<p>例如: 并集UNION(去掉重复记录), 并集UNION ALL(不去掉重复记录), 差集MINUS,  交集INTERSECT</p>
+<p>分组查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>字段名<span class="number">1</span>, 字段名<span class="number">2</span>, …… <span class="keyword">FROM</span> 表名<span class="number">1</span>, [表名<span class="number">2</span>, ……] <span class="keyword">GROUP</span> <span class="keyword">BY</span>字段名<span class="number">1</span></span><br></pre></td></tr></table></figure>
+
+<p>[HAVING 条件] ;</p>
+<p>两个以上表之间的连接查询</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>字段名<span class="number">1</span>, 字段名<span class="number">2</span>, …… <span class="keyword">FROM</span> 表名<span class="number">1</span>, [表名<span class="number">2</span>, ……] <span class="keyword">WHERE</span></span><br><span class="line"></span><br><span class="line">                表名<span class="number">1.</span>字段名 <span class="operator">=</span> 表名<span class="number">2.</span> 字段名 [ <span class="keyword">AND</span> ……] ;</span><br><span class="line"></span><br><span class="line"><span class="keyword">SELECT</span>字段名<span class="number">1</span>, 字段名<span class="number">2</span>, …… <span class="keyword">FROM</span> 表名<span class="number">1</span>, [表名<span class="number">2</span>, ……] <span class="keyword">WHERE</span></span><br><span class="line"></span><br><span class="line">                表名<span class="number">1.</span>字段名 <span class="operator">=</span> 表名<span class="number">2.</span> 字段名(<span class="operator">+</span>) [ <span class="keyword">AND</span> ……] ;</span><br></pre></td></tr></table></figure>
+
+<p>有(+)号的字段位置自动补空值</p>
+<p>查询结果集的排序操作, <code>默认的排序是升序ASC, 降序是DESC</code></p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span>字段名<span class="number">1</span>, 字段名<span class="number">2</span>, …… <span class="keyword">FROM</span> 表名<span class="number">1</span>, [表名<span class="number">2</span>, ……]</span><br><span class="line"></span><br><span class="line"><span class="keyword">ORDER</span> <span class="keyword">BY</span>字段名<span class="number">1</span>, 字段名<span class="number">2</span> <span class="keyword">DESC</span>;</span><br></pre></td></tr></table></figure>
+
+<p>字符串模糊比较的方法</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">INSTR(字段名, ‘字符串’)<span class="operator">&gt;</span><span class="number">0</span></span><br></pre></td></tr></table></figure>
+
+<p>字段名 LIKE  ‘字符串%’  [‘%字符串%’]</p>
+<p>每个表都有一个隐含的字段ROWID, 它标记着记录的唯一性.</p>
+<p><strong>四，ORACLE里常用的数据对象 (SCHEMA)</strong></p>
+<p>1，索引 (INDEX)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> INDEX 索引名<span class="keyword">ON</span> 表名 ( 字段<span class="number">1</span>, [字段<span class="number">2</span>, ……] );</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> INDEX 索引名 REBUILD;</span><br></pre></td></tr></table></figure>
+
+<p>一个表的索引最好不要超过三个 (特殊的大表除外), 最好用单字段索引, 结合SQL语句的分析执行情况,</p>
+<p>也可以建立多字段的组合索引和基于函数的索引</p>
+<p>ORACLE8.1.7字符串可以索引的最大长度为1578 单字节</p>
+<p>ORACLE8.0.6字符串可以索引的最大长度为758 单字节</p>
+<p>2，视图 (VIEW)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">VIEW</span> 视图名<span class="keyword">AS</span> <span class="keyword">SELECT</span> …. <span class="keyword">FROM</span> …..;</span><br><span class="line"></span><br><span class="line"><span class="keyword">ALTER</span> <span class="keyword">VIEW</span>视图名 COMPILE;</span><br></pre></td></tr></table></figure>
+
+<p>视图仅是一个SQL查询语句, 它可以把表之间复杂的关系简洁化.</p>
+<p>3，同义词 (SYNONMY)</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> SYNONYM同义词名<span class="keyword">FOR</span> 表名;</span><br><span class="line"></span><br><span class="line"><span class="keyword">CREATE</span> SYNONYM同义词名<span class="keyword">FOR</span> 表名@数据库链接名;</span><br></pre></td></tr></table></figure>
+
+<p>4，数据库链接 (DATABASE LINK)</p>
+<p>CREATE DATABASE LINK数据库链接名CONNECT TO 用户名 IDENTIFIED BY 密码 USING ‘数据库连接字符串’;</p>
+<p>数据库连接字符串可以用NET8 EASY CONFIG或者直接修改TNSNAMES.ORA里定义。</p>
+<p>数据库参数global_name=true时要求数据库链接名称跟远端数据库名称一样</p>
+<p>数据库全局名称可以用以下命令查出</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> <span class="operator">*</span> <span class="keyword">FROM</span> GLOBAL_NAME;</span><br></pre></td></tr></table></figure>
+
+<p>查询远端数据库里的表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span> …… <span class="keyword">FROM</span> 表名@数据库链接名;</span><br></pre></td></tr></table></figure>
+
+<p><strong>五，权限管理 (DCL) 语句</strong></p>
+<p>1，GRANT        赋于权限</p>
+<p>常用的系统权限集合有以下三个:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CONNECT</span>(基本的连接), RESOURCE(程序开发), DBA(数据库管理)</span><br></pre></td></tr></table></figure>
+
+<p>常用的数据对象权限有以下五个:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">ALL</span>         <span class="keyword">ON</span> 数据对象名,         <span class="keyword">SELECT</span> <span class="keyword">ON</span> 数据对象名,         UPDATE <span class="keyword">ON</span> 数据对象名,</span><br><span class="line"></span><br><span class="line"><span class="keyword">DELETE</span>         <span class="keyword">ON</span> 数据对象名,  <span class="keyword">INSERT</span> <span class="keyword">ON</span> 数据对象名,   <span class="keyword">ALTER</span>  <span class="keyword">ON</span> 数据对象名</span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">CONNECT</span>, RESOURCE <span class="keyword">TO</span> 用户名;</span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 表名 <span class="keyword">TO</span> 用户名;</span><br><span class="line"></span><br><span class="line"><span class="keyword">GRANT</span> <span class="keyword">SELECT</span>, <span class="keyword">INSERT</span>, <span class="keyword">DELETE</span> <span class="keyword">ON</span>表名 <span class="keyword">TO</span> 用户名<span class="number">1</span>, 用户名<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>2，REVOKE 回收权限</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">CONNECT</span>, RESOURCE <span class="keyword">FROM</span> 用户名;</span><br><span class="line"></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">SELECT</span> <span class="keyword">ON</span> 表名 <span class="keyword">FROM</span> 用户名;</span><br><span class="line"></span><br><span class="line"><span class="keyword">REVOKE</span> <span class="keyword">SELECT</span>, <span class="keyword">INSERT</span>, <span class="keyword">DELETE</span> <span class="keyword">ON</span>表名 <span class="keyword">FROM</span> 用户名<span class="number">1</span>, 用户名<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>查询数据库中第63号错误：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> orgaddr,destaddr <span class="keyword">from</span> sm_histable0116 <span class="keyword">where</span> error_code<span class="operator">=</span><span class="string">&#x27;63&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<p>查询数据库中开户用户最大提交和最大下发数： <code>select MSISDN,TCOS,OCOS from ms_usertable；</code></p>
+<p>查询数据库中各种错误代码的总和：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> error_code,<span class="built_in">count</span>(<span class="operator">*</span>) <span class="keyword">from</span> sm_histable0513 <span class="keyword">group</span> <span class="keyword">by</span> error_code <span class="keyword">order</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">by</span> error_code;</span><br></pre></td></tr></table></figure>
+
+<p>查询报表数据库中话单统计种类查询。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(Successcount) <span class="keyword">from</span> tbl_MiddleMt0411 <span class="keyword">where</span> ServiceType2<span class="operator">=</span><span class="number">111</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">sum</span>(successcount),servicetype <span class="keyword">from</span> tbl_middlemt0411 <span class="keyword">group</span> <span class="keyword">by</span> servicetype</span><br></pre></td></tr></table></figure>
+
+<p><strong>oracle常用SQL语句</strong></p>
+<p>1、连接SQL*Plus system/manager</p>
+<p>2、显示当前连接用户SQL&gt; show user</p>
+<p>3、查看系统拥有哪些用户SQL&gt; select * from all_users;</p>
+<p>4、新建用户并授权SQL&gt; create user a identified by a;（默认建在SYSTEM表空间下）SQL&gt; grant connect,resource to a;</p>
+<p>5、连接到新用户SQL&gt; conn a/a</p>
+<p>6、查询当前用户下所有对象SQL&gt; select * from tab;</p>
+<p>7、建立第一个表SQL&gt; create table a(a number);</p>
+<p>8、查询表结构SQL&gt; desc a</p>
+<p>9、插入新记录SQL&gt; insert into a values(1);</p>
+<p>10、查询记录SQL&gt; select * from a;</p>
+<p>11、更改记录SQL&gt; update a set a=2;</p>
+<p>12、删除记录SQL&gt; delete from a;</p>
+<p>13、回滚SQL&gt; roll;SQL&gt; rollback;</p>
+<p>14、提交SQL&gt; commit;</p>
+<hr>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">用户授权:<span class="keyword">GRANT</span> <span class="keyword">ALTER</span> <span class="keyword">ANY</span> INDEX <span class="keyword">TO</span> &quot;user_id &quot;<span class="keyword">GRANT</span> &quot;dba &quot; <span class="keyword">TO</span> &quot;user_id &quot;;<span class="keyword">ALTER</span> <span class="keyword">USER</span> &quot;user_id &quot; <span class="keyword">DEFAULT</span> ROLE <span class="keyword">ALL</span>创建用户:<span class="keyword">CREATE</span> <span class="keyword">USER</span> &quot;user_id &quot; PROFILE &quot;DEFAULT &quot; IDENTIFIED <span class="keyword">BY</span> &quot; DEFAULT TABLESPACE &quot;USERS &quot; TEMPORARY TABLESPACE &quot;TEMP &quot; ACCOUNT UNLOCK;GRANT &quot;<span class="keyword">CONNECT</span> &quot; TO &quot;user_id &quot;;用户密码设定:ALTER USER &quot;CMSDB &quot; IDENTIFIED BY &quot;pass_word &quot;表空间创建:CREATE TABLESPACE &quot;table_space &quot; LOGGING DATAFILE &#x27;C:\ORACLE\ORADATA\dbs\table_space.ora&#x27; SIZE 5M</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>1、查看当前所有对象</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> tab;</span><br></pre></td></tr></table></figure>
+
+<p>2、建一个和a表结构一样的空表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> b <span class="keyword">as</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> a <span class="keyword">where</span> <span class="number">1</span><span class="operator">=</span><span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> b(b1,b2,b3) <span class="keyword">as</span> <span class="keyword">select</span> a1,a2,a3 <span class="keyword">from</span> a <span class="keyword">where</span> <span class="number">1</span><span class="operator">=</span><span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+
+<p>3、察看数据库的大小，和空间使用情况</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">col tablespace format a20SQL <span class="operator">&gt;</span> <span class="keyword">select</span> b.file_id　　文件ID,　　</span><br><span class="line">b.tablespace_name　　表空间,　　</span><br><span class="line">b.file_name　　　　　物理文件名,</span><br><span class="line">b.bytes　　　　　　　总字节数,　　</span><br><span class="line">(b.bytes<span class="operator">-</span><span class="built_in">sum</span>(nvl(a.bytes,<span class="number">0</span>)))　　　已使用,　　</span><br><span class="line"><span class="built_in">sum</span>(nvl(a.bytes,<span class="number">0</span>))　　　　　　　　剩余,　　</span><br><span class="line"><span class="built_in">sum</span>(nvl(a.bytes,<span class="number">0</span>))<span class="operator">/</span>(b.bytes)<span class="operator">*</span><span class="number">100</span>　剩余百分比　</span><br><span class="line"><span class="keyword">from</span> dba_free_space a,dba_data_files b　　</span><br><span class="line"><span class="keyword">where</span> a.file_id<span class="operator">=</span>b.file_id　　</span><br><span class="line"><span class="keyword">group</span> <span class="keyword">by</span> b.tablespace_name,b.file_name,b.file_id,b.bytes　　</span><br><span class="line"><span class="keyword">order</span> <span class="keyword">by</span> b.tablespace_name　　<span class="operator">/</span>　　</span><br><span class="line">dba_free_space <span class="comment">--表空间剩余空间状况　　</span></span><br><span class="line">dba_data_files <span class="comment">--数据文件空间占用情况 </span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>4、查看现有回滚段及其状态</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">col segment format a30SQL <span class="operator">&gt;</span> </span><br><span class="line"><span class="keyword">SELECT</span> SEGMENT_NAME,OWNER,TABLESPACE_NAME,SEGMENT_ID,FILE_ID,STATUS <span class="keyword">FROM</span> DBA_ROLLBACK_SEGS;</span><br></pre></td></tr></table></figure>
+
+<p>5、查看数据文件放置的路径</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">col file_name format a50SQL <span class="operator">&gt;</span> </span><br><span class="line"><span class="keyword">select</span> tablespace_name,file_id,bytes<span class="operator">/</span><span class="number">1024</span><span class="operator">/</span><span class="number">1024</span>,file_name <span class="keyword">from</span> dba_data_files <span class="keyword">order</span> <span class="keyword">by</span> file_id;</span><br></pre></td></tr></table></figure>
+
+<p>6、显示当前连接用户</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SQL</span> <span class="operator">&gt;</span></span><br><span class="line"> <span class="keyword">show</span> <span class="keyword">user</span></span><br></pre></td></tr></table></figure>
+
+<p>7、把SQL*Plus当计算器</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SQL</span> <span class="operator">&gt;</span> </span><br><span class="line"><span class="keyword">select</span> <span class="number">100</span><span class="operator">*</span><span class="number">20</span> <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<p>8、连接字符串</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SQL</span> <span class="operator">&gt;</span> </span><br><span class="line"><span class="keyword">select</span> 列<span class="number">1</span> <span class="operator">|</span> <span class="operator">|</span>列<span class="number">2</span> <span class="keyword">from</span> 表<span class="number">1</span>;<span class="keyword">SQL</span> <span class="operator">&gt;</span> <span class="keyword">select</span> concat(列<span class="number">1</span>,列<span class="number">2</span>) <span class="keyword">from</span> 表<span class="number">1</span>;</span><br></pre></td></tr></table></figure>
+
+<p>9、查询当前日期</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SQL</span> <span class="operator">&gt;</span></span><br><span class="line"> <span class="keyword">select</span> to_char(sysdate,<span class="string">&#x27;yyyy-mm-dd,hh24:mi:ss&#x27;</span>) <span class="keyword">from</span> dual;</span><br></pre></td></tr></table></figure>
+
+<p>10、用户间复制数据</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SQL</span> <span class="operator">&gt;</span> </span><br><span class="line"><span class="keyword">copy</span> <span class="keyword">from</span> user1 <span class="keyword">to</span> user2 <span class="keyword">create</span> <span class="keyword">table</span>2 <span class="keyword">using</span> <span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> table1;</span><br></pre></td></tr></table></figure>
+
+<p>11、视图中不能使用order by，但可用group by代替来达到排序目的</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SQL</span> <span class="operator">&gt;</span> </span><br><span class="line"><span class="keyword">create</span> <span class="keyword">view</span> a <span class="keyword">as</span> <span class="keyword">select</span> b1,b2 <span class="keyword">from</span> b <span class="keyword">group</span> <span class="keyword">by</span> b1,b2;</span><br></pre></td></tr></table></figure>
+
+<p>12、通过授权的方式来创建用户</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SQL</span> <span class="operator">&gt;</span> </span><br><span class="line"><span class="keyword">grant</span> <span class="keyword">connect</span>,resource <span class="keyword">to</span> test identified <span class="keyword">by</span> test;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SQL</span> <span class="operator">&gt;</span> conn test<span class="operator">/</span>test</span><br></pre></td></tr></table></figure>
+
+<p>13、查出当前用户所有表名。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="keyword">unique</span> tname <span class="keyword">from</span> col;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 向一个表格添加字段 */</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> alist_table <span class="keyword">add</span> address varchar2(<span class="number">100</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 修改字段 属性 字段为空 */</span></span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> alist_table modify address varchar2(<span class="number">80</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">/* 修改字段名字 */</span></span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> alist_table_copy <span class="keyword">as</span> <span class="keyword">select</span> ID,NAME,PHONE,EMAIL,QQ <span class="keyword">as</span> QQ2, <span class="comment">/*qq 改为qq2*/</span>ADDRESS <span class="keyword">from</span> alist_table;</span><br><span class="line"></span><br><span class="line"><span class="keyword">drop</span> <span class="keyword">table</span> alist_table;rename alist_table_copy <span class="keyword">to</span> alist_table<span class="comment">/* 修改表名 */</span></span><br><span class="line"></span><br><span class="line">空值处理有时要求列值不能为空</span><br><span class="line"><span class="keyword">create</span> <span class="keyword">table</span> dept (deptno number(<span class="number">2</span>) <span class="keyword">not</span> <span class="keyword">null</span>, dname <span class="type">char</span>(<span class="number">14</span>), loc <span class="type">char</span>(<span class="number">13</span>));</span><br><span class="line"></span><br><span class="line">在基表中增加一列</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> deptadd (headcnt number(<span class="number">3</span>));</span><br><span class="line"></span><br><span class="line">修改已有列属性</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> deptmodify dname <span class="type">char</span>(<span class="number">20</span>);注：只有当某列所有值都为空时，才能减小其列值宽度。只有当某列所有值都为空时，才能改变其列值类型。只有当某列所有值都为不空时，才能定义该列为<span class="keyword">not</span> <span class="keyword">null</span>。</span><br><span class="line">例：</span><br><span class="line"><span class="keyword">alter</span> <span class="keyword">table</span> dept modify (loc <span class="type">char</span>(<span class="number">12</span>));<span class="keyword">alter</span> <span class="keyword">table</span> dept modify loc <span class="type">char</span>(<span class="number">12</span>);<span class="keyword">alter</span> <span class="keyword">table</span> dept modify (dname <span class="type">char</span>(<span class="number">13</span>),loc <span class="type">char</span>(<span class="number">12</span>));</span><br><span class="line"></span><br><span class="line">查找未断连接</span><br><span class="line"><span class="keyword">select</span> process,osuser,username,machine,logon_time ,sql_textfrom v$session a,v$sqltext b <span class="keyword">where</span> a.sql_address<span class="operator">=</span>b.address;</span><br></pre></td></tr></table></figure>
+
+<hr>
+<p>1.以USER_开始的数据字典视图包含当前用户所拥有的信息, 查询当前用户所拥有的表信息:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> user_tables;</span><br></pre></td></tr></table></figure>
+
+<p>2.以ALL_开始的数据字典视图包含ORACLE用户所拥有的信息,查询用户拥有或有权访问的所有表信息:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> all_tables;</span><br></pre></td></tr></table></figure>
+
+<p>3.以DBA_开始的视图一般只有ORACLE数据库管理员可以访问:</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> dba_tables;</span><br></pre></td></tr></table></figure>
+
+<p>4.查询ORACLE用户：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conn sys<span class="operator">/</span>change_on_installselect <span class="operator">*</span> <span class="keyword">from</span> dba_users;conn <span class="keyword">system</span><span class="operator">/</span>manager;<span class="keyword">select</span> <span class="operator">*</span> <span class="keyword">from</span> all_users;</span><br></pre></td></tr></table></figure>
+
+<p>5.创建数据库用户：</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">CREATE</span> <span class="keyword">USER</span> user_name IDENTIFIED <span class="keyword">BY</span> password;<span class="keyword">GRANT</span> <span class="keyword">CONNECT</span> <span class="keyword">TO</span> user_name;</span><br><span class="line"><span class="keyword">GRANT</span> RESOURCE <span class="keyword">TO</span> user_name;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">授权的格式: <span class="keyword">grant</span> (权限) <span class="keyword">on</span> tablename <span class="keyword">to</span> username;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">删除用户(或表):<span class="keyword">drop</span> <span class="keyword">user</span>(<span class="keyword">table</span>) username(tablename) (cascade);</span><br></pre></td></tr></table></figure>
+
+<p>6.向建好的用户导入数据表</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">IMP <span class="keyword">SYSTEM</span><span class="operator">/</span>MANAGER FROMUSER <span class="operator">=</span> FUSER_NAME TOUSER <span class="operator">=</span> </span><br><span class="line">USER_NAME FILE <span class="operator">=</span> </span><br><span class="line">C:\EXPDAT.DMP <span class="keyword">COMMIT</span> <span class="operator">=</span> </span><br><span class="line">Y7.索引<span class="keyword">create</span> index [index_name] <span class="keyword">on</span> [table_name]( &quot;column_name &quot;)<span class="keyword">intersect</span>运算</span><br></pre></td></tr></table></figure>
+
+<p>返回查询结果中相同的部分</p>
+<p>exp:各个部门中有哪些相同的工种</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> job <span class="keyword">from</span> account <span class="keyword">intersect</span></span><br><span class="line"><span class="keyword">select</span> job <span class="keyword">from</span> research <span class="keyword">intersect</span></span><br><span class="line"><span class="keyword">select</span> job <span class="keyword">from</span> sales;</span><br></pre></td></tr></table></figure>
+
+<p>minus运算</p>
+<p>返回在第一个查询结果中与第二个查询结果不相同的那部分行记录。</p>
+<p>有哪些工种在财会部中有，而在销售部中没有？</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">exp:<span class="keyword">select</span> job <span class="keyword">from</span> account</span><br><span class="line"></span><br><span class="line">minus</span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span> job <span class="keyword">from</span> sales;</span><br></pre></td></tr></table></figure>
+
+<p><em>1. oracle安装完成后的初始口令?</em> </p>
+<p>　    internal/oracle<br>　　sys/change_on_install<br>　　system/manager<br>　　scott/tiger<br>　　sysman/oem_temp </p>
+<p><em>2. oracle9ias web cache的初始默认用户和密码？</em> </p>
+<p>administrator/administrator </p>
+<p><em>3. oracle 8.0.5怎么创建数据库?</em> </p>
+<p>用orainst。假如有motif界面，可以用orainst /m </p>
+<p><em>4. oracle 8.1.7怎么创建数据库?</em> </p>
+<p>dbassist </p>
+<p><em>5. oracle 9i 怎么创建数据库?</em> </p>
+<p>dbca </p>
+<p><em>6. oracle中的裸设备指的是什么?</em> </p>
+<p>裸设备就是绕过文件系统直接访问的储存空间 </p>
+<p><em>7. oracle如何区分 64-bit/32bit 版本？？？</em> </p>
+<p>$ sqlplus ‘/ as sysdba’ </p>
+<p>sql*plus: release 9.0.1.0.0 - production on mon jul 14 17:01:09 2003 </p>
+<p>(c) copyright 2001 oracle corporation. all rights reserved. </p>
+<p>connected to: </p>
+<p>oracle9i enterprise edition release 9.0.1.0.0 - production </p>
+<p>with the partitioning option </p>
+<p>jserver release 9.0.1.0.0 - production </p>
+<p>sql&gt; select * from v$version; </p>
+<p>banner </p>
+<hr>
+<p>oracle9i enterprise edition release 9.0.1.0.0 - production </p>
+<p>pl/sql release 9.0.1.0.0 - production </p>
+<p>core 9.0.1.0.0 production </p>
+<p>tns for solaris: version 9.0.1.0.0 - production </p>
+<p>nlsrtl version 9.0.1.0.0 - production </p>
+<p>sql&gt; </p>
+<p><em>8. svrmgr什么意思？</em> </p>
+<p>svrmgrl，server manager. </p>
+<p>9i下没有，已经改为用sqlplus了 </p>
+<p>sqlplus /nolog </p>
+<p>变为归档日志型的 </p>
+<p><em>9. 请问如何分辨某个用户是从哪台机器登陆oracle的?</em> </p>
+<p>select machine , terminal from v$session; </p>
+<p><em>10. 用什么语句查询字段呢？</em> </p>
+<p>desc table_name 可以查询表的结构 </p>
+<p>select field_name,… from … 可以查询字段的值 </p>
+<p>select * from all_tables where table_name like ‘%’ </p>
+<p>select * from all_tab_columns where table_name=’??’ </p>
+<p><em>11. 怎样得到触发器、过程、函数的创建脚本？</em> </p>
+<p>desc user_source </p>
+<p>user_triggers </p>
+<p><em>12. 怎样计算一个表占用的空间的大小？</em> </p>
+<p>select owner,table_name, </p>
+<p>num_rows, </p>
+<p>blocks*aaa/1024/1024 “size m”, </p>
+<p>empty_blocks, </p>
+<p>last_analyzed </p>
+<p>from dba_tables </p>
+<p>where table_name=’xxx’; </p>
+<p>here: aaa is the value of db_block_size ; </p>
+<p>xxx is the table name you want to check </p>
+<p><em>13. 如何查看最大会话数？</em> </p>
+<p>select * from v$parameter where name like ‘proc%’; </p>
+<p>sql&gt; </p>
+<p>sql&gt; show parameter processes </p>
+<p>name type value </p>
+<hr>
+<p>aq_tm_processes integer 1 </p>
+<p>db_writer_processes integer 1 </p>
+<p>job_queue_processes integer 4 </p>
+<p>log_archive_max_processes integer 1 </p>
+<p>processes integer 200 </p>
+<p>这里为200个用户。 </p>
+<p>select * from v$license; </p>
+<p>其中sessions_highwater纪录曾经到达的最大会话数 </p>
+<p><em>14. 如何查看系统被锁的事务时间？</em> </p>
+<p>select * from v$locked_object ; </p>
+<p><em>15. 如何以archivelog的方式运行oracle</em>。 </p>
+<p>init.ora </p>
+<p>log_archive_start = true </p>
+<p>restart database </p>
+<p><em>16. 怎么获取有哪些用户在使用数据库</em> </p>
+<p>select username from v$session; </p>
+<p><em>17. 数据表中的字段最大数是多少?</em> </p>
+<p>表或视图中的最大列数为 1000 </p>
+<p><em>18. 怎样查得数据库的sid ?</em> </p>
+<p>select name from v$database; </p>
+<p>也可以直接查看 init.ora文件 </p>
+<p><em>19. 如何在oracle服务器上通过sqlplus查看本机ip地址 ?</em> </p>
+<p>select sys_context(‘userenv’,’ip_address’) from dual; </p>
+<p>假如是登陆本机数据库，只能返回127.0.0.1，呵呵 </p>
+<p><em>20. unix 下怎么调整数据库的时间？</em> </p>
+<p>su -root </p>
+<p>date -u 08010000 </p>
+<p><em>21. 在oracle table中如何抓取memo类型字段为空的数据记录?</em> </p>
+<p>select remark from oms_flowrec where trim(‘ ‘ from remark) is not null ; </p>
+<p><em>22. 如何用bbb表的数据去更新aaa表的数据(有关联的字段)</em> </p>
+<p>up2003-10-17 aaa set bns_snm=(select bns_snm from bbb where aaa.dpt_no=bbb.dpt_no) where bbb.dpt_no is not null; </p>
+<p><em>23. p4计算机安装方法</em> </p>
+<p>将symcjit.dll改为sysmcjit.old </p>
+<p><em>24. 何查询server是不是ops?</em> </p>
+<p>select * from v$option; </p>
+<p>假如parallel server=true则有ops能 </p>
+<p><em>25. 何查询每个用户的权限?</em> </p>
+<p>select * from dba_sys_privs; </p>
+<p><em>26. 如何将表移动表空间?</em> </p>
+<p>alter table table_name move tablespace_name; </p>
+<p><em>27. 如何将索引移动表空间?</em> </p>
+<p>alter index index_name rebuild tablespace tablespace_name; </p>
+<p><em>28. 在linux,unix下如何启动dba studio?</em> </p>
+<p>oemapp dbastudio </p>
+<p><em>29. 查询锁的状况的对象有?</em> </p>
+<p>v$lock, v$locked_object, v$session, v$sqlarea, v$process ; </p>
+<p>查询锁的表的方法: </p>
+<p>select s.sid session_id, s.username, decode(lmode, 0, ‘none’, 1, ‘null’, 2, ‘row-s (ss)’, 3, ‘row-x (sx)’, 4, ‘share’, 5, ‘s/row-x (ssx)’, 6, ‘exclusive’, to_char(lmode)) mode_held, decode(request, 0, ‘none’, 1, ‘null’, 2, ‘row-s (ss)’, 3, ‘row-x (sx)’, 4, ‘share’, 5, ‘s/row-x (ssx)’, 6, ‘exclusive’, to_char(request)) mode_requested, o.ccbzzp||’.’||o.object_name||’ (‘||o.object_type||’)’, s.type lock_type, l.id1 lock_id1, l.id2 lock_id2 from v$lock l, sys.dba_objects o, v$session s where l.sid = s.sid and l.id1 = o.object_id ; </p>
+<p><em>30. 如何解锁?</em> </p>
+<p>alter system kill session ‘sid,serir#’; </p>
+<p><em>31. sqlplus下如何修改编辑器?</em> </p>
+<p>define _editor=”” – 必须加上双引号 </p>
+<p>来定义新的编辑器，也可以把这个写在$oracle_home/sqlplus/admin/glogin.sql里面使它永久有效。 </p>
+<p><em>32. oracle产生随机函数是?</em> </p>
+<p>dbms_random.random </p>
+<p><em>33. linux下查询磁盘竞争状况命令?</em> </p>
+<p>sar -d </p>
+<p><em>33. linux下查询cpu竞争状况命令?</em> </p>
+<p>sar -r </p>
+<p><em>34. 查询当前用户对象?</em> </p>
+<p>select * from user_objects; </p>
+<p>select * from dba_segments; </p>
+<p><em>35. 如何获取错误信息?</em> </p>
+<p>select * from user_errors; </p>
+<p><em>36. 如何获取链接状况?</em> </p>
+<p>select * from dba_db_links; </p>
+<p><em>37. 查看数据库字符状况?</em> </p>
+<p>select * from nls_database_parameters; </p>
+<p>select * from v$nls_parameters; </p>
+<p><em>38. 查询表空间信息?</em> </p>
+<p>select * from dba_data_files; </p>
+<p><em>39. oracle的interal用户要口令?</em> </p>
+<p>修改 sqlnet.ora </p>
+<p>sqlnet.authentication_services=(nts) </p>
+<p><em>40. 出现java.exe的解决办法?</em> </p>
+<p>一般是将oracleorahomexihttpserver改成手工启动可以的 </p>
+<p>x是8或9 </p>
+<p><em>41. 如何给表、列加注释？</em> </p>
+<p>sql&gt;comment on table 表 is ‘表注释’; </p>
+<p>注释已创建。 </p>
+<p>sql&gt;comment on column 表.列 is ‘列注释’; </p>
+<p>注释已创建。 </p>
+<p>sql&gt; select * from user_tab_comments where comments is not null; </p>
+<p><em>42. 如何查看各个表空间占用磁盘情况？</em> </p>
+<p>sql&gt; col tablespace format a20 </p>
+<p>sql&gt; select </p>
+<p>b.file_id 文件id号, </p>
+<p>b.tablespace_name 表空间名, </p>
+<p>b.bytes 字节数, </p>
+<p>(b.bytes-sum(nvl(a.bytes,0))) 已使用, </p>
+<p>sum(nvl(a.bytes,0)) 剩余空间, </p>
+<p>sum(nvl(a.bytes,0))/(b.bytes)*100 剩余百分比 </p>
+<p>from dba_free_space a,dba_data_files b </p>
+<p>where a.file_id=b.file_id </p>
+<p>group by b.tablespace_name,b.file_id,b.bytes </p>
+<p>order by b.file_id </p>
+<p><em>43. 如把oracle设置为mts或专用模式？</em> </p>
+<p>#dispatchers=”(protocol=tcp) (service=sidxdb)” </p>
+<p>加上就是mts，注释就是专用模式，sid是指你的实例名。 </p>
+<p><em>44. 如何才能得知系统当前的scn号 ?</em> </p>
+<p>select max(ktuxescnw * power(2, 32) + ktuxescnb) from x$ktuxe; </p>
+<p><em>45. 请问如何在oracle中取毫秒?</em> </p>
+<p>9i之前不支持,9i开始有timestamp. </p>
+<p>9i可以用select systimestamp from dual; </p>
+<p>大家在应用oracle的时候可能会碰到很多看起来不难的问题, 非凡对新手来说, 今天我简单把它总结一下, 发布给大家, 希望对大家有帮助! 和大家一起探讨, 共同进步! </p>
+<p>对oracle高手来说是不用看的. </p>
+<p><em>46. 如何在字符串里加回车？</em> </p>
+<p>select ‘welcome to visit’||chr(10)||’<a target="_blank" rel="noopener" href="http://www.csdn.net&/#39;">www.csdn.net&#39;</a> from dual ; </p>
+<p><em>47. 中文是如何排序的？</em> </p>
+<p>oracle9i之前，中文是按照二进制编码进行排序的。 </p>
+<p>在oracle9i中新增了按照拼音、部首、笔画排序功能。设置nls_sort值 </p>
+<p>schinese_radical_m 按照部首（第一顺序）、笔划（第二顺序）排序 </p>
+<p>schinese_stroke_m 按照笔划（第一顺序）、部首（第二顺序）排序 </p>
+<p>schinese_pinyin_m 按照拼音排序 </p>
+<p><em>48. oracle8i中对象名可以用中文吗？</em> </p>
+<p>可以 </p>
+<p><em>49. 如何改变win中sql</em>plus启动选项？* </p>
+<p>sql*plus自身的选项设置我们可以在$oracle_home/sqlplus/admin/glogin.sql中设置。 </p>
+<p><em>50. 怎样修改oracel数据库的默认日期?</em> </p>
+<p>alter session set nls_date_format=’yyyymmddhh24miss’; </p>
+<p>or </p>
+<p>可以在init.ora中加上一行 </p>
+<p>nls_date_format=’yyyymmddhh24miss’ </p>
+<p><em>51. 如何将小表放入keep池中?</em> </p>
+<p>alter table xxx storage(buffer_pool keep); </p>
+<p><em>52. 如何检查是否安装了某个patch?</em> </p>
+<p>check that orainventory </p>
+<p><em>53. 如何使select语句使查询结果自动生成序号</em>? </p>
+<p>select rownum,col from table; </p>
+<p><em>54. 如何知道数据裤中某个表所在的tablespace?</em> </p>
+<p>select tablespace_name from user_tables where table_name=’test’; </p>
+<p>select * from user_tables中有个字段tablespace_name，（oracle）; </p>
+<p>select * from dba_segments where …; </p>
+<p><em>55. 怎么可以快速做一个和原表一样的备份表?</em> </p>
+<p>create table new_table as (select * from old_table); </p>
+<p><em>56. 怎么在sqlplus下修改procedure?</em> </p>
+<p>select line,trim(text) t from user_source where name =’a’ order by line; </p>
+<p><em>57. 怎样解除procedure被意外锁定?</em> </p>
+<p>alter system kill session ,把那个session给杀掉，不过你要先查出她的session id </p>
+<p>or </p>
+<p>把该过程重新改个名字就可以了。 </p>
+<p><em>58. sql reference是个什么东西？</em> </p>
+<p>是一本sql的使用手册，包括语法、函数等等，oracle官方网站的文档中心有下载. </p>
+<p><em>59. 如何查看数据库的状态?</em> </p>
+<p>unix下 </p>
+<p>ps -ef | grep ora </p>
+<p>windows下 </p>
+<p>看服务是否起来 </p>
+<p>是否可以连上数据库 </p>
+<p><em>60. 请问如何修改一张表的主键?</em> </p>
+<p>alter table aaa </p>
+<p>drop constraint aaa_key ; </p>
+<p>alter table aaa </p>
+<p>add constraint aaa_key primary key(a1,b1) ; </p>
+<p><em>61. 改变数据文件的大小?</em> </p>
+<p>用 alter database …. datafile …. ; </p>
+<p>手工改变数据文件的大小，对于原来的 数据文件有没有损害。 </p>
+<p><em>62. 怎样查看oracle中有哪些程序在运行之中？</em> </p>
+<p>查看v$sessions表 </p>
+<p><em>63. 怎么可以看到数据库有多少个tablespace?</em> </p>
+<p>select * from dba_tablespaces; </p>
+<p><em>64. 如何修改oracle数据库的用户连接数？</em> </p>
+<p>修改initsid.ora，将process加大，重启数据库. </p>
+<p><em>65. 如何查出一条记录的最后更新时间?</em> </p>
+<p>可以用logminer 察看 </p>
+<p><em>66. 如何在pl/sql中读写文件？</em> </p>
+<p>utl_file包答应用户通过pl/sql读写操作系统文件。 </p>
+<p><em>67. 怎样把“&amp;”放入一条记录中？</em> </p>
+<p>insert into a values (translate (‘at{&amp;}t’,’at{}’,’at’)); </p>
+<p><em>68. exp　如何加ｑｕｅｒｙ参数？</em> </p>
+<p>exp user/pass file=a.dmp tables(bsempms) </p>
+<p>query=’”where emp_no=”‘s09394”‘“” ﹔ </p>
+<p><em>69. 关于oracle8i支持简体和繁体的字符集问题？</em> </p>
+<p>zhs16gbk可以支 </p>
+<p><em>70. data guard是什么软件？</em> </p>
+<p>就是standby的换代产品 </p>
+<p><em>71. 如何创建spfile?</em> </p>
+<p>sql&gt; connect / as sysdba </p>
+<p>sql&gt; select * from v$version; </p>
+<p>sql&gt; create pfile from spfile; </p>
+<p>sql&gt; create spfile from pfile=’e:”ora9i”admin”eygle”pfile”init.ora’; </p>
+<p>文件已创建。 </p>
+<p>sql&gt; create spfile=’e:”ora9i”database”spfileeygle.ora’ from pfile=’e:”ora9i”admin”eygle”pfile”init.ora’; </p>
+<p>文件已创建。 </p>
+<p><em>72. 内核参数的应用?</em> </p>
+<p>shmmax </p>
+<p>　　含义：这个设置并不决定究竟oracle数据库或者操作系统使用多少物理内存，只决定了最多可以使用的内存数目。这个设置也不影响操作系统的内核资源。 </p>
+<p>　　设置方法：0.5*物理内存 </p>
+<p>　　例子：set shmsys:shminfo_shmmax=10485760 </p>
+<p>　　shmmin </p>
+<p>　　含义：共享内存的最小大小。 </p>
+<p>　　设置方法：一般都设置成为1。 </p>
+<p>　　例子：set shmsys:shminfo_shmmin=1： </p>
+<p>　　shmmni </p>
+<p>　　含义：系统中共享内存段的最大个数。 </p>
+<p>　　例子：set shmsys:shminfo_shmmni=100 </p>
+<p>　　shmseg </p>
+<p>　　含义：每个用户进程可以使用的最多的共享内存段的数目。 </p>
+<p>　　例子：set shmsys:shminfo_shmseg=20： </p>
+<p>　　semmni </p>
+<p>　　含义：系统中semaphore identifierer的最大个数。 </p>
+<p>　　设置方法：把这个变量的值设置为这个系统上的所有oracle的实例的init.ora中的最大的那个processes的那个值加10。 </p>
+<p>　　例子：set semsys:seminfo_semmni=100 </p>
+<p>　　semmns </p>
+<p>　　含义：系统中emaphores的最大个数。 </p>
+<p>　　设置方法：这个值可以通过以下方式计算得到：各个oracle实例的initsid.ora里边的processes的值的总和（除去最大的processes参数）＋最大的那个processes×2＋10×oracle实例的个数。 </p>
+<p>　　例子：set semsys:seminfo_semmns=200 </p>
+<p>　　semmsl: </p>
+<p>　　含义：一个set中semaphore的最大个数。 </p>
+<p>　　设置方法：设置成为10＋所有oracle实例的initsid.ora中最大的processes的值。 </p>
+<p>　　例子：set semsys:seminfo_semmsl=-200 </p>
+<p><em>73. 怎样查看哪些用户拥有sysdba、sysoper权限？</em> </p>
+<p>sql&gt;conn sys/change_on_install </p>
+<p>sql&gt;select * from v_$pwfile_users; </p>
+<p><em>74. 如何单独备份一个或多个表？</em> </p>
+<p>exp 用户/密码 tables=(表1,…,表2) </p>
+<p><em>75. 如何单独备份一个或多个用户？</em> </p>
+<p>exp system/manager owner=(用户1,用户2,…,用户n) file=导出文件 </p>
+<p><em>76. 如何对clob字段进行全文检索？</em> </p>
+<p>select * from a where dbms_lob.instr(a.a,’k’,1,1)&gt;0; </p>
+<p><em>77. 如何显示当前连接用户?</em> </p>
+<p>show user </p>
+<p><em>78. 如何查看数据文件放置的路径 ?</em> </p>
+<p>col file_name format a50 </p>
+<p>sql&gt; select tablespace_name,file_id,bytes/1024/1024,file_name from dba_data_files order by file_id; </p>
+<p><em>79. 如何查看现有回滚段及其状态 ?</em> </p>
+<p>sql&gt; col segment format a30 </p>
+<p>sql&gt; select segment_name,ccbzzp,tablespace_name,segment_id,file_id,status from dba_rollback_segs </p>
+<p><em>80. 如何改变一个字段初始定义的check范围？</em> </p>
+<p>sql&gt; alter table xxx drop constraint constraint_name; </p>
+<p>之后再创建新约束: </p>
+<p>sql&gt; alter table xxx add constraint constraint_name check(); </p>
+<p><em>81. oracle常用系统文件有哪些？</em> </p>
+<p>通过以下视图显示这些文件信息：v$database,v$datafile,v$logfile v$controlfile v$parameter; </p>
+<p><em>82. 内连接inner join?</em> </p>
+<p>select a.* from bsempms a,bsdptms b where a.dpt_no=b.dpt_no; </p>
+<p><em>83. 如何外连接?</em> </p>
+<p>select a.* from bsempms a,bsdptms b where a.dpt_no=b.dpt_no(+); </p>
+<p>select a.* from bsempms a,bsdptms b wherea.dpt_no(+)=b.dpt_no; </p>
+<p><em>84. 如何执行脚本sql文件?</em> </p>
+<p>sql&gt;@$path/filename.sql; </p>
+<p><em>85. 如何快速清空一个大表?</em> </p>
+<p>sql&gt;truncate table table_name; </p>
+<p><em>86. 如何查有多少个数据库实例?</em> </p>
+<p>sql&gt;select * from v$instance; </p>
+<p><em>87. 如何查询数据库有多少表?</em> </p>
+<p>sql&gt;select * from all_tables; </p>
+<p><em>88. 如何测试sql语句执行所用的时间?</em> </p>
+<p>sql&gt;set timing on ; </p>
+<p>sql&gt;select * from tablename; </p>
+<p><em>89. chr()的反函数是?</em> </p>
+<p>ascii() </p>
+<p>select char(65) from dual; </p>
+<p>select ascii(‘a’) from dual; </p>
+<p><em>90. 字符串的连接</em> </p>
+<p>select concat(col1,col2) from table ; </p>
+<p>select col1||col2 from table ; </p>
+<p><em>91. 怎么把select出来的结果导到一个文本文件中？</em> </p>
+<p>sql&gt;spool c:”abcd.txt; </p>
+<p>sql&gt;select * from table; </p>
+<p>sql &gt;spool off; </p>
+<p><em>92. 怎样估算sql执行的i/o数 ?</em> </p>
+<p>sql&gt;set autotrace on ; </p>
+<p>sql&gt;select * from table; </p>
+<p>or </p>
+<p>sql&gt;select * from v$filestat ; </p>
+<p>可以查看io数 </p>
+<p><em>93. 如何在sqlplus下改变字段大小?</em> </p>
+<p>alter table table_name modify (field_name varchar2(100)); </p>
+<p>改大行，改小不行（除非都是空的） </p>
+<p><em>94. 如何查询某天的数据?</em> </p>
+<p>select * from table_name where trunc(日期字段)＝to_date(‘2003-05-02’,’yyyy-mm-dd’); </p>
+<p><em>95. sql 语句如何插入全年日期？</em> </p>
+<p>create table bsyear (d date); </p>
+<p>insert into bsyear </p>
+<p>select to_date(‘20030101’,’yyyymmdd’)+rownum-1 </p>
+<p>from all_objects </p>
+<p>where rownum </p>
+<p><em>96. 假如修改表名?</em> </p>
+<p>alter table old_table_name rename to new_table_name; </p>
+<p><em>97. 如何取得命令的返回状态值？</em> </p>
+<p>sqlcode=0 </p>
+<p><em>98. 如何知道用户拥有的权限?</em> </p>
+<p>select * from dba_sys_privs ; </p>
+<p><em>99. 从网上下载的oracle9i与市场上卖的标准版有什么区别？</em> </p>
+<p>从功能上说没有区别，只不过oracle公司有明文规定；从网站上下载的oracle产品不得用于 商业用途，否则侵权。 </p>
+<p><em>100. 怎样判定数据库是运行在归档模式下还是运行在非归档模式下？</em> </p>
+<p>进入dbastudio，历程–〉数据库—〉归档查看。 </p>
+<p><em>101. sql&gt;startup pfile和ifile,spfiled有什么区别？</em> </p>
+<p>pfile就是oracle传统的初始化参数文件，文本格式的。 </p>
+<p>ifile类似于c语言里的include，用于把另一个文件引入 </p>
+<p>spfile是9i里新增的并且是默认的参数文件，二进制格式 </p>
+<p>startup后应该只可接pfile </p>
+<p><em>102. 如何搜索出前n条记录？</em> </p>
+<p>select * from employee where rownum </p>
+<p><em>103. 如何知道机器上的oracle支持多少并发用户数?</em> </p>
+<p>sql&gt;conn internal ; </p>
+<p>sql&gt;show parameter processes ; </p>
+<p><em>104. db_block_size可以修改吗</em>? </p>
+<p>一般不可以﹐不建议这样做的。 </p>
+<p><em>105. 如何统计两个表的记录总数?</em> </p>
+<p>select (select count(id) from aa)+(select count(id) from bb) 总数 from dual; </p>
+<p><em>106. 怎样用sql语句实现查找一列中第n大值？</em> </p>
+<p>select * from </p>
+<p>(select t.*,dense_rank() over (order by sal) rank from employee) </p>
+<p>where rank = n; </p>
+<p><em>107. 如何在给现有的日期加上2年？(</em> </p>
+<p>select add_months(sysdate,24) from dual; </p>
+<p><em>108. used_ublk为负值表示什么意思?</em> </p>
+<p>it is “harmless”. </p>
+<p><em>109. connect string是指什么?</em> </p>
+<p>应该是tnsnames.ora中的服务名后面的内容 </p>
+<p><em>110. 怎样扩大redo log的大小？</em> </p>
+<p>建立一个临时的redolog组，然后切换日志，删除以前的日志，建立新的日志。 </p>
+<p><em>111. tablespace 是否不能大于4g?</em> </p>
+<p>没有限制. </p>
+<p><em>112. 返回大于等于n的最小整数值?</em> </p>
+<p>select ceil(n) from dual; </p>
+<p><em>113. 返回小于等于n的最小整数值?</em> </p>
+<p>select floor(n) from dual; </p>
+<p><em>114. 返回当前月的最后一天?</em> </p>
+<p>select last_day(sys2003-10-17) from dual; </p>
+<p><em>115. 如何不同用户间数据导入?</em> </p>
+<p>imp system/manager file=aa.dmp fromuser=user_old touser=user_new rows=y indexes=y ; </p>
+<p><em>116. 如何找数据库表的主键字段的名称?</em> </p>
+<p>sql&gt;select * from user_constraints where constraint_type=’p’ and table_name=’table_name’; </p>
+<p><em>117. 两个结果集互加的函数?</em> </p>
+<p>sql&gt;select * from bsempms_old intersect select * from bsempms_new; </p>
+<p>sql&gt;select * from bsempms_old union select * from bsempms_new; </p>
+<p>sql&gt;select * from bsempms_old union all select * from bsempms_new; </p>
+<p><em>118. 两个结果集互减的函数?</em> </p>
+<p>sql&gt;select * from bsempms_old minus select * from bsempms_new; </p>
+<p><em>119. 如何配置sequence?</em> </p>
+<p>建sequence seq_custid </p>
+<p>create sequence seq_custid start 1 incrememt by 1; </p>
+<p>建表时: </p>
+<p>create table cust </p>
+<p>{ cust_id smallint not null, </p>
+<p>…} </p>
+<p>insert 时: </p>
+<p>insert into table cust </p>
+<p>values( seq_cust.nextval, …) </p>
+<p><strong>日期的各部分的常用的的写法</strong> </p>
+<p><em>120. 取时间点的年份的写法:</em> </p>
+<p>select to_char(sys2003-10-17,’yyyy’) from dual; </p>
+<p><em>121. 取时间点的月份的写法:</em> </p>
+<p>select to_char(sys2003-10-17,’mm’) from dual; </p>
+<p><em>122. 取时间点的日的写法:</em> </p>
+<p>select to_char(sys2003-10-17,’dd’) from dual; </p>
+<p><em>123. 取时间点的时的写法:</em> </p>
+<p>select to_char(sys2003-10-17,’hh24’) from dual; </p>
+<p><em>124. 取时间点的分的写法:</em> </p>
+<p>select to_char(sys2003-10-17,’mi’) from dual; </p>
+<p><em>125. 取时间点的秒的写法:</em> </p>
+<p>select to_char(sys2003-10-17,’ss’) from dual; </p>
+<p><em>126. 取时间点的日期的写法:</em> </p>
+<p>select trunc(sys2003-10-17) from dual; </p>
+<p><em>127. 取时间点的时间的写法:</em> </p>
+<p>select to_char(sys2003-10-17,’hh24:mi:ss’) from dual; </p>
+<p><em>128. 日期,时间形态变为字符形态</em> </p>
+<p>select to_char(sys2003-10-17) from dual; </p>
+<p><em>129. 将字符串转换成日期或时间形态:</em> </p>
+<p>select to_2003-10-17(‘2003/08/01’) from dual; </p>
+<p><em>130. 返回参数的星期几的写法:</em> </p>
+<p>select to_char(sys2003-10-17,’d’) from dual; </p>
+<p><em>131. 返回参数一年中的第几天的写法:</em> </p>
+<p>select to_char(sys2003-10-17,’ddd’) from dual;</p>
+</article><div class="post-copyright"><div class="post-copyright__title"><span class="post-copyright-info"><h>Oracle数据库常用Sql语句大全</h></span></div><div class="post-copyright__type"><span class="post-copyright-info"><a href="http://xpnobug.github.io/oracle/">http://xpnobug.github.io/oracle/</a></span></div><div class="post-copyright-m"><div class="post-copyright-m-info"><div class="post-copyright-a"><h>作者</h><div class="post-copyright-cc-info"><h>error 404</h></div></div><div class="post-copyright-c"><h>发布于</h><div class="post-copyright-cc-info"><h>2021-04-29</h></div></div><div class="post-copyright-u"><h>更新于</h><div class="post-copyright-cc-info"><h>2020-07-10</h></div></div><div class="post-copyright-c"><h>许可协议</h><div class="post-copyright-cc-info"><a class="icon" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a><a rel="noopener" target="_blank" title="CC BY-NC-SA 4.0" href="https://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY-NC-SA 4.0</a></div></div></div></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/Oracle/">Oracle</a></div><div class="post_share"><div class="social-share" data-image="https://pic.baike.soso.com/ugc/baikepic2/19475/cut-20190530154601-1931591011_jpg_514_411_18227.jpg/300" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/social-share.js/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/social-share.js/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><div class="next-post pull-full"><a href="/java%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E9%AA%8C%E8%AF%81%E7%A0%81/"><img class="next-cover" src="https://pic.baike.soso.com/ugc/baikepic2/24081/cut-20190812153202-699885329_jpg_534_427_9592.jpg/300" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">Next Post</div><div class="next_info">Java中文与数字随机验证码程序</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-info-avatar is-center"><img class="avatar-img" src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-info__name">error 404</div><div class="author-info__description"></div></div><div class="card-info-data"><div class="card-info-data-item is-center"><a href="/archives/"><div class="headline">Articles</div><div class="length-num">22</div></a></div><div class="card-info-data-item is-center"><a href="/tags/"><div class="headline">Tags</div><div class="length-num">11</div></a></div><div class="card-info-data-item is-center"><a href="/categories/"><div class="headline">Categories</div><div class="length-num">10</div></a></div></div><a class="button--animated" id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/xpnobug"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn card-announcement-animation"></i><span>Announcement</span></div><div class="announcement_content">No one can decide what you do, but you have to be very clear. Even if I did something wrong, I choose not to regret it.</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>Recent Post</span></div><div class="aside-list"><div class="aside-list-item"><a class="thumbnail" href="/oracle/" title="Oracle数据库常用Sql语句大全"><img src="https://pic.baike.soso.com/ugc/baikepic2/19475/cut-20190530154601-1931591011_jpg_514_411_18227.jpg/300" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Oracle数据库常用Sql语句大全"/></a><div class="content"><a class="title" href="/oracle/" title="Oracle数据库常用Sql语句大全">Oracle数据库常用Sql语句大全</a><time datetime="2021-04-29T03:14:15.383Z" title="Created 2021-04-29 11:14:15">2021-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E9%AA%8C%E8%AF%81%E7%A0%81/" title="Java中文与数字随机验证码程序"><img src="https://pic.baike.soso.com/ugc/baikepic2/24081/cut-20190812153202-699885329_jpg_534_427_9592.jpg/300" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java中文与数字随机验证码程序"/></a><div class="content"><a class="title" href="/java%E5%B0%8F%E7%A8%8B%E5%BA%8F-%E9%AA%8C%E8%AF%81%E7%A0%81/" title="Java中文与数字随机验证码程序">Java中文与数字随机验证码程序</a><time datetime="2021-04-29T03:14:00.930Z" title="Created 2021-04-29 11:14:00">2021-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/java%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="Java使用网易邮箱向QQ邮箱发送邮件"><img src="https://s1.ax1x.com/2020/08/01/aGnj2j.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Java使用网易邮箱向QQ邮箱发送邮件"/></a><div class="content"><a class="title" href="/java%E5%B0%8F%E7%A8%8B%E5%BA%8F/" title="Java使用网易邮箱向QQ邮箱发送邮件">Java使用网易邮箱向QQ邮箱发送邮件</a><time datetime="2021-04-29T03:13:57.130Z" title="Created 2021-04-29 11:13:57">2021-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/Shiro%E7%9F%A5%E8%AF%86%E7%82%B9/" title="Shiro知识点"><img src="http://image.wufazhuce.com/FrM45oLlRl8aW95py8ecF0SSrKl9" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="Shiro知识点"/></a><div class="content"><a class="title" href="/Shiro%E7%9F%A5%E8%AF%86%E7%82%B9/" title="Shiro知识点">Shiro知识点</a><time datetime="2021-04-29T03:13:41.711Z" title="Created 2021-04-29 11:13:41">2021-04-29</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/%E6%B3%A8%E8%A7%A3%E5%88%86%E7%B1%BB/" title="No title"><img src="https://cdn.jsdelivr.net/npm/butterfly-extsrc@1/img/default.jpg" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="No title"/></a><div class="content"><a class="title" href="/%E6%B3%A8%E8%A7%A3%E5%88%86%E7%B1%BB/" title="No title">No title</a><time datetime="2021-04-29T03:13:36.204Z" title="Created 2021-04-29 11:13:36">2021-04-29</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2020 - 2021 By error 404</div><div class="framework-info"><span>Framework </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>Theme </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="Read Mode"><i class="fas fa-book-open"></i></button><button id="translateLink" type="button" title="Switch Between Traditional Chinese And Simplified Chinese">繁</button><button id="darkmode" type="button" title="Switch Between Light And Dark Mode"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="Toggle between single-column and double-column"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="Setting"><i class="fas fa-cog fa-spin"></i></button><button id="go-up" type="button" title="Back To Top"><i class="fas fa-arrow-up"></i></button></div></div><div><script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="/js/tw_cn.js"></script><script src="https://cdn.jsdelivr.net/npm/instant.page/instantpage.min.js" type="module"></script><div class="js-pjax"></div><script>var gitcalendar = new Vue({
+  el: '#gitcalendar',
+  data: {
+    simplemode: true,
+    user: 'xpnobug',
+    fixed: 'fixed',
+    px: 'px',
+    x: '',
+    y: '',
+    span1: '',
+    span2: '',
+    month: ['一月', '二月', '三月', '四月', '五月', '六月', '七月', '八月', '九月', '十月', '十一月', '十二月'],
+    monthchange: [],
+    oneyearbeforeday: '',
+    thisday: '',
+    amonthago: '',
+    aweekago: '',
+    weekdatacore: 0,
+    datacore: 0,
+    total: 0,
+    datadate: '',
+    data: [],
+    positionplusdata: [],
+    firstweek: [],
+    lastweek: [],
+    beforeweek: [],
+    thisweekdatacore: 0,
+    mounthbeforeday: 0,
+    mounthfirstindex: 0,
+    crispedges: 'crispedges',
+    thisdayindex: 0,
+    amonthagoindex: 0,
+    amonthagoweek: [],
+    firstdate: [],
+    first2date: [],
+    montharrbefore: [],
+    monthindex: 0,
+    color: ['#ebedf0', '#f0fff4', '#dcffe4', '#bef5cb', '#85e89d', '#34d058', '#28a745', '#22863a', '#176f2c', '#165c26', '#144620']
+  },
+  methods: {
+    selectStyle(data, event) {
+      document.querySelector('.angle-wrapper').style.display = 'block'
+      this.span1 = data.date;
+      this.span2 = data.count;
+      this.x = event.clientX - 100;
+      this.y = event.clientY - 60
+    },
+    outStyle() {
+      document.querySelector('.angle-wrapper').style.display = 'none'
+    },
+    thiscolor(x) {
+      if (x === 0) {
+        let i = parseInt(x / 2);
+        return this.color[0]
+      } else if (x < 2) {
+        return this.color[1]
+      } else if (x < 20) {
+        let i = parseInt(x / 2);
+        return this.color[i]
+      } else {
+        return this.color[9]
+      }
+    },
+  }
+});
+var apiurl = 'python-github-calendar-api-seven.vercel.app' ? 'https://python-github-calendar-api-seven.vercel.app/api?' : 'https://githubapi.ryanchristian.dev/user/'
+var githubapiurl = apiurl + gitcalendar.user;
+//canvas绘图
+function responsiveChart() {
+  let c = document.getElementById("gitcanvas");
+  if (c) {
+    let cmessage = document.getElementById("gitmessage");
+    let ctx = c.getContext("2d");
+    c.width = document.getElementById("gitcalendarcanvasbox").offsetWidth;
+    let linemaxwitdh = 0.96 * c.width / gitcalendar.data.length;
+    c.height = 9 * linemaxwitdh;
+    let lineminwitdh = 0.8 * linemaxwitdh;
+    let setposition = {
+      x: 0.02 * c.width,
+      y: 0.025 * c.width
+    };
+    for (let week in gitcalendar.data) {
+      weekdata = gitcalendar.data[week];
+      for (let day in weekdata) {
+        let dataitem = {
+          date: "",
+          count: "",
+          x: 0,
+          y: 0
+        };
+        gitcalendar.positionplusdata.push(dataitem);
+        ctx.fillStyle = gitcalendar.thiscolor(weekdata[day].count);
+        setposition.y = Math.round(setposition.y * 100) / 100;
+        dataitem.date = weekdata[day].date;
+        dataitem.count = weekdata[day].count;
+        dataitem.x = setposition.x;
+        dataitem.y = setposition.y;
+        ctx.fillRect(setposition.x, setposition.y, lineminwitdh, lineminwitdh);
+        setposition.y = setposition.y + linemaxwitdh
+      };
+      setposition.y = 0.025 * c.width;
+      setposition.x = setposition.x + linemaxwitdh
+    };
+    ctx.font = "600  Arial";
+    ctx.fillStyle = '#aaa';
+    ctx.fillText("日", 0, 1.9 * linemaxwitdh);
+    ctx.fillText("二", 0, 3.9 * linemaxwitdh);
+    ctx.fillText("四", 0, 5.9 * linemaxwitdh);
+    ctx.fillText("六", 0, 7.9 * linemaxwitdh);
+    let monthindexlist = c.width / 24;
+    for (let index in gitcalendar.monthchange) {
+      ctx.fillText(gitcalendar.monthchange[index], monthindexlist, 0.7 * linemaxwitdh);
+      monthindexlist = monthindexlist + c.width / 12
+    };
+    cmessage.onmousemove = function(event) {
+      document.querySelector('.angle-wrapper').style.display = 'none'
+    };
+    c.onmousemove = function(event) {
+      document.querySelector('.angle-wrapper').style.display = 'none'
+      getMousePos(c, event);
+    };
+
+    function getMousePos(canvas, event) {
+      var rect = canvas.getBoundingClientRect();
+      var x = event.clientX - rect.left * (canvas.width / rect.width);
+      var y = event.clientY - rect.top * (canvas.height / rect.height);
+      //console.log("x:"+x+",y:"+y);
+      for (let item of gitcalendar.positionplusdata) {
+        let lenthx = x - item.x;
+        let lenthy = y - item.y;
+        //console.log(lenthx,lenthy);
+        if (0 < lenthx && lenthx < lineminwitdh) {
+          if (0 < lenthy && lenthy < lineminwitdh) {
+            //console.log(item.date,item.count)
+            document.querySelector('.angle-wrapper').style.display = 'block'
+            gitcalendar.span1 = item.date;
+            gitcalendar.span2 = item.count;
+            gitcalendar.x = event.clientX - 100;
+            gitcalendar.y = event.clientY - 60
+          }
+        }
+        //if(0< x - item.x <lineminwitdh&&0< y - item.y <lineminwitdh){
+        //console.log(item.count,item.date);
+        //}
+      }
+    }
+  }
+}
+//数据统计算法
+function addlastmonth() {
+  if (gitcalendar.thisdayindex === 0) {
+    thisweekcore(52);
+    thisweekcore(51);
+    thisweekcore(50);
+    thisweekcore(49);
+    thisweekcore(48);
+    gitcalendar.thisweekdatacore += gitcalendar.firstdate[6].count;
+    gitcalendar.amonthago = gitcalendar.firstdate[6].date
+  } else {
+    thisweekcore(52);
+    thisweekcore(51);
+    thisweekcore(50);
+    thisweekcore(49);
+    thisweek2core();
+    gitcalendar.amonthago = gitcalendar.first2date[gitcalendar.thisdayindex - 1].date
+  }
+};
+
+function thisweek2core() {
+  for (let i = gitcalendar.thisdayindex - 1; i < gitcalendar.first2date.length; i++) {
+    gitcalendar.thisweekdatacore += gitcalendar.first2date[i].count
+  }
+};
+
+function thisweekcore(index) {
+  for (let item of gitcalendar.data[index]) {
+    gitcalendar.thisweekdatacore += item.count
+  }
+};
+
+function addlastweek() {
+  for (let item of gitcalendar.lastweek) {
+    gitcalendar.weekdatacore += item.count
+  }
+};
+
+function addbeforeweek() {
+  for (let i = gitcalendar.thisdayindex; i < gitcalendar.beforeweek.length; i++) {
+    gitcalendar.weekdatacore += gitcalendar.beforeweek[i].count
+  }
+};
+
+function addweek(data) {
+  if (gitcalendar.thisdayindex === 6) {
+    gitcalendar.aweekago = gitcalendar.lastweek[0].date;
+    addlastweek()
+  } else {
+    lastweek = data.contributions[51];
+    gitcalendar.aweekago = lastweek[gitcalendar.thisdayindex + 1].date;
+    addlastweek();
+    addbeforeweek()
+  }
+}
+
+fetch(githubapiurl)
+  .then(data => data.json())
+  .then(data => {
+    gitcalendar.data = data.contributions;
+    gitcalendar.total = data.total;
+    gitcalendar.first2date = gitcalendar.data[48];
+    gitcalendar.firstdate = gitcalendar.data[47];
+    gitcalendar.firstweek = data.contributions[0];
+    gitcalendar.lastweek = data.contributions[52];
+    gitcalendar.beforeweek = data.contributions[51];
+    gitcalendar.thisdayindex = gitcalendar.lastweek.length - 1;
+    gitcalendar.thisday = gitcalendar.lastweek[gitcalendar.thisdayindex].date;
+    gitcalendar.oneyearbeforeday = gitcalendar.firstweek[0].date;
+    gitcalendar.monthindex = gitcalendar.thisday.substring(5, 7) * 1;
+    gitcalendar.montharrbefore = gitcalendar.month.splice(gitcalendar.monthindex, 12 - gitcalendar.monthindex);
+    gitcalendar.monthchange = gitcalendar.montharrbefore.concat(gitcalendar.month);
+    addweek(data);
+    addlastmonth();
+    responsiveChart();
+  })
+  .catch(function(error) {
+    console.log(error);
+  });
+
+//手机版更换为svg绘制
+if (document.getElementById("gitcalendarcanvasbox").offsetWidth < 500) {
+  gitcalendar.simplemode = false
+}
+
+//当改变窗口大小时重新绘制canvas
+window.onresize = function() {
+  if (gitcalendar.simplemode) responsiveChart()
+}
+
+//解决滚动滑轮时出现的标签显示
+window.onscroll = function() {
+  if (document.querySelector('.angle-wrapper')) {
+    document.querySelector('.angle-wrapper').style.display = 'none'
+  }
+};</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div><!-- hexo injector body_end start --> <script data-pjax>if(document.getElementById('recent-posts') && (location.pathname ==='all'|| 'all' ==='all')){
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="width:100%;height: auto"><div id="catalog_magnet"><div class="magnet_item"><a class="magnet_link" href="http://xpnobug.github.io/categories/教程/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">📚 教程干货 (3)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><div class="magnet_item"><a class="magnet_link" href="http://xpnobug.github.io/categories/Java面试题/"><div class="magnet_link_context" style=""><span style="font-weight:500;flex:1">💡 面试题 (8)</span><span style="padding:0px 4px;border-radius: 8px;"><i class="fas fa-arrow-circle-right"></i></span></div></a></div><a class="magnet_link_more"  href="http://xpnobug.github.io/categories" style="flex:1;text-align: center;margin-bottom: 10px;">查看更多...</a></div></div>';
+    console.log('已挂载magnet')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script><style>#catalog_magnet{flex-wrap: wrap;display: flex;width:100%;justify-content:space-between;padding: 10px 10px 0 10px;align-content: flex-start;}.magnet_item{flex-basis: calc(50% - 5px);background: #f2f2f2;margin-bottom: 10px;border-radius: 8px;transition: all 0.2s ease-in-out;}.magnet_item:hover{background: #b30070}.magnet_link_more{color:#555}.magnet_link{color:black}.magnet_link:hover{color:white}@media screen and (max-width: 600px) {.magnet_item {flex-basis: 100%;}}.magnet_link_context{display:flex;padding: 10px;font-size:16px;transition: all 0.2s ease-in-out;}.magnet_link_context:hover{padding: 10px 20px;}</style>
+    <style></style> <script data-pjax>if(document.getElementById('recent-posts') && location.pathname =='/'){
+    
+    var parent = document.getElementById('recent-posts');
+    var child = '<div class="recent-post-item" style="height: auto;width: 100%"><div class="blog-slider swiper-container-fade swiper-container-horizontal" id="swiper_container"><div class="blog-slider__wrp swiper-wrapper" style="transition-duration: 0ms"></div><div class="blog-slider__pagination swiper-pagination-clickable swiper-pagination-bullets"></div></div></div>';
+    console.log('已挂载swiper')
+    parent.insertAdjacentHTML("afterbegin",child)}
+     </script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper/swiper/swiper.min.js"></script>
+<script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-swiper@0.18/swiper/swiperindex.js"></script>
+<style></style><script data-pjax>function history_calendar_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-history"><div class="card-content"><div class="item-headline"><i class="fas fa-clock fa-spin"></i><span>那年今日</span></div><div id="history-baidu" style="height: 100px;overflow: hidden"><div class="history_swiper-container" id="history-container" style="width: 100%;height: 100%"><div class="swiper-wrapper" id="history_container_wrapper" style="height:20px"></div></div></div></div>';
+                console.log('已挂载history_calendar')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='all'|| 'all' ==='all')){
+
+            history_calendar_injector_config()
+        } </script><script data-pjax src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-card-history/baiduhistory/js/main.js"></script><script data-pjax>function electric_clock_injector_config(){
+                var parent_div_git = document.getElementsByClassName('sticky_layout')[0];
+                var item_html = '<div class="card-widget card-clock"><div class="card-glass"><div class="card-background"><div class="card-content"><div id="hexo_electric_clock"><img id="card-clock-loading" src="https://cdn.jsdelivr.net/gh/Zfour/Butterfly-clock/clock/images/weather/loading.gif" style="height: 120px; width: 100%;" data-ll-status="loading" class="entered loading"></div></div></div></div></div>';
+                console.log('已挂载electric_clock')
+                // parent_div_git.innerHTML=item_html+parent_div_git.innerHTML // 无报错，但不影响使用(支持pjax跳转)
+                parent_div_git.insertAdjacentHTML("afterbegin",item_html) // 有报错，但不影响使用(支持pjax跳转)
+            }if( document.getElementsByClassName('sticky_layout')[0] && (location.pathname ==='all'|| 'all' ==='all')){
+
+            electric_clock_injector_config()
+        } </script><script src="https://pv.sohu.com/cityjson?ie=utf-8"></script><script data-pjax  src="https://cdn.jsdelivr.net/gh/Zfour/hexo-electric-clock@1.0.4/clock.js"></script><!-- hexo injector body_end end --></body></html>
