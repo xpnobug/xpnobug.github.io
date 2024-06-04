@@ -1,0 +1,655 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Jsoup 快速入门 | REAI</title><meta name="keywords" content="Java,Html,Jsoup"><meta name="author" content="REAI"><meta name="copyright" content="REAI"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Jsoup 快速入门"><meta name="application-name" content="Jsoup 快速入门"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Jsoup 快速入门"><meta property="og:url" content="https://blog.reaicc.com/pages/c516cc/index.html"><meta property="og:site_name" content="REAI"><meta property="og:description" content="Jsoup 快速入门简介jsoup 是一款 Java 的 HTML 解析器，可直接解析某个 URL 地址、HTML 文本内容。它提供了一套非常省力的 API，可通过 DOM，CSS 以及类似于 JQuery 的操作方法来取出和操作数据。 jsoup 工作的流程主要如下：  从一个 URL，文件或字符"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640"><meta property="article:author" content="REAI"><meta property="article:tag" content="REAI,reai,博客,技术博客,程序员,程序员博客,编程,代码,开源,IT,互联网,前后端,前端,后端,设计,设计模式,数据结构,算法,面试,学习,读书,读书笔记,笔记,笔记软件,笔记系统,笔记工具,笔记方法"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640"><meta name="description" content="Jsoup 快速入门简介jsoup 是一款 Java 的 HTML 解析器，可直接解析某个 URL 地址、HTML 文本内容。它提供了一套非常省力的 API，可通过 DOM，CSS 以及类似于 JQuery 的操作方法来取出和操作数据。 jsoup 工作的流程主要如下：  从一个 URL，文件或字符"><link rel="shortcut icon" href="/img/Cat.svg"><link rel="canonical" href="https://blog.reaicc.com/pages/c516cc/"><link rel="preconnect" href="//npm.onmicrosoft.cn"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="codeva-7zzTxzlayy"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://npm.onmicrosoft.cn/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.onmicrosoft.cn/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"REAI","mode":"tianli","switchBtn":true,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"J3BBucxpYNx1hMr4pl1j","Referer":"https://blog.reaicc.com/"},
+  diytitle: undefined,
+  LA51: {"enable":true,"ck":"JrxUXpJaHkoUhitk","LingQueMonitorID":"JrxcoymH8UkasaaS"},
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: REAI","link":"链接: ","source":"来源: REAI","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.onmicrosoft.cn/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.onmicrosoft.cn/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'REAI',
+  title: 'Jsoup 快速入门',
+  postAI: '',
+  pageFillDescription: 'Jsoup 快速入门, 简介, 加载, 从 HTML 字符串加载一个文档, 解析一个 body 片断, 保证安全 Stay safe, 从 URL 加载一个文档, 从一个文件加载一个文档, 解析, 使用 DOM 方法来遍历一个文档, 查找元素, 元素数据, 操作 HTML 和文本, 使用选择器语法来查找元素, Selector 选择器概述, Selector 选择器组合使用, 伪选择器 selectors, 从元素抽取属性文本和 HTML, 处理 URLs, 数据修改, 设置属性的值, 设置一个元素的 HTML 内容, 设置元素的文本内容, HTML 清理, 消除不受信任的 HTML (来防止 XSS 攻击), 参考快速入门简介是一款的解析器可直接解析某个地址文本内容它提供了一套非常省力的可通过以及类似于的操作方法来取出和操作数据工作的流程主要如下从一个文件或字符串中解析并加载为一个对象使用或选择器来取出数据可操作元素属性文本是基于协议发布的可放心使用于商业项目加载从字符串加载一个文档使用静态方法或示例代码说明这方法能够将输入的解析为一个新的文档参数是用来将相对转成绝对并指定从哪个网站获取文档如这个方法不适用你可以使用方法来解析成字符串如上面的示例只要解析的不是空字符串就能返回一个结构合理的文档其中包含至少一个和一个元素一旦拥有了一个你就可以使用中适当的方法或它父类和中的方法来取得相关数据解析一个片断问题假如你有一个片断比如一个包含一对标签一个不完整的文档想对它进行解析这个片断可以是用户提交的一条评论或在一个页面中编辑部分办法使用方法说明方法创建一个空壳的文档并插入解析过的到元素中假如你使用正常的方法通常你也可以得到相同的结果但是明确将用户输入作为片段处理以确保用户所提供的任何糟糕的都将被解析成元素方法能够取得文档元素的所有子元素与相同保证安全假如你可以让用户输入内容那么要小心避免跨站脚本攻击利用基于的清除器和方法来清除用户输入的恶意内容从加载一个文档使用方法说明方法创建一个新的和取得和解析一个文件如果从该获取时发生错误便会抛出应适当处理接口还提供一个方法链来解决特殊请求具体如下从一个文件加载一个文档可以使用静态方法说明这个方法用来加载和解析一个文件如在加载文件的时候发生错误将抛出应作适当处理参数用于解决文件中是相对路径的问题如果不需要可以传入一个空的字符串另外还有一个方法它使用文件的路径做为这个方法适用于如果被解析文件位于网站的本地文件系统且相关链接也指向该文件系统解析使用方法来遍历一个文档问题你有一个文档要从中提取数据并了解这个文档的结构方法将解析成一个之后就可以使用类似于的方法进行操作示例代码说明这个对象提供了一系列类似于的方法来查找元素抽取并处理其中的数据具体如下查找元素元素数据获取属性设置属性获取所有属性获取文本内容设置文本内容获取元素内设置元素内的内容获取元素外内容获取数据内容例如和标签操作和文本使用选择器语法来查找元素问题你想使用类似于或的语法来查找和操作元素方法可以使用和方法实现带有属性的元素扩展名为的图片等于的标签在元素之后的元素说明对象支持类似于或的选择器语法来实现非常强大和灵活的查找功能这个方法在或对象中都可以使用且是上下文相关的因此可实现指定元素的过滤或者链式选择访问方法将返回一个集合并提供一组方法来抽取和处理结果选择器概述通过标签查找元素比如通过标签在命名空间查找元素比如可以用语法来查找元素通过查找元素比如通过名称查找元素比如利用属性查找元素比如利用属性名前缀来查找元素比如可以用来查找带有属性的元素利用属性值来查找元素比如利用匹配属性值开头结尾或包含属性值来查找元素比如利用属性值匹配正则表达式来查找元素比如这个符号将匹配所有元素选择器组合使用元素比如元素比如元素比如任意组合比如查找某个元素下子元素比如可以用查找在元素下的所有元素查找某个父元素下的直接子元素比如可以用查找元素也可以用查找标签下所有直接子元素查找在元素之前第一个同级元素比如查找元素之前的同级元素比如多个选择器组合查找匹配任一选择器的唯一元素例如伪选择器查找哪些元素的同级索引值它的位置在树中是相对于它的父节点小于比如表示小于三列的元素查找哪些元素的同级索引值大于比如表示哪些中有包含个以上的元素查找哪些元素的同级索引值与相等比如表示包含一个标签的元素查找匹配选择器包含元素的元素比如表示哪些包含了元素查找与选择器不匹配的元素比如表示不包含元素的所有列表查找包含给定文本的元素搜索不区分大不写比如查找直接包含给定文本的元素查找哪些元素的文本匹配指定的正则表达式比如查找自身包含文本匹配指定正则表达式的元素注意上述伪选择器索引是从开始的也就是说第一个元素索引值为第二个元素为等可以查看参考来了解更详细的内容从元素抽取属性文本和问题在解析获得一个实例对象并查找到一些元素之后你希望取得在这些元素中的数据方法要取得一个属性的值可以使用方法对于一个元素中的文本可以使用方法对于要取得元素或属性中的内容可以使用或方法示例解析字符串返回一个实现查找第一个元素取得字符串中的文本取得链接地址取得链接地址中的文本取得链接内的内容说明上述方法是元素数据访问的核心办法此外还其它一些方法可以使用这些访问器方法都有相应的方法来更改数据参见和集合类的参考文档处理使用选择器语法来查找元素处理问题你有一个包含相对路径的文档需要将这些相对路径转换成绝对路径的方法在你解析文档时确保有指定然后使用属性前缀来取得包含的绝对路径代码如下说明在元素中经常写成相对于文档位置的相对路径当你使用方法来取得元素的属性时它将直接返回在源码中指定定的值假如你需要取得一个绝对路径需要在属性名前加前缀这样就可以返回包含根路径的地址因此在解析文档时定义非常重要如果你不想使用前缀还有一个方法能够实现同样的功能数据修改设置属性的值问题在你解析一个之后可能想修改其中的某些属性值然后再保存到磁盘或都输出到前台页面方法可以使用属性设置方法和假如你需要修改一个元素的属性可以使用和方法提供了批量操作元素属性和的方法比如要为中的每一个元素都添加一个可以使用如下方法说明与中的其它方法一样方法也是返回当或在使用选择器是返回集合这样能够很方便使用方法连用的书写方式比如设置一个元素的内容问题你需要一个元素中的内容方法可以使用中的设置方法具体如下在前添加内容在之后添加内容添完后的结果添完后的结果说明这个方法将先清除元素中的内容然后用传入的代替和方法用于在分别在元素内部的前面和后面添加内容对元素包裹一个外部内容参见可以查看参考文档中和方法来创建新的元素并作为文档的子元素插入其中设置元素的文本内容问题你需要修改一个文档中的文本内容方法可以使用的设置方法说明文本设置方法与方法一样将清除一个元素中的内部内容然后提供的文本进行代替和将分别在元素的内部前后添加文本节点对于传入的文本如果含有像等这样的字符将以文本处理而非清理消除不受信任的来防止攻击问题在做网站的时候经常会提供用户评论的功能有些不怀好意的用户会搞一些脚本到评论内容中而这些脚本可能会破坏整个页面的行为更严重的是获取一些机要信息此时需要清理该以避免跨站脚本攻击方法使用方法进行清除但需要指定一个可配置的说明又叫跨站脚本攻击它指的是恶意攻击者往页面里插入恶意代码当用户浏览该页之时嵌入其中里面的代码会被执行从而达到恶意攻击用户的特殊目的属于被动式的攻击因为其被动且不好利用所以许多人常忽略其危害性所以我们经常只让用户输入纯文本的内容但这样用户体验就比较差了一个更好的解决方法就是使用一个富文本编辑器如和这些可以输出并能够让用户可视化编辑虽然他们可以在客户端进行校验但是这样还不够安全需要在服务器端进行校验并清除有害的代码这样才能确保输入到你网站的是安全的否则攻击者能够绕过客户端的验证并注入不安全的直接进入您的网站的清理器能够在服务器端对用户输入的进行过滤只输出一些安全的标签和属性提供了一系列的基本配置能够满足大多数要求但如有必要也可以进行修改不过要小心这个非常好用不仅可以避免攻击还可以限制用户可以输入的标签范围参见参阅有一个例子可以了解为什么不能使用正则表达式而采用安全的清理器才是正确的选择参阅了解如何返回一个对象而不是字符串参阅了解如何创建一个自定义的链接属性了解参考托管代码中文版不错的学习笔记',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-05 06:08:41',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/css/about-tag.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-article-double-row-kx/assets/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@1.0.17/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script async src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://npm.onmicrosoft.cn/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.reaicc.com/" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wangyiyun.png" alt="网易云音乐"/><span class="back-menu-item-text">网易云音乐</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://news.reaicc.com/" title="每日早报"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://news.reaicc.com/favicon.svg" alt="每日早报"/><span class="back-menu-item-text">每日早报</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">REAI</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/friends/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/?id=6709358233&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/notice/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 时间轴</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" alt="wechat" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/wechat.jpg"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="alipay" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/alipay.jpg"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Ant/" style="font-size: 1.05rem;">Ant<sup>1</sup></a><a href="/tags/Cookie/" style="font-size: 1.05rem;">Cookie<sup>2</sup></a><a href="/tags/Dozer/" style="font-size: 1.05rem;">Dozer<sup>1</sup></a><a href="/tags/Filter/" style="font-size: 1.05rem;">Filter<sup>1</sup></a><a href="/tags/Freemark/" style="font-size: 1.05rem;">Freemark<sup>1</sup></a><a href="/tags/Freenom/" style="font-size: 1.05rem;">Freenom<sup>1</sup></a><a href="/tags/HTTPS/" style="font-size: 1.05rem;">HTTPS<sup>1</sup></a><a href="/tags/Html/" style="font-size: 1.05rem;">Html<sup>1</sup></a><a href="/tags/JSP/" style="font-size: 1.05rem;">JSP<sup>1</sup></a><a href="/tags/Java/" style="font-size: 1.05rem;">Java<sup>39</sup></a><a href="/tags/JavaBean/" style="font-size: 1.05rem;">JavaBean<sup>2</sup></a><a href="/tags/JavaWeb/" style="font-size: 1.05rem;">JavaWeb<sup>11</sup></a><a href="/tags/Jetty/" style="font-size: 1.05rem;">Jetty<sup>2</sup></a><a href="/tags/Jsoup/" style="font-size: 1.05rem;">Jsoup<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>8</sup></a><a href="/tags/Listener/" style="font-size: 1.05rem;">Listener<sup>1</sup></a><a href="/tags/Lombok/" style="font-size: 1.05rem;">Lombok<sup>1</sup></a><a href="/tags/Maven/" style="font-size: 1.05rem;">Maven<sup>6</sup></a><a href="/tags/Mybatis-Plus/" style="font-size: 1.05rem;">Mybatis Plus<sup>1</sup></a><a href="/tags/Reflections/" style="font-size: 1.05rem;">Reflections<sup>1</sup></a><a href="/tags/Servlet/" style="font-size: 1.05rem;">Servlet<sup>2</sup></a><a href="/tags/Session/" style="font-size: 1.05rem;">Session<sup>1</sup></a><a href="/tags/Thumbnailator/" style="font-size: 1.05rem;">Thumbnailator<sup>1</sup></a><a href="/tags/Thymeleaf/" style="font-size: 1.05rem;">Thymeleaf<sup>1</sup></a><a href="/tags/Tomcat/" style="font-size: 1.05rem;">Tomcat<sup>6</sup></a><a href="/tags/Velocity/" style="font-size: 1.05rem;">Velocity<sup>1</sup></a><a href="/tags/ZXing/" style="font-size: 1.05rem;">ZXing<sup>1</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>1</sup></a><a href="/tags/flex/" style="font-size: 1.05rem;">flex<sup>1</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 1.05rem;">反射<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86/" style="font-size: 1.05rem;">图形处理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E5%8C%85/" style="font-size: 1.05rem;">工具包<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.05rem;">教程<sup>8</sup></a><a href="/tags/%E6%97%A5%E5%BF%97/" style="font-size: 1.05rem;">日志<sup>1</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.05rem;">服务器<sup>6</sup></a><a href="/tags/%E6%9D%A1%E5%BD%A2%E7%A0%81/" style="font-size: 1.05rem;">条形码<sup>1</sup></a><a href="/tags/%E6%9E%84%E5%BB%BA/" style="font-size: 1.05rem;">构建<sup>7</sup></a><a href="/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" style="font-size: 1.05rem;">模板引擎<sup>3</sup></a><a href="/tags/%E9%82%AE%E4%BB%B6/" style="font-size: 1.05rem;">邮件<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url">编程</a><i class="anzhiyufont anzhiyu-icon-angle-right post-meta-separator"></i><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/Java/" itemprop="url">Java</a><i class="anzhiyufont anzhiyu-icon-angle-right post-meta-separator"></i><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/Java/%E5%B7%A5%E5%85%B7/" itemprop="url">工具</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Java/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Java</span></a><a class="article-meta__tags" href="/tags/Html/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Html</span></a><a class="article-meta__tags" href="/tags/Jsoup/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Jsoup</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Jsoup 快速入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2022-02-17T14:34:30.000Z" title="发表于 2022-02-17 22:34:30">2022-02-17</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-06-04T22:08:41.086Z" title="更新于 2024-06-05 06:08:41">2024-06-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span id="" data-flag-title="Jsoup 快速入门"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="ArtalkPV"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为北京"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>北京</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://blog.reaicc.com/pages/c516cc/"><header><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url">编程</a><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/Java/" itemprop="url">Java</a><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/Java/%E5%B7%A5%E5%85%B7/" itemprop="url">工具</a><a href="/tags/Java/" tabindex="-1" itemprop="url">Java</a><a href="/tags/Html/" tabindex="-1" itemprop="url">Html</a><a href="/tags/Jsoup/" tabindex="-1" itemprop="url">Jsoup</a><h1 id="CrawlerTitle" itemprop="name headline">Jsoup 快速入门</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">REAI</span><time itemprop="dateCreated datePublished" datetime="2022-02-17T14:34:30.000Z" title="发表于 2022-02-17 22:34:30">2022-02-17</time><time itemprop="dateCreated datePublished" datetime="2024-06-04T22:08:41.086Z" title="更新于 2024-06-05 06:08:41">2024-06-05</time></header><h1 id="Jsoup-快速入门"><a href="#Jsoup-快速入门" class="headerlink" title="Jsoup 快速入门"></a>Jsoup 快速入门</h1><h2 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h2><p>jsoup 是一款 Java 的 HTML 解析器，可直接解析某个 URL 地址、HTML 文本内容。它提供了一套非常省力的 API，可通过 DOM，CSS 以及类似于 JQuery 的操作方法来取出和操作数据。</p>
+<p>jsoup 工作的流程主要如下：</p>
+<ol>
+<li>从一个 URL，文件或字符串中解析 HTML，并加载为一个 <code>Document</code> 对象。</li>
+<li>使用 DOM 或 CSS 选择器来取出数据；</li>
+<li>可操作 HTML 元素、属性、文本。</li>
+</ol>
+<p>jsoup 是基于 MIT 协议发布的，可放心使用于商业项目。</p>
+<h2 id="加载"><a href="#加载" class="headerlink" title="加载"></a>加载</h2><h3 id="从-HTML-字符串加载一个文档"><a href="#从-HTML-字符串加载一个文档" class="headerlink" title="从 HTML 字符串加载一个文档"></a>从 HTML 字符串加载一个文档</h3><p>使用静态 <code>Jsoup.parse(String html)</code> 方法或 <code>Jsoup.parse(String html, String baseUri)</code> 示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String html = <span class="string">&quot;&lt;html&gt;&lt;head&gt;&lt;title&gt;First parse&lt;/title&gt;&lt;/head&gt;&quot;</span></span><br><span class="line">  + <span class="string">&quot;&lt;body&gt;&lt;p&gt;Parsed HTML into a doc.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;&quot;</span>;</span><br><span class="line">Document doc = Jsoup.parse(html);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>说明</strong></p>
+<p><code>parse(String html, String baseUri)</code> 这方法能够将输入的 HTML 解析为一个新的文档 (Document），参数 baseUri 是用来将相对 URL 转成绝对 URL，并指定从哪个网站获取文档。如这个方法不适用，你可以使用 <code>parse(String html)</code> 方法来解析成 HTML 字符串如上面的示例。</p>
+<p>只要解析的不是空字符串，就能返回一个结构合理的文档，其中包含(至少) 一个 head 和一个 body 元素。</p>
+<p>一旦拥有了一个 Document，你就可以使用 Document 中适当的方法或它父类 <code>Element</code>和<code>Node</code>中的方法来取得相关数据。</p>
+</blockquote>
+<h3 id="解析一个-body-片断"><a href="#解析一个-body-片断" class="headerlink" title="解析一个 body 片断"></a>解析一个 body 片断</h3><p><strong>问题</strong></p>
+<p>假如你有一个 HTML 片断 (比如. 一个 <code>div</code> 包含一对 <code>p</code> 标签; 一个不完整的 HTML 文档) 想对它进行解析。这个 HTML 片断可以是用户提交的一条评论或在一个 CMS 页面中编辑 body 部分。</p>
+<p><strong>办法</strong></p>
+<p>使用<code>Jsoup.parseBodyFragment(String html)</code>方法.</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">String html = &quot;&lt;div&gt;&lt;p&gt;Lorem ipsum.&lt;/p&gt;&quot;;</span><br><span class="line">Document doc = Jsoup.parseBodyFragment(html);</span><br><span class="line">Element body = doc.body();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>说明</strong></p>
+<p><code>parseBodyFragment</code> 方法创建一个空壳的文档，并插入解析过的 HTML 到<code>body</code>元素中。假如你使用正常的 <code>Jsoup.parse(String html)</code> 方法，通常你也可以得到相同的结果，但是明确将用户输入作为 body 片段处理，以确保用户所提供的任何糟糕的 HTML 都将被解析成 body 元素。</p>
+<p><code>Document.body()</code> 方法能够取得文档 body 元素的所有子元素，与 <code>doc.getElementsByTag(&quot;body&quot;)</code>相同。</p>
+</blockquote>
+<h4 id="保证安全-Stay-safe"><a href="#保证安全-Stay-safe" class="headerlink" title="保证安全 Stay safe"></a>保证安全 Stay safe</h4><p>假如你可以让用户输入 HTML 内容，那么要小心避免跨站脚本攻击。利用基于 <code>Whitelist</code> 的清除器和 <code>clean(String bodyHtml, Whitelist whitelist)</code>方法来清除用户输入的恶意内容。</p>
+<h3 id="从-URL-加载一个文档"><a href="#从-URL-加载一个文档" class="headerlink" title="从 URL 加载一个文档"></a>从 URL 加载一个文档</h3><p>使用 <code>Jsoup.connect(String url)</code>方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Document doc = Jsoup.connect(<span class="string">&quot;http://example.com/&quot;</span>).get();</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>说明</strong></p>
+<p><code>connect(String url)</code> 方法创建一个新的 <code>Connection</code>, 和 <code>get()</code> 取得和解析一个 HTML 文件。如果从该 URL 获取 HTML 时发生错误，便会抛出 IOException，应适当处理。</p>
+</blockquote>
+<p><code>Connection</code> 接口还提供一个方法链来解决特殊请求，具体如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Document doc = Jsoup.connect(<span class="string">&quot;http://example.com&quot;</span>)</span><br><span class="line">  .data(<span class="string">&quot;query&quot;</span>, <span class="string">&quot;Java&quot;</span>)</span><br><span class="line">  .userAgent(<span class="string">&quot;Mozilla&quot;</span>)</span><br><span class="line">  .cookie(<span class="string">&quot;auth&quot;</span>, <span class="string">&quot;token&quot;</span>)</span><br><span class="line">  .timeout(<span class="number">3000</span>)</span><br><span class="line">  .post();</span><br></pre></td></tr></table></figure>
+<h3 id="从一个文件加载一个文档"><a href="#从一个文件加载一个文档" class="headerlink" title="从一个文件加载一个文档"></a>从一个文件加载一个文档</h3><p>可以使用静态 <code>Jsoup.parse(File in, String charsetName, String baseUri)</code> 方法</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">File input = <span class="keyword">new</span> File(<span class="string">&quot;/tmp/input.html&quot;</span>);</span><br><span class="line">Document doc = Jsoup.parse(input, <span class="string">&quot;UTF-8&quot;</span>, <span class="string">&quot;http://example.com/&quot;</span>);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>说明</strong></p>
+<p><code>parse(File in, String charsetName, String baseUri)</code> 这个方法用来加载和解析一个 HTML 文件。如在加载文件的时候发生错误，将抛出 IOException，应作适当处理。</p>
+<p><code>baseUri</code> 参数用于解决文件中 URLs 是相对路径的问题。如果不需要可以传入一个空的字符串。</p>
+<p>另外还有一个方法<code>parse(File in, String charsetName)</code> ，它使用文件的路径做为 <code>baseUri</code>。 这个方法适用于如果被解析文件位于网站的本地文件系统，且相关链接也指向该文件系统。</p>
+</blockquote>
+<h2 id="解析"><a href="#解析" class="headerlink" title="解析"></a>解析</h2><h3 id="使用-DOM-方法来遍历一个文档"><a href="#使用-DOM-方法来遍历一个文档" class="headerlink" title="使用 DOM 方法来遍历一个文档"></a>使用 DOM 方法来遍历一个文档</h3><p><strong>问题</strong></p>
+<p>你有一个 HTML 文档要从中提取数据，并了解这个 HTML 文档的结构。</p>
+<p><strong>方法</strong></p>
+<p>将 HTML 解析成一个<code>Document</code>之后，就可以使用类似于 DOM 的方法进行操作。示例代码：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">File input = <span class="keyword">new</span> File(<span class="string">&quot;/tmp/input.html&quot;</span>);</span><br><span class="line">Document doc = Jsoup.parse(input, <span class="string">&quot;UTF-8&quot;</span>, <span class="string">&quot;http://example.com/&quot;</span>);</span><br><span class="line"></span><br><span class="line">Element content = doc.getElementById(<span class="string">&quot;content&quot;</span>);</span><br><span class="line">Elements links = content.getElementsByTag(<span class="string">&quot;a&quot;</span>);</span><br><span class="line"><span class="keyword">for</span> (Element link : links) &#123;</span><br><span class="line">  String linkHref = link.attr(<span class="string">&quot;href&quot;</span>);</span><br><span class="line">  String linkText = link.text();</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>说明</strong></p>
+<p><code>Elements</code> 这个对象提供了一系列类似于 DOM 的方法来查找元素，抽取并处理其中的数据。</p>
+<p>具体如下：</p>
+<h4 id="查找元素"><a href="#查找元素" class="headerlink" title="查找元素"></a>查找元素</h4><ul>
+<li><code>getElementById(String id)</code></li>
+<li><code>getElementsByTag(String tag)</code></li>
+<li><code>getElementsByClass(String className)</code></li>
+<li><code>getElementsByAttribute(String key)</code> (and related methods)</li>
+<li>Element siblings: <code>siblingElements()</code>, <code>firstElementSibling()</code>, <code>lastElementSibling()</code>;<code>nextElementSibling()</code>, <code>previousElementSibling()</code></li>
+<li>Graph: <code>parent()</code>, <code>children()</code>, <code>child(int index)</code></li>
+</ul>
+<h4 id="元素数据"><a href="#元素数据" class="headerlink" title="元素数据"></a>元素数据</h4><ul>
+<li><code>attr(String key)</code>获取属性<code>attr(String key, String value)</code>设置属性</li>
+<li><code>attributes()</code>获取所有属性</li>
+<li><code>id()</code>, <code>className()</code> and <code>classNames()</code></li>
+<li><code>text()</code>获取文本内容<code>text(String value)</code> 设置文本内容</li>
+<li><code>html()</code>获取元素内 HTML<code>html(String value)</code>设置元素内的 HTML 内容</li>
+<li><code>outerHtml()</code>获取元素外 HTML 内容</li>
+<li><code>data()</code>获取数据内容（例如：script 和 style 标签)</li>
+<li><code>tag()</code> and <code>tagName()</code></li>
+</ul>
+<h4 id="操作-HTML-和文本"><a href="#操作-HTML-和文本" class="headerlink" title="操作 HTML 和文本"></a>操作 HTML 和文本</h4><ul>
+<li><code>append(String html)</code>, <code>prepend(String html)</code></li>
+<li><code>appendText(String text)</code>, <code>prependText(String text)</code></li>
+<li><code>appendElement(String tagName)</code>, <code>prependElement(String tagName)</code></li>
+<li><code>html(String value)</code></li>
+</ul>
+<h3 id="使用选择器语法来查找元素"><a href="#使用选择器语法来查找元素" class="headerlink" title="使用选择器语法来查找元素"></a>使用选择器语法来查找元素</h3><p><strong>问题</strong></p>
+<p>你想使用类似于 CSS 或 jQuery 的语法来查找和操作元素。</p>
+<p><strong>方法</strong></p>
+<p>可以使用<code>Element.select(String selector)</code> 和 <code>Elements.select(String selector)</code> 方法实现：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">File input = <span class="keyword">new</span> File(<span class="string">&quot;/tmp/input.html&quot;</span>);</span><br><span class="line">Document doc = Jsoup.parse(input, <span class="string">&quot;UTF-8&quot;</span>, <span class="string">&quot;http://example.com/&quot;</span>);</span><br><span class="line"></span><br><span class="line">Elements links = doc.select(<span class="string">&quot;a[href]&quot;</span>); <span class="comment">//带有href属性的a元素</span></span><br><span class="line">Elements pngs = doc.select(<span class="string">&quot;img[src$=.png]&quot;</span>);</span><br><span class="line">  <span class="comment">//扩展名为.png的图片</span></span><br><span class="line"></span><br><span class="line">Element masthead = doc.select(<span class="string">&quot;div.masthead&quot;</span>).first();</span><br><span class="line">  <span class="comment">//class等于masthead的div标签</span></span><br><span class="line"></span><br><span class="line">Elements resultLinks = doc.select(<span class="string">&quot;h3.r &gt; a&quot;</span>); <span class="comment">//在h3元素之后的a元素</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>说明</strong></p>
+<p>jsoup elements 对象支持类似于<a target="_blank" rel="noopener" href="http://www.w3.org/TR/2009/PR-css3-selectors-20091215/">CSS</a> (或<a target="_blank" rel="noopener" href="http://jquery.com/">jquery</a>)的选择器语法，来实现非常强大和灵活的查找功能。.</p>
+<p>这个<code>select</code> 方法在<code>Document</code>, <code>Element</code>,或<code>Elements</code>对象中都可以使用。且是上下文相关的，因此可实现指定元素的过滤，或者链式选择访问。</p>
+<p>Select 方法将返回一个<code>Elements</code>集合，并提供一组方法来抽取和处理结果。</p>
+</blockquote>
+<h4 id="Selector-选择器概述"><a href="#Selector-选择器概述" class="headerlink" title="Selector 选择器概述"></a>Selector 选择器概述</h4><ul>
+<li><code>tagname</code>: 通过标签查找元素，比如：<code>a</code></li>
+<li><code>ns|tag</code>: 通过标签在命名空间查找元素，比如：可以用 <code>fb|name</code> 语法来查找 `` 元素</li>
+<li><code>#id</code>: 通过 ID 查找元素，比如：<code>#logo</code></li>
+<li><code>.class</code>: 通过 class 名称查找元素，比如：<code>.masthead</code></li>
+<li><code>[attribute]</code>: 利用属性查找元素，比如：<code>[href]</code></li>
+<li><code>[^attr]</code>: 利用属性名前缀来查找元素，比如：可以用<code>[^data-]</code> 来查找带有 HTML5 Dataset 属性的元素</li>
+<li><code>[attr=value]</code>: 利用属性值来查找元素，比如：<code>[width=500]</code></li>
+<li><code>[attr^=value]</code>, <code>[attr$=value]</code>, <code>[attr*=value]</code>: 利用匹配属性值开头、结尾或包含属性值来查找元素，比如：<code>[href*=/path/]</code></li>
+<li><code>[attr\~=regex]</code>: 利用属性值匹配正则表达式来查找元素，比如： <code>img[src\~=(?i)\.(png|jpe?g)]</code></li>
+<li><code>*</code>: 这个符号将匹配所有元素</li>
+</ul>
+<h4 id="Selector-选择器组合使用"><a href="#Selector-选择器组合使用" class="headerlink" title="Selector 选择器组合使用"></a>Selector 选择器组合使用</h4><ul>
+<li><code>el##id</code>: 元素+ID，比如： <code>div##logo</code></li>
+<li><code>el.class</code>: 元素+class，比如： <code>div.masthead</code></li>
+<li><code>el[attr]</code>: 元素+class，比如： <code>a[href]</code></li>
+<li>任意组合，比如：<code>a[href].highlight</code></li>
+<li><code>ancestor child</code>: 查找某个元素下子元素，比如：可以用<code>.body p</code> 查找在”body”元素下的所有<code>p</code>元素</li>
+<li><code>parent &gt; child</code>: 查找某个父元素下的直接子元素，比如：可以用<code>div.content &gt; p</code> 查找 <code>p</code> 元素，也可以用<code>body &gt; *</code> 查找 body 标签下所有直接子元素</li>
+<li><code>siblingA + siblingB</code>: 查找在 A 元素之前第一个同级元素 B，比如：<code>div.head + div</code></li>
+<li><code>siblingA \~ siblingX</code>: 查找 A 元素之前的同级 X 元素，比如：<code>h1 \~ p</code></li>
+<li><code>el, el, el</code>:多个选择器组合，查找匹配任一选择器的唯一元素，例如：<code>div.masthead, div.logo</code></li>
+</ul>
+<h4 id="伪选择器-selectors"><a href="#伪选择器-selectors" class="headerlink" title="伪选择器 selectors"></a>伪选择器 selectors</h4><ul>
+<li><code>:lt(n)</code>: 查找哪些元素的同级索引值（它的位置在 DOM 树中是相对于它的父节点）小于 n，比如：<code>td:lt(3)</code> 表示小于三列的元素</li>
+<li><code>:gt(n)</code>:查找哪些元素的同级索引值大于<code>n``，比如</code>： <code>div p:gt(2)</code>表示哪些 div 中有包含 2 个以上的 p 元素</li>
+<li><code>:eq(n)</code>: 查找哪些元素的同级索引值与<code>n</code>相等，比如：<code>form input:eq(1)</code>表示包含一个 input 标签的 Form 元素</li>
+<li><code>:has(seletor)</code>: 查找匹配选择器包含元素的元素，比如：<code>div:has(p)</code>表示哪些 div 包含了 p 元素</li>
+<li><code>:not(selector)</code>: 查找与选择器不匹配的元素，比如： <code>div:not(.logo)</code> 表示不包含 class=logo 元素的所有 div 列表</li>
+<li><code>:contains(text)</code>: 查找包含给定文本的元素，搜索不区分大不写，比如： <code>p:contains(jsoup)</code></li>
+<li><code>:containsOwn(text)</code>: 查找直接包含给定文本的元素</li>
+<li><code>:matches(regex)</code>: 查找哪些元素的文本匹配指定的正则表达式，比如：<code>div:matches((?i)login)</code></li>
+<li><code>:matchesOwn(regex)</code>: 查找自身包含文本匹配指定正则表达式的元素</li>
+<li>注意：上述伪选择器索引是从 0 开始的，也就是说第一个元素索引值为 0，第二个元素 index 为 1 等</li>
+</ul>
+<p>可以查看<code>Selector</code> API 参考来了解更详细的内容</p>
+<h3 id="从元素抽取属性，文本和-HTML"><a href="#从元素抽取属性，文本和-HTML" class="headerlink" title="从元素抽取属性，文本和 HTML"></a>从元素抽取属性，文本和 HTML</h3><p><strong>问题</strong></p>
+<p>在解析获得一个 Document 实例对象，并查找到一些元素之后，你希望取得在这些元素中的数据。</p>
+<p><strong>方法</strong></p>
+<ul>
+<li>要取得一个属性的值，可以使用<code>Node.attr(String key)</code> 方法</li>
+<li>对于一个元素中的文本，可以使用<code>Element.text()</code>方法</li>
+<li>对于要取得元素或属性中的 HTML 内容，可以使用<code>Element.html()</code>, 或 <code>Node.outerHtml()</code>方法</li>
+</ul>
+<p>示例：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">String html = <span class="string">&quot;&lt;p&gt;An &lt;a href=&#x27;http://example.com/&#x27;&gt;&lt;b&gt;example&lt;/b&gt;&lt;/a&gt; link.&lt;/p&gt;&quot;</span>;</span><br><span class="line">Document doc = Jsoup.parse(html);<span class="comment">//解析HTML字符串返回一个Document实现</span></span><br><span class="line">Element link = doc.select(<span class="string">&quot;a&quot;</span>).first();<span class="comment">//查找第一个a元素</span></span><br><span class="line"></span><br><span class="line">String text = doc.body().text(); <span class="comment">// &quot;An example link&quot;//取得字符串中的文本</span></span><br><span class="line">String linkHref = link.attr(<span class="string">&quot;href&quot;</span>); <span class="comment">// &quot;http://example.com/&quot;//取得链接地址</span></span><br><span class="line">String linkText = link.text(); <span class="comment">// &quot;example&quot;&quot;//取得链接地址中的文本</span></span><br><span class="line"></span><br><span class="line">String linkOuterH = link.outerHtml();</span><br><span class="line">    <span class="comment">// &quot;&lt;a href=&quot;http://example.com&quot;&gt;&lt;b&gt;example&lt;/b&gt;&lt;/a&gt;&quot;</span></span><br><span class="line">String linkInnerH = link.html(); <span class="comment">// &quot;&lt;b&gt;example&lt;/b&gt;&quot;//取得链接内的html内容</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>说明</strong></p>
+<p>上述方法是元素数据访问的核心办法。此外还其它一些方法可以使用：</p>
+<ul>
+<li><code>Element.id()</code></li>
+<li><code>Element.tagName()</code></li>
+<li><code>Element.className()</code> and <code>Element.hasClass(String className)</code></li>
+</ul>
+<p>这些访问器方法都有相应的 setter 方法来更改数据</p>
+</blockquote>
+<p><strong>参见</strong></p>
+<ul>
+<li><code>Element</code>和<code>Elements</code>集合类的参考文档</li>
+<li><a target="_blank" rel="noopener" href="http://www.open-open.com/jsoup/working-with-urls.htm">URLs 处理</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.open-open.com/jsoup/selector-syntax.htm">使用 CSS 选择器语法来查找元素</a></li>
+</ul>
+<h3 id="处理-URLs"><a href="#处理-URLs" class="headerlink" title="处理 URLs"></a>处理 URLs</h3><p><strong>问题</strong></p>
+<p>你有一个包含相对 URLs 路径的 HTML 文档，需要将这些相对路径转换成绝对路径的 URLs。</p>
+<p><strong>方法</strong></p>
+<ol>
+<li>在你解析文档时确保有指定<code>base URI</code>，然后</li>
+<li>使用 <code>abs:</code> 属性前缀来取得包含<code>base URI</code>的绝对路径。代码如下：</li>
+</ol>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">Document doc = Jsoup.connect(<span class="string">&quot;http://www.open-open.com&quot;</span>).get();</span><br><span class="line"></span><br><span class="line">Element link = doc.select(<span class="string">&quot;a&quot;</span>).first();</span><br><span class="line">String relHref = link.attr(<span class="string">&quot;href&quot;</span>); <span class="comment">// == &quot;/&quot;</span></span><br><span class="line">String absHref = link.attr(<span class="string">&quot;abs:href&quot;</span>); <span class="comment">// &quot;http://www.open-open.com/&quot;</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>说明</strong></p>
+<p>在 HTML 元素中，URLs 经常写成相对于文档位置的相对路径： <code>&lt;a href=&quot;/download&quot;&gt;...&lt;/a&gt;</code>. 当你使用 <code>Node.attr(String key)</code> 方法来取得 a 元素的 href 属性时，它将直接返回在 HTML 源码中指定定的值。</p>
+<p>假如你需要取得一个绝对路径，需要在属性名前加 <code>abs:</code> 前缀。这样就可以返回包含根路径的 URL 地址<code>attr(&quot;abs:href&quot;)</code></p>
+<p>因此，在解析 HTML 文档时，定义 base URI 非常重要。</p>
+<p>如果你不想使用<code>abs:</code> 前缀，还有一个方法能够实现同样的功能 <code>Node.absUrl(String key)</code>。</p>
+</blockquote>
+<h2 id="数据修改"><a href="#数据修改" class="headerlink" title="数据修改"></a>数据修改</h2><h3 id="设置属性的值"><a href="#设置属性的值" class="headerlink" title="设置属性的值"></a>设置属性的值</h3><p><strong>问题</strong></p>
+<p>在你解析一个 <code>Document</code> 之后可能想修改其中的某些属性值，然后再保存到磁盘或都输出到前台页面。</p>
+<p><strong>方法</strong></p>
+<p>可以使用属性设置方法 <code>Element.attr(String key, String value)</code>, 和 <code>Elements.attr(String key, String value)</code>.</p>
+<p>假如你需要修改一个元素的 <code>class</code> 属性，可以使用 <code>Element.addClass(String className)</code> 和<code>Element.removeClass(String className)</code> 方法。</p>
+<p><code>Elements</code> 提供了批量操作元素属性和 class 的方法，比如：要为 div 中的每一个 a 元素都添加一个<code>rel=&quot;nofollow&quot;</code> 可以使用如下方法：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">doc.select(&quot;div.comments a&quot;).attr(&quot;rel&quot;, &quot;nofollow&quot;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>说明</strong></p>
+<p>与<code>Element</code>中的其它方法一样，<code>attr</code> 方法也是返回当 <code>Element</code> (或在使用选择器是返回 <code>Elements</code>集合)。这样能够很方便使用方法连用的书写方式。比如：</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">doc.select(&quot;div.masthead&quot;).attr(&quot;title&quot;, &quot;jsoup&quot;).addClass(&quot;round-box&quot;);</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h3 id="设置一个元素的-HTML-内容"><a href="#设置一个元素的-HTML-内容" class="headerlink" title="设置一个元素的 HTML 内容"></a>设置一个元素的 HTML 内容</h3><p><strong>问题</strong></p>
+<p>你需要一个元素中的 HTML 内容</p>
+<p><strong>方法</strong></p>
+<p>可以使用<code>Element</code>中的 HTML 设置方法具体如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Element div = doc.select(<span class="string">&quot;div&quot;</span>).first(); <span class="comment">// &lt;div&gt;&lt;/div&gt;</span></span><br><span class="line">div.html(<span class="string">&quot;&lt;p&gt;lorem ipsum&lt;/p&gt;&quot;</span>); <span class="comment">// &lt;div&gt;&lt;p&gt;lorem ipsum&lt;/p&gt;&lt;/div&gt;</span></span><br><span class="line">div.prepend(<span class="string">&quot;&lt;p&gt;First&lt;/p&gt;&quot;</span>);<span class="comment">//在div前添加html内容</span></span><br><span class="line">div.append(<span class="string">&quot;&lt;p&gt;Last&lt;/p&gt;&quot;</span>);<span class="comment">//在div之后添加html内容</span></span><br><span class="line"><span class="comment">// 添完后的结果: &lt;div&gt;&lt;p&gt;First&lt;/p&gt;&lt;p&gt;lorem ipsum&lt;/p&gt;&lt;p&gt;Last&lt;/p&gt;&lt;/div&gt;</span></span><br><span class="line"></span><br><span class="line">Element span = doc.select(<span class="string">&quot;span&quot;</span>).first(); <span class="comment">// &lt;span&gt;One&lt;/span&gt;</span></span><br><span class="line">span.wrap(<span class="string">&quot;&lt;li&gt;&lt;a href=&#x27;http://example.com/&#x27;&gt;&lt;/a&gt;&lt;/li&gt;&quot;</span>);</span><br><span class="line"><span class="comment">// 添完后的结果: &lt;li&gt;&lt;a href=&quot;http://example.com&quot;&gt;&lt;span&gt;One&lt;/span&gt;&lt;/a&gt;&lt;/li&gt;</span></span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>说明</strong></p>
+<ul>
+<li><code>Element.html(String html)</code> 这个方法将先清除元素中的 HTML 内容，然后用传入的 HTML 代替。</li>
+<li><code>Element.prepend(String first)</code> 和 <code>Element.append(String last)</code> 方法用于在分别在元素内部 HTML 的前面和后面添加 HTML 内容</li>
+<li><code>Element.wrap(String around)</code> 对元素包裹一个外部 HTML 内容。</li>
+</ul>
+<p><strong>参见</strong></p>
+<p>可以查看 API 参考文档中 <code>Element.prependElement(String tag)</code>和<code>Element.appendElement(String tag)</code> 方法来创建新的元素并作为文档的子元素插入其中。</p>
+</blockquote>
+<h3 id="设置元素的文本内容"><a href="#设置元素的文本内容" class="headerlink" title="设置元素的文本内容"></a>设置元素的文本内容</h3><p><strong>问题</strong></p>
+<p>你需要修改一个 HTML 文档中的文本内容</p>
+<p><strong>方法</strong></p>
+<p>可以使用<code>Element</code>的设置方法：:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">Element div = doc.select(&quot;div&quot;).first(); // &lt;div&gt;&lt;/div&gt;</span><br><span class="line">div.text(&quot;five &gt; four&quot;); // &lt;div&gt;five &amp;gt; four&lt;/div&gt;</span><br><span class="line">div.prepend(&quot;First &quot;);</span><br><span class="line">div.append(&quot; Last&quot;);</span><br><span class="line">// now: &lt;div&gt;First five &amp;gt; four Last&lt;/div&gt;</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p><strong>说明</strong></p>
+<p>文本设置方法与 <a target="_blank" rel="noopener" href="http://jsoup.org/cookbook/modifying-data/set-html">HTML setter</a> 方法一样：</p>
+<ul>
+<li><code>Element.text(String text)</code> 将清除一个元素中的内部 HTML 内容，然后提供的文本进行代替</li>
+<li><code>Element.prepend(String first)</code> 和 <code>Element.append(String last)</code> 将分别在元素的内部 html 前后添加文本节点。</li>
+</ul>
+<p>对于传入的文本如果含有像 <code>&lt;</code>, <code>&gt;</code> 等这样的字符，将以文本处理，而非 HTML。</p>
+</blockquote>
+<h2 id="HTML-清理"><a href="#HTML-清理" class="headerlink" title="HTML 清理"></a>HTML 清理</h2><h3 id="消除不受信任的-HTML-来防止-XSS-攻击"><a href="#消除不受信任的-HTML-来防止-XSS-攻击" class="headerlink" title="消除不受信任的 HTML (来防止 XSS 攻击)"></a>消除不受信任的 HTML (来防止 XSS 攻击)</h3><p><strong>问题</strong></p>
+<p>在做网站的时候，经常会提供用户评论的功能。有些不怀好意的用户，会搞一些脚本到评论内容中，而这些脚本可能会破坏整个页面的行为，更严重的是获取一些机要信息，此时需要清理该 HTML，以避免跨站脚本<a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Cross-site_scripting">cross-site scripting</a>攻击（XSS）。</p>
+<p><strong>方法</strong></p>
+<p>使用 jsoup HTML <code>Cleaner</code> 方法进行清除，但需要指定一个可配置的 <code>Whitelist</code>。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">String unsafe =</span><br><span class="line">  <span class="string">&quot;&lt;p&gt;&lt;a href=&#x27;http://example.com/&#x27; onclick=&#x27;stealCookies()&#x27;&gt;Link&lt;/a&gt;&lt;/p&gt;&quot;</span>;</span><br><span class="line">String safe = Jsoup.clean(unsafe, Whitelist.basic());</span><br><span class="line"><span class="comment">// now: &lt;p&gt;&lt;a href=&quot;http://example.com/&quot; rel=&quot;nofollow&quot;&gt;Link&lt;/a&gt;&lt;/p&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>说明</strong></p>
+<p>XSS 又叫 CSS (Cross Site Script) ，跨站脚本攻击。它指的是恶意攻击者往 Web 页面里插入恶意 html 代码，当用户浏览该页之时，嵌入其中 Web 里面的 html 代码会被执行，从而达到恶意攻击用户的特殊目的。XSS 属于被动式的攻击，因为其被动且不好利用，所以许多人常忽略其危害性。所以我们经常只让用户输入纯文本的内容，但这样用户体验就比较差了。</p>
+<p>一个更好的解决方法就是使用一个富文本编辑器 WYSIWYG 如 <a target="_blank" rel="noopener" href="http://ckeditor.com/">CKEditor</a> 和 <a target="_blank" rel="noopener" href="http://tinymce.moxiecode.com/">TinyMCE</a>。这些可以输出 HTML 并能够让用户可视化编辑。虽然他们可以在客户端进行校验，但是这样还不够安全，需要在服务器端进行校验并清除有害的 HTML 代码，这样才能确保输入到你网站的 HTML 是安全的。否则，攻击者能够绕过客户端的 Javascript 验证，并注入不安全的 HMTL 直接进入您的网站。</p>
+<p>jsoup 的 whitelist 清理器能够在服务器端对用户输入的 HTML 进行过滤，只输出一些安全的标签和属性。</p>
+<p>jsoup 提供了一系列的 <code>Whitelist</code> 基本配置，能够满足大多数要求；但如有必要，也可以进行修改，不过要小心。</p>
+<p>这个 cleaner 非常好用不仅可以避免 XSS 攻击，还可以限制用户可以输入的标签范围。</p>
+<p><strong>参见</strong></p>
+<ul>
+<li>参阅<a target="_blank" rel="noopener" href="http://ha.ckers.org/xss.html">XSS cheat sheet</a> ，有一个例子可以了解为什么不能使用正则表达式，而采用安全的 whitelist parser-based 清理器才是正确的选择。</li>
+<li>参阅<code>Cleaner</code> ，了解如何返回一个 <code>Document</code> 对象，而不是字符串</li>
+<li>参阅<code>Whitelist</code>，了解如何创建一个自定义的 whitelist</li>
+<li><a target="_blank" rel="noopener" href="http://en.wikipedia.org/wiki/Nofollow">nofollow</a> 链接属性了解</li>
+</ul>
+<h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://github.com/jhy/jsoup">jsoup github 托管代码</a></li>
+<li><a target="_blank" rel="noopener" href="https://jsoup.org/cookbook/">jsoup Cookbook</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.open-open.com/jsoup/">jsoup Cookbook(中文版)</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/code4craft/jsoup-learning">不错的 jsoup 学习笔记</a></li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" title="头像" alt="头像"></a><div class="post-copyright__author_name">REAI</div><div class="post-copyright__author_desc">遇见即是上上签</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.reaicc.com/pages/c516cc/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://blog.reaicc.com/pages/c516cc/')">Jsoup 快速入门</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.reaicc.com/pages/c516cc/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Jsoup 快速入门&amp;url=https://blog.reaicc.com/pages/c516cc/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="rm.copyPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.reaicc.com" target="_blank">REAI</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Java/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Java<span class="tagsPageCount">39</span></a><a class="post-meta__box__tags" href="/tags/Html/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Html<span class="tagsPageCount">1</span></a><a class="post-meta__box__tags" href="/tags/Jsoup/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Jsoup<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://npm.onmicrosoft.cn/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://npm.onmicrosoft.cn/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/pages/aa9f61/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Thumbnailator 快速入门</div></div></a></div><div class="next-post pull-right"><a href="/pages/da3f07/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JavaMail 快速入门</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/pages/34ec25/" title="Freemark 快速入门"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">Freemark 快速入门</div></div></a></div><div><a href="/posts/33db93c3/" title="Thymeleaf 快速入门"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">Thymeleaf 快速入门</div></div></a></div><div><a href="/posts/bed8d6a9/" title="Velocity 快速入门"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">Velocity 快速入门</div></div></a></div><div><a href="/posts/da18907e/" title="javalib-log"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">javalib-log</div></div></a></div><div><a href="/pages/14e432/" title="javalib-util"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">javalib-util</div></div></a></div><div><a href="/pages/ea4914/" title="Reflections 快速入门"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">Reflections 快速入门</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="artalk-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" ait="status"/></div></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">这有关于<b style="color:#fff">产品、设计、开发</b>相关的问题和看法，还有<b style="color:#fff">文章翻译</b>和<b style="color:#fff">分享</b>。</div><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">相信你可以在这里找到对你有用的<b style="color:#fff">知识</b>和<b style="color:#fff">教程</b>。</div></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(/img/qrcode_gzh.jpg) center center / 100% no-repeat"></div></div></div></div><div class="card-widget" id="newYear"><div class="item-headline"><i></i><span></span></div><div class="item-content"><div id="newYear-main"><div class="mask"></div> <p class="title"></p> <div class="newYear-time"></div> <p class="today" style="text-align: right;"></p> </div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Jsoup-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">Jsoup 快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">简介</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8A%A0%E8%BD%BD"><span class="toc-number">1.2.</span> <span class="toc-text">加载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E-HTML-%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%8A%A0%E8%BD%BD%E4%B8%80%E4%B8%AA%E6%96%87%E6%A1%A3"><span class="toc-number">1.2.1.</span> <span class="toc-text">从 HTML 字符串加载一个文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90%E4%B8%80%E4%B8%AA-body-%E7%89%87%E6%96%AD"><span class="toc-number">1.2.2.</span> <span class="toc-text">解析一个 body 片断</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BF%9D%E8%AF%81%E5%AE%89%E5%85%A8-Stay-safe"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">保证安全 Stay safe</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E-URL-%E5%8A%A0%E8%BD%BD%E4%B8%80%E4%B8%AA%E6%96%87%E6%A1%A3"><span class="toc-number">1.2.3.</span> <span class="toc-text">从 URL 加载一个文档</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E4%B8%80%E4%B8%AA%E6%96%87%E4%BB%B6%E5%8A%A0%E8%BD%BD%E4%B8%80%E4%B8%AA%E6%96%87%E6%A1%A3"><span class="toc-number">1.2.4.</span> <span class="toc-text">从一个文件加载一个文档</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A7%A3%E6%9E%90"><span class="toc-number">1.3.</span> <span class="toc-text">解析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-DOM-%E6%96%B9%E6%B3%95%E6%9D%A5%E9%81%8D%E5%8E%86%E4%B8%80%E4%B8%AA%E6%96%87%E6%A1%A3"><span class="toc-number">1.3.1.</span> <span class="toc-text">使用 DOM 方法来遍历一个文档</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0"><span class="toc-number">1.3.1.1.</span> <span class="toc-text">查找元素</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%83%E7%B4%A0%E6%95%B0%E6%8D%AE"><span class="toc-number">1.3.1.2.</span> <span class="toc-text">元素数据</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%93%8D%E4%BD%9C-HTML-%E5%92%8C%E6%96%87%E6%9C%AC"><span class="toc-number">1.3.1.3.</span> <span class="toc-text">操作 HTML 和文本</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E9%80%89%E6%8B%A9%E5%99%A8%E8%AF%AD%E6%B3%95%E6%9D%A5%E6%9F%A5%E6%89%BE%E5%85%83%E7%B4%A0"><span class="toc-number">1.3.2.</span> <span class="toc-text">使用选择器语法来查找元素</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#Selector-%E9%80%89%E6%8B%A9%E5%99%A8%E6%A6%82%E8%BF%B0"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">Selector 选择器概述</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Selector-%E9%80%89%E6%8B%A9%E5%99%A8%E7%BB%84%E5%90%88%E4%BD%BF%E7%94%A8"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">Selector 选择器组合使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%AA%E9%80%89%E6%8B%A9%E5%99%A8-selectors"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">伪选择器 selectors</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%8E%E5%85%83%E7%B4%A0%E6%8A%BD%E5%8F%96%E5%B1%9E%E6%80%A7%EF%BC%8C%E6%96%87%E6%9C%AC%E5%92%8C-HTML"><span class="toc-number">1.3.3.</span> <span class="toc-text">从元素抽取属性，文本和 HTML</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%84%E7%90%86-URLs"><span class="toc-number">1.3.4.</span> <span class="toc-text">处理 URLs</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%B0%E6%8D%AE%E4%BF%AE%E6%94%B9"><span class="toc-number">1.4.</span> <span class="toc-text">数据修改</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%B1%9E%E6%80%A7%E7%9A%84%E5%80%BC"><span class="toc-number">1.4.1.</span> <span class="toc-text">设置属性的值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E4%B8%80%E4%B8%AA%E5%85%83%E7%B4%A0%E7%9A%84-HTML-%E5%86%85%E5%AE%B9"><span class="toc-number">1.4.2.</span> <span class="toc-text">设置一个元素的 HTML 内容</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%85%83%E7%B4%A0%E7%9A%84%E6%96%87%E6%9C%AC%E5%86%85%E5%AE%B9"><span class="toc-number">1.4.3.</span> <span class="toc-text">设置元素的文本内容</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#HTML-%E6%B8%85%E7%90%86"><span class="toc-number">1.5.</span> <span class="toc-text">HTML 清理</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B6%88%E9%99%A4%E4%B8%8D%E5%8F%97%E4%BF%A1%E4%BB%BB%E7%9A%84-HTML-%E6%9D%A5%E9%98%B2%E6%AD%A2-XSS-%E6%94%BB%E5%87%BB"><span class="toc-number">1.5.1.</span> <span class="toc-text">消除不受信任的 HTML (来防止 XSS 攻击)</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83"><span class="toc-number">1.6.</span> <span class="toc-text">参考</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/58328/" title="发布一个npm包">发布一个npm包</a><time datetime="2024-06-04T22:08:41.090Z" title="发表于 2024-06-05 06:08:41">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/48591/" title="HTTP:报文，缓存，Cookie与HTTPS">HTTP:报文，缓存，Cookie与HTTPS</a><time datetime="2024-06-04T22:05:46.160Z" title="发表于 2024-06-05 06:05:46">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/35707/" title="Linux命令之文件与权限管理">Linux命令之文件与权限管理</a><time datetime="2024-06-04T21:58:39.201Z" title="发表于 2024-06-05 05:58:39">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/64074/" title="Git关联Github和码云并利用IDEA内置工具">Git关联Github和码云并利用IDEA内置工具</a><time datetime="2024-06-04T21:52:50.241Z" title="发表于 2024-06-05 05:52:50">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/11097/" title="数据库影响因素之硬件、存储引擎和事务">数据库影响因素之硬件、存储引擎和事务</a><time datetime="2024-06-04T21:43:10.296Z" title="发表于 2024-06-05 05:43:10">2024-06-05</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:2877406366@qq.com" title="email"><i class="anzhiyufont anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com" title="微博"><i class="anzhiyufont anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php" title="facebook"><i class="anzhiyufont anzhiyufont anzhiyu-icon-facebook1"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/" title="Github"><i class="anzhiyufont anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com" title="Bilibili"><i class="anzhiyufont anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.douyin.com/user/MS4wLjABAAAARlF7u0o6BTIX0KiHreekyz5_nqDUauZDgG6AtnpESAI" title="抖音"><i class="anzhiyufont anzhiyufont anzhiyu-icon-tiktok"></i></a></div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener" href="https://www.foreverblog.cn/">十年之约</a><a class="footer-item" title="开往" target="_blank" rel="noopener" href="https://github.com/travellings-link/travellings">开往</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档" href="/docs/">文档</a><a class="footer-item" title="源码" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu">源码</a><a class="footer-item" title="更新日志" href="/update/">更新日志</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="友链文章" href="/fcircle/">友链文章</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">协议</div><div class="footer-links"><a class="footer-item" title="隐私协议" href="/privacy/">隐私协议</a><a class="footer-item" title="Cookies" href="/cookies/">Cookies</a><a class="footer-item" title="版权协议" href="/copyright/">版权协议</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2024 By <a class="footer-bar-link" href="/" title="REAI" target="_blank">REAI</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="京ICP备2023019859号-1">京ICP备2023019859号-1</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">64</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">29</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.reaicc.com/" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wangyiyun.png" alt="网易云音乐"/><span class="back-menu-item-text">网易云音乐</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://news.reaicc.com/" title="每日早报"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://news.reaicc.com/favicon.svg" alt="每日早报"/><span class="back-menu-item-text">每日早报</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/friends/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/?id=6709358233&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/notice/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 时间轴</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Ant/" style="font-size: 0.88rem;">Ant<sup>1</sup></a><a href="/tags/Cookie/" style="font-size: 0.88rem;">Cookie<sup>2</sup></a><a href="/tags/Dozer/" style="font-size: 0.88rem;">Dozer<sup>1</sup></a><a href="/tags/Filter/" style="font-size: 0.88rem;">Filter<sup>1</sup></a><a href="/tags/Freemark/" style="font-size: 0.88rem;">Freemark<sup>1</sup></a><a href="/tags/Freenom/" style="font-size: 0.88rem;">Freenom<sup>1</sup></a><a href="/tags/HTTPS/" style="font-size: 0.88rem;">HTTPS<sup>1</sup></a><a href="/tags/Html/" style="font-size: 0.88rem;">Html<sup>1</sup></a><a href="/tags/JSP/" style="font-size: 0.88rem;">JSP<sup>1</sup></a><a href="/tags/Java/" style="font-size: 0.88rem;">Java<sup>39</sup></a><a href="/tags/JavaBean/" style="font-size: 0.88rem;">JavaBean<sup>2</sup></a><a href="/tags/JavaWeb/" style="font-size: 0.88rem;">JavaWeb<sup>11</sup></a><a href="/tags/Jetty/" style="font-size: 0.88rem;">Jetty<sup>2</sup></a><a href="/tags/Jsoup/" style="font-size: 0.88rem;">Jsoup<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>8</sup></a><a href="/tags/Listener/" style="font-size: 0.88rem;">Listener<sup>1</sup></a><a href="/tags/Lombok/" style="font-size: 0.88rem;">Lombok<sup>1</sup></a><a href="/tags/Maven/" style="font-size: 0.88rem;">Maven<sup>6</sup></a><a href="/tags/Mybatis-Plus/" style="font-size: 0.88rem;">Mybatis Plus<sup>1</sup></a><a href="/tags/Reflections/" style="font-size: 0.88rem;">Reflections<sup>1</sup></a><a href="/tags/Servlet/" style="font-size: 0.88rem;">Servlet<sup>2</sup></a><a href="/tags/Session/" style="font-size: 0.88rem;">Session<sup>1</sup></a><a href="/tags/Thumbnailator/" style="font-size: 0.88rem;">Thumbnailator<sup>1</sup></a><a href="/tags/Thymeleaf/" style="font-size: 0.88rem;">Thymeleaf<sup>1</sup></a><a href="/tags/Tomcat/" style="font-size: 0.88rem;">Tomcat<sup>6</sup></a><a href="/tags/Velocity/" style="font-size: 0.88rem;">Velocity<sup>1</sup></a><a href="/tags/ZXing/" style="font-size: 0.88rem;">ZXing<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>1</sup></a><a href="/tags/flex/" style="font-size: 0.88rem;">flex<sup>1</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 0.88rem;">反射<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86/" style="font-size: 0.88rem;">图形处理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E5%8C%85/" style="font-size: 0.88rem;">工具包<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem;">教程<sup>8</sup></a><a href="/tags/%E6%97%A5%E5%BF%97/" style="font-size: 0.88rem;">日志<sup>1</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 0.88rem;">服务器<sup>6</sup></a><a href="/tags/%E6%9D%A1%E5%BD%A2%E7%A0%81/" style="font-size: 0.88rem;">条形码<sup>1</sup></a><a href="/tags/%E6%9E%84%E5%BB%BA/" style="font-size: 0.88rem;">构建<sup>7</sup></a><a href="/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" style="font-size: 0.88rem;">模板引擎<sup>3</sup></a><a href="/tags/%E9%82%AE%E4%BB%B6/" style="font-size: 0.88rem;">邮件<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="6709358233" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="none"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/playlist?id=6709358233&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="https://npm.onmicrosoft.cn/hexo-tool-cc@1.1.4/source/js/utils.js"></script><script src="https://npm.onmicrosoft.cn/hexo-tool-cc@1.1.4/source/js/main.js"></script><script src="https://npm.onmicrosoft.cn/hexo-theme-anzhiyu@1.6.8/source/js/tw_cn.js"></script><script src="https://npm.onmicrosoft.cn/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.umd.js"></script><script src="https://npm.onmicrosoft.cn/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://npm.onmicrosoft.cn/vanilla-lazyload@17.8.4/dist/lazyload.iife.min.js"></script><script src="https://npm.onmicrosoft.cn/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><script>(() => {
+  const initArtalk = () => {
+    window.artalkItem = new Artalk(Object.assign({
+      el: '#artalk-wrap',
+      server: 'https://artalk.reaicc.com',
+      site: 'blog.reaicc.com',
+      pageKey: location.pathname,
+      darkMode: document.documentElement.getAttribute('data-theme') === 'dark',
+      countEl: '.artalk-count',
+      emoticons: [
+        "https://artalk.reaicc.com/static/images/artalk.json",
+        "https://emotion-new.acs.pw/aru/artalk.json"
+      ]
+    },null))
+
+    if (GLOBAL_CONFIG.lightbox === 'null') return
+    window.artalkItem.use(ctx => {
+      ctx.on('list-loaded', () => {
+        ctx.getCommentList().forEach(comment => {
+          const $content = comment.getRender().$content
+          anzhiyu.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
+        })
+      })
+    })
+  }
+
+  const loadArtalk = async () => {
+    if (typeof window.artalkItem === 'object') initArtalk()
+    else {
+      await getCSS('https://npm.onmicrosoft.cn/artalk@2.5.5/dist/Artalk.css')
+      await getScript('https://npm.onmicrosoft.cn/artalk@2.5.5/dist/Artalk.js')
+      initArtalk()
+    }
+  }
+
+  const artalkChangeMode = theme => {
+    const artalkWrap = document.getElementById('artalk-wrap')
+    if (!(artalkWrap && artalkWrap.children.length)) return
+    const isDark = theme === 'dark'
+    window.artalkItem.setDarkMode(isDark)
+  }
+
+
+  anzhiyu.addGlobalFn('themeChange', artalkChangeMode, 'artalk')
+  
+  if ('Artalk' === 'Artalk' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('artalk-wrap'), loadArtalk)
+    else loadArtalk()
+  } else {
+    window.loadOtherComment = loadArtalk
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getSetting = async () => {
+    try {
+      const res = await fetch('https://artalk.reaicc.com/api/conf', { method: 'GET' })
+      return await res.json()
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  const headerList = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Origin': window.location.origin
+    },
+    body: new URLSearchParams({
+      'site_name': 'blog.reaicc.com',
+      'limit': '6',
+      'type':'latest_comments'
+    })
+  }
+
+  const getComment = async () => {
+    try {
+      const res = await fetch('https://artalk.reaicc.com/api/stat', headerList)
+      const result = await res.json()
+      const avatarStr = await getSetting()
+      const { mirror, params, default:defaults } = avatarStr.data.frontend_conf.gravatar
+      const avatarCdn = false || mirror
+      let avatarDefault = false || params || defaults
+      avatarDefault = avatarDefault.startsWith('d=') ? avatarDefault : `d=${avatarDefault}`
+      const artalk = result.data.map(function (e) {
+        return {
+          'avatar': `${avatarCdn}${e.email_encrypted}?${avatarDefault}`,
+          'content': changeContent(e.content_marked),
+          'nick': e.nick,
+          'url': e.page_url,
+          'date': e.date,
+        }
+      })
+      saveToLocal.set('artalk-newest-comments', JSON.stringify(artalk), 10/(60*24))
+      generateHtml(artalk)
+    } catch (e) {
+      console.log(e)
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('artalk-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "visitor@anheyu.com";
+</script><script async data-pjax src="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script src="/js/fjGallery.min.js"></script><script>!function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"JrxUXpJaHkoUhitk",ck:"JrxUXpJaHkoUhitk"});</script><script src="https://unpkg.com/artalk@2.4.4/dist/Artalk.js"></script><script src="/js/bgCh.js"></script><script src="/shuoshuo/coco-message.js"></script><link rel="stylesheet" href="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://npm.onmicrosoft.cn/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.onmicrosoft.cn/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://npm.onmicrosoft.cn/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/link/"]):not([href="/friends/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

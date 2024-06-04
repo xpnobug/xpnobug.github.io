@@ -1,0 +1,137 @@
+@charset "UTF-8";
+.sticky {
+    position: -webkit-sticky;
+    /* Safari */
+    position: sticky;
+    top: 0;
+    z-index: 9;
+}
+
+.row {
+    margin-top: 50px;
+}
+
+.article {
+    width: 100%;
+    padding: 14px;
+}
+
+.article_title {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.article_content {
+    color: #999999;
+    padding-top: 5px;
+}
+
+hr {
+    margin: 0;
+    padding: 0;
+}
+
+.hr_margin {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.active-menu {
+    color: #fff !important;
+}
+
+.detail_article {
+    width: 100%;
+    border: 1px solid #ccc;
+    padding: 14px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+    word-wrap: break-word;
+}
+
+.detail_article_desc {
+    color: #123;
+    padding-top: 10px;
+}
+
+.detail_article_detail {
+    font-size: 17px;
+    color: #123;
+    line-height: 1.8em;
+}
+
+pre {
+    padding: 0px;
+}
+
+.detail_article_detail ul {
+    line-height: 30px;
+}
+
+code {
+    white-space: pre !important;
+    overflow-x: auto;
+    font-size: 14px !important;
+}
+
+.active-menu {
+    color: #fff !important;
+}
+
+.type-link {
+    color: #337AB7;
+}
+
+.c-type-link {
+    color: #fff;
+}
+
+.interview_wrap {
+    border: 1px solid #ccc;
+    padding: 14px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.interview_wrap::-webkit-scrollbar {
+    display: none;
+}
+
+.interview {
+    width: 100%;
+    word-wrap: break-word;
+}
+
+.interview_detail {
+    font-size: 17px;
+    color: #123;
+    margin-top: 25px;
+    line-height: 1.8em;
+}
+
+.interview_descr {
+    font-size: 17px;
+}
+
+.interview_detail ul {
+    line-height: 30px;
+}
+
+.title_len {
+    max-width: 95%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.tree::-webkit-scrollbar {
+    display: none;
+}
+
+.modal.fade.in {
+    top: 90px;
+}
+
+#pre {
+    margin-right: 15px;
+}

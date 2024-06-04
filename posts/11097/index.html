@@ -1,0 +1,506 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>数据库影响因素之硬件、存储引擎和事务 | REAI</title><meta name="keywords" content="mysql"><meta name="author" content="REAI"><meta name="copyright" content="REAI"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="数据库影响因素之硬件、存储引擎和事务"><meta name="application-name" content="数据库影响因素之硬件、存储引擎和事务"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="数据库影响因素之硬件、存储引擎和事务"><meta property="og:url" content="https://blog.reaicc.com/posts/11097/index.html"><meta property="og:site_name" content="REAI"><meta property="og:description" content="影响数据库的因素 Sql查询速度 服务器硬件 存储引擎 大表 大事务  服务器硬件CPUMYSQL不支持多核并发，会带来两方面的风险：  大量的并发使数据库连接数被占满。max_connection 默认为100 CPU耗尽导致宕机QPS：每秒钟处理的查询量  更多核数还是更高频率视具体情况而定：高"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640"><meta property="article:author" content="REAI"><meta property="article:tag" content="REAI,reai,博客,技术博客,程序员,程序员博客,编程,代码,开源,IT,互联网,前后端,前端,后端,设计,设计模式,数据结构,算法,面试,学习,读书,读书笔记,笔记,笔记软件,笔记系统,笔记工具,笔记方法"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640"><meta name="description" content="影响数据库的因素 Sql查询速度 服务器硬件 存储引擎 大表 大事务  服务器硬件CPUMYSQL不支持多核并发，会带来两方面的风险：  大量的并发使数据库连接数被占满。max_connection 默认为100 CPU耗尽导致宕机QPS：每秒钟处理的查询量  更多核数还是更高频率视具体情况而定：高"><link rel="shortcut icon" href="/img/Cat.svg"><link rel="canonical" href="https://blog.reaicc.com/posts/11097/"><link rel="preconnect" href="//npm.onmicrosoft.cn"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="codeva-7zzTxzlayy"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://npm.onmicrosoft.cn/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.onmicrosoft.cn/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"REAI","mode":"tianli","switchBtn":true,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"J3BBucxpYNx1hMr4pl1j","Referer":"https://blog.reaicc.com/"},
+  diytitle: undefined,
+  LA51: {"enable":true,"ck":"JrxUXpJaHkoUhitk","LingQueMonitorID":"JrxcoymH8UkasaaS"},
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: REAI","link":"链接: ","source":"来源: REAI","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.onmicrosoft.cn/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.onmicrosoft.cn/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'REAI',
+  title: '数据库影响因素之硬件、存储引擎和事务',
+  postAI: '',
+  pageFillDescription: '影响数据库的因素, 服务器硬件, CPU, 磁盘IO, RAID, 固态硬盘, 网卡流量, 插件式存储引擎, InnoDB, MyISAM, Memory, Archive, 总结对比, 大表, 大事务, 并发事务带来的问题, 事务隔离级别, 大事务解决影响数据库的因素查询速度服务器硬件存储引擎大表大事务服务器硬件不支持多核并发会带来两方面的风险大量的并发使数据库连接数被占满默认为耗尽导致宕机每秒钟处理的查询量更多核数还是更高频率视具体情况而定高并发选更多核密集和复杂选更高频率磁盘硬件升级调整计划任务避开高峰期做好磁盘维护独立磁盘冗余数组的基本思想就是把多个相对便宜的硬盘组合起来成为一个磁盘数组使性能达到甚至超过一个价格昂贵容量巨大的硬盘将多个磁盘合并成一个大的磁盘不会有冗余并行速度最快在所有的级别中的速度是最快的理论上多磁盘的效能就等于单一磁盘效能磁盘数但实际上受限于总线瓶颈及其他因素的影响效能会随边际递减也就是说假设一个磁盘的效能是两个磁盘的效能约三个磁盘的也许是而不是两组以上的个磁盘相互作为镜像在一些多线程操作系统中能有很好的读取速度但写入速度略有降低的数据安全性在所有的级别上来说是最好的但是所有中磁盘利用率最低的一个级别是一种存储性能数据安全和存储成本兼顾的存储解决方案它使用的是硬盘分区技术至少需要三个硬盘不对存储的数据进行备份而是把数据和相对应的奇偶校验信息存储到组成的各个磁盘上并且奇偶校验信息和相对应的数据分别存储于不同的磁盘上当的一个磁盘数据发生损坏后利用剩下的数据和相应的奇偶校验信息去恢复被损坏的数据写入数据的速度相当慢若使用可以让性能改善不少和是先镜像再分区数据将所有硬盘分为两组视为的最低组合然后将这两组各自视为运作有着不错的读取速度而且拥有比更高的数据保护性则与的程序相反先分区再将数据镜射到两组硬盘巧妙地利用了的速度及的安全保护两种特性它的缺点是需要较多的硬盘因为至少必须拥有四个以上的偶数硬盘才能使用对于数据库应用来说是最好的选择它同时兼顾了和的特性但是当一个磁盘失效时性能可能会受到很大的影响因为条带会成为瓶颈固态硬盘接口的也支持卡如不支持成本太高且会占一定内存优点是速度快固态硬盘适用于存在大量随机的场景也可用于解决单线程负载的瓶颈用于单线程的从服务器更好网卡流量采用高性能和高带宽的网络接口和交换机对多个网卡绑定增强可用性和带宽减少从服务器数量进行缓存升级避免使用查询分离业务网络和服务器网络插件式存储引擎数据库的核心在于存储引擎存储引擎的好处是每个存储引擎都有各自的特点能够根据具体的应用建立不同存储引擎表由以下几部分组成连接池组件管理服务和工具组件接口组件查询分析器组件优化器组件缓冲组件插件式存储引擎物理文件设置引擎存储引擎支持事务其设计目标主要面向在线事务处理的应用其特点是行锁设计支持外键并支持类似于的非锁定读即默认读取操作不会产生锁从数据库版本开始存储引擎是默认的存储引擎独立表空间可以用命令压缩而系统表空间处理起来则较为复杂空间很难回收独立表空间可以提高性能支持事务特性有和行级锁支持更多的并发适合面向在线事务处理的应用后来也开始支持全文索引和空间函数查看状态通过使用多版本并发控制来获得高并发性并且实现了标准的种隔离级别默认为级别同时使用一种被称为的策略来避免幻读现象的产生除此之外储存引擎还提供了插入缓冲二次写自适应哈希索引预读等高性能和高可用的功能对于表中数据的存储存储引擎采用了聚集的方式因此每张表的存储都是按主键的顺序进行存放如果没有显式地在表定义时指定主键存储引擎会为每一行生成一个字节的并以此作为主键版本之前存储引擎是默认的存储引擎不支持事务表锁设计缓冲池只缓存索引文件而不缓冲数据文件支持全文索引主要面向一些数据库应用存储引擎表由和组成用来存放数据文件用来存放索引文件表锁的设计使得读写操作是互斥的读写混合的并发性不好没有事务日志表修复支持全文索引和前缀索引只读文件支持数据压缩工具使用赫夫曼编码静态算法来压缩数据因此使用工具压缩后的表是只读的在版本之前默认支持的表大小为如果需要支持大于的表时则需要制定和属性从版本开始默认支持的单表数据适用场景非事务型应用如非财务管理应用只读应用共享锁并发空间类应用支持空间函数如应用存储引擎之前称存储引擎将表中的数据存放在内存中如果数据库重启或发生崩溃表中的数据都将消失但是表结构还存在因为放在磁盘上存储引擎默认使用哈希索引而不是我们熟悉的树索引所以默认情况下等值查询快不能进行范围索引要根据业务需求选择索引只支持表锁并发性能较差并且不支持和列类型最重要的是存储变长字段时是按照定常字段的方式进行的因此会浪费内存数据库使用存储引擎作为临时表来存放查询的中间结果集如果中间结果集大于存储引擎表的容量设置又或者中间结果含有或列类型字段则数据库会把其转换到存储引擎表而存放到磁盘中存储引擎只支持和操作从开始支持索引存储引擎使用算法将数据行进行压缩后存储压缩比一般可达正如其名字所示存储引擎非常适合存储归档数据如日志信息存储引擎使用行锁来实现高并发的插入操作但是其本身并不是事务安全的存储引擎其设计目标主要是提供高速的插入和压缩功能总结对比考虑因素事务备份错误恢复存储引擎特征大表分库分表主键的选择分表后跨分区数据的查询和统计历史数据归档减少对前后端业务的影响归档时间点的选择大事务事务并发事务带来的问题脏读当一个事务正在访问数据并且对数据进行了修改而这种修改还没有提交到数据库中这时另外一个事务也访问了这个数据然后使用了这个数据丢失修改指在一个事务读取一个数据时另外一个事务也访问了该数据那么在第一个事务中修改了这个数据后第二个事务也修改了这个数据这样第一个事务内的修改结果就被丢失因此称为丢失修改不可重复读指在一个事务内多次读同一数据在这个事务还没有结束时另一个事务也访问该数据那么在第一个事务中的两次读数据之间由于第二个事务的修改导致第一个事务两次读取的数据可能不太一样这就发生了在一个事务内两次读到的数据是不一样的情况因此称为不可重复读幻读幻读与不可重复读类似它发生在一个事务读取了几行数据接着另一个并发事务插入了一些数据时在随后的查询中第一个事务就会发现多了一些原本不存在的记录就好像发生了幻觉一样所以称为幻读不可重复度和幻读区别不可重复读的重点是修改幻读的重点在于新增或者删除事务隔离级别标准定义了四个隔离级别读取未提交最低的隔离级别允许读取尚未提交的数据变更可能会导致脏读幻读或不可重复读读取已提交允许读取并发事务已经提交的数据可以阻止脏读但是幻读或不可重复读仍有可能发生可重读对同一字段的多次读取结果都是一致的除非数据是被本身事务自己所修改可以阻止脏读和不可重复读但幻读仍有可能发生可串行化最高的隔离级别完全服从的隔离级别所有的事务依次逐个执行这样事务之间就完全不可能产生干扰也就是说该级别可以防止脏读不可重复读以及幻读存储引擎的默认支持的隔离级别是可重读我们可以通过命令来查看存储引擎在可重读事务隔离级别下使用的是锁算法因此可以避免幻读的产生这与其他数据库系统如是不同的所以说存储引擎的默认支持的隔离级别是可重读已经可以完全保证事务的隔离性要求即达到了标准的可串行化隔离级别存储引擎在分布式事务的情况下一般会用到可串行化隔离级别大事务解决问题锁定太多的数据造成阻塞和锁超时回滚时间长执行时间长分批处理移出不必要的操作',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-05 05:45:22',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/css/about-tag.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-article-double-row-kx/assets/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@1.0.17/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script async src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://npm.onmicrosoft.cn/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.reaicc.com/" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wangyiyun.png" alt="网易云音乐"/><span class="back-menu-item-text">网易云音乐</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://news.reaicc.com/" title="每日早报"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://news.reaicc.com/favicon.svg" alt="每日早报"/><span class="back-menu-item-text">每日早报</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">REAI</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/friends/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/?id=6709358233&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/notice/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 时间轴</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" alt="wechat" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/wechat.jpg"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="alipay" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/alipay.jpg"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Ant/" style="font-size: 1.05rem;">Ant<sup>1</sup></a><a href="/tags/Cookie/" style="font-size: 1.05rem;">Cookie<sup>2</sup></a><a href="/tags/Dozer/" style="font-size: 1.05rem;">Dozer<sup>1</sup></a><a href="/tags/Filter/" style="font-size: 1.05rem;">Filter<sup>1</sup></a><a href="/tags/Freemark/" style="font-size: 1.05rem;">Freemark<sup>1</sup></a><a href="/tags/Freenom/" style="font-size: 1.05rem;">Freenom<sup>1</sup></a><a href="/tags/HTTPS/" style="font-size: 1.05rem;">HTTPS<sup>1</sup></a><a href="/tags/Html/" style="font-size: 1.05rem;">Html<sup>1</sup></a><a href="/tags/JSP/" style="font-size: 1.05rem;">JSP<sup>1</sup></a><a href="/tags/Java/" style="font-size: 1.05rem;">Java<sup>39</sup></a><a href="/tags/JavaBean/" style="font-size: 1.05rem;">JavaBean<sup>2</sup></a><a href="/tags/JavaWeb/" style="font-size: 1.05rem;">JavaWeb<sup>11</sup></a><a href="/tags/Jetty/" style="font-size: 1.05rem;">Jetty<sup>2</sup></a><a href="/tags/Jsoup/" style="font-size: 1.05rem;">Jsoup<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>8</sup></a><a href="/tags/Listener/" style="font-size: 1.05rem;">Listener<sup>1</sup></a><a href="/tags/Lombok/" style="font-size: 1.05rem;">Lombok<sup>1</sup></a><a href="/tags/Maven/" style="font-size: 1.05rem;">Maven<sup>6</sup></a><a href="/tags/Mybatis-Plus/" style="font-size: 1.05rem;">Mybatis Plus<sup>1</sup></a><a href="/tags/Reflections/" style="font-size: 1.05rem;">Reflections<sup>1</sup></a><a href="/tags/Servlet/" style="font-size: 1.05rem;">Servlet<sup>2</sup></a><a href="/tags/Session/" style="font-size: 1.05rem;">Session<sup>1</sup></a><a href="/tags/Thumbnailator/" style="font-size: 1.05rem;">Thumbnailator<sup>1</sup></a><a href="/tags/Thymeleaf/" style="font-size: 1.05rem;">Thymeleaf<sup>1</sup></a><a href="/tags/Tomcat/" style="font-size: 1.05rem;">Tomcat<sup>6</sup></a><a href="/tags/Velocity/" style="font-size: 1.05rem;">Velocity<sup>1</sup></a><a href="/tags/ZXing/" style="font-size: 1.05rem;">ZXing<sup>1</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>1</sup></a><a href="/tags/flex/" style="font-size: 1.05rem;">flex<sup>1</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 1.05rem;">反射<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86/" style="font-size: 1.05rem;">图形处理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E5%8C%85/" style="font-size: 1.05rem;">工具包<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.05rem;">教程<sup>8</sup></a><a href="/tags/%E6%97%A5%E5%BF%97/" style="font-size: 1.05rem;">日志<sup>1</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.05rem;">服务器<sup>6</sup></a><a href="/tags/%E6%9D%A1%E5%BD%A2%E7%A0%81/" style="font-size: 1.05rem;">条形码<sup>1</sup></a><a href="/tags/%E6%9E%84%E5%BB%BA/" style="font-size: 1.05rem;">构建<sup>7</sup></a><a href="/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" style="font-size: 1.05rem;">模板引擎<sup>3</sup></a><a href="/tags/%E9%82%AE%E4%BB%B6/" style="font-size: 1.05rem;">邮件<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/mysql/" itemprop="url">mysql</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/mysql/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>mysql</span></a></span></div></div><h1 class="post-title" itemprop="name headline">数据库影响因素之硬件、存储引擎和事务</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2024-06-04T21:43:10.296Z" title="发表于 2024-06-05 05:43:10">2024-06-05</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-06-04T21:45:22.018Z" title="更新于 2024-06-05 05:45:22">2024-06-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span id="" data-flag-title="数据库影响因素之硬件、存储引擎和事务"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="ArtalkPV"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为北京"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>北京</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://blog.reaicc.com/posts/11097/"><header><a class="post-meta-categories" href="/categories/mysql/" itemprop="url">mysql</a><a href="/tags/mysql/" tabindex="-1" itemprop="url">mysql</a><h1 id="CrawlerTitle" itemprop="name headline">数据库影响因素之硬件、存储引擎和事务</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">REAI</span><time itemprop="dateCreated datePublished" datetime="2024-06-04T21:43:10.296Z" title="发表于 2024-06-05 05:43:10">2024-06-05</time><time itemprop="dateCreated datePublished" datetime="2024-06-04T21:45:22.018Z" title="更新于 2024-06-05 05:45:22">2024-06-05</time></header><h3 id="影响数据库的因素"><a href="#影响数据库的因素" class="headerlink" title="影响数据库的因素"></a>影响数据库的因素</h3><ol>
+<li>Sql查询速度</li>
+<li>服务器硬件</li>
+<li>存储引擎</li>
+<li>大表</li>
+<li>大事务</li>
+</ol>
+<h3 id="服务器硬件"><a href="#服务器硬件" class="headerlink" title="服务器硬件"></a>服务器硬件</h3><h4 id="CPU"><a href="#CPU" class="headerlink" title="CPU"></a>CPU</h4><p>MYSQL不支持多核并发，会带来两方面的风险：</p>
+<ul>
+<li>大量的并发使数据库连接数被占满。max_connection 默认为100</li>
+<li>CPU耗尽导致宕机<br>QPS：每秒钟处理的查询量</li>
+</ul>
+<p>更多核数还是更高频率视具体情况而定：高并发选更多核；CPU密集和复杂SQL选更高频率</p>
+<h4 id="磁盘IO"><a href="#磁盘IO" class="headerlink" title="磁盘IO"></a>磁盘IO</h4><p>硬件升级<br>调整计划任务，避开高峰期，做好磁盘维护</p>
+<h5 id="RAID"><a href="#RAID" class="headerlink" title="RAID"></a>RAID</h5><p>RAID（Redundant Array of Independent Disks，独立磁盘冗余数组）的基本思想就是把多个相对便宜的硬盘组合起来，成为一个磁盘数组，使性能达到甚至超过一个价格昂贵、容量巨大的硬盘。</p>
+<p>RAID 0：将多个磁盘合并成一个大的磁盘，不会有冗余，并行I/O，速度最快。在所有的级别中，RAID 0的速度是最快的。理论上，多磁盘的效能就等于（单一磁盘效能）×（磁盘数），但实际上受限于总线I/O瓶颈及其他因素的影响，RAID效能会随<strong>边际递减</strong>。也就是说，假设一个磁盘的效能是50MB/s，两个磁盘的RAID 0效能约96MB/s，三个磁盘的RAID 0也许是130MB/s而不是150MB/s。</p>
+<p>RAID 1：两组以上的N个磁盘相互作为镜像，在一些多线程操作系统中能有很好的读取速度，但写入速度略有降低。RAID 1的数据安全性在所有的RAID级别上来说是最好的。但是所有RAID中磁盘利用率最低的一个级别。</p>
+<p>RAID 5：是一种存储性能、数据安全和存储成本兼顾的存储解决方案。它使用的是Disk Striping（硬盘分区）技术。RAID 5至少需要三个硬盘，RAID 5不对存储的数据进行备份，而是把数据和相对应的<strong>奇偶校验信息</strong>存储到组成RAID 5的各个磁盘上，并且奇偶校验信息和相对应的数据分别存储于不同的磁盘上。当RAID 5的一个磁盘数据发生损坏后，利用剩下的数据和相应的奇偶校验信息去恢复被损坏的数据。<strong>写入数据的速度相当慢</strong>，若使用Write Back可以让性能改善不少。</p>
+<p>RAID 10和RAID 01：RAID 10是先镜像再分区数据，将所有硬盘分为两组，视为RAID 0的最低组合，然后将这两组各自视为RAID 1运作。RAID 10有着不错的读取速度，而且拥有比RAID 0更高的数据保护性。RAID 01则与RAID 10的程序相反，先分区再将数据镜射到两组硬盘。RAID 10巧妙地利用了RAID 0的速度及RAID 1的安全（保护）两种特性，它的缺点是需要较多的硬盘，因为至少必须拥有四个以上的偶数硬盘才能使用。</p>
+<p>对于数据库应用来说，<strong>RAID 10</strong>是最好的选择，它同时兼顾了RAID 1和RAID 0的特性。但是，当一个磁盘失效时，性能可能会受到很大的影响，因为条带（strip）会成为瓶颈。</p>
+<h5 id="固态硬盘"><a href="#固态硬盘" class="headerlink" title="固态硬盘"></a>固态硬盘</h5><p>SATA接口的SSD 也支持RAID<br>PCI-E卡，如Fusion IO。不支持SATA，RAID成本太高，且会占一定内存，优点是速度快。<br>固态硬盘适用于存在大量随机I/O的场景，也可用于解决单线程负载的I/O瓶颈——用于单线程的从服务器更好</p>
+<h4 id="网卡流量"><a href="#网卡流量" class="headerlink" title="网卡流量"></a>网卡流量</h4><p>采用高性能和高带宽的网络接口和交换机<br>对多个网卡绑定，增强可用性和带宽<br>减少从服务器数量<br>进行缓存升级<br>避免使用select * 查询<br>分离业务网络和服务器网络</p>
+<h3 id="插件式存储引擎"><a href="#插件式存储引擎" class="headerlink" title="插件式存储引擎"></a>插件式存储引擎</h3><p><strong>MySQL数据库的核心在于存储引擎。</strong>存储引擎的好处是，每个存储引擎都有各自的特点，能够根据具体的应用建立不同存储引擎表。</p>
+<p>MySQL由以下几部分组成：<br>□ 连接池组件<br>□ 管理服务和工具组件<br>□ SQL接口组件<br>□ 查询分析器组件<br>□ 优化器组件<br>□ 缓冲（Cache）组件<br>□ 插件式存储引擎<br>□ 物理文件</p>
+<p>设置引擎<code>create table name () engine=myisam</code></p>
+<h4 id="InnoDB"><a href="#InnoDB" class="headerlink" title="InnoDB"></a>InnoDB</h4><p>InnoDB存储引擎支持事务，其设计目标主要面向在线事务处理（OLTP）的应用。其特点是行锁设计、支持外键，并支持类似于Oracle的非锁定读，即默认读取操作不会产生锁。从MySQL数据库5.5.8版本开始，InnoDB存储引擎是默认的存储引擎。</p>
+<p>独立表空间可以用<code>optimize table</code>命令压缩，而系统表空间处理起来则较为复杂，空间很难回收；独立表空间可以提高IO性能</p>
+<ul>
+<li>支持事务ACID特性，有redo log和undo log</li>
+<li>行级锁，支持更多的并发</li>
+<li>适合面向在线事务处理（OLTP）的应用</li>
+<li>后来也开始支持全文索引和空间函数</li>
+</ul>
+<p>查看状态<strong>show engine innodb status</strong></p>
+<p>InnoDB通过使用多版本并发控制（MVCC）来获得高并发性，并且实现了SQL标准的4种隔离级别，<strong>默认为REPEATABLE级别</strong>。同时，使用一种被称为<strong>next-key locking的策略来避免幻读（phantom）</strong>现象的产生。除此之外，InnoDB储存引擎还提供了插入缓冲（insert buffer）、二次写（double write）、自适应哈希索引（adaptive hash index）、预读（read ahead）等高性能和高可用的功能。</p>
+<p>对于表中数据的存储，InnoDB存储引擎采用了聚集（clustered）的方式，因此每张表的存储都是按主键的顺序进行存放。如果没有显式地在表定义时指定主键，InnoDB存储引擎会为每一行生成一个6字节的ROWID，并以此作为主键。</p>
+<h4 id="MyISAM"><a href="#MyISAM" class="headerlink" title="MyISAM"></a>MyISAM</h4><p>MySQL 5.5.8版本之前MyISAM存储引擎是默认的存储引擎<br>不支持事务、表锁设计，缓冲池只缓存（cache）索引文件，而不缓冲数据文件<br>支持全文索引，主要面向一些OLAP数据库应用。</p>
+<p>MyISAM存储引擎表由MYD和MYI组成，MYD用来存放数据文件，MYI用来存放索引文件。</p>
+<ul>
+<li>表锁的设计使得读写操作是互斥的，读写混合的并发性不好</li>
+<li>没有事务日志，表修复check/repair table</li>
+<li>支持全文索引和前缀索引</li>
+<li>只读文件支持数据压缩，myisampack工具使用赫夫曼（Huffman）编码静态算法来压缩数据，因此使用myisampack工具压缩后的表是只读的</li>
+<li>在MySQL 5.0版本之前，MyISAM默认支持的表大小为4GB，如果需要支持大于4GB的MyISAM表时，则需要制定MAX_ROWS和AVG_ROW_LENGTH属性。从MySQL 5.0版本开始，MyISAM默认支持256TB的单表数据</li>
+</ul>
+<p>适用场景</p>
+<ol>
+<li>非事务型应用，如非财务管理应用</li>
+<li>只读应用，共享锁并发</li>
+<li>空间类应用，支持空间函数，如GPS应用</li>
+</ol>
+<h4 id="Memory"><a href="#Memory" class="headerlink" title="Memory"></a>Memory</h4><p>Memory存储引擎（之前称HEAP存储引擎）将表中的数据存放在<strong>内存</strong>中，如果数据库重启或发生崩溃，表中的数据都将消失。但是表结构还存在，因为放在磁盘上</p>
+<p>Memory存储引擎默认使用<strong>哈希索引</strong>，而不是我们熟悉的B+树索引。所以默认情况下等值查询快，不能进行范围索引。要根据业务需求选择索引</p>
+<p>只支持表锁，并发性能较差，并且不支持TEXT和BLOB列类型。最重要的是，存储变长字段（varchar）时是按照定常字段（char）的方式进行的，因此会浪费内存</p>
+<p>MySQL数据库使用Memory存储引擎作为临时表来存放查询的中间结果集（intermediate result）。如果中间结果集大于Memory存储引擎表的容量设置，又或者中间结果含有TEXT或BLOB列类型字段，则MySQL数据库会把其转换到MyISAM存储引擎表而存放到磁盘中。</p>
+<h4 id="Archive"><a href="#Archive" class="headerlink" title="Archive"></a>Archive</h4><p>Archive存储引擎<strong>只支持INSERT和SELECT操作</strong>，从MySQL 5.1开始支持索引。Archive存储引擎使用zlib算法将数据行（row）进行压缩后存储，压缩比一般可达1∶10。正如其名字所示，Archive存储引擎非常适合存储归档数据，如<strong>日志</strong>信息。Archive存储引擎使用行锁来实现高并发的插入操作，但是其本身并不是事务安全的存储引擎，其设计目标主要是提供高速的插入和压缩功能。</p>
+<h4 id="总结对比"><a href="#总结对比" class="headerlink" title="总结对比"></a>总结对比</h4><p>考虑因素：事务，备份，错误恢复，存储引擎特征</p>
+<h3 id="大表"><a href="#大表" class="headerlink" title="大表"></a>大表</h3><p>分库分表：主键的选择，分表后跨分区数据的查询和统计<br>历史数据归档，减少对前后端业务的影响：归档时间点的选择</p>
+<h3 id="大事务"><a href="#大事务" class="headerlink" title="大事务"></a>大事务</h3><p>事务：ACID</p>
+<h4 id="并发事务带来的问题"><a href="#并发事务带来的问题" class="headerlink" title="并发事务带来的问题"></a>并发事务带来的问题</h4><ul>
+<li>脏读（Dirty read）: 当一个事务正在访问数据并且对数据进行了修改，而这种修改还没有提交到数据库中，这时另外一个事务也访问了这个数据，然后使用了这个数据。</li>
+<li>丢失修改（Lost to modify）: 指在一个事务读取一个数据时，另外一个事务也访问了该数据，那么在第一个事务中修改了这个数据后，第二个事务也修改了这个数据。这样第一个事务内的修改结果就被丢失，因此称为丢失修改。</li>
+<li>不可重复读（Unrepeatableread）: 指在一个事务内多次读同一数据。在这个事务还没有结束时，另一个事务也访问该数据。那么，在第一个事务中的两次读数据之间，由于第二个事务的修改导致第一个事务两次读取的数据可能不太一样。这就发生了在一个事务内两次读到的数据是不一样的情况，因此称为不可重复读。</li>
+<li>幻读（Phantom read）: 幻读与不可重复读类似。它发生在一个事务（T1）读取了几行数据，接着另一个并发事务（T2）插入了一些数据时。在随后的查询中，第一个事务（T1）就会发现多了一些原本不存在的记录，就好像发生了幻觉一样，所以称为幻读。</li>
+</ul>
+<p><strong>不可重复度和幻读区别：不可重复读的重点是修改，幻读的重点在于新增或者删除。</strong></p>
+<h4 id="事务隔离级别"><a href="#事务隔离级别" class="headerlink" title="事务隔离级别"></a>事务隔离级别</h4><p>SQL 标准定义了四个隔离级别：</p>
+<ul>
+<li>READ-UNCOMMITTED(读取未提交)： 最低的隔离级别，允许读取尚未提交的数据变更，可能会导致脏读、幻读或不可重复读</li>
+<li>READ-COMMITTED(读取已提交): 允许读取并发事务已经提交的数据，可以阻止脏读，但是幻读或不可重复读仍有可能发生</li>
+<li>REPEATABLE-READ（可重读）: 对同一字段的多次读取结果都是一致的，除非数据是被本身事务自己所修改，可以阻止脏读和不可重复读，但幻读仍有可能发生。</li>
+<li>SERIALIZABLE(可串行化): 最高的隔离级别，完全服从ACID的隔离级别。所有的事务依次逐个执行，这样事务之间就完全不可能产生干扰，也就是说，该级别可以防止脏读、不可重复读以及幻读。</li>
+</ul>
+<p><strong>MySQL InnoDB 存储引擎的默认支持的隔离级别是 REPEATABLE-READ（可重读）</strong>。我们可以通过SELECT @@tx_isolation;命令来查看<br>InnoDB 存储引擎在 REPEATABLE-READ（可重读）事务隔离级别下使用的是Next-Key Lock 锁算法，因此可以避免幻读的产生，这与其他数据库系统(如 SQL Server)是不同的。所以说InnoDB 存储引擎的默认支持的隔离级别是 REPEATABLE-READ（可重读） 已经可以完全保证事务的隔离性要求，即达到了 SQL标准的SERIALIZABLE(可串行化)隔离级别。<br>InnoDB 存储引擎在 分布式事务 的情况下一般会用到SERIALIZABLE(可串行化)隔离级别。</p>
+<h4 id="大事务解决"><a href="#大事务解决" class="headerlink" title="大事务解决"></a>大事务解决</h4><p>问题：锁定太多的数据，造成阻塞和锁超时；回滚时间长；执行时间长</p>
+<ul>
+<li>分批处理</li>
+<li>移出不必要的select 操作</li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" title="头像" alt="头像"></a><div class="post-copyright__author_name">REAI</div><div class="post-copyright__author_desc">遇见即是上上签</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.reaicc.com/posts/11097/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://blog.reaicc.com/posts/11097/')">数据库影响因素之硬件、存储引擎和事务</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.reaicc.com/posts/11097/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=数据库影响因素之硬件、存储引擎和事务&amp;url=https://blog.reaicc.com/posts/11097/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="rm.copyPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.reaicc.com" target="_blank">REAI</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/mysql/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>mysql<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://npm.onmicrosoft.cn/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://npm.onmicrosoft.cn/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/55928/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Flex布局</div></div></a></div><div class="next-post pull-right"><a href="/posts/64074/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Git关联Github和码云并利用IDEA内置工具</div></div></a></div></nav><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="artalk-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" ait="status"/></div></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">这有关于<b style="color:#fff">产品、设计、开发</b>相关的问题和看法，还有<b style="color:#fff">文章翻译</b>和<b style="color:#fff">分享</b>。</div><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">相信你可以在这里找到对你有用的<b style="color:#fff">知识</b>和<b style="color:#fff">教程</b>。</div></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(/img/qrcode_gzh.jpg) center center / 100% no-repeat"></div></div></div></div><div class="card-widget" id="newYear"><div class="item-headline"><i></i><span></span></div><div class="item-content"><div id="newYear-main"><div class="mask"></div> <p class="title"></p> <div class="newYear-time"></div> <p class="today" style="text-align: right;"></p> </div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%B1%E5%93%8D%E6%95%B0%E6%8D%AE%E5%BA%93%E7%9A%84%E5%9B%A0%E7%B4%A0"><span class="toc-number">1.</span> <span class="toc-text">影响数据库的因素</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%A1%AC%E4%BB%B6"><span class="toc-number">2.</span> <span class="toc-text">服务器硬件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#CPU"><span class="toc-number">2.1.</span> <span class="toc-text">CPU</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A3%81%E7%9B%98IO"><span class="toc-number">2.2.</span> <span class="toc-text">磁盘IO</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#RAID"><span class="toc-number">2.2.1.</span> <span class="toc-text">RAID</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9B%BA%E6%80%81%E7%A1%AC%E7%9B%98"><span class="toc-number">2.2.2.</span> <span class="toc-text">固态硬盘</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E5%8D%A1%E6%B5%81%E9%87%8F"><span class="toc-number">2.3.</span> <span class="toc-text">网卡流量</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6%E5%BC%8F%E5%AD%98%E5%82%A8%E5%BC%95%E6%93%8E"><span class="toc-number">3.</span> <span class="toc-text">插件式存储引擎</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#InnoDB"><span class="toc-number">3.1.</span> <span class="toc-text">InnoDB</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MyISAM"><span class="toc-number">3.2.</span> <span class="toc-text">MyISAM</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Memory"><span class="toc-number">3.3.</span> <span class="toc-text">Memory</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Archive"><span class="toc-number">3.4.</span> <span class="toc-text">Archive</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%80%BB%E7%BB%93%E5%AF%B9%E6%AF%94"><span class="toc-number">3.5.</span> <span class="toc-text">总结对比</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E8%A1%A8"><span class="toc-number">4.</span> <span class="toc-text">大表</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E4%BA%8B%E5%8A%A1"><span class="toc-number">5.</span> <span class="toc-text">大事务</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B9%B6%E5%8F%91%E4%BA%8B%E5%8A%A1%E5%B8%A6%E6%9D%A5%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">5.1.</span> <span class="toc-text">并发事务带来的问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%8B%E5%8A%A1%E9%9A%94%E7%A6%BB%E7%BA%A7%E5%88%AB"><span class="toc-number">5.2.</span> <span class="toc-text">事务隔离级别</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%A4%A7%E4%BA%8B%E5%8A%A1%E8%A7%A3%E5%86%B3"><span class="toc-number">5.3.</span> <span class="toc-text">大事务解决</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/58328/" title="发布一个npm包">发布一个npm包</a><time datetime="2024-06-04T22:08:41.090Z" title="发表于 2024-06-05 06:08:41">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/48591/" title="HTTP:报文，缓存，Cookie与HTTPS">HTTP:报文，缓存，Cookie与HTTPS</a><time datetime="2024-06-04T22:05:46.160Z" title="发表于 2024-06-05 06:05:46">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/35707/" title="Linux命令之文件与权限管理">Linux命令之文件与权限管理</a><time datetime="2024-06-04T21:58:39.201Z" title="发表于 2024-06-05 05:58:39">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/64074/" title="Git关联Github和码云并利用IDEA内置工具">Git关联Github和码云并利用IDEA内置工具</a><time datetime="2024-06-04T21:52:50.241Z" title="发表于 2024-06-05 05:52:50">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/11097/" title="数据库影响因素之硬件、存储引擎和事务">数据库影响因素之硬件、存储引擎和事务</a><time datetime="2024-06-04T21:43:10.296Z" title="发表于 2024-06-05 05:43:10">2024-06-05</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:2877406366@qq.com" title="email"><i class="anzhiyufont anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com" title="微博"><i class="anzhiyufont anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php" title="facebook"><i class="anzhiyufont anzhiyufont anzhiyu-icon-facebook1"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/" title="Github"><i class="anzhiyufont anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com" title="Bilibili"><i class="anzhiyufont anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.douyin.com/user/MS4wLjABAAAARlF7u0o6BTIX0KiHreekyz5_nqDUauZDgG6AtnpESAI" title="抖音"><i class="anzhiyufont anzhiyufont anzhiyu-icon-tiktok"></i></a></div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener" href="https://www.foreverblog.cn/">十年之约</a><a class="footer-item" title="开往" target="_blank" rel="noopener" href="https://github.com/travellings-link/travellings">开往</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档" href="/docs/">文档</a><a class="footer-item" title="源码" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu">源码</a><a class="footer-item" title="更新日志" href="/update/">更新日志</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="友链文章" href="/fcircle/">友链文章</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">协议</div><div class="footer-links"><a class="footer-item" title="隐私协议" href="/privacy/">隐私协议</a><a class="footer-item" title="Cookies" href="/cookies/">Cookies</a><a class="footer-item" title="版权协议" href="/copyright/">版权协议</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2024 By <a class="footer-bar-link" href="/" title="REAI" target="_blank">REAI</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="京ICP备2023019859号-1">京ICP备2023019859号-1</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">64</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">29</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.reaicc.com/" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wangyiyun.png" alt="网易云音乐"/><span class="back-menu-item-text">网易云音乐</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://news.reaicc.com/" title="每日早报"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://news.reaicc.com/favicon.svg" alt="每日早报"/><span class="back-menu-item-text">每日早报</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/friends/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/?id=6709358233&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/notice/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 时间轴</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Ant/" style="font-size: 0.88rem;">Ant<sup>1</sup></a><a href="/tags/Cookie/" style="font-size: 0.88rem;">Cookie<sup>2</sup></a><a href="/tags/Dozer/" style="font-size: 0.88rem;">Dozer<sup>1</sup></a><a href="/tags/Filter/" style="font-size: 0.88rem;">Filter<sup>1</sup></a><a href="/tags/Freemark/" style="font-size: 0.88rem;">Freemark<sup>1</sup></a><a href="/tags/Freenom/" style="font-size: 0.88rem;">Freenom<sup>1</sup></a><a href="/tags/HTTPS/" style="font-size: 0.88rem;">HTTPS<sup>1</sup></a><a href="/tags/Html/" style="font-size: 0.88rem;">Html<sup>1</sup></a><a href="/tags/JSP/" style="font-size: 0.88rem;">JSP<sup>1</sup></a><a href="/tags/Java/" style="font-size: 0.88rem;">Java<sup>39</sup></a><a href="/tags/JavaBean/" style="font-size: 0.88rem;">JavaBean<sup>2</sup></a><a href="/tags/JavaWeb/" style="font-size: 0.88rem;">JavaWeb<sup>11</sup></a><a href="/tags/Jetty/" style="font-size: 0.88rem;">Jetty<sup>2</sup></a><a href="/tags/Jsoup/" style="font-size: 0.88rem;">Jsoup<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>8</sup></a><a href="/tags/Listener/" style="font-size: 0.88rem;">Listener<sup>1</sup></a><a href="/tags/Lombok/" style="font-size: 0.88rem;">Lombok<sup>1</sup></a><a href="/tags/Maven/" style="font-size: 0.88rem;">Maven<sup>6</sup></a><a href="/tags/Mybatis-Plus/" style="font-size: 0.88rem;">Mybatis Plus<sup>1</sup></a><a href="/tags/Reflections/" style="font-size: 0.88rem;">Reflections<sup>1</sup></a><a href="/tags/Servlet/" style="font-size: 0.88rem;">Servlet<sup>2</sup></a><a href="/tags/Session/" style="font-size: 0.88rem;">Session<sup>1</sup></a><a href="/tags/Thumbnailator/" style="font-size: 0.88rem;">Thumbnailator<sup>1</sup></a><a href="/tags/Thymeleaf/" style="font-size: 0.88rem;">Thymeleaf<sup>1</sup></a><a href="/tags/Tomcat/" style="font-size: 0.88rem;">Tomcat<sup>6</sup></a><a href="/tags/Velocity/" style="font-size: 0.88rem;">Velocity<sup>1</sup></a><a href="/tags/ZXing/" style="font-size: 0.88rem;">ZXing<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>1</sup></a><a href="/tags/flex/" style="font-size: 0.88rem;">flex<sup>1</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 0.88rem;">反射<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86/" style="font-size: 0.88rem;">图形处理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E5%8C%85/" style="font-size: 0.88rem;">工具包<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem;">教程<sup>8</sup></a><a href="/tags/%E6%97%A5%E5%BF%97/" style="font-size: 0.88rem;">日志<sup>1</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 0.88rem;">服务器<sup>6</sup></a><a href="/tags/%E6%9D%A1%E5%BD%A2%E7%A0%81/" style="font-size: 0.88rem;">条形码<sup>1</sup></a><a href="/tags/%E6%9E%84%E5%BB%BA/" style="font-size: 0.88rem;">构建<sup>7</sup></a><a href="/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" style="font-size: 0.88rem;">模板引擎<sup>3</sup></a><a href="/tags/%E9%82%AE%E4%BB%B6/" style="font-size: 0.88rem;">邮件<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="6709358233" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="none"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/playlist?id=6709358233&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="https://npm.onmicrosoft.cn/hexo-tool-cc@1.1.4/source/js/utils.js"></script><script src="https://npm.onmicrosoft.cn/hexo-tool-cc@1.1.4/source/js/main.js"></script><script src="https://npm.onmicrosoft.cn/hexo-theme-anzhiyu@1.6.8/source/js/tw_cn.js"></script><script src="https://npm.onmicrosoft.cn/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.umd.js"></script><script src="https://npm.onmicrosoft.cn/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://npm.onmicrosoft.cn/vanilla-lazyload@17.8.4/dist/lazyload.iife.min.js"></script><script src="https://npm.onmicrosoft.cn/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><script>(() => {
+  const initArtalk = () => {
+    window.artalkItem = new Artalk(Object.assign({
+      el: '#artalk-wrap',
+      server: 'https://artalk.reaicc.com',
+      site: 'blog.reaicc.com',
+      pageKey: location.pathname,
+      darkMode: document.documentElement.getAttribute('data-theme') === 'dark',
+      countEl: '.artalk-count',
+      emoticons: [
+        "https://artalk.reaicc.com/static/images/artalk.json",
+        "https://emotion-new.acs.pw/aru/artalk.json"
+      ]
+    },null))
+
+    if (GLOBAL_CONFIG.lightbox === 'null') return
+    window.artalkItem.use(ctx => {
+      ctx.on('list-loaded', () => {
+        ctx.getCommentList().forEach(comment => {
+          const $content = comment.getRender().$content
+          anzhiyu.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
+        })
+      })
+    })
+  }
+
+  const loadArtalk = async () => {
+    if (typeof window.artalkItem === 'object') initArtalk()
+    else {
+      await getCSS('https://npm.onmicrosoft.cn/artalk@2.5.5/dist/Artalk.css')
+      await getScript('https://npm.onmicrosoft.cn/artalk@2.5.5/dist/Artalk.js')
+      initArtalk()
+    }
+  }
+
+  const artalkChangeMode = theme => {
+    const artalkWrap = document.getElementById('artalk-wrap')
+    if (!(artalkWrap && artalkWrap.children.length)) return
+    const isDark = theme === 'dark'
+    window.artalkItem.setDarkMode(isDark)
+  }
+
+
+  anzhiyu.addGlobalFn('themeChange', artalkChangeMode, 'artalk')
+  
+  if ('Artalk' === 'Artalk' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('artalk-wrap'), loadArtalk)
+    else loadArtalk()
+  } else {
+    window.loadOtherComment = loadArtalk
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getSetting = async () => {
+    try {
+      const res = await fetch('https://artalk.reaicc.com/api/conf', { method: 'GET' })
+      return await res.json()
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  const headerList = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Origin': window.location.origin
+    },
+    body: new URLSearchParams({
+      'site_name': 'blog.reaicc.com',
+      'limit': '6',
+      'type':'latest_comments'
+    })
+  }
+
+  const getComment = async () => {
+    try {
+      const res = await fetch('https://artalk.reaicc.com/api/stat', headerList)
+      const result = await res.json()
+      const avatarStr = await getSetting()
+      const { mirror, params, default:defaults } = avatarStr.data.frontend_conf.gravatar
+      const avatarCdn = false || mirror
+      let avatarDefault = false || params || defaults
+      avatarDefault = avatarDefault.startsWith('d=') ? avatarDefault : `d=${avatarDefault}`
+      const artalk = result.data.map(function (e) {
+        return {
+          'avatar': `${avatarCdn}${e.email_encrypted}?${avatarDefault}`,
+          'content': changeContent(e.content_marked),
+          'nick': e.nick,
+          'url': e.page_url,
+          'date': e.date,
+        }
+      })
+      saveToLocal.set('artalk-newest-comments', JSON.stringify(artalk), 10/(60*24))
+      generateHtml(artalk)
+    } catch (e) {
+      console.log(e)
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('artalk-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "visitor@anheyu.com";
+</script><script async data-pjax src="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script src="/js/fjGallery.min.js"></script><script>!function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"JrxUXpJaHkoUhitk",ck:"JrxUXpJaHkoUhitk"});</script><script src="https://unpkg.com/artalk@2.4.4/dist/Artalk.js"></script><script src="/js/bgCh.js"></script><script src="/shuoshuo/coco-message.js"></script><link rel="stylesheet" href="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://npm.onmicrosoft.cn/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.onmicrosoft.cn/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://npm.onmicrosoft.cn/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/link/"]):not([href="/friends/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

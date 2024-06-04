@@ -1,0 +1,596 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Thymeleaf 快速入门 | REAI</title><meta name="keywords" content="Java,模板引擎,Thymeleaf"><meta name="author" content="REAI"><meta name="copyright" content="REAI"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Thymeleaf 快速入门"><meta name="application-name" content="Thymeleaf 快速入门"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Thymeleaf 快速入门"><meta property="og:url" content="https://blog.reaicc.com/posts/33db93c3/index.html"><meta property="og:site_name" content="REAI"><meta property="og:description" content="Thymeleaf 快速入门标准方言标准方言是指 Thymeleaf 定义了一组功能，这些功能应该足以满足大多数情况。可以识别这些标准方言在模板中的使用，因为它将包含以th前缀开头的属性，如&amp;lt;span th:text&amp;#x3D;&amp;quot;...&amp;quot;&amp;gt;。 表达式$&amp;amp;#123;...&amp;amp;#12"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640"><meta property="article:author" content="REAI"><meta property="article:tag" content="REAI,reai,博客,技术博客,程序员,程序员博客,编程,代码,开源,IT,互联网,前后端,前端,后端,设计,设计模式,数据结构,算法,面试,学习,读书,读书笔记,笔记,笔记软件,笔记系统,笔记工具,笔记方法"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640"><meta name="description" content="Thymeleaf 快速入门标准方言标准方言是指 Thymeleaf 定义了一组功能，这些功能应该足以满足大多数情况。可以识别这些标准方言在模板中的使用，因为它将包含以th前缀开头的属性，如&amp;lt;span th:text&amp;#x3D;&amp;quot;...&amp;quot;&amp;gt;。 表达式$&amp;amp;#123;...&amp;amp;#12"><link rel="shortcut icon" href="/img/Cat.svg"><link rel="canonical" href="https://blog.reaicc.com/posts/33db93c3/"><link rel="preconnect" href="//npm.onmicrosoft.cn"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="codeva-7zzTxzlayy"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://npm.onmicrosoft.cn/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.onmicrosoft.cn/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"REAI","mode":"tianli","switchBtn":true,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"J3BBucxpYNx1hMr4pl1j","Referer":"https://blog.reaicc.com/"},
+  diytitle: undefined,
+  LA51: {"enable":true,"ck":"JrxUXpJaHkoUhitk","LingQueMonitorID":"JrxcoymH8UkasaaS"},
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: REAI","link":"链接: ","source":"来源: REAI","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.onmicrosoft.cn/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.onmicrosoft.cn/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'REAI',
+  title: 'Thymeleaf 快速入门',
+  postAI: '',
+  pageFillDescription: 'Thymeleaf 快速入门, 标准方言, 表达式, 变量表达式, 选择表达式, 消息(i18n)表达式, 链接(URL)表达式, 片段表达式, 表达式预处理, 文字和操作, 基本属性, 标准 URL, 绝对网址, 上下文相关 URL, 与服务器相关 URL, 协议相关 URL, 添加参数, 网址片段标识符, URL 重写, URL 其它属性, 在 URL 中使用表达式, 扩展, 参考资料快速入门标准方言标准方言是指定义了一组功能这些功能应该足以满足大多数情况可以识别这些标准方言在模板中的使用因为它将包含以前缀开头的属性如表达式变量表达式选择表达式消息表达式链接表达式片段表达式变量表达式变量表达式是表达式如果将与集成在上下文变量上也称为术语中的模型属性则为它们看起来像这样它们作为属性值或作为它们的一部分取决于属性上面的表达式与下面是相同的在和中但是不仅在涉及输出的场景中找到变量表达式而且还可以使用更复杂的处理方式如条件迭代等等这里从上下文中选择名为的变量并在中使用循环将其评估为迭代器选择表达式选择表达式就像变量表达式一样它们不是整个上下文变量映射上执行而是在先前选择的对象它们看起来像这样它们所作用的对象由属性指定所以这相当于消息表达式消息表达式通常称为文本外部化国际化或允许从外部源如文件中检索特定于语言环境的消息通过键来引用这引用消息在应用程序中它将自动与的机制集成如下以下是在模板中使用它们的方式请注意如果希望消息键由上下文变量的值确定或者希望将变量指定为参数则可以在消息表达式中使用变量表达式链接表达式链接表达式在构建并向其添加有用的上下文和会话信息通常称为重写的过程因此对于部署在服务器的上下文中的应用程序可以使用以下表达式可以转换成如下的东西甚至如果需要保持会话并且未启用或者服务器还不知道那么生成的格式为网址也可以带参数如下所示这将产生类似以下的结果注意符号会在标签属性中进行转义链接表达式可以是相对的在这种情况下应用程序上下文将不会被加到的前面也是服务器相对的同样没有应用程序上下文的前缀和协议相关就像绝对一样但浏览器将使用与正在显示的页面相同的或协议当然链接表达式也可以是绝对的但是绝对或协议相对在链接表达式中应该添加什么值很简单由响应过滤器定义重写在基于的应用程序中对于每个输出的上下文相对相对绝对在显示之前总是调用机制这意味着一个过滤器可以通过包装对象来为应用程序执行自定义的重写片段表达式片段表达式是一种简单的方法用来表示标记的片段并将其移动到模板中由于这些表达式片段可以被复制传递给其他模板的参数等等最常见的是使用或来插入片段但是它们可以在任何地方使用就像任何其他变量一样片段表达式可以有参数表达式预处理关于表达式的最后一件事是知道表达式预处理在之间指定如下所示上面代码中第一个被执行的变量表达式是并且将使用它的结果作为表达式的一部分假设的结果为在此处执行国际化的情况下这将查找与关键消息文字和操作有很多类型的文字和操作可用它们分别如下文字文本文字例如数字文字例如布尔文字例如文字例如文字标记例如文本操作字符串连接文字替换算术运算二进制操作减号一元运算符布尔运算二进制运算符布尔否定一元运算符比较和相等比较运算符相等运算符条件操作符基本属性下面来看看标准方言中的几个最基本的属性从文本开始它代替了标签的主体现在重复它所在元素的次数由它的表达式返回的数组或列表所指定的次数为迭代元素创建一个内部变量其语法与的表达式相同最后为特定的和属性提供了许多属性这些属性只评估它们的表达式并将这些属性的值设置为结果标准标准方言称为和提供了一种在应用程序中轻松创建的方法以便它们包含任何所需的工件这是通过连接表达方式来完成的这是一种类似于标准的表现绝对网址绝对用于创建到其他服务器的链接它们需要指定一个协议名称或开头上面链接不会被修改除非在服务器上配置了重写过滤器并在方法中执行修改最后生成的代码如下上下文相关最常用的类型是上下文相关的这些是一旦安装在服务器上就会与应用程序根相关联例如如果将一个名称为的文件部署到一个服务器中那么应用程序一般是通过来访问就是上下文名称与上下文相关的以字符开头如果应用程序访问为则此将输出与服务器相关服务器相关的与上下文相关的非常相似只是它们不假定要链接到应用程序上下文中的资源因此允许链接到同一服务器中的不同上下文当前应用程序的上下文将被忽略因此尽管应用程序部署在但该将输出协议相关与协议相关的实际上是绝对的它将保持用于显示当前页面的协议它们通常用于包括样式脚本等外部资源它将呈现与上面一致的重写除外如添加参数如何向使用表达式创建的添加参数这也很简单上面示例代码最终将输出为也可以添加几个参数用逗号分隔它们上面代码将输出结果为注意符号在标签属性中进行转义还可以使用正常参数的路径变量的形式包含参数但在的路径中指定一个占位符上面输出结果为网址片段标识符片段标识符可以包含在中包含参数和不包含参数它们将始终包含在网址的基础上参考以下代码执行输出结果如下重写允许在应用程序中配置重写过滤器它通过调用模板生成的每个的的类中的方法来实现下面在应用程序中支持重写操作的标准方式并允许自动检测用户是否启用了如果未启用或者如果它是第一个请求并且配置仍未知则将片段添加到在需要时自动将代理配置应用于使用不同的设置以便链接到分布在多个服务器中的内容其它属性不要以为在表达式中只有属性来表示事实上它们可以像变量表达式或消息外部化国际化一样用于任何地方例如表单提交时可使用以下写法或作为其他表达的一部分如下作为外部化国际化字符串的参数在中使用表达式下面来看看如下所示的表达式但和都不能是文字值因为只有在运行时才能知道它们的值怎么办下面看看另一个表达式如下所示它其实是下面的一个快捷方式这意味着基本身可以被指定为一个表达式例如一个变量表达式或外部化国际化的文本甚至可以使用复杂的表达式包括条件表达式例如如果要更清洁那么可以使用又或者扩展参考资料官网教程',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2022-02-17 22:34:30',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/css/about-tag.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-article-double-row-kx/assets/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@1.0.17/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script async src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://npm.onmicrosoft.cn/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.reaicc.com/" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wangyiyun.png" alt="网易云音乐"/><span class="back-menu-item-text">网易云音乐</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://news.reaicc.com/" title="每日早报"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://news.reaicc.com/favicon.svg" alt="每日早报"/><span class="back-menu-item-text">每日早报</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">REAI</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/friends/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/?id=6709358233&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/notice/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 时间轴</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" alt="wechat" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/wechat.jpg"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="alipay" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/alipay.jpg"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Ant/" style="font-size: 1.05rem;">Ant<sup>1</sup></a><a href="/tags/Cookie/" style="font-size: 1.05rem;">Cookie<sup>2</sup></a><a href="/tags/Dozer/" style="font-size: 1.05rem;">Dozer<sup>1</sup></a><a href="/tags/Filter/" style="font-size: 1.05rem;">Filter<sup>1</sup></a><a href="/tags/Freemark/" style="font-size: 1.05rem;">Freemark<sup>1</sup></a><a href="/tags/Freenom/" style="font-size: 1.05rem;">Freenom<sup>1</sup></a><a href="/tags/HTTPS/" style="font-size: 1.05rem;">HTTPS<sup>1</sup></a><a href="/tags/Html/" style="font-size: 1.05rem;">Html<sup>1</sup></a><a href="/tags/JSP/" style="font-size: 1.05rem;">JSP<sup>1</sup></a><a href="/tags/Java/" style="font-size: 1.05rem;">Java<sup>39</sup></a><a href="/tags/JavaBean/" style="font-size: 1.05rem;">JavaBean<sup>2</sup></a><a href="/tags/JavaWeb/" style="font-size: 1.05rem;">JavaWeb<sup>11</sup></a><a href="/tags/Jetty/" style="font-size: 1.05rem;">Jetty<sup>2</sup></a><a href="/tags/Jsoup/" style="font-size: 1.05rem;">Jsoup<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>8</sup></a><a href="/tags/Listener/" style="font-size: 1.05rem;">Listener<sup>1</sup></a><a href="/tags/Lombok/" style="font-size: 1.05rem;">Lombok<sup>1</sup></a><a href="/tags/Maven/" style="font-size: 1.05rem;">Maven<sup>6</sup></a><a href="/tags/Mybatis-Plus/" style="font-size: 1.05rem;">Mybatis Plus<sup>1</sup></a><a href="/tags/Reflections/" style="font-size: 1.05rem;">Reflections<sup>1</sup></a><a href="/tags/Servlet/" style="font-size: 1.05rem;">Servlet<sup>2</sup></a><a href="/tags/Session/" style="font-size: 1.05rem;">Session<sup>1</sup></a><a href="/tags/Thumbnailator/" style="font-size: 1.05rem;">Thumbnailator<sup>1</sup></a><a href="/tags/Thymeleaf/" style="font-size: 1.05rem;">Thymeleaf<sup>1</sup></a><a href="/tags/Tomcat/" style="font-size: 1.05rem;">Tomcat<sup>6</sup></a><a href="/tags/Velocity/" style="font-size: 1.05rem;">Velocity<sup>1</sup></a><a href="/tags/ZXing/" style="font-size: 1.05rem;">ZXing<sup>1</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>1</sup></a><a href="/tags/flex/" style="font-size: 1.05rem;">flex<sup>1</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 1.05rem;">反射<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86/" style="font-size: 1.05rem;">图形处理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E5%8C%85/" style="font-size: 1.05rem;">工具包<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.05rem;">教程<sup>8</sup></a><a href="/tags/%E6%97%A5%E5%BF%97/" style="font-size: 1.05rem;">日志<sup>1</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.05rem;">服务器<sup>6</sup></a><a href="/tags/%E6%9D%A1%E5%BD%A2%E7%A0%81/" style="font-size: 1.05rem;">条形码<sup>1</sup></a><a href="/tags/%E6%9E%84%E5%BB%BA/" style="font-size: 1.05rem;">构建<sup>7</sup></a><a href="/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" style="font-size: 1.05rem;">模板引擎<sup>3</sup></a><a href="/tags/%E9%82%AE%E4%BB%B6/" style="font-size: 1.05rem;">邮件<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url">编程</a><i class="anzhiyufont anzhiyu-icon-angle-right post-meta-separator"></i><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/Java/" itemprop="url">Java</a><i class="anzhiyufont anzhiyu-icon-angle-right post-meta-separator"></i><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/Java/%E5%B7%A5%E5%85%B7/" itemprop="url">工具</a><i class="anzhiyufont anzhiyu-icon-angle-right post-meta-separator"></i><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/Java/%E5%B7%A5%E5%85%B7/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" itemprop="url">模板引擎</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Java/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Java</span></a><a class="article-meta__tags" href="/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>模板引擎</span></a><a class="article-meta__tags" href="/tags/Thymeleaf/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Thymeleaf</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Thymeleaf 快速入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2022-02-17T14:34:30.000Z" title="发表于 2022-02-17 22:34:30">2022-02-17</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2022-02-17T14:34:30.000Z" title="更新于 2022-02-17 22:34:30">2022-02-17</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span id="" data-flag-title="Thymeleaf 快速入门"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="ArtalkPV"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为北京"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>北京</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://blog.reaicc.com/posts/33db93c3/"><header><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url">编程</a><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/Java/" itemprop="url">Java</a><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/Java/%E5%B7%A5%E5%85%B7/" itemprop="url">工具</a><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/Java/%E5%B7%A5%E5%85%B7/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" itemprop="url">模板引擎</a><a href="/tags/Java/" tabindex="-1" itemprop="url">Java</a><a href="/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" tabindex="-1" itemprop="url">模板引擎</a><a href="/tags/Thymeleaf/" tabindex="-1" itemprop="url">Thymeleaf</a><h1 id="CrawlerTitle" itemprop="name headline">Thymeleaf 快速入门</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">REAI</span><time itemprop="dateCreated datePublished" datetime="2022-02-17T14:34:30.000Z" title="发表于 2022-02-17 22:34:30">2022-02-17</time><time itemprop="dateCreated datePublished" datetime="2022-02-17T14:34:30.000Z" title="更新于 2022-02-17 22:34:30">2022-02-17</time></header><h1 id="Thymeleaf-快速入门"><a href="#Thymeleaf-快速入门" class="headerlink" title="Thymeleaf 快速入门"></a>Thymeleaf 快速入门</h1><h2 id="标准方言"><a href="#标准方言" class="headerlink" title="标准方言"></a>标准方言</h2><p>标准方言是指 Thymeleaf 定义了一组功能，这些功能应该足以满足大多数情况。可以识别这些标准方言在模板中的使用，因为它将包含以<code>th</code>前缀开头的属性，如<code>&lt;span th:text=&quot;...&quot;&gt;</code>。</p>
+<h3 id="表达式"><a href="#表达式" class="headerlink" title="表达式"></a>表达式</h3><p><code>$&#123;...&#125;</code> : 变量表达式。</p>
+<p><code>*&#123;...&#125;</code> : 选择表达式。</p>
+<p><code>#&#123;...&#125;</code> : 消息 (i18n) 表达式。</p>
+<p><code>@&#123;...&#125;</code> : 链接 (URL) 表达式。</p>
+<p><code>~&#123;...&#125;</code> : 片段表达式。</p>
+<h4 id="变量表达式"><a href="#变量表达式" class="headerlink" title="变量表达式"></a>变量表达式</h4><p>变量表达式是 OGNL 表达式 - 如果将 Thymeleaf 与 Spring - 集成在上下文变量上(也称为 Spring 术语中的模型属性)，则为 Spring EL。 它们看起来像这样:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$&#123;session.user.name&#125;</span><br></pre></td></tr></table></figure>
+<p>它们作为属性值或作为它们的一部分，取决于属性:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;book.author.name&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面的表达式与下面是相同的(在 OGNL 和 SpringEL 中):</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">((Book)context.getVariable(<span class="string">&quot;book&quot;</span>)).getAuthor().getName()</span><br></pre></td></tr></table></figure>
+<p>但是不仅在涉及输出的场景中找到变量表达式，而且还可以使用更复杂的处理方式，如:条件，迭代…等等。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">th:each</span>=<span class="string">&quot;book : $&#123;books&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这里<code>$&#123;books&#125;</code>从上下文中选择名为<code>books</code>的变量，并在<code>th:each</code>中使用循环将其评估为迭代器。</p>
+<h4 id="选择表达式"><a href="#选择表达式" class="headerlink" title="选择表达式"></a>选择表达式</h4><p>选择表达式就像变量表达式一样，它们不是整个上下文变量映射上执行，而是在先前选择的对象。 它们看起来像这样:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">*&#123;customer.name&#125;</span><br></pre></td></tr></table></figure>
+<p>它们所作用的对象由<code>th:object</code>属性指定:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:object</span>=<span class="string">&quot;$&#123;book&#125;&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">span</span> <span class="attr">th:text</span>=<span class="string">&quot;*&#123;title&#125;&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>所以这相当于:</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">  <span class="comment">// th:object=&quot;$&#123;book&#125;&quot;</span></span><br><span class="line">  <span class="keyword">final</span> Book selection = (Book) context.getVariable(<span class="string">&quot;book&quot;</span>);</span><br><span class="line">  <span class="comment">// th:text=&quot;*&#123;title&#125;&quot;</span></span><br><span class="line">  output(selection.getTitle());</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="消息-i18n-表达式"><a href="#消息-i18n-表达式" class="headerlink" title="消息(i18n)表达式"></a>消息(i18n)表达式</h4><p>消息表达式(通常称为文本外部化，国际化或 i18n)允许从外部源(如:<code>.properties</code>)文件中检索特定于语言环境的消息，通过键来引用这引用消息。</p>
+<p>在 Spring 应用程序中，它将自动与 Spring 的 MessageSource 机制集成。如下 -</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">#&#123;main.title&#125;</span><br><span class="line">#&#123;message.entrycreated($&#123;entryId&#125;)&#125;</span><br></pre></td></tr></table></figure>
+<p>以下是在模板中使用它们的方式:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">table</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">th</span> <span class="attr">th:text</span>=<span class="string">&quot;#&#123;header.address.city&#125;&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">th</span> <span class="attr">th:text</span>=<span class="string">&quot;#&#123;header.address.country&#125;&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">th</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">table</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>请注意，如果希望消息键由上下文变量的值确定，或者希望将变量指定为参数，则可以在消息表达式中使用变量表达式:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#123;$&#123;config.adminWelcomeKey&#125;($&#123;session.user.name&#125;)&#125; Jsp</span><br></pre></td></tr></table></figure>
+<h4 id="链接-URL-表达式"><a href="#链接-URL-表达式" class="headerlink" title="链接(URL)表达式"></a>链接(URL)表达式</h4><p>链接表达式在构建 URL 并向其添加有用的上下文和会话信息(通常称为 URL 重写的过程)。<br>因此，对于部署在 Web 服务器的<code>/myapp</code>上下文中的 Web 应用程序，可以使用以下表达式:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/order/list&#125;&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>可以转换成如下的东西:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/myapp/order/list&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>甚至，如果需要保持会话，并且 cookie 未启用(或者服务器还不知道)，那么生成的格式为:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/myapp/order/list;jsessionid=s2ds3fa31abd241e2a01932&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span> HTML</span><br></pre></td></tr></table></figure>
+<p>网址也可以带参数，如下所示:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/order/details(id=$&#123;orderId&#125;,type=$&#123;orderType&#125;)&#125;&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这将产生类似以下的结果 -</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 注意＆符号会在标签属性中进行HTML转义... --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/myapp/order/details?id=23&amp;type=online&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>链接表达式可以是相对的，在这种情况下，应用程序上下文将不会被加到 URL 的前面:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;../documents/report&#125;&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>也是服务器相对的(同样，没有应用程序上下文的前缀):</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;~/contents/main&#125;&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>和协议相关(就像绝对 URL 一样，但浏览器将使用与正在显示的页面相同的 HTTP 或 HTTPS 协议):</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;//static.mycompany.com/res/initial&#125;&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当然，链接表达式也可以是绝对的:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;http://www.mycompany.com/main&#125;&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>但是绝对(或协议相对)URL ，在 Thymeleaf 链接表达式中应该添加什么值？ 很简单:由响应过滤器定义 URL 重写:在基于 Servlet 的 Web 应用程序中，对于每个输出的 URL(上下文相对，相对，绝对…)，在显示 URL 之前，Thymeleaf 总是调用<code>HttpServletResponse.encodeUrl(...)</code>机制。 这意味着一个过滤器可以通过包装 HttpServletResponse 对象来为应用程序执行自定义的 URL 重写。</p>
+<h4 id="片段表达式"><a href="#片段表达式" class="headerlink" title="片段表达式"></a>片段表达式</h4><p>片段表达式是一种简单的方法用来表示标记的片段并将其移动到模板中。 由于这些表达式，片段可以被复制，传递给其他模板的参数等等。</p>
+<p>最常见的是使用<code>th:insert</code>或<code>th:replace</code>来插入片段:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:insert</span>=<span class="string">&quot;~&#123;commons :: main&#125;&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>但是它们可以在任何地方使用，就像任何其他变量一样:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:with</span>=<span class="string">&quot;frag=~&#123;footer :: #main/text()&#125;&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">p</span> <span class="attr">th:insert</span>=<span class="string">&quot;$&#123;frag&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>片段表达式可以有参数。</p>
+<h4 id="表达式预处理"><a href="#表达式预处理" class="headerlink" title="表达式预处理"></a>表达式预处理</h4><p>关于表达式的最后一件事是知道表达式预处理，在<code>__</code>之间指定，如下所示:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">#&#123;selection.__$&#123;sel.code&#125;__&#125;</span><br></pre></td></tr></table></figure>
+<p>上面代码中，第一个被执行的变量表达式是:<code>$&#123;sel.code&#125;</code>，并且将使用它的结果作为表达式的一部分(假设<code>$&#123;sel.code&#125;</code>的结果为:<code>ALL</code>)，在此处执行国际化的情况下(这将查找与关键<code>selection.ALL</code>消息)。</p>
+<h3 id="文字和操作"><a href="#文字和操作" class="headerlink" title="文字和操作"></a>文字和操作</h3><p>有很多类型的文字和操作可用，它们分别如下:</p>
+<ul>
+<li>文字<ul>
+<li>文本文字，例如:<code>&#39;one text&#39;</code>, <code>&#39;Another one!&#39;</code>,<code>…</code></li>
+<li>数字文字，例如:<code>0</code>,<code>10</code>, <code>314</code>, <code>31.01</code>, <code>112.83</code>,<code>…</code></li>
+<li>布尔文字，例如:<code>true</code>,<code>false</code></li>
+<li>Null 文字，例如:<code>Null</code></li>
+<li>文字标记，例如:<code>one</code>, <code>sometext</code>, <code>main</code>,<code>…</code></li>
+</ul>
+</li>
+<li>文本操作:<ul>
+<li>字符串连接:<code>+</code></li>
+<li>文字替换:<code>|The name is $&#123;name&#125;|</code></li>
+</ul>
+</li>
+<li>算术运算:<ul>
+<li>二进制操作:<code>+</code>, <code>-</code>, <code>*</code>, <code>/</code>, <code>%</code></li>
+<li>减号(一元运算符):<code>-</code></li>
+</ul>
+</li>
+<li>布尔运算:<ul>
+<li>二进制运算符，<code>and</code>,<code>or</code></li>
+<li>布尔否定(一元运算符):<code>!</code>,<code>not</code></li>
+</ul>
+</li>
+<li>比较和相等:<ul>
+<li>比较运算符:<code>&gt;</code>,<code>&lt;</code>,<code>&gt;=</code>,<code>&lt;=</code>(<code>gt</code>,<code>lt</code>,<code>ge</code>,<code>le</code>)</li>
+<li>相等运算符:<code>==</code>, <code>!=</code> (<code>eq</code>, <code>ne</code>)</li>
+</ul>
+</li>
+<li>条件操作符:<ul>
+<li>If-then:<code>(if) ? (then)</code></li>
+<li>If-then-else:<code>(if) ? (then) : (else)</code></li>
+<li>Default: <code>(value) ?: (defaultvalue)</code></li>
+</ul>
+</li>
+</ul>
+<h3 id="基本属性"><a href="#基本属性" class="headerlink" title="基本属性"></a>基本属性</h3><p>下面来看看标准方言中的几个最基本的属性。 从<code>th:</code>文本开始，它代替了标签的主体:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span> <span class="attr">th:text</span>=<span class="string">&quot;#&#123;msg.welcome&#125;&quot;</span>&gt;</span>Welcome everyone!<span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>现在，<code>th:each</code>重复它所在元素的次数，由它的表达式返回的数组或列表所指定的次数，为迭代元素创建一个内部变量，其语法与 Java 的 foreach 表达式相同:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">li</span> <span class="attr">th:each</span>=<span class="string">&quot;book : $&#123;books&#125;&quot;</span> <span class="attr">th:text</span>=<span class="string">&quot;$&#123;book.title&#125;&quot;</span>&gt;</span></span><br><span class="line">  En las Orillas del Sar</span><br><span class="line"><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>最后，Thymeleaf 为特定的 XHTML 和 HTML5 属性提供了许多<code>th</code>属性，这些属性只评估它们的表达式，并将这些属性的值设置为结果。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/createOrder&#125;&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">input</span> <span class="attr">type</span>=<span class="string">&quot;button&quot;</span> <span class="attr">th:value</span>=<span class="string">&quot;#&#123;form.submit&#125;&quot;</span> /&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/admin/users&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h3 id="标准-URL"><a href="#标准-URL" class="headerlink" title="标准 URL"></a>标准 URL</h3><p>Thymeleaf 标准方言(称为 Standard 和 SpringStandard)提供了一种在 Web 应用程序中轻松创建 URL 的方法，以便它们包含任何所需的 URL 工件。 这是通过连接表达方式来完成的，这是一种类似于 Thymeleaf 标准的表现:<code>@&#123;...&#125;</code></p>
+<h4 id="绝对网址"><a href="#绝对网址" class="headerlink" title="绝对网址"></a>绝对网址</h4><p>绝对 URL 用于创建到其他服务器的链接。它们需要指定一个协议名称(<code>http://</code>或<code>https://</code>)开头。</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;https://www.yiibai.com/thymeleaf/&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面链接不会被修改，除非在服务器上配置了 URL 重写过滤器，并在<code>HttpServletResponse.encodeUrl(...)</code>方法中执行修改。最后生成的 HTML 代码如下:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;https://www.yiibai.com/thymeleaf/&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="上下文相关-URL"><a href="#上下文相关-URL" class="headerlink" title="上下文相关 URL"></a>上下文相关 URL</h4><p>最常用的 URL 类型是上下文相关的。 这些 URL 是一旦安装在服务器上，就会与 Web 应用程序根相关联 URL。 例如，如果将一个名称为<code>myapp.war</code>的文件部署到一个 Tomcat 服务器中，那么应用程序一般是通过 URL:<code>http://localhost:8080/myapp</code>来访问，<code>myapp</code>就是上下文名称。</p>
+<p>与上下文相关的 URL 以<code>/</code>字符开头:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/order/list&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果应用程序访问 URL 为:<code>http://localhost:8080/myapp</code>，则此 URL 将输出:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/myapp/order/list&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="与服务器相关-URL"><a href="#与服务器相关-URL" class="headerlink" title="与服务器相关 URL"></a>与服务器相关 URL</h4><p>服务器相关的 URL 与上下文相关的 URL 非常相似，只是它们不假定 URL 要链接到应用程序上下文中的资源，因此允许链接到同一服务器中的不同上下文:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;~/billing-app/showDetails.html&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>当前应用程序的上下文将被忽略，因此尽管应用程序部署在<code>http:// localhost:8080 / myapp</code>，但该 URL 将输出:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/billing-app/showDetails.html&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="协议相关-URL"><a href="#协议相关-URL" class="headerlink" title="协议相关 URL"></a>协议相关 URL</h4><p>与协议相关的 URL 实际上是绝对的 URL，它将保持用于显示当前页面的协议(HTTP，HTTPS)。 它们通常用于包括样式，脚本等外部资源:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">th:src</span>=<span class="string">&quot;@&#123;//scriptserver.example.net/myscript.js&#125;&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>它将呈现与上面一致的 URL(URL 重写除外)，如:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">script</span> <span class="attr">src</span>=<span class="string">&quot;//scriptserver.example.net/myscript.js&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="添加参数"><a href="#添加参数" class="headerlink" title="添加参数"></a>添加参数</h4><p>如何向使用<code>@&#123;...&#125;</code>表达式创建的 URL 添加参数？ 这也很简单:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/order/details(id=3)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面示例代码，最终将输出为:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/order/details?id=3&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>也可以添加几个参数，用逗号分隔它们:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/order/details(id=3,action=&#x27;show_all&#x27;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面代码将输出结果为:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">&lt;!-- 注意＆符号在标签属性中进行HTML转义... --&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/order/details?id=3&amp;action=show_all&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>还可以使用正常参数的路径变量的形式包含参数，但在 URL 的路径中指定一个占位符:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/order/&#123;id&#125;/details(id=3,action=&#x27;show_all&#x27;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>上面输出结果为:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">href</span>=<span class="string">&quot;/order/3/details?action=show_all&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="网址片段标识符"><a href="#网址片段标识符" class="headerlink" title="网址片段标识符"></a>网址片段标识符</h4><p>片段标识符可以包含在 URL 中，包含参数和不包含参数。 它们将始终包含在网址的基础上，参考以下代码:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/home#all_info(action=&#x27;show&#x27;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>执行输出结果如下 -</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;a href=&quot;/home?action=show#all_info&quot;&gt;</span><br></pre></td></tr></table></figure>
+<h4 id="URL-重写"><a href="#URL-重写" class="headerlink" title="URL 重写"></a>URL 重写</h4><p>Thymeleaf 允许在应用程序中配置 URL 重写过滤器，它通过调用 Thymeleaf 模板生成的每个 URL 的 Servlet API 的<code>javax.servlet.http.HttpServletResponse</code>类中的<code>response.encodeURL()</code>方法来实现。</p>
+<p>下面在 Java Web 应用程序中支持 URL 重写操作的标准方式，并允许 URL:</p>
+<ul>
+<li>自动检测用户是否启用了 Cookie，如果未启用或者如果它是第一个请求并且 cookie 配置仍未知。则将<code>;jsessionid=...</code>片段添加到 URL。</li>
+<li>在需要时自动将代理配置应用于 URL。</li>
+<li>使用不同的 CDN 设置，以便链接到分布在多个服务器中的内容。</li>
+</ul>
+<h4 id="URL-其它属性"><a href="#URL-其它属性" class="headerlink" title="URL 其它属性"></a>URL 其它属性</h4><p>不要以为在<code>@&#123;...&#125;</code>表达式中只有<code>th:href</code>属性来表示 URL 。 事实上，它们可以像变量表达式(<code>$&#123;...&#125;</code>)或消息外部化/国际化(<code>＃&#123;...&#125;</code>)一样用于任何地方。</p>
+<p>例如，表单提交时，可使用以下写法 -</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">form</span> <span class="attr">th:action</span>=<span class="string">&quot;@&#123;/order/processOrder&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">form</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>或作为其他表达的一部分。 如下作为外部化/国际化字符串的参数:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">p</span></span></span><br><span class="line"><span class="tag">  <span class="attr">th:text</span>=<span class="string">&quot;#&#123;orders.explanation(&#x27;3&#x27;, @&#123;/order/details(id=3,action=&#x27;show_all&#x27;)&#125;)&#125;&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">p</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="在-URL-中使用表达式"><a href="#在-URL-中使用表达式" class="headerlink" title="在 URL 中使用表达式"></a>在 URL 中使用表达式</h4><p>下面来看看，如下所示的 URL 表达式:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/order/details(id=3,action=&#x27;show_all&#x27;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>但<code>3</code>和<code>&#39;show_all&#39;</code>都不能是文字值，因为只有在运行时才能知道它们的值，怎么办？</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span></span></span><br><span class="line"><span class="tag">  <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/order/details(id=$&#123;order.id&#125;,action=($&#123;user.admin&#125; ? &#x27;show_all&#x27; : &#x27;show_public&#x27;))&#125;&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>下面看看另一个 URL 表达式，如下所示:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;/order/details(id=$&#123;order.id&#125;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>它其实是下面 URL 的一个快捷方式:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;&#x27;/order/details&#x27;(id=$&#123;order.id&#125;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>这意味着 URL 基本身可以被指定为一个表达式，例如一个变量表达式:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;$&#123;detailsURL&#125;(id=$&#123;order.id&#125;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>或外部化/国际化的文本:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;#&#123;orders.details.localized_url&#125;(id=$&#123;order.id&#125;)&#125;&quot;</span>&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>甚至可以使用复杂的表达式，包括条件表达式，例如:</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span></span></span><br><span class="line"><span class="tag">  <span class="attr">th:href</span>=<span class="string">&quot;@&#123;($&#123;user.admin&#125;? &#x27;/admin/home&#x27; : $&#123;user.homeUrl&#125;)(id=$&#123;order.id&#125;)&#125;&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>如果要更清洁，那么可以使用<code>th:with</code> :</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">a</span></span></span><br><span class="line"><span class="tag">  <span class="attr">th:with</span>=<span class="string">&quot;baseUrl=($&#123;user.admin&#125;? &#x27;/admin/home&#x27; : $&#123;user.homeUrl&#125;)&quot;</span></span></span><br><span class="line"><span class="tag">  <span class="attr">th:href</span>=<span class="string">&quot;@&#123;$&#123;baseUrl&#125;(id=$&#123;order.id&#125;)&#125;&quot;</span></span></span><br><span class="line"><span class="tag">&gt;</span><span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>又或者 -</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">th:with</span>=<span class="string">&quot;baseUrl=($&#123;user.admin&#125;? &#x27;/admin/home&#x27; : $&#123;user.homeUrl&#125;)&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;<span class="name">a</span> <span class="attr">th:href</span>=<span class="string">&quot;@&#123;$&#123;baseUrl&#125;(id=$&#123;order.id&#125;)&#125;&quot;</span>&gt;</span>...<span class="tag">&lt;/<span class="name">a</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h2 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h2><p>TODO</p>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://www.thymeleaf.org/">Thymeleaf 官网</a></li>
+<li><a target="_blank" rel="noopener" href="https://github.com/thymeleaf/thymeleaf/">Thymeleaf Github</a></li>
+<li><a target="_blank" rel="noopener" href="https://fanlychie.github.io/post/thymeleaf.html">Thymeleaf 教程</a></li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" title="头像" alt="头像"></a><div class="post-copyright__author_name">REAI</div><div class="post-copyright__author_desc">遇见即是上上签</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.reaicc.com/posts/33db93c3/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://blog.reaicc.com/posts/33db93c3/')">Thymeleaf 快速入门</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.reaicc.com/posts/33db93c3/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Thymeleaf 快速入门&amp;url=https://blog.reaicc.com/posts/33db93c3/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="rm.copyPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.reaicc.com" target="_blank">REAI</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Java/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Java<span class="tagsPageCount">39</span></a><a class="post-meta__box__tags" href="/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>模板引擎<span class="tagsPageCount">3</span></a><a class="post-meta__box__tags" href="/tags/Thymeleaf/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Thymeleaf<span class="tagsPageCount">1</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://npm.onmicrosoft.cn/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://npm.onmicrosoft.cn/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/bed8d6a9/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Velocity 快速入门</div></div></a></div><div class="next-post pull-right"><a href="/pages/34ec25/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Freemark 快速入门</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/pages/34ec25/" title="Freemark 快速入门"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">Freemark 快速入门</div></div></a></div><div><a href="/posts/bed8d6a9/" title="Velocity 快速入门"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">Velocity 快速入门</div></div></a></div><div><a href="/posts/da18907e/" title="javalib-log"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">javalib-log</div></div></a></div><div><a href="/pages/14e432/" title="javalib-util"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">javalib-util</div></div></a></div><div><a href="/pages/ea4914/" title="Reflections 快速入门"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">Reflections 快速入门</div></div></a></div><div><a href="/pages/da3f07/" title="JavaMail 快速入门"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">JavaMail 快速入门</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="artalk-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" ait="status"/></div></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">这有关于<b style="color:#fff">产品、设计、开发</b>相关的问题和看法，还有<b style="color:#fff">文章翻译</b>和<b style="color:#fff">分享</b>。</div><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">相信你可以在这里找到对你有用的<b style="color:#fff">知识</b>和<b style="color:#fff">教程</b>。</div></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(/img/qrcode_gzh.jpg) center center / 100% no-repeat"></div></div></div></div><div class="card-widget" id="newYear"><div class="item-headline"><i></i><span></span></div><div class="item-content"><div id="newYear-main"><div class="mask"></div> <p class="title"></p> <div class="newYear-time"></div> <p class="today" style="text-align: right;"></p> </div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Thymeleaf-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">Thymeleaf 快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A0%87%E5%87%86%E6%96%B9%E8%A8%80"><span class="toc-number">1.1.</span> <span class="toc-text">标准方言</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.1.1.</span> <span class="toc-text">表达式</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%98%E9%87%8F%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">变量表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%89%E6%8B%A9%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">选择表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B6%88%E6%81%AF-i18n-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.1.1.3.</span> <span class="toc-text">消息(i18n)表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%93%BE%E6%8E%A5-URL-%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.1.1.4.</span> <span class="toc-text">链接(URL)表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%87%E6%AE%B5%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.1.1.5.</span> <span class="toc-text">片段表达式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%A1%A8%E8%BE%BE%E5%BC%8F%E9%A2%84%E5%A4%84%E7%90%86"><span class="toc-number">1.1.1.6.</span> <span class="toc-text">表达式预处理</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%87%E5%AD%97%E5%92%8C%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.2.</span> <span class="toc-text">文字和操作</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9F%BA%E6%9C%AC%E5%B1%9E%E6%80%A7"><span class="toc-number">1.1.3.</span> <span class="toc-text">基本属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%A0%87%E5%87%86-URL"><span class="toc-number">1.1.4.</span> <span class="toc-text">标准 URL</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BB%9D%E5%AF%B9%E7%BD%91%E5%9D%80"><span class="toc-number">1.1.4.1.</span> <span class="toc-text">绝对网址</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8A%E4%B8%8B%E6%96%87%E7%9B%B8%E5%85%B3-URL"><span class="toc-number">1.1.4.2.</span> <span class="toc-text">上下文相关 URL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8E%E6%9C%8D%E5%8A%A1%E5%99%A8%E7%9B%B8%E5%85%B3-URL"><span class="toc-number">1.1.4.3.</span> <span class="toc-text">与服务器相关 URL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%8F%E8%AE%AE%E7%9B%B8%E5%85%B3-URL"><span class="toc-number">1.1.4.4.</span> <span class="toc-text">协议相关 URL</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%8F%82%E6%95%B0"><span class="toc-number">1.1.4.5.</span> <span class="toc-text">添加参数</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%BD%91%E5%9D%80%E7%89%87%E6%AE%B5%E6%A0%87%E8%AF%86%E7%AC%A6"><span class="toc-number">1.1.4.6.</span> <span class="toc-text">网址片段标识符</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#URL-%E9%87%8D%E5%86%99"><span class="toc-number">1.1.4.7.</span> <span class="toc-text">URL 重写</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#URL-%E5%85%B6%E5%AE%83%E5%B1%9E%E6%80%A7"><span class="toc-number">1.1.4.8.</span> <span class="toc-text">URL 其它属性</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%9C%A8-URL-%E4%B8%AD%E4%BD%BF%E7%94%A8%E8%A1%A8%E8%BE%BE%E5%BC%8F"><span class="toc-number">1.1.4.9.</span> <span class="toc-text">在 URL 中使用表达式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%89%A9%E5%B1%95"><span class="toc-number">1.2.</span> <span class="toc-text">扩展</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.3.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/58328/" title="发布一个npm包">发布一个npm包</a><time datetime="2024-06-04T22:08:41.090Z" title="发表于 2024-06-05 06:08:41">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/48591/" title="HTTP:报文，缓存，Cookie与HTTPS">HTTP:报文，缓存，Cookie与HTTPS</a><time datetime="2024-06-04T22:05:46.160Z" title="发表于 2024-06-05 06:05:46">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/35707/" title="Linux命令之文件与权限管理">Linux命令之文件与权限管理</a><time datetime="2024-06-04T21:58:39.201Z" title="发表于 2024-06-05 05:58:39">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/64074/" title="Git关联Github和码云并利用IDEA内置工具">Git关联Github和码云并利用IDEA内置工具</a><time datetime="2024-06-04T21:52:50.241Z" title="发表于 2024-06-05 05:52:50">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/11097/" title="数据库影响因素之硬件、存储引擎和事务">数据库影响因素之硬件、存储引擎和事务</a><time datetime="2024-06-04T21:43:10.296Z" title="发表于 2024-06-05 05:43:10">2024-06-05</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:2877406366@qq.com" title="email"><i class="anzhiyufont anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com" title="微博"><i class="anzhiyufont anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php" title="facebook"><i class="anzhiyufont anzhiyufont anzhiyu-icon-facebook1"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/" title="Github"><i class="anzhiyufont anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com" title="Bilibili"><i class="anzhiyufont anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.douyin.com/user/MS4wLjABAAAARlF7u0o6BTIX0KiHreekyz5_nqDUauZDgG6AtnpESAI" title="抖音"><i class="anzhiyufont anzhiyufont anzhiyu-icon-tiktok"></i></a></div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener" href="https://www.foreverblog.cn/">十年之约</a><a class="footer-item" title="开往" target="_blank" rel="noopener" href="https://github.com/travellings-link/travellings">开往</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档" href="/docs/">文档</a><a class="footer-item" title="源码" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu">源码</a><a class="footer-item" title="更新日志" href="/update/">更新日志</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="友链文章" href="/fcircle/">友链文章</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">协议</div><div class="footer-links"><a class="footer-item" title="隐私协议" href="/privacy/">隐私协议</a><a class="footer-item" title="Cookies" href="/cookies/">Cookies</a><a class="footer-item" title="版权协议" href="/copyright/">版权协议</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2024 By <a class="footer-bar-link" href="/" title="REAI" target="_blank">REAI</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="京ICP备2023019859号-1">京ICP备2023019859号-1</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">64</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">29</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.reaicc.com/" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wangyiyun.png" alt="网易云音乐"/><span class="back-menu-item-text">网易云音乐</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://news.reaicc.com/" title="每日早报"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://news.reaicc.com/favicon.svg" alt="每日早报"/><span class="back-menu-item-text">每日早报</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/friends/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/?id=6709358233&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/notice/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 时间轴</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Ant/" style="font-size: 0.88rem;">Ant<sup>1</sup></a><a href="/tags/Cookie/" style="font-size: 0.88rem;">Cookie<sup>2</sup></a><a href="/tags/Dozer/" style="font-size: 0.88rem;">Dozer<sup>1</sup></a><a href="/tags/Filter/" style="font-size: 0.88rem;">Filter<sup>1</sup></a><a href="/tags/Freemark/" style="font-size: 0.88rem;">Freemark<sup>1</sup></a><a href="/tags/Freenom/" style="font-size: 0.88rem;">Freenom<sup>1</sup></a><a href="/tags/HTTPS/" style="font-size: 0.88rem;">HTTPS<sup>1</sup></a><a href="/tags/Html/" style="font-size: 0.88rem;">Html<sup>1</sup></a><a href="/tags/JSP/" style="font-size: 0.88rem;">JSP<sup>1</sup></a><a href="/tags/Java/" style="font-size: 0.88rem;">Java<sup>39</sup></a><a href="/tags/JavaBean/" style="font-size: 0.88rem;">JavaBean<sup>2</sup></a><a href="/tags/JavaWeb/" style="font-size: 0.88rem;">JavaWeb<sup>11</sup></a><a href="/tags/Jetty/" style="font-size: 0.88rem;">Jetty<sup>2</sup></a><a href="/tags/Jsoup/" style="font-size: 0.88rem;">Jsoup<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>8</sup></a><a href="/tags/Listener/" style="font-size: 0.88rem;">Listener<sup>1</sup></a><a href="/tags/Lombok/" style="font-size: 0.88rem;">Lombok<sup>1</sup></a><a href="/tags/Maven/" style="font-size: 0.88rem;">Maven<sup>6</sup></a><a href="/tags/Mybatis-Plus/" style="font-size: 0.88rem;">Mybatis Plus<sup>1</sup></a><a href="/tags/Reflections/" style="font-size: 0.88rem;">Reflections<sup>1</sup></a><a href="/tags/Servlet/" style="font-size: 0.88rem;">Servlet<sup>2</sup></a><a href="/tags/Session/" style="font-size: 0.88rem;">Session<sup>1</sup></a><a href="/tags/Thumbnailator/" style="font-size: 0.88rem;">Thumbnailator<sup>1</sup></a><a href="/tags/Thymeleaf/" style="font-size: 0.88rem;">Thymeleaf<sup>1</sup></a><a href="/tags/Tomcat/" style="font-size: 0.88rem;">Tomcat<sup>6</sup></a><a href="/tags/Velocity/" style="font-size: 0.88rem;">Velocity<sup>1</sup></a><a href="/tags/ZXing/" style="font-size: 0.88rem;">ZXing<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>1</sup></a><a href="/tags/flex/" style="font-size: 0.88rem;">flex<sup>1</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 0.88rem;">反射<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86/" style="font-size: 0.88rem;">图形处理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E5%8C%85/" style="font-size: 0.88rem;">工具包<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem;">教程<sup>8</sup></a><a href="/tags/%E6%97%A5%E5%BF%97/" style="font-size: 0.88rem;">日志<sup>1</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 0.88rem;">服务器<sup>6</sup></a><a href="/tags/%E6%9D%A1%E5%BD%A2%E7%A0%81/" style="font-size: 0.88rem;">条形码<sup>1</sup></a><a href="/tags/%E6%9E%84%E5%BB%BA/" style="font-size: 0.88rem;">构建<sup>7</sup></a><a href="/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" style="font-size: 0.88rem;">模板引擎<sup>3</sup></a><a href="/tags/%E9%82%AE%E4%BB%B6/" style="font-size: 0.88rem;">邮件<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="6709358233" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="none"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/playlist?id=6709358233&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="https://npm.onmicrosoft.cn/hexo-tool-cc@1.1.4/source/js/utils.js"></script><script src="https://npm.onmicrosoft.cn/hexo-tool-cc@1.1.4/source/js/main.js"></script><script src="https://npm.onmicrosoft.cn/hexo-theme-anzhiyu@1.6.8/source/js/tw_cn.js"></script><script src="https://npm.onmicrosoft.cn/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.umd.js"></script><script src="https://npm.onmicrosoft.cn/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://npm.onmicrosoft.cn/vanilla-lazyload@17.8.4/dist/lazyload.iife.min.js"></script><script src="https://npm.onmicrosoft.cn/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><script>(() => {
+  const initArtalk = () => {
+    window.artalkItem = new Artalk(Object.assign({
+      el: '#artalk-wrap',
+      server: 'https://artalk.reaicc.com',
+      site: 'blog.reaicc.com',
+      pageKey: location.pathname,
+      darkMode: document.documentElement.getAttribute('data-theme') === 'dark',
+      countEl: '.artalk-count',
+      emoticons: [
+        "https://artalk.reaicc.com/static/images/artalk.json",
+        "https://emotion-new.acs.pw/aru/artalk.json"
+      ]
+    },null))
+
+    if (GLOBAL_CONFIG.lightbox === 'null') return
+    window.artalkItem.use(ctx => {
+      ctx.on('list-loaded', () => {
+        ctx.getCommentList().forEach(comment => {
+          const $content = comment.getRender().$content
+          anzhiyu.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
+        })
+      })
+    })
+  }
+
+  const loadArtalk = async () => {
+    if (typeof window.artalkItem === 'object') initArtalk()
+    else {
+      await getCSS('https://npm.onmicrosoft.cn/artalk@2.5.5/dist/Artalk.css')
+      await getScript('https://npm.onmicrosoft.cn/artalk@2.5.5/dist/Artalk.js')
+      initArtalk()
+    }
+  }
+
+  const artalkChangeMode = theme => {
+    const artalkWrap = document.getElementById('artalk-wrap')
+    if (!(artalkWrap && artalkWrap.children.length)) return
+    const isDark = theme === 'dark'
+    window.artalkItem.setDarkMode(isDark)
+  }
+
+
+  anzhiyu.addGlobalFn('themeChange', artalkChangeMode, 'artalk')
+  
+  if ('Artalk' === 'Artalk' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('artalk-wrap'), loadArtalk)
+    else loadArtalk()
+  } else {
+    window.loadOtherComment = loadArtalk
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getSetting = async () => {
+    try {
+      const res = await fetch('https://artalk.reaicc.com/api/conf', { method: 'GET' })
+      return await res.json()
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  const headerList = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Origin': window.location.origin
+    },
+    body: new URLSearchParams({
+      'site_name': 'blog.reaicc.com',
+      'limit': '6',
+      'type':'latest_comments'
+    })
+  }
+
+  const getComment = async () => {
+    try {
+      const res = await fetch('https://artalk.reaicc.com/api/stat', headerList)
+      const result = await res.json()
+      const avatarStr = await getSetting()
+      const { mirror, params, default:defaults } = avatarStr.data.frontend_conf.gravatar
+      const avatarCdn = false || mirror
+      let avatarDefault = false || params || defaults
+      avatarDefault = avatarDefault.startsWith('d=') ? avatarDefault : `d=${avatarDefault}`
+      const artalk = result.data.map(function (e) {
+        return {
+          'avatar': `${avatarCdn}${e.email_encrypted}?${avatarDefault}`,
+          'content': changeContent(e.content_marked),
+          'nick': e.nick,
+          'url': e.page_url,
+          'date': e.date,
+        }
+      })
+      saveToLocal.set('artalk-newest-comments', JSON.stringify(artalk), 10/(60*24))
+      generateHtml(artalk)
+    } catch (e) {
+      console.log(e)
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('artalk-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "visitor@anheyu.com";
+</script><script async data-pjax src="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script src="/js/fjGallery.min.js"></script><script>!function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"JrxUXpJaHkoUhitk",ck:"JrxUXpJaHkoUhitk"});</script><script src="https://unpkg.com/artalk@2.4.4/dist/Artalk.js"></script><script src="/js/bgCh.js"></script><script src="/shuoshuo/coco-message.js"></script><link rel="stylesheet" href="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://npm.onmicrosoft.cn/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.onmicrosoft.cn/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://npm.onmicrosoft.cn/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/link/"]):not([href="/friends/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

@@ -1,0 +1,86 @@
+.shadow-header {
+    box-shadow: 0 .35rem .75rem rgba(0, 0, 0, .15) !important
+}
+
+.rounded-oyp {
+    border-radius: 1rem !important;
+}
+
+.rounded-oyp-top {
+    border-top-left-radius: 1rem !important;
+    border-top-right-radius: 1rem !important;
+}
+
+.rounded-oyp-bottom {
+    border-bottom-left-radius: 1rem !important;
+    border-bottom-right-radius: 1rem !important;
+}
+
+body {
+    -moz-user-select: none;
+    /* Firefox私有属性 */
+    -webkit-user-select: none;
+    /* WebKit内核私有属性 */
+    -ms-user-select: none;
+    /* IE私有属性(IE10及以后) */
+    -khtml-user-select: none;
+    /* KHTML内核私有属性 */
+    -o-user-select: none;
+    /* Opera私有属性 */
+    user-select: none;
+    /* CSS3属性 */
+    word-wrap: break-word;
+    word-break: break-all;
+}
+
+img {
+    pointer-events: none;
+}
+
+.cursor {
+    cursor: pointer !important;
+}
+
+.focus:hover {
+    color: #007bff !important;
+}
+
+@media (max-width: 575.2px) {
+    .p-bookInfo .box .bookInfo img {
+        margin-bottom: 1rem !important;
+        width: 200px !important;
+        height: 250px !important;
+    }
+    .p-bookInfo .box .bookInfo .introduction-box {
+        margin-top: .25rem !important;
+    }
+}
+
+@media (max-width: 992px) {
+    .p-bookInfo .box .bookInfo hr {
+        margin-top: 1rem !important;
+    }
+    .img-oyp-rank {
+        height: auto !important;
+    }
+}
+
+div.line {
+    text-indent: 2em;
+}
+
+.bg-action-oyp:hover,
+.bg-action-oyp:focus {
+    color: #495057;
+    text-decoration: none;
+    background-color: #f8f9fa;
+}
+
+.bg-action-oyp:active {
+    color: #212529;
+    background-color: #e9ecef
+}
+
+.bg-light-oyp {
+    background-color: #f8f9fa;
+}

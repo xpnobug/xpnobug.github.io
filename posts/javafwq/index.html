@@ -1,0 +1,647 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>JavaWeb 之 Servlet 指南 | REAI</title><meta name="keywords" content="Java,JavaWeb,Servlet"><meta name="author" content="REAI"><meta name="copyright" content="REAI"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="JavaWeb 之 Servlet 指南"><meta name="application-name" content="JavaWeb 之 Servlet 指南"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="JavaWeb 之 Servlet 指南"><meta property="og:url" content="https://blog.reaicc.com/posts/javafwq/index.html"><meta property="og:site_name" content="REAI"><meta property="og:description" content="JavaWeb 之 Servlet 指南JavaWeb 简介Web 应用程序Web，在英语中 web 即表示网页的意思，它用于表示 Internet 主机上供外界访问的资源。 Web 应用程序是一种可以通过 Web 访问的应用程序，程序的最大好处是用户很容易访问应用程序，用户只需要有浏览器即可，不需"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640"><meta property="article:author" content="REAI"><meta property="article:tag" content="REAI,reai,博客,技术博客,程序员,程序员博客,编程,代码,开源,IT,互联网,前后端,前端,后端,设计,设计模式,数据结构,算法,面试,学习,读书,读书笔记,笔记,笔记软件,笔记系统,笔记工具,笔记方法"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640"><meta name="description" content="JavaWeb 之 Servlet 指南JavaWeb 简介Web 应用程序Web，在英语中 web 即表示网页的意思，它用于表示 Internet 主机上供外界访问的资源。 Web 应用程序是一种可以通过 Web 访问的应用程序，程序的最大好处是用户很容易访问应用程序，用户只需要有浏览器即可，不需"><link rel="shortcut icon" href="/img/Cat.svg"><link rel="canonical" href="https://blog.reaicc.com/posts/javafwq/"><link rel="preconnect" href="//npm.onmicrosoft.cn"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="codeva-7zzTxzlayy"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://npm.onmicrosoft.cn/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.onmicrosoft.cn/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"REAI","mode":"tianli","switchBtn":true,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"J3BBucxpYNx1hMr4pl1j","Referer":"https://blog.reaicc.com/"},
+  diytitle: undefined,
+  LA51: {"enable":true,"ck":"JrxUXpJaHkoUhitk","LingQueMonitorID":"JrxcoymH8UkasaaS"},
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: REAI","link":"链接: ","source":"来源: REAI","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.onmicrosoft.cn/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.onmicrosoft.cn/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'REAI',
+  title: 'JavaWeb 之 Servlet 指南',
+  postAI: '',
+  pageFillDescription: 'JavaWeb 之 Servlet 指南, JavaWeb 简介, Web 应用程序, 常见 Web 服务器, Servlet 简介, 什么是 Servlet, Servlet 和 CGI 的区别, Servlet 版本以及主要特性, Servlet 任务, Servlet 生命周期, Servlet API, Servlet 包, Servlet 接口, init() 方法, service() 方法, doGet() 方法, doPost() 方法, destroy() 方法, Servlet 和 HTTP 状态码, HTTP 状态码, 设置 HTTP 状态码的方法, HTTP 状态码实例, 参考资料之指南简介应用程序在英语中即表示网页的意思它用于表示主机上供外界访问的资源应用程序是一种可以通过访问的应用程序程序的最大好处是用户很容易访问应用程序用户只需要有浏览器即可不需要再安装其他软件上供外界访问的资源分为静态资源指页面中供人们浏览的数据始终是不变常见静态资源文件各种图片类型动态资源指页面中供人们浏览的数据是由程序产生的不同时间点访问页面看到的内容各不相同常见动态资源技术常见服务器简介什么是即小服务程序或服务连接器是编写的服务器端程序具有独立于平台和协议的特性主要功能在于交互式地浏览和生成数据生成动态内容狭义的是指实现的一个接口广义的是指任何实现了这个接口的类运行于支持的应用服务器中从原理上讲可以响应任何类型的请求但绝大多数情况下只用来扩展基于协议的服务器和的区别技术出现之前主要使用技术它们的区别如下是基于编写的处于服务器进程中他能够通过多线程方式运行方法一个实例可以服务于多个请求而且一般不会销毁即通用网关接口它会为每个请求产生新的进程服务完成后销毁所以效率上低于版本以及主要特性版本日期版本特性年月年月非阻塞协议升级机制年月可插拔性易于开发异步安全性文件上传年月依赖支持注解年月使用年月年月成为标准年月未指定年月任务执行以下主要任务读取客户端浏览器发送的显式的数据这包括网页上的表单或者也可以是来自或自定义的客户端程序的表单读取客户端浏览器发送的隐式的请求数据这包括媒体类型和浏览器能理解的压缩格式等等处理数据并生成结果这个过程可能需要访问数据库执行或调用调用服务或者直接计算得出对应的响应发送显式的数据即文档到客户端浏览器该文档的格式可以是多种多样的包括文本文件或二进制文件图像等发送隐式的响应到客户端浏览器这包括告诉浏览器或其他客户端被返回的文档类型例如设置和缓存参数以及其他类似的任务生命周期生命周期如下加载第一个到达服务器的请求被委派到容器容器通过类加载器使用类对应的文件加载初始化通过调用方法进行初始化服务调用方法来处理客户端的请求销毁通过调用方法终止结束卸载是由的垃圾回收器进行垃圾回收的包是运行在带有支持规范的解释器的服务器上的类可以使用和包创建它是企业版的标准组成部分企业版是支持大型开发项目的类库的扩展版本就像任何其他的类一样已经被创建和编译在您安装包并把它们添加到您的计算机上的类路径中之后您就可以通过的编译器或任何其他编译器来编译接口接口定义了下面五个方法方法方法被设计成只调用一次它在第一次创建时被调用在后续每次用户请求时不再调用因此它是用于一次性初始化就像的方法一样创建于用户第一次调用对应于该的时但是您也可以指定在服务器第一次启动时被加载当用户调用一个时就会创建一个实例每一个用户请求都会产生一个新的线程适当的时候移交给或方法方法简单地创建或加载一些数据这些数据将被用于的整个生命周期方法的定义如下初始化代码方法方法是执行实际任务的核心方法容器即服务器调用方法来处理来自客户端浏览器的请求并把格式化的响应写回给客户端方法有两个参数和用来封装请求信息用来封装响应信息因此本质上这两个类是对通信协议的封装每次服务器接收到一个请求时服务器会产生一个新的线程并调用服务方法检查请求类型等并在适当的时候调用等方法下面是该方法的特征方法由容器调用方法在适当的时候调用等方法所以您不用对方法做任何动作您只需要根据来自客户端的请求类型来重写或即可和方法是每次服务请求中最常用的方法下面是这两种方法的特征方法请求来自于一个的正常请求或者来自于一个未指定的表单它由方法处理代码方法请求来自于一个特别指定了为的表单它由方法处理代码方法方法只会被调用一次在生命周期结束时被调用方法可以让您的关闭数据库连接停止后台线程把列表或点击计数器写入到磁盘并执行其他类似的清理活动在调用方法之后对象被标记为垃圾回收方法定义如下所示终止化代码和状态码状态码状态码请求和响应消息的格式是类似的结构如下初始状态行回车换行符回车换行零个或多个标题行回车换行符一个空白行即回车换行符一个可选的消息主体比如文件查询数据或查询输出例如服务器的响应头如下所示状态行包括版本在本例中为一个状态码在本例中为和一个对应于状态码的短消息在本例中为以下是可能从服务器返回的状态码和相关的信息列表信息性状态码成功状态码请求正常成功指示请求成功但没有返回新信息指示服务器已完成对资源的部分请求重定向状态码永久性重定向临时性重定向服务器端允许请求访问资源但未满足条件客户端错误状态码请求报文中存在语法错误发送的请求需要有通过认证的认证信息对请求资源的访问被服务器拒绝了服务器上无法找到请求的资源服务器错误状态码服务器端在执行请求时发生了错误服务器暂时处于超负载或正在进行停机维护现在无法处理请求设置状态码的方法下面的方法可用于在程序中设置状态码这些方法通过对象可用序号方法描述该方法设置一个任意的状态码方法接受一个状态码作为参数如果您的反应包含了一个特殊的状态码和文档请确保在使用实际返回任何内容之前调用该方法生成一个响应连同一个带有新文档的头该方法发送一个状态码通常为连同一个在文档内部自动格式化并发送到客户端的短消息状态码实例下面的例子把错误代码发送到客户端浏览器浏览器会显示消息导入必需的库扩展类处理方法请求的方法设置错误代码和原因处理方法请求的方法现在调用上面的将显示以下结果参考资料深入拆解整合开发王者归来',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-04-18 21:23:02',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/css/about-tag.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-article-double-row-kx/assets/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@1.0.17/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script async src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://npm.onmicrosoft.cn/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.reaicc.com/" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wangyiyun.png" alt="网易云音乐"/><span class="back-menu-item-text">网易云音乐</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://news.reaicc.com/" title="每日早报"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://news.reaicc.com/favicon.svg" alt="每日早报"/><span class="back-menu-item-text">每日早报</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">REAI</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/friends/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/?id=6709358233&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/notice/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 时间轴</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" alt="wechat" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/wechat.jpg"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="alipay" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/alipay.jpg"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Ant/" style="font-size: 1.05rem;">Ant<sup>1</sup></a><a href="/tags/Cookie/" style="font-size: 1.05rem;">Cookie<sup>2</sup></a><a href="/tags/Dozer/" style="font-size: 1.05rem;">Dozer<sup>1</sup></a><a href="/tags/Filter/" style="font-size: 1.05rem;">Filter<sup>1</sup></a><a href="/tags/Freemark/" style="font-size: 1.05rem;">Freemark<sup>1</sup></a><a href="/tags/Freenom/" style="font-size: 1.05rem;">Freenom<sup>1</sup></a><a href="/tags/HTTPS/" style="font-size: 1.05rem;">HTTPS<sup>1</sup></a><a href="/tags/Html/" style="font-size: 1.05rem;">Html<sup>1</sup></a><a href="/tags/JSP/" style="font-size: 1.05rem;">JSP<sup>1</sup></a><a href="/tags/Java/" style="font-size: 1.05rem;">Java<sup>39</sup></a><a href="/tags/JavaBean/" style="font-size: 1.05rem;">JavaBean<sup>2</sup></a><a href="/tags/JavaWeb/" style="font-size: 1.05rem;">JavaWeb<sup>11</sup></a><a href="/tags/Jetty/" style="font-size: 1.05rem;">Jetty<sup>2</sup></a><a href="/tags/Jsoup/" style="font-size: 1.05rem;">Jsoup<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>8</sup></a><a href="/tags/Listener/" style="font-size: 1.05rem;">Listener<sup>1</sup></a><a href="/tags/Lombok/" style="font-size: 1.05rem;">Lombok<sup>1</sup></a><a href="/tags/Maven/" style="font-size: 1.05rem;">Maven<sup>6</sup></a><a href="/tags/Mybatis-Plus/" style="font-size: 1.05rem;">Mybatis Plus<sup>1</sup></a><a href="/tags/Reflections/" style="font-size: 1.05rem;">Reflections<sup>1</sup></a><a href="/tags/Servlet/" style="font-size: 1.05rem;">Servlet<sup>2</sup></a><a href="/tags/Session/" style="font-size: 1.05rem;">Session<sup>1</sup></a><a href="/tags/Thumbnailator/" style="font-size: 1.05rem;">Thumbnailator<sup>1</sup></a><a href="/tags/Thymeleaf/" style="font-size: 1.05rem;">Thymeleaf<sup>1</sup></a><a href="/tags/Tomcat/" style="font-size: 1.05rem;">Tomcat<sup>6</sup></a><a href="/tags/Velocity/" style="font-size: 1.05rem;">Velocity<sup>1</sup></a><a href="/tags/ZXing/" style="font-size: 1.05rem;">ZXing<sup>1</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>1</sup></a><a href="/tags/flex/" style="font-size: 1.05rem;">flex<sup>1</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 1.05rem;">反射<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86/" style="font-size: 1.05rem;">图形处理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E5%8C%85/" style="font-size: 1.05rem;">工具包<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.05rem;">教程<sup>8</sup></a><a href="/tags/%E6%97%A5%E5%BF%97/" style="font-size: 1.05rem;">日志<sup>1</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.05rem;">服务器<sup>6</sup></a><a href="/tags/%E6%9D%A1%E5%BD%A2%E7%A0%81/" style="font-size: 1.05rem;">条形码<sup>1</sup></a><a href="/tags/%E6%9E%84%E5%BB%BA/" style="font-size: 1.05rem;">构建<sup>7</sup></a><a href="/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" style="font-size: 1.05rem;">模板引擎<sup>3</sup></a><a href="/tags/%E9%82%AE%E4%BB%B6/" style="font-size: 1.05rem;">邮件<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/JavaWeb/" itemprop="url">JavaWeb</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Java/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Java</span></a><a class="article-meta__tags" href="/tags/JavaWeb/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>JavaWeb</span></a><a class="article-meta__tags" href="/tags/Servlet/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Servlet</span></a></span></div></div><h1 class="post-title" itemprop="name headline">JavaWeb 之 Servlet 指南</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2020-08-24T11:41:46.000Z" title="发表于 2020-08-24 19:41:46">2020-08-24</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-04-18T13:23:02.012Z" title="更新于 2024-04-18 21:23:02">2024-04-18</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span id="" data-flag-title="JavaWeb 之 Servlet 指南"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="ArtalkPV"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为北京"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>北京</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://blog.reaicc.com/posts/javafwq/"><header><a class="post-meta-categories" href="/categories/JavaWeb/" itemprop="url">JavaWeb</a><a href="/tags/Java/" tabindex="-1" itemprop="url">Java</a><a href="/tags/JavaWeb/" tabindex="-1" itemprop="url">JavaWeb</a><a href="/tags/Servlet/" tabindex="-1" itemprop="url">Servlet</a><h1 id="CrawlerTitle" itemprop="name headline">JavaWeb 之 Servlet 指南</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">REAI</span><time itemprop="dateCreated datePublished" datetime="2020-08-24T11:41:46.000Z" title="发表于 2020-08-24 19:41:46">2020-08-24</time><time itemprop="dateCreated datePublished" datetime="2024-04-18T13:23:02.012Z" title="更新于 2024-04-18 21:23:02">2024-04-18</time></header><h1 id="JavaWeb-之-Servlet-指南"><a href="#JavaWeb-之-Servlet-指南" class="headerlink" title="JavaWeb 之 Servlet 指南"></a>JavaWeb 之 Servlet 指南</h1><h2 id="JavaWeb-简介"><a href="#JavaWeb-简介" class="headerlink" title="JavaWeb 简介"></a>JavaWeb 简介</h2><h3 id="Web-应用程序"><a href="#Web-应用程序" class="headerlink" title="Web 应用程序"></a>Web 应用程序</h3><p>Web，在英语中 web 即表示网页的意思，它用于表示 Internet 主机上供外界访问的资源。</p>
+<p>Web 应用程序是一种可以通过 Web 访问的应用程序，程序的最大好处是用户很容易访问应用程序，用户只需要有浏览器即可，不需要再安装其他软件。</p>
+<p>Internet 上供外界访问的 Web 资源分为：</p>
+<ul>
+<li>静态 web 资源：指 web 页面中供人们浏览的数据始终是不变。常见静态资源文件：html、css、各种图片类型（jpg、png）</li>
+<li>动态 web 资源：指 web 页面中供人们浏览的数据是由程序产生的，不同时间点访问 web 页面看到的内容各不相同。常见动态资源技术：JSP/Servlet、ASP、PHP</li>
+</ul>
+<h3 id="常见-Web-服务器"><a href="#常见-Web-服务器" class="headerlink" title="常见 Web 服务器"></a>常见 Web 服务器</h3><ul>
+<li><a target="_blank" rel="noopener" href="http://tomcat.apache.org/">Tomcat</a></li>
+<li><a target="_blank" rel="noopener" href="http://www.eclipse.org/jetty/">Jetty</a></li>
+<li><a target="_blank" rel="noopener" href="https://caucho.com/">Resin</a></li>
+<li><a target="_blank" rel="noopener" href="http://httpd.apache.org/">Apache</a></li>
+<li><a target="_blank" rel="noopener" href="http://nginx.org/en/">Nginx</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ibm.com/cloud/websphere-application-platform">WebSphere</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.oracle.com/middleware/technologies/weblogic.html">WebLogic</a></li>
+<li>JBoss</li>
+</ul>
+<h2 id="Servlet-简介"><a href="#Servlet-简介" class="headerlink" title="Servlet 简介"></a>Servlet 简介</h2><h3 id="什么是-Servlet"><a href="#什么是-Servlet" class="headerlink" title="什么是 Servlet"></a>什么是 Servlet</h3><p>Servlet（Server Applet），即小服务程序或服务连接器。Servlet 是 Java 编写的服务器端程序，具有独立于平台和协议的特性，主要功能在于交互式地浏览和生成数据，生成动态 Web 内容。</p>
+<ul>
+<li>狭义的 Servlet 是指 Java 实现的一个接口。</li>
+<li>广义的 Servlet 是指任何实现了这个 Servlet 接口的类。</li>
+</ul>
+<p>Servlet 运行于支持 Java 的应用服务器中。从原理上讲，Servlet 可以响应任何类型的请求，但绝大多数情况下 Servlet 只用来扩展基于 HTTP 协议的 Web 服务器。</p>
+<h3 id="Servlet-和-CGI-的区别"><a href="#Servlet-和-CGI-的区别" class="headerlink" title="Servlet 和 CGI 的区别"></a>Servlet 和 CGI 的区别</h3><p>Servlet 技术出现之前，Web 主要使用 CGI 技术。它们的区别如下：</p>
+<ul>
+<li>Servlet 是基于 Java 编写的，处于服务器进程中，他能够通过多线程方式运行 service() 方法，一个实例可以服务于多个请求，而且一般不会销毁；</li>
+<li>CGI(Common Gateway Interface)，即通用网关接口。它会为每个请求产生新的进程，服务完成后销毁，所以效率上低于 Servlet。</li>
+</ul>
+<h3 id="Servlet-版本以及主要特性"><a href="#Servlet-版本以及主要特性" class="headerlink" title="Servlet 版本以及主要特性"></a>Servlet 版本以及主要特性</h3><div class="table-container">
+<table>
+<thead>
+<tr>
+<th>版本</th>
+<th>日期</th>
+<th>JAVA EE/JDK 版本</th>
+<th>特性</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Servlet 4.0</td>
+<td>2017 年 10 月</td>
+<td>JavaEE 8</td>
+<td>HTTP2</td>
+</tr>
+<tr>
+<td>Servlet 3.1</td>
+<td>2013 年 5 月</td>
+<td>JavaEE 7</td>
+<td>非阻塞 I/O，HTTP 协议升级机制</td>
+</tr>
+<tr>
+<td>Servlet 3.0</td>
+<td>2009 年 12 月</td>
+<td>JavaEE 6, JavaSE 6</td>
+<td>可插拔性，易于开发，异步 Servlet，安全性，文件上传</td>
+</tr>
+<tr>
+<td>Servlet 2.5</td>
+<td>2005 年 10 月</td>
+<td>JavaEE 5, JavaSE 5</td>
+<td>依赖 JavaSE 5，支持注解</td>
+</tr>
+<tr>
+<td>Servlet 2.4</td>
+<td>2003 年 11 月</td>
+<td>J2EE 1.4, J2SE 1.3</td>
+<td>web.xml 使用 XML Schema</td>
+</tr>
+<tr>
+<td>Servlet 2.3</td>
+<td>2001 年 8 月</td>
+<td>J2EE 1.3, J2SE 1.2</td>
+<td>Filter</td>
+</tr>
+<tr>
+<td>Servlet 2.2</td>
+<td>1999 年 8 月</td>
+<td>J2EE 1.2, J2SE 1.2</td>
+<td>成为 J2EE 标准</td>
+</tr>
+<tr>
+<td>Servlet 2.1</td>
+<td>1998 年 11 月</td>
+<td>未指定</td>
+<td>First official specification, added RequestDispatcher, ServletContext</td>
+</tr>
+<tr>
+<td>Servlet 2.0</td>
+<td></td>
+<td>JDK 1.1</td>
+<td>Part of Java Servlet Development Kit 2.0</td>
+</tr>
+<tr>
+<td>Servlet 1.0</td>
+<td>1997 年 6 月</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="Servlet-任务"><a href="#Servlet-任务" class="headerlink" title="Servlet 任务"></a>Servlet 任务</h3><p>Servlet 执行以下主要任务：</p>
+<ul>
+<li>读取客户端（浏览器）发送的显式的数据。这包括网页上的 HTML 表单，或者也可以是来自 applet 或自定义的 HTTP 客户端程序的表单。</li>
+<li>读取客户端（浏览器）发送的隐式的 HTTP 请求数据。这包括 cookies、媒体类型和浏览器能理解的压缩格式等等。</li>
+<li>处理数据并生成结果。这个过程可能需要访问数据库，执行 RMI 或 CORBA 调用，调用 Web 服务，或者直接计算得出对应的响应。</li>
+<li>发送显式的数据（即文档）到客户端（浏览器）。该文档的格式可以是多种多样的，包括文本文件（HTML 或 XML）、二进制文件（GIF 图像）、Excel 等。</li>
+<li>发送隐式的 HTTP 响应到客户端（浏览器）。这包括告诉浏览器或其他客户端被返回的文档类型（例如 HTML），设置 cookies 和缓存参数，以及其他类似的任务。</li>
+</ul>
+<h3 id="Servlet-生命周期"><a href="#Servlet-生命周期" class="headerlink" title="Servlet 生命周期"></a>Servlet 生命周期</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="http://www.runoob.com/wp-content/uploads/2014/07/Servlet-LifeCycle.jpg" alt="img"></p>
+<p>Servlet 生命周期如下：</p>
+<ol>
+<li><strong>加载</strong> - 第一个到达服务器的 HTTP 请求被委派到 Servlet 容器。容器通过类加载器使用 Servlet 类对应的文件加载 servlet；</li>
+<li><strong>初始化</strong> - Servlet 通过调用 <strong>init ()</strong> 方法进行初始化。</li>
+<li><strong>服务</strong> - Servlet 调用 <strong>service()</strong> 方法来处理客户端的请求。</li>
+<li><strong>销毁</strong> - Servlet 通过调用 <strong>destroy()</strong> 方法终止（结束）。</li>
+<li><strong>卸载</strong> - Servlet 是由 JVM 的垃圾回收器进行垃圾回收的。</li>
+</ol>
+<h2 id="Servlet-API"><a href="#Servlet-API" class="headerlink" title="Servlet API"></a>Servlet API</h2><h3 id="Servlet-包"><a href="#Servlet-包" class="headerlink" title="Servlet 包"></a>Servlet 包</h3><p>Java Servlet 是运行在带有支持 Java Servlet 规范的解释器的 web 服务器上的 Java 类。</p>
+<p>Servlet 可以使用 <strong>javax.servlet</strong> 和 <strong>javax.servlet.http</strong> 包创建，它是 Java 企业版的标准组成部分，Java 企业版是支持大型开发项目的 Java 类库的扩展版本。</p>
+<p>Java Servlet 就像任何其他的 Java 类一样已经被创建和编译。在您安装 Servlet 包并把它们添加到您的计算机上的 Classpath 类路径中之后，您就可以通过 JDK 的 Java 编译器或任何其他编译器来编译 Servlet。</p>
+<h3 id="Servlet-接口"><a href="#Servlet-接口" class="headerlink" title="Servlet 接口"></a>Servlet 接口</h3><p>Servlet 接口定义了下面五个方法：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">interface</span> <span class="title">Servlet</span> </span>&#123;</span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">init</span><span class="params">(ServletConfig var1)</span> <span class="keyword">throws</span> ServletException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">ServletConfig <span class="title">getServletConfig</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest var1, ServletResponse var2)</span> <span class="keyword">throws</span> ServletException, IOException</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function">String <span class="title">getServletInfo</span><span class="params">()</span></span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span></span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="init-方法"><a href="#init-方法" class="headerlink" title="init() 方法"></a>init() 方法</h4><p>init 方法被设计成只调用一次。它在第一次创建 Servlet 时被调用，在后续每次用户请求时不再调用。因此，它是用于一次性初始化，就像 Applet 的 init 方法一样。</p>
+<p>Servlet 创建于用户第一次调用对应于该 Servlet 的 URL 时，但是您也可以指定 Servlet 在服务器第一次启动时被加载。</p>
+<p>当用户调用一个 Servlet 时，就会创建一个 Servlet 实例，每一个用户请求都会产生一个新的线程，适当的时候移交给 doGet 或 doPost 方法。init() 方法简单地创建或加载一些数据，这些数据将被用于 Servlet 的整个生命周期。</p>
+<p>init 方法的定义如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">init</span><span class="params">()</span> <span class="keyword">throws</span> ServletException </span>&#123;</span><br><span class="line">  <span class="comment">// 初始化代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="service-方法"><a href="#service-方法" class="headerlink" title="service() 方法"></a>service() 方法</h4><p><strong><code>service()</code> 方法是执行实际任务的核心方法</strong>。Servlet 容器（即 Web 服务器）调用 <code>service()</code> 方法来处理来自客户端（浏览器）的请求，并把格式化的响应写回给客户端。</p>
+<p><code>service()</code> 方法有两个参数：<code>ServletRequest</code> 和 <code>ServletResponse</code>。<code>ServletRequest</code> 用来封装请求信息，<code>ServletResponse</code> 用来封装响应信息，因此<strong>本质上这两个类是对通信协议的封装。</strong></p>
+<p>每次服务器接收到一个 Servlet 请求时，服务器会产生一个新的线程并调用服务。<code>service()</code> 方法检查 HTTP 请求类型（GET、POST、PUT、DELETE 等），并在适当的时候调用 <code>doGet</code>、<code>doPost</code>、<code>doPut</code>，<code>doDelete</code> 等方法。</p>
+<p>下面是该方法的特征：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">service</span><span class="params">(ServletRequest request,</span></span></span><br><span class="line"><span class="params"><span class="function">                    ServletResponse response)</span></span></span><br><span class="line"><span class="function">      <span class="keyword">throws</span> ServletException, IOException</span>&#123;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>service() 方法由容器调用，service 方法在适当的时候调用 doGet、doPost、doPut、doDelete 等方法。所以，您不用对 service() 方法做任何动作，您只需要根据来自客户端的请求类型来重写 doGet() 或 doPost() 即可。</p>
+<p>doGet() 和 doPost() 方法是每次服务请求中最常用的方法。下面是这两种方法的特征。</p>
+<h4 id="doGet-方法"><a href="#doGet-方法" class="headerlink" title="doGet() 方法"></a>doGet() 方法</h4><p>GET 请求来自于一个 URL 的正常请求，或者来自于一个未指定 METHOD 的 HTML 表单，它由 doGet() 方法处理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="params"><span class="function">                  HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="doPost-方法"><a href="#doPost-方法" class="headerlink" title="doPost() 方法"></a>doPost() 方法</h4><p>POST 请求来自于一个特别指定了 METHOD 为 POST 的 HTML 表单，它由 doPost() 方法处理。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="params"><span class="function">                   HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">    <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">    <span class="comment">// Servlet 代码</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="destroy-方法"><a href="#destroy-方法" class="headerlink" title="destroy() 方法"></a>destroy() 方法</h4><p>destroy() 方法只会被调用一次，在 Servlet 生命周期结束时被调用。destroy() 方法可以让您的 Servlet 关闭数据库连接、停止后台线程、把 Cookie 列表或点击计数器写入到磁盘，并执行其他类似的清理活动。</p>
+<p>在调用 destroy() 方法之后，servlet 对象被标记为垃圾回收。destroy 方法定义如下所示：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">destroy</span><span class="params">()</span> </span>&#123;</span><br><span class="line">  <span class="comment">// 终止化代码...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="Servlet-和-HTTP-状态码"><a href="#Servlet-和-HTTP-状态码" class="headerlink" title="Servlet 和 HTTP 状态码"></a>Servlet 和 HTTP 状态码</h2><p>title: JavaEE Servlet HTTP 状态码<br>date: 2017-11-08<br>categories:</p>
+<ul>
+<li>javaee<br>tags:</li>
+<li>javaee</li>
+<li>servlet</li>
+<li>http</li>
+</ul>
+<h3 id="HTTP-状态码"><a href="#HTTP-状态码" class="headerlink" title="HTTP 状态码"></a>HTTP 状态码</h3><p>HTTP 请求和 HTTP 响应消息的格式是类似的，结构如下：</p>
+<ul>
+<li>初始状态行 + 回车换行符（回车+换行）</li>
+<li>零个或多个标题行+回车换行符</li>
+<li>一个空白行，即回车换行符</li>
+<li>一个可选的消息主体，比如文件、查询数据或查询输出</li>
+</ul>
+<p>例如，服务器的响应头如下所示：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">HTTP/1.1</span> <span class="number">200</span> OK</span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>text/html</span><br><span class="line"><span class="attribute">Header2</span><span class="punctuation">: </span>...</span><br><span class="line">...</span><br><span class="line"><span class="attribute">HeaderN</span><span class="punctuation">: </span>...</span><br><span class="line">  (Blank Line)</span><br><span class="line">&lt;!doctype ...&gt;</span><br><span class="line">&lt;html&gt;</span><br><span class="line">&lt;head&gt;...&lt;/head&gt;</span><br><span class="line">&lt;body&gt;</span><br><span class="line">...</span><br><span class="line">&lt;/body&gt;</span><br><span class="line">&lt;/html&gt;</span><br></pre></td></tr></table></figure>
+<p>状态行包括 HTTP 版本（在本例中为 HTTP/1.1）、一个状态码（在本例中为 200）和一个对应于状态码的短消息（在本例中为 OK）。</p>
+<p>以下是可能从 Web 服务器返回的 HTTP 状态码和相关的信息列表：</p>
+<ul>
+<li><code>1**</code>：信息性状态码</li>
+<li><code>2**</code>：成功状态码<ul>
+<li>200：请求正常成功</li>
+<li>204：指示请求成功但没有返回新信息</li>
+<li>206：指示服务器已完成对资源的部分 GET 请求</li>
+</ul>
+</li>
+<li><code>3**</code>：重定向状态码<ul>
+<li>301：永久性重定向</li>
+<li>302：临时性重定向</li>
+<li>304：服务器端允许请求访问资源，但未满足条件</li>
+</ul>
+</li>
+<li><code>4**</code>：客户端错误状态码<ul>
+<li>400：请求报文中存在语法错误</li>
+<li>401：发送的请求需要有通过 HTTP 认证的认证信息</li>
+<li>403：对请求资源的访问被服务器拒绝了</li>
+<li>404：服务器上无法找到请求的资源</li>
+</ul>
+</li>
+<li><code>5**</code>：服务器错误状态码<ul>
+<li>500：服务器端在执行请求时发生了错误</li>
+<li>503：服务器暂时处于超负载或正在进行停机维护，现在无法处理请求</li>
+</ul>
+</li>
+</ul>
+<h3 id="设置-HTTP-状态码的方法"><a href="#设置-HTTP-状态码的方法" class="headerlink" title="设置 HTTP 状态码的方法"></a>设置 HTTP 状态码的方法</h3><p>下面的方法可用于在 Servlet 程序中设置 HTTP 状态码。这些方法通过 <code>HttpServletResponse</code> 对象可用。</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>序号</th>
+<th>方法 &amp; 描述</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>public void setStatus ( int statusCode )</strong>该方法设置一个任意的状态码。setStatus 方法接受一个 int（状态码）作为参数。如果您的反应包含了一个特殊的状态码和文档，请确保在使用<em>PrintWriter</em> 实际返回任何内容之前调用 setStatus。</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>public void sendRedirect(String url)</strong>该方法生成一个 302 响应，连同一个带有新文档 URL 的<em>Location</em> 头。</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>public void sendError(int code, String message)</strong>该方法发送一个状态码（通常为 404），连同一个在 HTML 文档内部自动格式化并发送到客户端的短消息。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h3 id="HTTP-状态码实例"><a href="#HTTP-状态码实例" class="headerlink" title="HTTP 状态码实例"></a>HTTP 状态码实例</h3><p>下面的例子把 407 错误代码发送到客户端浏览器，浏览器会显示 “Need authentication!!!” 消息。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 导入必需的 java 库</span></span><br><span class="line"><span class="keyword">import</span> java.io.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.*;</span><br><span class="line"><span class="keyword">import</span> javax.servlet.http.*;</span><br><span class="line"><span class="keyword">import</span> java.util.*;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 扩展 HttpServlet 类</span></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">showError</span> <span class="keyword">extends</span> <span class="title">HttpServlet</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">  <span class="comment">// 处理 GET 方法请求的方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doGet</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="params"><span class="function">                    HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">            <span class="keyword">throws</span> ServletException, IOException</span></span><br><span class="line"><span class="function">  </span>&#123;</span><br><span class="line">      <span class="comment">// 设置错误代码和原因</span></span><br><span class="line">      response.sendError(<span class="number">407</span>, <span class="string">&quot;Need authentication!!!&quot;</span> );</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="comment">// 处理 POST 方法请求的方法</span></span><br><span class="line">  <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">doPost</span><span class="params">(HttpServletRequest request,</span></span></span><br><span class="line"><span class="params"><span class="function">                     HttpServletResponse response)</span></span></span><br><span class="line"><span class="function">      <span class="keyword">throws</span> ServletException, IOException </span>&#123;</span><br><span class="line">     doGet(request, response);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>现在，调用上面的 Servlet 将显示以下结果：</p>
+<figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">HTTP Status 407 - Need authentication!!!</span><br><span class="line">type Status report</span><br><span class="line">message Need authentication!!!</span><br><span class="line">description The client must first authenticate itself with the proxy (Need authentication!!!).</span><br><span class="line">Apache Tomcat/5.5.29</span><br></pre></td></tr></table></figure>
+<h2 id="参考资料"><a href="#参考资料" class="headerlink" title="参考资料"></a>参考资料</h2><ul>
+<li><a target="_blank" rel="noopener" href="https://time.geekbang.org/column/intro/100027701">深入拆解 Tomcat &amp; Jetty</a></li>
+<li><a target="_blank" rel="noopener" href="https://book.douban.com/subject/4189495/">Java Web 整合开发王者归来</a></li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" title="头像" alt="头像"></a><div class="post-copyright__author_name">REAI</div><div class="post-copyright__author_desc">遇见即是上上签</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.reaicc.com/posts/javafwq/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://blog.reaicc.com/posts/javafwq/')">JavaWeb 之 Servlet 指南</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.reaicc.com/posts/javafwq/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=JavaWeb 之 Servlet 指南&amp;url=https://blog.reaicc.com/posts/javafwq/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="rm.copyPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.reaicc.com" target="_blank">REAI</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Java/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Java<span class="tagsPageCount">39</span></a><a class="post-meta__box__tags" href="/tags/JavaWeb/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>JavaWeb<span class="tagsPageCount">11</span></a><a class="post-meta__box__tags" href="/tags/Servlet/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Servlet<span class="tagsPageCount">2</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://npm.onmicrosoft.cn/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://npm.onmicrosoft.cn/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/javajsp/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">JavaWeb 之 Jsp 指南</div></div></a></div><div class="next-post pull-right"><a href="/posts/javaglq/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JavaWeb 之 Filter 和 Listener</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/posts/javamj/" title="JavaWeb 面经"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2020-02-07</div><div class="title">JavaWeb 面经</div></div></a></div><div><a href="/posts/hcck/" title="JavaWeb 之 Cookie 和 Session"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2020-08-24</div><div class="title">JavaWeb 之 Cookie 和 Session</div></div></a></div><div><a href="/posts/javaglq/" title="JavaWeb 之 Filter 和 Listener"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2020-08-24</div><div class="title">JavaWeb 之 Filter 和 Listener</div></div></a></div><div><a href="/posts/javajsp/" title="JavaWeb 之 Jsp 指南"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2020-02-07</div><div class="title">JavaWeb 之 Jsp 指南</div></div></a></div><div><a href="/pages/9ecdc1/" title="Jetty 快速入门"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">Jetty 快速入门</div></div></a></div><div><a href="/pages/6c22f4/" title="Tomcat优化"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">Tomcat优化</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="artalk-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" ait="status"/></div></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">这有关于<b style="color:#fff">产品、设计、开发</b>相关的问题和看法，还有<b style="color:#fff">文章翻译</b>和<b style="color:#fff">分享</b>。</div><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">相信你可以在这里找到对你有用的<b style="color:#fff">知识</b>和<b style="color:#fff">教程</b>。</div></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(/img/qrcode_gzh.jpg) center center / 100% no-repeat"></div></div></div></div><div class="card-widget" id="newYear"><div class="item-headline"><i></i><span></span></div><div class="item-content"><div id="newYear-main"><div class="mask"></div> <p class="title"></p> <div class="newYear-time"></div> <p class="today" style="text-align: right;"></p> </div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#JavaWeb-%E4%B9%8B-Servlet-%E6%8C%87%E5%8D%97"><span class="toc-number">1.</span> <span class="toc-text">JavaWeb 之 Servlet 指南</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#JavaWeb-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">JavaWeb 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-%E5%BA%94%E7%94%A8%E7%A8%8B%E5%BA%8F"><span class="toc-number">1.1.1.</span> <span class="toc-text">Web 应用程序</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B8%B8%E8%A7%81-Web-%E6%9C%8D%E5%8A%A1%E5%99%A8"><span class="toc-number">1.1.2.</span> <span class="toc-text">常见 Web 服务器</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Servlet-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.2.</span> <span class="toc-text">Servlet 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E6%98%AF-Servlet"><span class="toc-number">1.2.1.</span> <span class="toc-text">什么是 Servlet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Servlet-%E5%92%8C-CGI-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.2.</span> <span class="toc-text">Servlet 和 CGI 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Servlet-%E7%89%88%E6%9C%AC%E4%BB%A5%E5%8F%8A%E4%B8%BB%E8%A6%81%E7%89%B9%E6%80%A7"><span class="toc-number">1.2.3.</span> <span class="toc-text">Servlet 版本以及主要特性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Servlet-%E4%BB%BB%E5%8A%A1"><span class="toc-number">1.2.4.</span> <span class="toc-text">Servlet 任务</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Servlet-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.2.5.</span> <span class="toc-text">Servlet 生命周期</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Servlet-API"><span class="toc-number">1.3.</span> <span class="toc-text">Servlet API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Servlet-%E5%8C%85"><span class="toc-number">1.3.1.</span> <span class="toc-text">Servlet 包</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Servlet-%E6%8E%A5%E5%8F%A3"><span class="toc-number">1.3.2.</span> <span class="toc-text">Servlet 接口</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#init-%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">init() 方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#service-%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">service() 方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#doGet-%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.2.3.</span> <span class="toc-text">doGet() 方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#doPost-%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.2.4.</span> <span class="toc-text">doPost() 方法</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#destroy-%E6%96%B9%E6%B3%95"><span class="toc-number">1.3.2.5.</span> <span class="toc-text">destroy() 方法</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Servlet-%E5%92%8C-HTTP-%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">1.4.</span> <span class="toc-text">Servlet 和 HTTP 状态码</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-%E7%8A%B6%E6%80%81%E7%A0%81"><span class="toc-number">1.4.1.</span> <span class="toc-text">HTTP 状态码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE-HTTP-%E7%8A%B6%E6%80%81%E7%A0%81%E7%9A%84%E6%96%B9%E6%B3%95"><span class="toc-number">1.4.2.</span> <span class="toc-text">设置 HTTP 状态码的方法</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#HTTP-%E7%8A%B6%E6%80%81%E7%A0%81%E5%AE%9E%E4%BE%8B"><span class="toc-number">1.4.3.</span> <span class="toc-text">HTTP 状态码实例</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.5.</span> <span class="toc-text">参考资料</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/58328/" title="发布一个npm包">发布一个npm包</a><time datetime="2024-06-04T22:08:41.090Z" title="发表于 2024-06-05 06:08:41">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/48591/" title="HTTP:报文，缓存，Cookie与HTTPS">HTTP:报文，缓存，Cookie与HTTPS</a><time datetime="2024-06-04T22:05:46.160Z" title="发表于 2024-06-05 06:05:46">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/35707/" title="Linux命令之文件与权限管理">Linux命令之文件与权限管理</a><time datetime="2024-06-04T21:58:39.201Z" title="发表于 2024-06-05 05:58:39">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/64074/" title="Git关联Github和码云并利用IDEA内置工具">Git关联Github和码云并利用IDEA内置工具</a><time datetime="2024-06-04T21:52:50.241Z" title="发表于 2024-06-05 05:52:50">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/11097/" title="数据库影响因素之硬件、存储引擎和事务">数据库影响因素之硬件、存储引擎和事务</a><time datetime="2024-06-04T21:43:10.296Z" title="发表于 2024-06-05 05:43:10">2024-06-05</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:2877406366@qq.com" title="email"><i class="anzhiyufont anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com" title="微博"><i class="anzhiyufont anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php" title="facebook"><i class="anzhiyufont anzhiyufont anzhiyu-icon-facebook1"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/" title="Github"><i class="anzhiyufont anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com" title="Bilibili"><i class="anzhiyufont anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.douyin.com/user/MS4wLjABAAAARlF7u0o6BTIX0KiHreekyz5_nqDUauZDgG6AtnpESAI" title="抖音"><i class="anzhiyufont anzhiyufont anzhiyu-icon-tiktok"></i></a></div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener" href="https://www.foreverblog.cn/">十年之约</a><a class="footer-item" title="开往" target="_blank" rel="noopener" href="https://github.com/travellings-link/travellings">开往</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档" href="/docs/">文档</a><a class="footer-item" title="源码" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu">源码</a><a class="footer-item" title="更新日志" href="/update/">更新日志</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="友链文章" href="/fcircle/">友链文章</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">协议</div><div class="footer-links"><a class="footer-item" title="隐私协议" href="/privacy/">隐私协议</a><a class="footer-item" title="Cookies" href="/cookies/">Cookies</a><a class="footer-item" title="版权协议" href="/copyright/">版权协议</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2024 By <a class="footer-bar-link" href="/" title="REAI" target="_blank">REAI</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="京ICP备2023019859号-1">京ICP备2023019859号-1</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">64</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">29</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.reaicc.com/" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wangyiyun.png" alt="网易云音乐"/><span class="back-menu-item-text">网易云音乐</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://news.reaicc.com/" title="每日早报"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://news.reaicc.com/favicon.svg" alt="每日早报"/><span class="back-menu-item-text">每日早报</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/friends/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/?id=6709358233&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/notice/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 时间轴</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Ant/" style="font-size: 0.88rem;">Ant<sup>1</sup></a><a href="/tags/Cookie/" style="font-size: 0.88rem;">Cookie<sup>2</sup></a><a href="/tags/Dozer/" style="font-size: 0.88rem;">Dozer<sup>1</sup></a><a href="/tags/Filter/" style="font-size: 0.88rem;">Filter<sup>1</sup></a><a href="/tags/Freemark/" style="font-size: 0.88rem;">Freemark<sup>1</sup></a><a href="/tags/Freenom/" style="font-size: 0.88rem;">Freenom<sup>1</sup></a><a href="/tags/HTTPS/" style="font-size: 0.88rem;">HTTPS<sup>1</sup></a><a href="/tags/Html/" style="font-size: 0.88rem;">Html<sup>1</sup></a><a href="/tags/JSP/" style="font-size: 0.88rem;">JSP<sup>1</sup></a><a href="/tags/Java/" style="font-size: 0.88rem;">Java<sup>39</sup></a><a href="/tags/JavaBean/" style="font-size: 0.88rem;">JavaBean<sup>2</sup></a><a href="/tags/JavaWeb/" style="font-size: 0.88rem;">JavaWeb<sup>11</sup></a><a href="/tags/Jetty/" style="font-size: 0.88rem;">Jetty<sup>2</sup></a><a href="/tags/Jsoup/" style="font-size: 0.88rem;">Jsoup<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>8</sup></a><a href="/tags/Listener/" style="font-size: 0.88rem;">Listener<sup>1</sup></a><a href="/tags/Lombok/" style="font-size: 0.88rem;">Lombok<sup>1</sup></a><a href="/tags/Maven/" style="font-size: 0.88rem;">Maven<sup>6</sup></a><a href="/tags/Mybatis-Plus/" style="font-size: 0.88rem;">Mybatis Plus<sup>1</sup></a><a href="/tags/Reflections/" style="font-size: 0.88rem;">Reflections<sup>1</sup></a><a href="/tags/Servlet/" style="font-size: 0.88rem;">Servlet<sup>2</sup></a><a href="/tags/Session/" style="font-size: 0.88rem;">Session<sup>1</sup></a><a href="/tags/Thumbnailator/" style="font-size: 0.88rem;">Thumbnailator<sup>1</sup></a><a href="/tags/Thymeleaf/" style="font-size: 0.88rem;">Thymeleaf<sup>1</sup></a><a href="/tags/Tomcat/" style="font-size: 0.88rem;">Tomcat<sup>6</sup></a><a href="/tags/Velocity/" style="font-size: 0.88rem;">Velocity<sup>1</sup></a><a href="/tags/ZXing/" style="font-size: 0.88rem;">ZXing<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>1</sup></a><a href="/tags/flex/" style="font-size: 0.88rem;">flex<sup>1</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 0.88rem;">反射<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86/" style="font-size: 0.88rem;">图形处理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E5%8C%85/" style="font-size: 0.88rem;">工具包<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem;">教程<sup>8</sup></a><a href="/tags/%E6%97%A5%E5%BF%97/" style="font-size: 0.88rem;">日志<sup>1</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 0.88rem;">服务器<sup>6</sup></a><a href="/tags/%E6%9D%A1%E5%BD%A2%E7%A0%81/" style="font-size: 0.88rem;">条形码<sup>1</sup></a><a href="/tags/%E6%9E%84%E5%BB%BA/" style="font-size: 0.88rem;">构建<sup>7</sup></a><a href="/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" style="font-size: 0.88rem;">模板引擎<sup>3</sup></a><a href="/tags/%E9%82%AE%E4%BB%B6/" style="font-size: 0.88rem;">邮件<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="6709358233" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="none"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/playlist?id=6709358233&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="https://npm.onmicrosoft.cn/hexo-tool-cc@1.1.4/source/js/utils.js"></script><script src="https://npm.onmicrosoft.cn/hexo-tool-cc@1.1.4/source/js/main.js"></script><script src="https://npm.onmicrosoft.cn/hexo-theme-anzhiyu@1.6.8/source/js/tw_cn.js"></script><script src="https://npm.onmicrosoft.cn/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.umd.js"></script><script src="https://npm.onmicrosoft.cn/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://npm.onmicrosoft.cn/vanilla-lazyload@17.8.4/dist/lazyload.iife.min.js"></script><script src="https://npm.onmicrosoft.cn/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><script>(() => {
+  const initArtalk = () => {
+    window.artalkItem = new Artalk(Object.assign({
+      el: '#artalk-wrap',
+      server: 'https://artalk.reaicc.com',
+      site: 'blog.reaicc.com',
+      pageKey: location.pathname,
+      darkMode: document.documentElement.getAttribute('data-theme') === 'dark',
+      countEl: '.artalk-count',
+      emoticons: [
+        "https://artalk.reaicc.com/static/images/artalk.json",
+        "https://emotion-new.acs.pw/aru/artalk.json"
+      ]
+    },null))
+
+    if (GLOBAL_CONFIG.lightbox === 'null') return
+    window.artalkItem.use(ctx => {
+      ctx.on('list-loaded', () => {
+        ctx.getCommentList().forEach(comment => {
+          const $content = comment.getRender().$content
+          anzhiyu.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
+        })
+      })
+    })
+  }
+
+  const loadArtalk = async () => {
+    if (typeof window.artalkItem === 'object') initArtalk()
+    else {
+      await getCSS('https://npm.onmicrosoft.cn/artalk@2.5.5/dist/Artalk.css')
+      await getScript('https://npm.onmicrosoft.cn/artalk@2.5.5/dist/Artalk.js')
+      initArtalk()
+    }
+  }
+
+  const artalkChangeMode = theme => {
+    const artalkWrap = document.getElementById('artalk-wrap')
+    if (!(artalkWrap && artalkWrap.children.length)) return
+    const isDark = theme === 'dark'
+    window.artalkItem.setDarkMode(isDark)
+  }
+
+
+  anzhiyu.addGlobalFn('themeChange', artalkChangeMode, 'artalk')
+  
+  if ('Artalk' === 'Artalk' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('artalk-wrap'), loadArtalk)
+    else loadArtalk()
+  } else {
+    window.loadOtherComment = loadArtalk
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getSetting = async () => {
+    try {
+      const res = await fetch('https://artalk.reaicc.com/api/conf', { method: 'GET' })
+      return await res.json()
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  const headerList = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Origin': window.location.origin
+    },
+    body: new URLSearchParams({
+      'site_name': 'blog.reaicc.com',
+      'limit': '6',
+      'type':'latest_comments'
+    })
+  }
+
+  const getComment = async () => {
+    try {
+      const res = await fetch('https://artalk.reaicc.com/api/stat', headerList)
+      const result = await res.json()
+      const avatarStr = await getSetting()
+      const { mirror, params, default:defaults } = avatarStr.data.frontend_conf.gravatar
+      const avatarCdn = false || mirror
+      let avatarDefault = false || params || defaults
+      avatarDefault = avatarDefault.startsWith('d=') ? avatarDefault : `d=${avatarDefault}`
+      const artalk = result.data.map(function (e) {
+        return {
+          'avatar': `${avatarCdn}${e.email_encrypted}?${avatarDefault}`,
+          'content': changeContent(e.content_marked),
+          'nick': e.nick,
+          'url': e.page_url,
+          'date': e.date,
+        }
+      })
+      saveToLocal.set('artalk-newest-comments', JSON.stringify(artalk), 10/(60*24))
+      generateHtml(artalk)
+    } catch (e) {
+      console.log(e)
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('artalk-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "visitor@anheyu.com";
+</script><script async data-pjax src="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script src="/js/fjGallery.min.js"></script><script>!function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"JrxUXpJaHkoUhitk",ck:"JrxUXpJaHkoUhitk"});</script><script src="https://unpkg.com/artalk@2.4.4/dist/Artalk.js"></script><script src="/js/bgCh.js"></script><script src="/shuoshuo/coco-message.js"></script><link rel="stylesheet" href="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://npm.onmicrosoft.cn/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.onmicrosoft.cn/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://npm.onmicrosoft.cn/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/link/"]):not([href="/friends/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

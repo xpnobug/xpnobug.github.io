@@ -1,0 +1,1143 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no"><title>Tomcat 快速入门 | REAI</title><meta name="keywords" content="Java,JavaWeb,服务器,Tomcat"><meta name="author" content="REAI"><meta name="copyright" content="REAI"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#f7f9fe"><meta name="mobile-web-app-capable" content="yes"><meta name="apple-touch-fullscreen" content="yes"><meta name="apple-mobile-web-app-title" content="Tomcat 快速入门"><meta name="application-name" content="Tomcat 快速入门"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-status-bar-style" content="#f7f9fe"><meta property="og:type" content="article"><meta property="og:title" content="Tomcat 快速入门"><meta property="og:url" content="https://blog.reaicc.com/pages/c50d2b/index.html"><meta property="og:site_name" content="REAI"><meta property="og:description" content="Tomcat 快速入门 🎁 版本说明 当前最新版本：Tomcat 8.5.24 环境要求：JDK7+  1. Tomcat 简介1.1. Tomcat 是什么Tomcat 是由 Apache 开发的一个 Servlet 容器，实现了对 Servlet 和 JSP 的支持，并提供了作为 Web 服务"><meta property="og:locale" content="zh-CN"><meta property="og:image" content="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640"><meta property="article:author" content="REAI"><meta property="article:tag" content="REAI,reai,博客,技术博客,程序员,程序员博客,编程,代码,开源,IT,互联网,前后端,前端,后端,设计,设计模式,数据结构,算法,面试,学习,读书,读书笔记,笔记,笔记软件,笔记系统,笔记工具,笔记方法"><meta name="twitter:card" content="summary"><meta name="twitter:image" content="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640"><meta name="description" content="Tomcat 快速入门 🎁 版本说明 当前最新版本：Tomcat 8.5.24 环境要求：JDK7+  1. Tomcat 简介1.1. Tomcat 是什么Tomcat 是由 Apache 开发的一个 Servlet 容器，实现了对 Servlet 和 JSP 的支持，并提供了作为 Web 服务"><link rel="shortcut icon" href="/img/Cat.svg"><link rel="canonical" href="https://blog.reaicc.com/pages/c50d2b/"><link rel="preconnect" href="//npm.onmicrosoft.cn"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><meta name="google-site-verification" content="xxx"/><meta name="baidu-site-verification" content="codeva-7zzTxzlayy"/><meta name="msvalidate.01" content="xxx"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://npm.onmicrosoft.cn/node-snackbar@0.1.16/dist/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://npm.onmicrosoft.cn/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  linkPageTop: undefined,
+  peoplecanvas: undefined,
+  postHeadAiDescription: {"enable":true,"gptName":"REAI","mode":"tianli","switchBtn":true,"btnLink":"https://afdian.net/item/886a79d4db6711eda42a52540025c377","randomNum":3,"basicWordCount":1000,"key":"J3BBucxpYNx1hMr4pl1j","Referer":"https://blog.reaicc.com/"},
+  diytitle: undefined,
+  LA51: {"enable":true,"ck":"JrxUXpJaHkoUhitk","LingQueMonitorID":"JrxcoymH8UkasaaS"},
+  greetingBox: undefined,
+  twikooEnvId: '',
+  commentBarrageConfig:undefined,
+  root: '/',
+  preloader: {"source":3},
+  friends_vue_info: undefined,
+  navMusic: true,
+  mainTone: undefined,
+  authorStatus: {"skills":["🤖️ 数码科技爱好者","🔍 分享与热心帮助","🏠 智能家居小能手","🔨 设计开发一条龙","🤝 专修交互与设计","🏃 脚踏实地行动派","🧱 团队小组发动机","💢 壮汉人狠话不多"]},
+  algolia: undefined,
+  localSearch: undefined,
+  translate: {"defaultEncoding":2,"translateDelay":0,"msgToTraditionalChinese":"繁","msgToSimplifiedChinese":"简","rightMenuMsgToTraditionalChinese":"转为繁体","rightMenuMsgToSimplifiedChinese":"转为简体"},
+  noticeOutdate: {"limitDay":365,"position":"top","messagePrev":"It has been","messageNext":"days since the last update, the content of the article may be outdated."},
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":330},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    simplehomepage: true,
+    post: false
+  },
+  runtime: '天',
+  date_suffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: {"copy":true,"copyrightEbable":false,"limitCount":50,"languages":{"author":"作者: REAI","link":"链接: ","source":"来源: REAI","info":"著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。","copySuccess":"复制成功，复制和转载请标注本文地址"}},
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#425AEF","bgDark":"#1f1f1f","position":"top-center"},
+  source: {
+    justifiedGallery: {
+      js: 'https://npm.onmicrosoft.cn/flickr-justified-gallery@2.1.2/dist/fjGallery.min.js',
+      css: 'https://npm.onmicrosoft.cn/flickr-justified-gallery@2.1.2/dist/fjGallery.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: true,
+  isAnchor: false,
+  shortcutKey: undefined,
+  autoDarkmode: true
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  configTitle: 'REAI',
+  title: 'Tomcat 快速入门',
+  postAI: '',
+  pageFillDescription: 'Tomcat 快速入门, 1. Tomcat 简介, 1.1. Tomcat 是什么, 1.2. Tomcat 重要目录, 1.3. web 工程发布目录结构, 1.4. Tomcat 功能, 2. Tomcat 入门, 2.1. 安装, 2.2. 配置, 2.2.1. Server, 2.2.2. Service, 2.2.3. Executor, 2.2.4. Connector, 2.2.5. Context, 2.2.6. Engine, 2.2.7. Host, 2.2.8. Cluster, 2.3. 启动, 2.3.1. 部署方式, 2.3.2. 嵌入式, 2.3.2.1. API 方式, 2.3.2.2. 使用 maven 插件启动（不推荐）, 2.3.3. IDE 插件, 3. Tomcat 架构, 3.1. Service, 3.2. 连接器, 3.2.1. ProtocolHandler 组件, 3.2.1.1. EndPoint, 3.2.1.2. Processor, 3.2.2. Adapter, 3.3. 容器, 3.3.1. 请求分发 Servlet 过程, 3.3.2. Pipeline-Value, 4. Tomcat 生命周期, 4.1. Tomcat 的启动过程, 4.1.1. Catalina 组件, 4.1.2. Server 组件, 4.1.3. Service 组件, 4.1.4. Engine 组件, 4.2. Web 应用的部署方式, 4.3. LifeCycle, 4.3.1. 请求处理过程, 4.4. Connector 流程, 4.4.1. 阻塞 IO, 4.4.2. 非阻塞 IO, 4.4.3. IO 多路复用, 4.4.4. Tomcat 各类 Connector 对比, 4.5. Comet, 4.6. 异步 Servlet, 5. 参考资料快速入门版本说明当前最新版本环境要求简介是什么是由开发的一个容器实现了对和的支持并提供了作为服务器的一些特有功能如管理和控制平台安全域管理和阀等由于本身也内含了一个服务器它也可以被视作一个单独的服务器但是不能将和服务器混淆服务器是一个用语言实现的服务器这两个不是捆绑在一起的包含了一个配置管理工具也可以通过编辑格式的配置文件来进行配置重要目录脚本存放目录如启动关闭脚本文件用于系统文件用于系统配置文件目录默认日志目录运行的目录工程发布目录结构一般项目路径结构站点根目录目录配置清单文件目录文件目录程序需要的文件程序需要的文件库文件夹程序需要的包应用程序的部署描述文件自定义的目录自定义的资源文件工程发布文件夹其实每个包都可以视为的压缩包目录用于存放工程自身相关的一些信息元文件信息通常由开发工具环境自动生成应用的安全目录所谓安全就是客户端无法访问只有服务端可以访问的目录存放程序所需要的所有文件存放程序所需要的所有文件应用的部署配置文件它是工程中最重要的配置文件它描述了和组成应用的其它组件以及应用初始化参数安全管理约束等功能支持的模型有非阻塞采用类库实现异步采用最新的类库实现采用可移植运行库实现是编写的本地库支持的应用层协议有这是大部分应用采用的访问协议用于和服务器集成如大幅度的提升了性能入门安装前提条件要求版本为以上进入官方下载地址选择合适版本下载并解压到本地添加环境变量值为的安装路径进入安装目录下的目录运行文件启动下面的示例以版本为例包含了下载解压启动操作下载解压到本地启动启动后访问可以看到安装成功的测试页面配置本节将列举一些重要常见的配置项详细的配置可以参考配置官方参考文档元素表示整个容器因此它必须是配置文件中的根元素它的属性代表了整个容器的特性属性表属性描述备注这个类必须实现接口默认服务器等待关机命令的地址如果没有指定地址则使用服务器等待关机命令的端口号设置为以禁用关闭端口必须通过连接接收到指定端口号的命令字符串以关闭元素表示一个或多个连接器组件的组合这些组件共享一个用于处理传入请求的引擎组件中可以有多个属性表属性描述备注这个类必须实现接口默认此服务的显示名称如果您使用标准组件将包含在日志消息中与特定服务器关联的每个服务的名称必须是唯一的实例配置文件示例表示可以在中的组件之间共享的线程池属性表属性描述备注这个类必须实现接口默认线程池名称要求唯一供元素的属性使用线程名称前缀最大活跃线程数默认最小活跃线程数默认当前活跃线程大于时空闲线程关闭的等待最大时间默认线程池满情况下的请求排队大小默认代表连接组件支持三种协议属性表属性说明备注规范中的异步请求超时默认请求连接的设置为则会随机选取一个未占用的端口号协议一般情况下设置为这种情况下连接模型会在和中自动根据配置选择对的编码方式如果设置系统变量为使用编码如果未设置此系统变量且未设置此属性使用编码是否采用指定的而不是来编码中的请求参数以下属性在标准的和中有效属性说明备注当最大请求连接满时的最大排队大小默认注意此属性和中属性的区别这个指的是请求连接满时的堆栈大小的指的是处理线程满时的堆栈大小请求连接超时默认指定配置的线程池名称超时时间默认值为配置值表示不超时最大连接数连接满时后续连接放入最大为的队列中对和连接默认值为对默认值为如果指定了此属性忽略否则为创建的内部线程池最大值默认如果指定了此属性忽略否则为创建线程池的最小活跃线程数默认协议处理器缓存对象的大小表示不限制当不使用的异步处理情况下如果配置配置为的否则配置为的如果使用异步处理取和的最大值元素表示一个应用程序它在特定的虚拟主机中运行每个应用程序都基于应用程序存档文件或者包含相应的解包内容的相应目录如规范中所述属性表属性说明备注部署描述符路径默认的路径和的相结合可确定应用的实际目录同中的只对当前有效默认为是否日志打印内容由默认的和应用中的组成默认为应用的如果为根路径则配置为空字符串不能不配置是否使用提供的和目录中文件发生变化是否自动重新加载默认为情况下和输出将被定向到应用日志中默认为元素表示与特定的服务相关联的整个请求处理机器它接收并处理来自一个或多个连接器的所有请求并将完成的响应返回给连接器以便最终传输回客户端属性表属性描述备注默认主机名用于标识将处理指向此服务器上主机名称但未在此配置文件中配置的请求的主机这个名字必须匹配其中一个嵌套的主机元素的名字属性此引擎的逻辑名称用于日志和错误消息在同一服务器中使用多个服务元素时每个引擎必须分配一个唯一的名称元素表示一个虚拟主机它是一个服务器的网络名称如与运行的特定服务器的关联属性表属性说明备注名称用于日志输出虚拟主机对应的应用基础路径可以是个绝对路径或相对路径虚拟主机基础路径里面应该有配置文件可以是个绝对路径或相对路径当和不存在时是否创建目录默认为是否周期性的检查和并应用和描述符默认为忽略的正则启动时是否自动默认为配置为情况下任何的启动失败则其对应的也启动失败默认为由于在实际开发中我从未用过集群配置所以没研究启动部署方式这种方式要求本地必须安装将打包好的包放在安装目录下的目录下然后在目录下执行或会自动解压目录下的包成功后可以访问是包文件名注意以上步骤是最简单的示例步骤中的包解压路径启动端口以及一些更多的功能都可以修改配置文件来定制主要是或文件嵌入式方式在中添加依赖添加文件内容如下设定成功后可以访问说明本示例是使用启动嵌入式的最简示例这个示例中使用的是默认的配置但通常我们需要对配置进行一些定制和调优为了加载配置文件启动类就要稍微再复杂一些这里不想再贴代码有兴趣的同学可以参考示例项目使用插件启动不推荐不推荐理由这种方式启动虽然最简单但是有一个很大的问题是真的很久很久没发布新版本了最新版本发布时间且貌似只能找到插件使用方法在中引入插件运行命令启动成功后可以访问是指定的项目名插件常见一般都有对的支持以为例提供了插件一般默认会安装使用步骤点击打开配置页面点击按钮设置安装路径点击标签页设置要启动的应用设置启动应用的端口参数启动浏览器等成功后可以访问当然你也可以在中设置上下文名称说明个人认为这个插件不如的插件好用的插件支持对配置文件进行配置而这里你只能自己去安装路径下修改配置文件文中的嵌入式启动示例可以参考我的示例项目架构要实现个核心功能处理连接负责网络字节流与和对象的转化加载和管理以及处理具体的请求为此设计了两个核心组件连接器负责和外部通信容器负责内部处理支持的模型有非阻塞采用类库实现异步采用最新的类库实现采用可移植运行库实现是编写的本地库支持的应用层协议有这是大部分应用采用的访问协议用于和服务器集成如大幅度的提升了性能支持多种模型和应用层协议为了实现这点一个容器可能对接多个连接器但是单独的连接器或容器都不能对外提供服务需要把它们组装起来才能工作组装后这个整体叫作组件内可能有多个通过在中配置多个可以实现通过不同的端口号来访问同一台机器上部署的不同应用一个实例有一个或多个一个有多个和和之间通过标准的和通信连接器连接器对容器屏蔽了协议及模型等的区别无论是还是在容器中获取到的都是一个标准的对象连接器的主要功能是网络通信应用层协议解析与的转化设计了个组件来实现这个功能分别是和组件间通过抽象接口交互这样做还有一个好处是封装变化这是面向对象设计的精髓将系统中经常变化的部分和稳定的部分隔离有助于增加复用性并降低系统耦合度网络通信的模型是变化的可能是非阻塞异步或者应用层协议也是变化的可能是浏览器端发送的请求信息也是变化的但是整体的处理逻辑是不变的负责提供字节流给负责提供对象给负责提供对象给容器如果要支持新的方案新的应用层协议只需要实现相关的具体子类上层通用的处理逻辑是不变的由于模型和应用层协议可以自由组合比如或者的设计者将网络通信和应用层协议解析放在一起考虑设计了一个叫的接口来封装这两种变化点各种协议和通信模型的组合有相应的具体实现类比如和组件连接器用接口来封装通信协议和模型的差异内部又分为和模块负责底层通信负责应用层协议解析是通信端点即通信监听的接口是具体的接收和发送处理器是对传输层的抽象因此是用来实现协议的是一个接口对应的抽象实现类是而的具体子类比如在和中有两个重要的子组件和其中用于监听连接请求用于处理接收到的请求它实现接口在方法里调用协议处理组件进行处理为了提高处理能力被提交到线程池来执行而这个线程池叫作执行器如果说是用来实现协议的那么用来实现协议接收来自的读取字节流解析成和对象并通过将其提交到容器处理是对应用层协议的抽象是一个接口定义了请求的处理等方法它的抽象实现类对一些协议共有的属性进行封装没有对方法进行实现具体的实现有等这些具体实现类实现了特定协议的解析方法和请求处理方式从图中我们看到接收到连接后生成一个任务提交到线程池去处理的方法会调用组件去解析应用层协议通过解析生成对象后会调用的方法连接器通过适配器调用容器由于协议不同客户端发过来的请求信息也不尽相同定义了自己的类来适配这些请求信息接口负责解析请求并生成类但是这个对象不是标准的也就意味着不能用作为参数来调用容器的解决方案是引入这是适配器模式的经典运用连接器调用的方法传入的是对象负责将转成再调用容器的方法容器设计了种容器分别是和的顶层容器包含一个或多个子容器虚拟主机负责应用的部署和的创建应用上下文包含多个负责配置的解析管理所有的资源最底层的容器是对的封装负责实例的创建执行和销毁请求分发过程是怎么确定请求是由哪个容器里的来处理的呢答案是是用组件来完成这个任务的举例来说假如有一个网购系统有面向网站管理人员的后台管理系统还有面向终端客户的在线购物系统这两个系统跑在同一个上为了隔离它们的访问域名配置了两个虚拟域名和网站管理人员通过域名访问去管理用户和商品而用户管理和商品管理是两个单独的应用终端客户通过域名去搜索商品和下订单搜索功能和订单管理也是两个独立的应用如下所示演示了应声的处理流程假如有用户访问一个比如图中的如何将这个定位到一个呢首先根据协议和端口号选定和然后根据域名选定之后根据路径找到组件最后根据路径找到这个路由分发过程具体是怎么实现的呢答案是使用管道可以理解为现实中的管道为管道中的阀门和对象在管道中经过各个阀门的处理和控制是责任链模式责任链模式是指在一个请求处理的过程中有很多处理者依次对请求进行处理每个处理者负责做自己相应的处理处理完之后将再调用下一个处理者继续处理表示一个处理点比如权限认证和记录日志先来了解一下和接口的设计每一个容器都有一个对象只要触发这个的第一个这个容器里中的就都会被调用到但是不同容器的是怎么链式触发的呢比如中需要调用下层容器中的这是因为中还有个方法这个处于链表的末端它是中必不可少的一个负责调用下层容器的里的第一个中有方法中维护了链表可以插入到中对请求做某些处理我们还发现中没有方法因为整个调用链的触发是来完成的完成自己的处理后调用来触发下一个调用中主要的三个方法之间的关系是单向链式结构本身方法中会调用下一个的方法各层容器对应的分别是由于是一个处理点因此方法就是来处理请求的注意到中有和方法因此我们大概可以猜到有一个链表将链起来了整个调用过程由连接器中的触发的它会调用的第一个生命周期的启动过程是一个程序它的运行从执行脚本开始会启动一个来运行的启动类会初始化的类加载器并实例化会通过解析根据其中的配置信息来创建相应组件并调用的方法负责管理组件它会调用的方法负责管理和顶层容器它会调用和的方法组件的职责就是解析配置并据此实例化接下来调用组件的方法和方法将启动起来还需要处理各种异常情况比如当我们通过关闭时将如何优雅的停止并且清理资源呢因此在中注册一个关闭钩子如果持有的实例为空就解析创建出来如果创建失败报错退出启动创建并注册关闭钩子用方法监听停止请求为什么需要关闭钩子如果我们需要在关闭时做一些清理工作比如将缓存数据刷到磁盘上或者清理一些临时文件可以向注册一个关闭钩子关闭钩子其实就是一个线程在停止之前会尝试执行这个线程的方法的关闭钩子做了些什么呢的关闭钩子实际上就执行了的方法的方法会释放和清理所有的资源组件组件的具体实现类是继承了它的生命周期被统一管理并且它的子组件是因此它还需要管理的生命周期也就是说在启动时调用组件的启动方法在停止时调用它们的停止方法在内部维护了若干组件它是以数组来保存的创建一个长度的新数组将老的数据复制过去启动组件触发监听事件并没有一开始就分配一个很长的数组而是在添加的过程中动态地扩展数组长度当添加一个新的实例时会创建一个新数组并把原来数组内容复制到新数组这样做的目的其实是为了节省内存空间除此之外组件还有一个重要的任务是启动一个来监听停止端口这就是为什么你能通过命令来关闭不知道你留意到没有上面的启动方法的最后一行代码就是调用了的方法在方法里会创建一个监听端口并在一个死循环里接收上的连接请求如果有新的连接到来就建立连接然后从中读取数据如果读到的数据是停止命令就退出循环进入流程组件组件的具体实现类是源码源码定义名字实例连接器数组对应的容器映射器及其监听器继承了抽象类维护了一个用于支持热部署当应用的部署发生变化时中的映射信息也要跟着变化就是一个监听器它监听容器的变化并把信息更新到中这是典型的观察者模式作为管理角色的组件最重要的是维护其他组件的生命周期此外在启动各种组件时要注意它们的依赖关系也就是说要注意启动的顺序触发启动监听器先启动会启动它子容器再启动监听器最后启动连接器连接器会启动它子组件比如从启动方法可以看到先启动了组件再启动监听器最后才是启动连接器这很好理解因为内层组件启动好了才能对外提供服务才能启动外层的连接器组件而也依赖容器组件容器组件启动好了才能监听它们的变化因此和在容器组件之后启动组件停止的顺序跟启动顺序正好相反的也是基于它们的依赖关系组件本质是一个容器因此它继承了基类并且实现了接口应用的部署方式注安装目录工作目录默认值配置元素指定属性默认配置元素指定元素指定应用的路径自定义配置在配置元素监听了容器的事件在方法中解析上述配置文件扫描路径下的所有文件夹和包解析各个应用的并创建并将加入到的子容器中解析下的所有配置找到相应应用的位置解析各个应用的并创建并将加入到的子容器中注并没有实际解析而是在中进行的中会定期检查资源文件配置文件解析顺序先解析全局的配置然后解析的默认配置最后解析应用的解析顺序先解析全局的配置然后解析的默认配置接着解析应用的扫描应用下的文件解析其中的最后合并封装成并设置注扫描应用和中的注解就是上述步骤中进行的容器的定期执行由来实现的并且只有在顶层容器中才会开启线程标志位来控制请求处理过程根据配置的指定的以及端口监听或者请求请求到来时建立连接解析请求参数创建和对象调用顶层容器的方法容器之间层层调用最终调用业务的方法将流中的数据写到中流程阻塞非阻塞多路复用阻塞与非阻塞的区别在于进行读操作和写操作的系统调用时如果此时内核态没有数据可读或者没有缓冲空间可写时是否阻塞多路复用的好处在于可同时监听多个的可读和可写事件这样就能使得应用可以同时监听多个释放了应用线程资源各类对比用编写的模块阻塞用编写的模块非阻塞多路复用全称使用的方式来进行读取文件以及进行网络传输是一个高度可移植的库它是的核心具有许多用途包括访问高级功能如和操作系统级功能随机数生成系统状态等和本地进程处理共享内存管道和套接字表格中字段含义说明是否支持基于多路复用的事件轮询轮询的最大连接数在等待下一个请求时处理线程是否释放是没有释放的所以在的情况下处理的并发连接数有限由于数据较少可以由容器提前解析完毕不需要阻塞读取的数据是应用业务逻辑的事情同时的限制是需要阻塞读取的跟读取的逻辑类似同样需要阻塞写处理相关类线程从获取并执行的方法调用的方法如果有可读的则创建放入到线程池中执行是到的适配器调用其提供的方法内部创建和对象并调用最顶层容器的中的第一个的方法主要处理到的映射规则的解析对外提供方法是一种用于的推送技术能使服务器实时地将更新的信息传送到客户端而无须客户端发出请求在出来之前如果不适用只能通过浏览器端轮询来模拟实现服务器端推送支持异步处理当连接上数据可读时触发事件并异步写数据阻塞要实现只需继承同时实现接口新的请求连接接入调用可进行与和相关的对象初始化操作并保存对象用于后续写入数据请求连接有数据可读时调用当数据可用时如果读取到文件结束或者被关闭时则被调用在连接上发生异常时调用数据读取异常连接断开处理异常超时在请求有数据但在事件中没有处理则会调用如果没有读取数据在会触发回调关闭当超时并且被关闭时也会调用被关闭时调用除了超时不会关闭其他都会关闭和时间触发时应关闭当前会话即调用的方法在事件触发时要做好线程安全的操作异步传统流程首先接收到请求之后数据解析接着调用业务接口的某些方法以完成业务处理最后根据处理的结果提交响应线程结束异步处理流程客户端发送一个请求容器分配一个线程来处理容器中的一个调用保存然后返回任何方式存在的容器线程都将退出但是仍然保持开放业务线程使用保存的来完成响应线程池客户端收到响应线程将请求转交给一个异步线程来执行业务处理线程本身返回至容器此时还没有生成响应数据异步线程处理完业务以后可以直接生成响应数据异步线程拥有和对象的引用为什么应用中支持异步推出异步主要是针对那些比较耗时的请求比如一次缓慢的数据库查询一次外部调用或者是其他一些密集型操作这种耗时的请求会很快的耗光容器的线程池继而影响可扩展性从客户端的角度来看仍然像任何其他的的交互一样只是耗费了更长的时间而已异步事件监听调用方法时触发调用方法时触发处理请求的过程出现异常时触发超时触发触发后会紧接着回调执行后就不可再操作和参考资料官方官方网站官方网站文章组成与工作原理工作原理设计模式分析',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-06-05 06:08:41',
+  postMainColor: '',
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+      win.saveToLocal = {
+        set: (key, value, ttl) => {
+          if (ttl === 0) return
+          const now = Date.now()
+          const expiry = now + ttl * 86400000
+          const item = {
+            value,
+            expiry
+          }
+          localStorage.setItem(key, JSON.stringify(item))
+        },
+      
+        get: key => {
+          const itemStr = localStorage.getItem(key)
+      
+          if (!itemStr) {
+            return undefined
+          }
+          const item = JSON.parse(itemStr)
+          const now = Date.now()
+      
+          if (now > item.expiry) {
+            localStorage.removeItem(key)
+            return undefined
+          }
+          return item.value
+        }
+      }
+    
+      win.getScript = (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        script.onerror = reject
+        script.onload = script.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          script.onload = script.onreadystatechange = null
+          resolve()
+        }
+
+        Object.keys(attr).forEach(key => {
+          script.setAttribute(key, attr[key])
+        })
+
+        document.head.appendChild(script)
+      })
+    
+      win.getCSS = (url, id = false) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onerror = reject
+        link.onload = link.onreadystatechange = function() {
+          const loadState = this.readyState
+          if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+          link.onload = link.onreadystatechange = null
+          resolve()
+        }
+        document.head.appendChild(link)
+      })
+    
+      win.activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#18171d')
+        }
+      }
+      win.activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#f7f9fe')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          const isDarkMode = window.matchMedia('(prefers-color-scheme: dark)').matches
+          const isLightMode = window.matchMedia('(prefers-color-scheme: light)').matches
+          const isNotSpecified = window.matchMedia('(prefers-color-scheme: no-preference)').matches
+          const hasNoSupport = !isDarkMode && !isLightMode && !isNotSpecified
+
+          if (t === undefined) {
+            if (isLightMode) activateLightMode()
+            else if (isDarkMode) activateDarkMode()
+            else if (isNotSpecified || hasNoSupport) {
+              const now = new Date()
+              const hour = now.getHours()
+              const isNight = hour <= 6 || hour >= 18
+              isNight ? activateDarkMode() : activateLightMode()
+            }
+            window.matchMedia('(prefers-color-scheme: dark)').addListener(e => {
+              if (saveToLocal.get('theme') === undefined) {
+                e.matches ? activateDarkMode() : activateLightMode()
+              }
+            })
+          } else if (t === 'light') activateLightMode()
+          else activateDarkMode()
+        
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        if (asideStatus === 'hide') {
+          document.documentElement.classList.add('hide-aside')
+        } else {
+          document.documentElement.classList.remove('hide-aside')
+        }
+      }
+    
+      const detectApple = () => {
+        if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+          document.documentElement.classList.add('apple')
+        }
+      }
+      detectApple()
+    })(window)</script><link rel="stylesheet" href="/css/main.css"><link rel="stylesheet" href="/css/about-tag.css"><!-- hexo injector head_end start --><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-article-double-row-kx/assets/cardlistpost.min.css"/>
+<style>#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags:before {content:"\A";
+  white-space: pre;}#recent-posts > .recent-post-item >.recent-post-info > .article-meta-wrap > .tags > .article-meta__separator{display:none}</style>
+<link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/font-awesome-animation.min.css" media="defer" onload="this.media='all'"><link rel="stylesheet" href="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@1.0.17/lib/tag_plugins.css" media="defer" onload="this.media='all'"><script async src="https://npm.elemecdn.com/hexo-butterfly-tag-plugins-plus@latest/lib/assets/carousel-touch.js"></script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 5.4.0"></head><body data-type="anzhiyu"><div id="web_bg"></div><div id="an_music_bg"></div><div id="loading-box" onclick="document.getElementById(&quot;loading-box&quot;).classList.add(&quot;loaded&quot;)"><div class="loading-bg"><img class="loading-img nolazyload" alt="加载头像" src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640"/><div class="loading-image-dot"></div></div></div><script>const preloader = {
+  endLoading: () => {
+    document.getElementById('loading-box').classList.add("loaded");
+  },
+  initLoading: () => {
+    document.getElementById('loading-box').classList.remove("loaded")
+  }
+}
+window.addEventListener('load',()=> { preloader.endLoading() })
+setTimeout(function(){preloader.endLoading();},10000)
+
+if (true) {
+  document.addEventListener('pjax:send', () => { preloader.initLoading() })
+  document.addEventListener('pjax:complete', () => { preloader.endLoading() })
+}</script><link rel="stylesheet" href="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.1.10/progress_bar/progress_bar.css"/><script async="async" src="https://npm.onmicrosoft.cn/pace-js@1.2.4/pace.min.js" data-pace-options="{ &quot;restartOnRequestAfter&quot;:false,&quot;eventLag&quot;:false}"></script><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><div id="nav-group"><span id="blog_name"><div class="back-home-button"><i class="anzhiyufont anzhiyu-icon-grip-vertical"></i><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.reaicc.com/" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wangyiyun.png" alt="网易云音乐"/><span class="back-menu-item-text">网易云音乐</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://news.reaicc.com/" title="每日早报"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://news.reaicc.com/favicon.svg" alt="每日早报"/><span class="back-menu-item-text">每日早报</span></a></div></div></div></div><a id="site-name" href="/" accesskey="h"><div class="title">REAI</div><i class="anzhiyufont anzhiyu-icon-house-chimney"></i></a></span><div class="mask-name-container"><div id="name-container"><a id="page-name" href="javascript:anzhiyu.scrollToDest(0, 500)">PAGE_NAME</a></div></div><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/friends/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/?id=6709358233&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/notice/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 时间轴</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div></div><div id="nav-right"><div class="nav-button" id="randomPost_button"><a class="site-page" onclick="toRandomPost()" title="随机前往一个文章" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-dice"></i></a></div><input id="center-console" type="checkbox"/><label class="widget" for="center-console" title="中控台" onclick="anzhiyu.switchConsole();"><i class="left"></i><i class="widget center"></i><i class="widget right"></i></label><div id="console"><div class="console-card-group-reward"><ul class="reward-all console-card"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" alt="wechat" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/wechat.jpg"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" alt="alipay" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/alipay.jpg"/></a><div class="post-qr-code-desc">alipay</div></li></ul></div><div class="console-card-group"><div class="console-card-group-left"><div class="console-card" id="card-newest-comments"><div class="card-content"><div class="author-content-item-tips">互动</div><span class="author-content-item-title"> 最新评论</span></div><div class="aside-list"><span>正在加载中...</span></div></div></div><div class="console-card-group-right"><div class="console-card tags"><div class="card-content"><div class="author-content-item-tips">兴趣点</div><span class="author-content-item-title">寻找你感兴趣的领域</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Ant/" style="font-size: 1.05rem;">Ant<sup>1</sup></a><a href="/tags/Cookie/" style="font-size: 1.05rem;">Cookie<sup>2</sup></a><a href="/tags/Dozer/" style="font-size: 1.05rem;">Dozer<sup>1</sup></a><a href="/tags/Filter/" style="font-size: 1.05rem;">Filter<sup>1</sup></a><a href="/tags/Freemark/" style="font-size: 1.05rem;">Freemark<sup>1</sup></a><a href="/tags/Freenom/" style="font-size: 1.05rem;">Freenom<sup>1</sup></a><a href="/tags/HTTPS/" style="font-size: 1.05rem;">HTTPS<sup>1</sup></a><a href="/tags/Html/" style="font-size: 1.05rem;">Html<sup>1</sup></a><a href="/tags/JSP/" style="font-size: 1.05rem;">JSP<sup>1</sup></a><a href="/tags/Java/" style="font-size: 1.05rem;">Java<sup>39</sup></a><a href="/tags/JavaBean/" style="font-size: 1.05rem;">JavaBean<sup>2</sup></a><a href="/tags/JavaWeb/" style="font-size: 1.05rem;">JavaWeb<sup>11</sup></a><a href="/tags/Jetty/" style="font-size: 1.05rem;">Jetty<sup>2</sup></a><a href="/tags/Jsoup/" style="font-size: 1.05rem;">Jsoup<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 1.05rem;">Linux<sup>8</sup></a><a href="/tags/Listener/" style="font-size: 1.05rem;">Listener<sup>1</sup></a><a href="/tags/Lombok/" style="font-size: 1.05rem;">Lombok<sup>1</sup></a><a href="/tags/Maven/" style="font-size: 1.05rem;">Maven<sup>6</sup></a><a href="/tags/Mybatis-Plus/" style="font-size: 1.05rem;">Mybatis Plus<sup>1</sup></a><a href="/tags/Reflections/" style="font-size: 1.05rem;">Reflections<sup>1</sup></a><a href="/tags/Servlet/" style="font-size: 1.05rem;">Servlet<sup>2</sup></a><a href="/tags/Session/" style="font-size: 1.05rem;">Session<sup>1</sup></a><a href="/tags/Thumbnailator/" style="font-size: 1.05rem;">Thumbnailator<sup>1</sup></a><a href="/tags/Thymeleaf/" style="font-size: 1.05rem;">Thymeleaf<sup>1</sup></a><a href="/tags/Tomcat/" style="font-size: 1.05rem;">Tomcat<sup>6</sup></a><a href="/tags/Velocity/" style="font-size: 1.05rem;">Velocity<sup>1</sup></a><a href="/tags/ZXing/" style="font-size: 1.05rem;">ZXing<sup>1</sup></a><a href="/tags/css/" style="font-size: 1.05rem;">css<sup>1</sup></a><a href="/tags/flex/" style="font-size: 1.05rem;">flex<sup>1</sup></a><a href="/tags/git/" style="font-size: 1.05rem;">git<sup>1</sup></a><a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 1.05rem;">反射<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86/" style="font-size: 1.05rem;">图形处理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E5%8C%85/" style="font-size: 1.05rem;">工具包<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 1.05rem;">教程<sup>8</sup></a><a href="/tags/%E6%97%A5%E5%BF%97/" style="font-size: 1.05rem;">日志<sup>1</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 1.05rem;">服务器<sup>6</sup></a><a href="/tags/%E6%9D%A1%E5%BD%A2%E7%A0%81/" style="font-size: 1.05rem;">条形码<sup>1</sup></a><a href="/tags/%E6%9E%84%E5%BB%BA/" style="font-size: 1.05rem;">构建<sup>7</sup></a><a href="/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" style="font-size: 1.05rem;">模板引擎<sup>3</sup></a><a href="/tags/%E9%82%AE%E4%BB%B6/" style="font-size: 1.05rem;">邮件<sup>1</sup></a></div></div><hr/></div></div><div class="console-card history"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-box-archiv"></i><span>文章</span></div><div class="card-archives"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-archive"></i><span>归档</span><a class="card-more-btn" href="/archives/" title="查看更多">
+    <i class="anzhiyufont anzhiyu-icon-angle-right"></i></a></div><ul class="card-archive-list"><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/06/"><span class="card-archive-list-date">六月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2024/05/"><span class="card-archive-list-date">五月 2024</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/11/"><span class="card-archive-list-date">十一月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/09/"><span class="card-archive-list-date">九月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/07/"><span class="card-archive-list-date">七月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/06/"><span class="card-archive-list-date">六月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">6</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/05/"><span class="card-archive-list-date">五月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">2</span><span>篇</span></div></a></li><li class="card-archive-list-item"><a class="card-archive-list-link" href="/archives/2023/04/"><span class="card-archive-list-date">四月 2023</span><div class="card-archive-list-count-group"><span class="card-archive-list-count">1</span><span>篇</span></div></a></li></ul></div><hr/></div></div></div><div class="button-group"><div class="console-btn-item"><a class="darkmode_switchbutton" title="显示模式切换" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-moon"></i></a></div><div class="console-btn-item" id="consoleHideAside" onclick="anzhiyu.hideAsideBtn()" title="边栏显示控制"><a class="asideSwitch"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></a></div><div class="console-btn-item on" id="consoleCommentBarrage" onclick="anzhiyu.switchCommentBarrage()" title="热评开关"><a class="commentBarrage"><i class="anzhiyufont anzhiyu-icon-message"></i></a></div><div class="console-btn-item" id="consoleMusic" onclick="anzhiyu.musicToggle()" title="音乐开关"><a class="music-switch"><i class="anzhiyufont anzhiyu-icon-music"></i></a></div></div><div class="console-mask" onclick="anzhiyu.hideConsole()" href="javascript:void(0);"></div></div><div class="nav-button" id="nav-totop"><a class="totopbtn" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i><span id="percent" onclick="anzhiyu.scrollToDest(0,500)">0</span></a></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);" title="切换"><i class="anzhiyufont anzhiyu-icon-bars"></i></a></div></div></div></nav><div id="post-info"><div id="post-firstinfo"><div class="meta-firstline"><a class="post-meta-original">原创</a><span class="post-meta-categories"><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url">编程</a><i class="anzhiyufont anzhiyu-icon-angle-right post-meta-separator"></i><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/Java/" itemprop="url">Java</a><i class="anzhiyufont anzhiyu-icon-angle-right post-meta-separator"></i><i class="anzhiyufont anzhiyu-icon-inbox post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/Java/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url">服务器</a></span><span class="article-meta tags"><a class="article-meta__tags" href="/tags/Java/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Java</span></a><a class="article-meta__tags" href="/tags/JavaWeb/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>JavaWeb</span></a><a class="article-meta__tags" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>服务器</span></a><a class="article-meta__tags" href="/tags/Tomcat/" tabindex="-1" itemprop="url"> <span> <i class="anzhiyufont anzhiyu-icon-hashtag"></i>Tomcat</span></a></span></div></div><h1 class="post-title" itemprop="name headline">Tomcat 快速入门</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="anzhiyufont anzhiyu-icon-calendar-days post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" itemprop="dateCreated datePublished" datetime="2022-02-17T14:34:30.000Z" title="发表于 2022-02-17 22:34:30">2022-02-17</time><span class="post-meta-separator"></span><i class="anzhiyufont anzhiyu-icon-history post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" itemprop="dateCreated datePublished" datetime="2024-06-04T22:08:41.090Z" title="更新于 2024-06-05 06:08:41">2024-06-05</time></span></div><div class="meta-secondline"><span class="post-meta-separator"></span><span id="" data-flag-title="Tomcat 快速入门"><i class="anzhiyufont anzhiyu-icon-fw-eye post-meta-icon"></i><span class="post-meta-label" title="阅读量">阅读量:</span><span id="ArtalkPV"><i class="anzhiyufont anzhiyu-icon-spinner anzhiyu-spin"></i></span></span><span class="post-meta-separator">       </span><span class="post-meta-position" title="作者IP属地为北京"><i class="anzhiyufont anzhiyu-icon-location-dot"></i>北京</span></div></div></div><section class="main-hero-waves-area waves-area"><svg class="waves-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28" preserveAspectRatio="none" shape-rendering="auto"><defs><path id="gentle-wave" d="M -160 44 c 30 0 58 -18 88 -18 s 58 18 88 18 s 58 -18 88 -18 s 58 18 88 18 v 44 h -352 Z"></path></defs><g class="parallax"><use href="#gentle-wave" x="48" y="0"></use><use href="#gentle-wave" x="48" y="3"></use><use href="#gentle-wave" x="48" y="5"></use><use href="#gentle-wave" x="48" y="7"></use></g></svg></section><div id="post-top-cover"><img class="nolazyload" id="post-top-bg" src=""></div></header><main id="blog-container"><div class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container" itemscope itemtype="https://blog.reaicc.com/pages/c50d2b/"><header><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/" itemprop="url">编程</a><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/Java/" itemprop="url">Java</a><a class="post-meta-categories" href="/categories/%E7%BC%96%E7%A8%8B/Java/%E6%9C%8D%E5%8A%A1%E5%99%A8/" itemprop="url">服务器</a><a href="/tags/Java/" tabindex="-1" itemprop="url">Java</a><a href="/tags/JavaWeb/" tabindex="-1" itemprop="url">JavaWeb</a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" tabindex="-1" itemprop="url">服务器</a><a href="/tags/Tomcat/" tabindex="-1" itemprop="url">Tomcat</a><h1 id="CrawlerTitle" itemprop="name headline">Tomcat 快速入门</h1><span itemprop="author" itemscope itemtype="http://schema.org/Person">REAI</span><time itemprop="dateCreated datePublished" datetime="2022-02-17T14:34:30.000Z" title="发表于 2022-02-17 22:34:30">2022-02-17</time><time itemprop="dateCreated datePublished" datetime="2024-06-04T22:08:41.090Z" title="更新于 2024-06-05 06:08:41">2024-06-05</time></header><h1 id="Tomcat-快速入门"><a href="#Tomcat-快速入门" class="headerlink" title="Tomcat 快速入门"></a>Tomcat 快速入门</h1><blockquote>
+<p>🎁 版本说明</p>
+<p>当前最新版本：Tomcat 8.5.24</p>
+<p>环境要求：JDK7+</p>
+</blockquote>
+<h2 id="1-Tomcat-简介"><a href="#1-Tomcat-简介" class="headerlink" title="1. Tomcat 简介"></a>1. Tomcat 简介</h2><h3 id="1-1-Tomcat-是什么"><a href="#1-1-Tomcat-是什么" class="headerlink" title="1.1. Tomcat 是什么"></a>1.1. Tomcat 是什么</h3><p>Tomcat 是由 Apache 开发的一个 Servlet 容器，实现了对 Servlet 和 JSP 的支持，并提供了作为 Web 服务器的一些特有功能，如 Tomcat 管理和控制平台、安全域管理和 Tomcat 阀等。</p>
+<p>由于 Tomcat 本身也内含了一个 HTTP 服务器，它也可以被视作一个单独的 Web 服务器。但是，不能将 Tomcat 和 Apache HTTP 服务器混淆，Apache HTTP 服务器是一个用 C 语言实现的 HTTP Web 服务器；这两个 HTTP web server 不是捆绑在一起的。Tomcat 包含了一个配置管理工具，也可以通过编辑 XML 格式的配置文件来进行配置。</p>
+<h3 id="1-2-Tomcat-重要目录"><a href="#1-2-Tomcat-重要目录" class="headerlink" title="1.2. Tomcat 重要目录"></a>1.2. Tomcat 重要目录</h3><ul>
+<li><strong>/bin</strong> - Tomcat 脚本存放目录（如启动、关闭脚本）。 <code>*.sh</code> 文件用于 Unix 系统； <code>*.bat</code> 文件用于 Windows 系统。</li>
+<li><strong>/conf</strong> - Tomcat 配置文件目录。</li>
+<li><strong>/logs</strong> - Tomcat 默认日志目录。</li>
+<li><strong>/webapps</strong> - webapp 运行的目录。</li>
+</ul>
+<h3 id="1-3-web-工程发布目录结构"><a href="#1-3-web-工程发布目录结构" class="headerlink" title="1.3. web 工程发布目录结构"></a>1.3. web 工程发布目录结构</h3><p>一般 web 项目路径结构</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">|-- webapp                         # 站点根目录</span><br><span class="line">    |-- META-INF                   # META-INF 目录</span><br><span class="line">    |   `-- MANIFEST.MF            # 配置清单文件</span><br><span class="line">    |-- WEB-INF                    # WEB-INF 目录</span><br><span class="line">    |   |-- classes                # class文件目录</span><br><span class="line">    |   |   |-- *.class            # 程序需要的 class 文件</span><br><span class="line">    |   |   `-- *.xml              # 程序需要的 xml 文件</span><br><span class="line">    |   |-- lib                    # 库文件夹</span><br><span class="line">    |   |   `-- *.jar              # 程序需要的 jar 包</span><br><span class="line">    |   `-- web.xml                # Web应用程序的部署描述文件</span><br><span class="line">    |-- &lt;userdir&gt;                  # 自定义的目录</span><br><span class="line">    |-- &lt;userfiles&gt;                # 自定义的资源文件</span><br></pre></td></tr></table></figure>
+<ul>
+<li><p><code>webapp</code>：工程发布文件夹。其实每个 war 包都可以视为 webapp 的压缩包。</p>
+</li>
+<li><p><code>META-INF</code>：META-INF 目录用于存放工程自身相关的一些信息，元文件信息，通常由开发工具，环境自动生成。</p>
+</li>
+<li><p><code>WEB-INF</code>：Java web 应用的安全目录。所谓安全就是客户端无法访问，只有服务端可以访问的目录。</p>
+</li>
+<li><p><code>/WEB-INF/classes</code>：存放程序所需要的所有 Java class 文件。</p>
+</li>
+<li><p><code>/WEB-INF/lib</code>：存放程序所需要的所有 jar 文件。</p>
+</li>
+<li><p><code>/WEB-INF/web.xml</code>：web 应用的部署配置文件。它是工程中最重要的配置文件，它描述了 servlet 和组成应用的其它组件，以及应用初始化参数、安全管理约束等。</p>
+</li>
+</ul>
+<h3 id="1-4-Tomcat-功能"><a href="#1-4-Tomcat-功能" class="headerlink" title="1.4. Tomcat 功能"></a>1.4. Tomcat 功能</h3><p>Tomcat 支持的 I/O 模型有：</p>
+<ul>
+<li>NIO：非阻塞 I/O，采用 Java NIO 类库实现。</li>
+<li>NIO2：异步 I/O，采用 JDK 7 最新的 NIO2 类库实现。</li>
+<li>APR：采用 Apache 可移植运行库实现，是 C/C++ 编写的本地库。</li>
+</ul>
+<p>Tomcat 支持的应用层协议有：</p>
+<ul>
+<li>HTTP/1.1：这是大部分 Web 应用采用的访问协议。</li>
+<li>AJP：用于和 Web 服务器集成（如 Apache）。</li>
+<li>HTTP/2：HTTP 2.0 大幅度的提升了 Web 性能。</li>
+</ul>
+<h2 id="2-Tomcat-入门"><a href="#2-Tomcat-入门" class="headerlink" title="2. Tomcat 入门"></a>2. Tomcat 入门</h2><h3 id="2-1-安装"><a href="#2-1-安装" class="headerlink" title="2.1. 安装"></a>2.1. 安装</h3><p><strong>前提条件</strong></p>
+<p>Tomcat 8.5 要求 JDK 版本为 1.7 以上。</p>
+<p>进入 <a target="_blank" rel="noopener" href="https://tomcat.apache.org/download-80.cgi">Tomcat 官方下载地址</a> 选择合适版本下载，并解压到本地。</p>
+<p><strong>Windows</strong></p>
+<p>添加环境变量 <code>CATALINA_HOME</code> ，值为 Tomcat 的安装路径。</p>
+<p>进入安装目录下的 bin 目录，运行 startup.bat 文件，启动 Tomcat</p>
+<p><strong>Linux / Unix</strong></p>
+<p>下面的示例以 8.5.24 版本为例，包含了下载、解压、启动操作。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 下载解压到本地</span></span><br><span class="line">wget http://mirrors.hust.edu.cn/apache/tomcat/tomcat-8/v8.5.24/bin/apache-tomcat-8.5.24.tar.gz</span><br><span class="line">tar -zxf apache-tomcat-8.5.24.tar.gz</span><br><span class="line"><span class="comment"># 启动 Tomcat</span></span><br><span class="line">./apache-tomcat-8.5.24/bin/startup.sh</span><br></pre></td></tr></table></figure>
+<p>启动后，访问 <code>http://localhost:8080</code> ，可以看到 Tomcat 安装成功的测试页面。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javaweb/tools/tomcat/tomcat.png" alt="img"></p>
+<h3 id="2-2-配置"><a href="#2-2-配置" class="headerlink" title="2.2. 配置"></a>2.2. 配置</h3><p>本节将列举一些重要、常见的配置项。详细的 Tomcat8 配置可以参考 <a target="_blank" rel="noopener" href="http://tomcat.apache.org/tomcat-8.5-doc/config/index.html">Tomcat 8 配置官方参考文档</a> 。</p>
+<h4 id="2-2-1-Server"><a href="#2-2-1-Server" class="headerlink" title="2.2.1. Server"></a>2.2.1. Server</h4><blockquote>
+<p>Server 元素表示整个 Catalina servlet 容器。</p>
+<p>因此，它必须是 <code>conf/server.xml</code> 配置文件中的根元素。它的属性代表了整个 servlet 容器的特性。</p>
+</blockquote>
+<p><strong>属性表</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>className</td>
+<td>这个类必须实现 org.apache.catalina.Server 接口。</td>
+<td>默认 org.apache.catalina.core.StandardServer</td>
+</tr>
+<tr>
+<td>address</td>
+<td>服务器等待关机命令的 TCP / IP 地址。如果没有指定地址，则使用 localhost。</td>
+<td></td>
+</tr>
+<tr>
+<td>port</td>
+<td>服务器等待关机命令的 TCP / IP 端口号。设置为-1 以禁用关闭端口。</td>
+<td></td>
+</tr>
+<tr>
+<td>shutdown</td>
+<td>必须通过 TCP / IP 连接接收到指定端口号的命令字符串，以关闭 Tomcat。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="2-2-2-Service"><a href="#2-2-2-Service" class="headerlink" title="2.2.2. Service"></a>2.2.2. Service</h4><blockquote>
+<p>Service 元素表示一个或多个连接器组件的组合，这些组件共享一个用于处理传入请求的引擎组件。Server 中可以有多个 Service。</p>
+</blockquote>
+<p><strong>属性表</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>className</td>
+<td>这个类必须实现<code>org.apache.catalina.Service</code>接口。</td>
+<td>默认 <code>org.apache.catalina.core.StandardService</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>此服务的显示名称，如果您使用标准 Catalina 组件，将包含在日志消息中。与特定服务器关联的每个服务的名称必须是唯一的。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p><strong>实例 - <code>conf/server.xml</code> 配置文件示例</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">Server</span> <span class="attr">port</span>=<span class="string">&quot;8080&quot;</span> <span class="attr">shutdown</span>=<span class="string">&quot;SHUTDOWN&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Service</span> <span class="attr">name</span>=<span class="string">&quot;xxx&quot;</span>&gt;</span></span><br><span class="line">  ...</span><br><span class="line">  <span class="tag">&lt;/<span class="name">Service</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Server</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-2-3-Executor"><a href="#2-2-3-Executor" class="headerlink" title="2.2.3. Executor"></a>2.2.3. Executor</h4><blockquote>
+<p>Executor 表示可以在 Tomcat 中的组件之间共享的线程池。</p>
+</blockquote>
+<p><strong>属性表</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>className</td>
+<td>这个类必须实现<code>org.apache.catalina.Executor</code>接口。</td>
+<td>默认 <code>org.apache.catalina.core.StandardThreadExecutor</code></td>
+</tr>
+<tr>
+<td>name</td>
+<td>线程池名称。</td>
+<td>要求唯一, 供 Connector 元素的 executor 属性使用</td>
+</tr>
+<tr>
+<td>namePrefix</td>
+<td>线程名称前缀。</td>
+<td></td>
+</tr>
+<tr>
+<td>maxThreads</td>
+<td>最大活跃线程数。</td>
+<td>默认 200</td>
+</tr>
+<tr>
+<td>minSpareThreads</td>
+<td>最小活跃线程数。</td>
+<td>默认 25</td>
+</tr>
+<tr>
+<td>maxIdleTime</td>
+<td>当前活跃线程大于 minSpareThreads 时,空闲线程关闭的等待最大时间。</td>
+<td>默认 60000ms</td>
+</tr>
+<tr>
+<td>maxQueueSize</td>
+<td>线程池满情况下的请求排队大小。</td>
+<td>默认 Integer.MAX_VALUE</td>
+</tr>
+</tbody>
+</table>
+</div>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">Service</span> <span class="attr">name</span>=<span class="string">&quot;xxx&quot;</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">Executor</span> <span class="attr">name</span>=<span class="string">&quot;tomcatThreadPool&quot;</span> <span class="attr">namePrefix</span>=<span class="string">&quot;catalina-exec-&quot;</span> <span class="attr">maxThreads</span>=<span class="string">&quot;300&quot;</span> <span class="attr">minSpareThreads</span>=<span class="string">&quot;25&quot;</span>/&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">Service</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h4 id="2-2-4-Connector"><a href="#2-2-4-Connector" class="headerlink" title="2.2.4. Connector"></a>2.2.4. Connector</h4><blockquote>
+<p>Connector 代表连接组件。Tomcat 支持三种协议：HTTP/1.1、HTTP/2.0、AJP。</p>
+</blockquote>
+<p><strong>属性表</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>asyncTimeout</td>
+<td>Servlet3.0 规范中的异步请求超时</td>
+<td>默认 30s</td>
+</tr>
+<tr>
+<td>port</td>
+<td>请求连接的 TCP Port</td>
+<td>设置为 0,则会随机选取一个未占用的端口号</td>
+</tr>
+<tr>
+<td>protocol</td>
+<td>协议. 一般情况下设置为 HTTP/1.1,这种情况下连接模型会在 NIO 和 APR/native 中自动根据配置选择</td>
+<td></td>
+</tr>
+<tr>
+<td>URIEncoding</td>
+<td>对 URI 的编码方式.</td>
+<td>如果设置系统变量 org.apache.catalina.STRICT_SERVLET_COMPLIANCE 为 true,使用 ISO-8859-1 编码;如果未设置此系统变量且未设置此属性, 使用 UTF-8 编码</td>
+</tr>
+<tr>
+<td>useBodyEncodingForURI</td>
+<td>是否采用指定的 contentType 而不是 URIEncoding 来编码 URI 中的请求参数</td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>以下属性在标准的 Connector(NIO, NIO2 和 APR/native)中有效:</p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>acceptCount</td>
+<td>当最大请求连接 maxConnections 满时的最大排队大小</td>
+<td>默认 100,注意此属性和 Executor 中属性 maxQueueSize 的区别.这个指的是请求连接满时的堆栈大小,Executor 的 maxQueueSize 指的是处理线程满时的堆栈大小</td>
+</tr>
+<tr>
+<td>connectionTimeout</td>
+<td>请求连接超时</td>
+<td>默认 60000ms</td>
+</tr>
+<tr>
+<td>executor</td>
+<td>指定配置的线程池名称</td>
+<td></td>
+</tr>
+<tr>
+<td>keepAliveTimeout</td>
+<td>keeAlive 超时时间</td>
+<td>默认值为 connectionTimeout 配置值.-1 表示不超时</td>
+</tr>
+<tr>
+<td>maxConnections</td>
+<td>最大连接数</td>
+<td>连接满时后续连接放入最大为 acceptCount 的队列中. 对 NIO 和 NIO2 连接,默认值为 10000;对 APR/native,默认值为 8192</td>
+</tr>
+<tr>
+<td>maxThreads</td>
+<td>如果指定了 Executor, 此属性忽略;否则为 Connector 创建的内部线程池最大值</td>
+<td>默认 200</td>
+</tr>
+<tr>
+<td>minSpareThreads</td>
+<td>如果指定了 Executor, 此属性忽略;否则为 Connector 创建线程池的最小活跃线程数</td>
+<td>默认 10</td>
+</tr>
+<tr>
+<td>processorCache</td>
+<td>协议处理器缓存 Processor 对象的大小</td>
+<td>-1 表示不限制.当不使用 servlet3.0 的异步处理情况下: 如果配置 Executor,配置为 Executor 的 maxThreads;否则配置为 Connnector 的 maxThreads. 如果使用 Serlvet3.0 异步处理, 取 maxThreads 和 maxConnections 的最大值</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="2-2-5-Context"><a href="#2-2-5-Context" class="headerlink" title="2.2.5. Context"></a>2.2.5. Context</h4><blockquote>
+<p>Context 元素表示一个 Web 应用程序，它在特定的虚拟主机中运行。每个 Web 应用程序都基于 Web 应用程序存档（WAR）文件，或者包含相应的解包内容的相应目录，如 Servlet 规范中所述。</p>
+</blockquote>
+<p><strong>属性表</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>altDDName</td>
+<td>web.xml 部署描述符路径</td>
+<td>默认 /WEB-INF/web.xml</td>
+</tr>
+<tr>
+<td>docBase</td>
+<td>Context 的 Root 路径</td>
+<td>和 Host 的 appBase 相结合, 可确定 web 应用的实际目录</td>
+</tr>
+<tr>
+<td>failCtxIfServletStartFails</td>
+<td>同 Host 中的 failCtxIfServletStartFails, 只对当前 Context 有效</td>
+<td>默认为 false</td>
+</tr>
+<tr>
+<td>logEffectiveWebXml</td>
+<td>是否日志打印 web.xml 内容(web.xml 由默认的 web.xml 和应用中的 web.xml 组成)</td>
+<td>默认为 false</td>
+</tr>
+<tr>
+<td>path</td>
+<td>web 应用的 context path</td>
+<td>如果为根路径,则配置为空字符串(“”), 不能不配置</td>
+</tr>
+<tr>
+<td>privileged</td>
+<td>是否使用 Tomcat 提供的 manager servlet</td>
+<td></td>
+</tr>
+<tr>
+<td>reloadable</td>
+<td>/WEB-INF/classes/ 和/WEB-INF/lib/ 目录中 class 文件发生变化是否自动重新加载</td>
+<td>默认为 false</td>
+</tr>
+<tr>
+<td>swallowOutput</td>
+<td>true 情况下, System.out 和 System.err 输出将被定向到 web 应用日志中</td>
+<td>默认为 false</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="2-2-6-Engine"><a href="#2-2-6-Engine" class="headerlink" title="2.2.6. Engine"></a>2.2.6. Engine</h4><blockquote>
+<p>Engine 元素表示与特定的 Catalina 服务相关联的整个请求处理机器。它接收并处理来自一个或多个连接器的所有请求，并将完成的响应返回给连接器，以便最终传输回客户端。</p>
+</blockquote>
+<p><strong>属性表</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>描述</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>defaultHost</td>
+<td>默认主机名，用于标识将处理指向此服务器上主机名称但未在此配置文件中配置的请求的主机。</td>
+<td>这个名字必须匹配其中一个嵌套的主机元素的名字属性。</td>
+</tr>
+<tr>
+<td>name</td>
+<td>此引擎的逻辑名称，用于日志和错误消息。</td>
+<td>在同一服务器中使用多个服务元素时，每个引擎必须分配一个唯一的名称。</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="2-2-7-Host"><a href="#2-2-7-Host" class="headerlink" title="2.2.7. Host"></a>2.2.7. Host</h4><blockquote>
+<p>Host 元素表示一个虚拟主机，它是一个服务器的网络名称（如“www.mycompany.com”）与运行 Tomcat 的特定服务器的关联。</p>
+</blockquote>
+<p><strong>属性表</strong></p>
+<div class="table-container">
+<table>
+<thead>
+<tr>
+<th>属性</th>
+<th>说明</th>
+<th>备注</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>name</td>
+<td>名称</td>
+<td>用于日志输出</td>
+</tr>
+<tr>
+<td>appBase</td>
+<td>虚拟主机对应的应用基础路径</td>
+<td>可以是个绝对路径, 或${CATALINA_BASE}相对路径</td>
+</tr>
+<tr>
+<td>xmlBase</td>
+<td>虚拟主机 XML 基础路径,里面应该有 Context xml 配置文件</td>
+<td>可以是个绝对路径, 或${CATALINA_BASE}相对路径</td>
+</tr>
+<tr>
+<td>createDirs</td>
+<td>当 appBase 和 xmlBase 不存在时,是否创建目录</td>
+<td>默认为 true</td>
+</tr>
+<tr>
+<td>autoDeploy</td>
+<td>是否周期性的检查 appBase 和 xmlBase 并 deploy web 应用和 context 描述符</td>
+<td>默认为 true</td>
+</tr>
+<tr>
+<td>deployIgnore</td>
+<td>忽略 deploy 的正则</td>
+<td></td>
+</tr>
+<tr>
+<td>deployOnStartup</td>
+<td>Tomcat 启动时是否自动 deploy</td>
+<td>默认为 true</td>
+</tr>
+<tr>
+<td>failCtxIfServletStartFails</td>
+<td>配置为 true 情况下,任何 load-on-startup &gt;=0 的 servlet 启动失败,则其对应的 Contxt 也启动失败</td>
+<td>默认为 false</td>
+</tr>
+</tbody>
+</table>
+</div>
+<h4 id="2-2-8-Cluster"><a href="#2-2-8-Cluster" class="headerlink" title="2.2.8. Cluster"></a>2.2.8. Cluster</h4><p>由于在实际开发中，我从未用过 Tomcat 集群配置，所以没研究。</p>
+<h3 id="2-3-启动"><a href="#2-3-启动" class="headerlink" title="2.3. 启动"></a>2.3. 启动</h3><h4 id="2-3-1-部署方式"><a href="#2-3-1-部署方式" class="headerlink" title="2.3.1. 部署方式"></a>2.3.1. 部署方式</h4><p>这种方式要求本地必须安装 Tomcat 。</p>
+<p>将打包好的 war 包放在 Tomcat 安装目录下的 <code>webapps</code> 目录下，然后在 bin 目录下执行 <code>startup.bat</code> 或 <code>startup.sh</code> ，Tomcat 会自动解压 <code>webapps</code> 目录下的 war 包。</p>
+<p>成功后，可以访问 <code>http://localhost:8080/xxx</code> （xxx 是 war 包文件名）。</p>
+<blockquote>
+<p><strong>注意</strong></p>
+<p>以上步骤是最简单的示例。步骤中的 war 包解压路径、启动端口以及一些更多的功能都可以修改配置文件来定制 （主要是 <code>server.xml</code> 或 <code>context.xml</code> 文件）。</p>
+</blockquote>
+<h4 id="2-3-2-嵌入式"><a href="#2-3-2-嵌入式" class="headerlink" title="2.3.2. 嵌入式"></a>2.3.2. 嵌入式</h4><h5 id="2-3-2-1-API-方式"><a href="#2-3-2-1-API-方式" class="headerlink" title="2.3.2.1. API 方式"></a>2.3.2.1. API 方式</h5><p>在 pom.xml 中添加依赖</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">dependency</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat.embed<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat-embed-core<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>8.5.24<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">dependency</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>添加 SimpleEmbedTomcatServer.java 文件，内容如下：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> java.util.Optional;</span><br><span class="line"><span class="keyword">import</span> org.apache.catalina.startup.Tomcat;</span><br><span class="line"></span><br><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">SimpleTomcatServer</span> </span>&#123;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> <span class="keyword">int</span> PORT = <span class="number">8080</span>;</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">static</span> <span class="keyword">final</span> String CONTEXT_PATH = <span class="string">&quot;/javatool-server&quot;</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">main</span><span class="params">(String[] args)</span> <span class="keyword">throws</span> Exception </span>&#123;</span><br><span class="line">        <span class="comment">// 设定 profile</span></span><br><span class="line">        Optional&lt;String&gt; profile = Optional.ofNullable(System.getProperty(<span class="string">&quot;spring.profiles.active&quot;</span>));</span><br><span class="line">        System.setProperty(<span class="string">&quot;spring.profiles.active&quot;</span>, profile.orElse(<span class="string">&quot;develop&quot;</span>));</span><br><span class="line"></span><br><span class="line">        Tomcat tomcat = <span class="keyword">new</span> Tomcat();</span><br><span class="line">        tomcat.setPort(PORT);</span><br><span class="line">        tomcat.getHost().setAppBase(<span class="string">&quot;.&quot;</span>);</span><br><span class="line">        tomcat.addWebapp(CONTEXT_PATH, getAbsolutePath() + <span class="string">&quot;src/main/webapp&quot;</span>);</span><br><span class="line">        tomcat.start();</span><br><span class="line">        tomcat.getServer().await();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">private</span> <span class="keyword">static</span> String <span class="title">getAbsolutePath</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        String path = <span class="keyword">null</span>;</span><br><span class="line">        String folderPath = SimpleEmbedTomcatServer.class.getProtectionDomain().getCodeSource().getLocation().getPath()</span><br><span class="line">                .substring(<span class="number">1</span>);</span><br><span class="line">        <span class="keyword">if</span> (folderPath.indexOf(<span class="string">&quot;target&quot;</span>) &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            path = folderPath.substring(<span class="number">0</span>, folderPath.indexOf(<span class="string">&quot;target&quot;</span>));</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">return</span> path;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>成功后，可以访问 <code>http://localhost:8080/javatool-server</code> 。</p>
+<blockquote>
+<p><strong>说明</strong></p>
+<p>本示例是使用 <code>org.apache.tomcat.embed</code> 启动嵌入式 Tomcat 的最简示例。</p>
+<p>这个示例中使用的是 Tomcat 默认的配置，但通常，我们需要对 Tomcat 配置进行一些定制和调优。为了加载配置文件，启动类就要稍微再复杂一些。这里不想再贴代码，有兴趣的同学可以参考：</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/dunwu/JavaStack/tree/master/codes/javatool/server"><strong>示例项目</strong></a></p>
+</blockquote>
+<h5 id="2-3-2-2-使用-maven-插件启动（不推荐）"><a href="#2-3-2-2-使用-maven-插件启动（不推荐）" class="headerlink" title="2.3.2.2. 使用 maven 插件启动（不推荐）"></a>2.3.2.2. 使用 maven 插件启动（不推荐）</h5><p>不推荐理由：这种方式启动 maven 虽然最简单，但是有一个很大的问题是，真的很久很久没发布新版本了（最新版本发布时间：2013-11-11）。且貌似只能找到 Tomcat6 、Tomcat7 插件。</p>
+<p><strong>使用方法</strong></p>
+<p>在 pom.xml 中引入插件</p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.apache.tomcat.maven<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>tomcat7-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">version</span>&gt;</span>2.2<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">port</span>&gt;</span>8080<span class="tag">&lt;/<span class="name">port</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">path</span>&gt;</span>/$&#123;project.artifactId&#125;<span class="tag">&lt;/<span class="name">path</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">uriEncoding</span>&gt;</span>UTF-8<span class="tag">&lt;/<span class="name">uriEncoding</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>运行 <code>mvn tomcat7:run</code> 命令，启动 Tomcat。</p>
+<p>成功后，可以访问 <code>http://localhost:8080/xxx</code> （xxx 是 ${project.artifactId} 指定的项目名）。</p>
+<h4 id="2-3-3-IDE-插件"><a href="#2-3-3-IDE-插件" class="headerlink" title="2.3.3. IDE 插件"></a>2.3.3. IDE 插件</h4><p>常见 Java IDE 一般都有对 Tomcat 的支持。</p>
+<p>以 Intellij IDEA 为例，提供了 <strong>Tomcat and TomEE Integration</strong> 插件（一般默认会安装）。</p>
+<p><strong>使用步骤</strong></p>
+<ul>
+<li>点击 Run/Debug Configurations &gt; New Tomcat Server &gt; local ，打开 Tomcat 配置页面。</li>
+<li>点击 Confiure… 按钮，设置 Tomcat 安装路径。</li>
+<li>点击 Deployment 标签页，设置要启动的应用。</li>
+<li>设置启动应用的端口、JVM 参数、启动浏览器等。</li>
+<li>成功后，可以访问 <code>http://localhost:8080/</code>（当然，你也可以在 url 中设置上下文名称）。</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javaweb/tools/tomcat/tomcat-intellij-run-config.png" alt="img"></p>
+<blockquote>
+<p><strong>说明</strong></p>
+<p>个人认为这个插件不如 Eclipse 的 Tomcat 插件好用，Eclipse 的 Tomcat 插件支持对 Tomcat xml 配置文件进行配置。而这里，你只能自己去 Tomcat 安装路径下修改配置文件。</p>
+</blockquote>
+<p>文中的嵌入式启动示例可以参考<a target="_blank" rel="noopener" href="https://github.com/dunwu/JavaStack/tree/master/codes/javatool/server"><strong>我的示例项目</strong></a></p>
+<h2 id="3-Tomcat-架构"><a href="#3-Tomcat-架构" class="headerlink" title="3. Tomcat 架构"></a>3. Tomcat 架构</h2><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20201113193431.png" alt="img"></p>
+<p>Tomcat 要实现 2 个核心功能：</p>
+<ul>
+<li><strong>处理 Socket 连接</strong>，负责网络字节流与 Request 和 Response 对象的转化。</li>
+<li><strong>加载和管理 Servlet</strong>，以及<strong>处理具体的 Request 请求</strong>。</li>
+</ul>
+<p>为此，Tomcat 设计了两个核心组件：</p>
+<ul>
+<li><strong>连接器（Connector）</strong>：负责和外部通信</li>
+<li><strong>容器（Container）</strong>：负责内部处理</li>
+</ul>
+<h3 id="3-1-Service"><a href="#3-1-Service" class="headerlink" title="3.1. Service"></a>3.1. Service</h3><p>Tomcat 支持的 I/O 模型有：</p>
+<ul>
+<li>NIO：非阻塞 I/O，采用 Java NIO 类库实现。</li>
+<li>NIO2：异步 I/O，采用 JDK 7 最新的 NIO2 类库实现。</li>
+<li>APR：采用 Apache 可移植运行库实现，是 C/C++ 编写的本地库。</li>
+</ul>
+<p>Tomcat 支持的应用层协议有：</p>
+<ul>
+<li>HTTP/1.1：这是大部分 Web 应用采用的访问协议。</li>
+<li>AJP：用于和 Web 服务器集成（如 Apache）。</li>
+<li>HTTP/2：HTTP 2.0 大幅度的提升了 Web 性能。</li>
+</ul>
+<p>Tomcat 支持多种 I/O 模型和应用层协议。为了实现这点，一个容器可能对接多个连接器。但是，单独的连接器或容器都不能对外提供服务，需要把它们组装起来才能工作，组装后这个整体叫作 Service 组件。Tomcat 内可能有多个 Service，通过在 Tomcat 中配置多个 Service，可以实现通过不同的端口号来访问同一台机器上部署的不同应用。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20201111093124.png" alt="img"></p>
+<p><strong>一个 Tomcat 实例有一个或多个 Service；一个 Service 有多个 Connector 和 Container</strong>。Connector 和 Container 之间通过标准的 ServletRequest 和 ServletResponse 通信。</p>
+<h3 id="3-2-连接器"><a href="#3-2-连接器" class="headerlink" title="3.2. 连接器"></a>3.2. 连接器</h3><p>连接器对 Servlet 容器屏蔽了协议及 I/O 模型等的区别，无论是 HTTP 还是 AJP，在容器中获取到的都是一个标准的 ServletRequest 对象。</p>
+<p>连接器的主要功能是：</p>
+<ul>
+<li>网络通信</li>
+<li>应用层协议解析</li>
+<li>Tomcat Request/Response 与 ServletRequest/ServletResponse 的转化</li>
+</ul>
+<p>Tomcat 设计了 3 个组件来实现这 3 个功能，分别是 <strong><code>EndPoint</code></strong>、<strong><code>Processor</code></strong> 和 <strong><code>Adapter</code></strong>。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20201111101440.png" alt="img"></p>
+<p>组件间通过抽象接口交互。这样做还有一个好处是<strong>封装变化。</strong>这是面向对象设计的精髓，将系统中经常变化的部分和稳定的部分隔离，有助于增加复用性，并降低系统耦合度。网络通信的 I/O 模型是变化的，可能是非阻塞 I/O、异步 I/O 或者 APR。应用层协议也是变化的，可能是 HTTP、HTTPS、AJP。浏览器端发送的请求信息也是变化的。但是整体的处理逻辑是不变的，EndPoint 负责提供字节流给 Processor，Processor 负责提供 Tomcat Request 对象给 Adapter，Adapter 负责提供 ServletRequest 对象给容器。</p>
+<p>如果要支持新的 I/O 方案、新的应用层协议，只需要实现相关的具体子类，上层通用的处理逻辑是不变的。由于 I/O 模型和应用层协议可以自由组合，比如 NIO + HTTP 或者 NIO2 + AJP。Tomcat 的设计者将网络通信和应用层协议解析放在一起考虑，设计了一个叫 ProtocolHandler 的接口来封装这两种变化点。各种协议和通信模型的组合有相应的具体实现类。比如：Http11NioProtocol 和 AjpNioProtocol。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20201027091819.png" alt="img"></p>
+<h4 id="3-2-1-ProtocolHandler-组件"><a href="#3-2-1-ProtocolHandler-组件" class="headerlink" title="3.2.1. ProtocolHandler 组件"></a>3.2.1. ProtocolHandler 组件</h4><p><strong>连接器用 ProtocolHandler 接口来封装通信协议和 I/O 模型的差异</strong>。ProtocolHandler 内部又分为 EndPoint 和 Processor 模块，EndPoint 负责底层 Socket 通信，Proccesor 负责应用层协议解析。</p>
+<h5 id="3-2-1-1-EndPoint"><a href="#3-2-1-1-EndPoint" class="headerlink" title="3.2.1.1. EndPoint"></a>3.2.1.1. EndPoint</h5><p>EndPoint 是通信端点，即通信监听的接口，是具体的 Socket 接收和发送处理器，是对传输层的抽象，因此 EndPoint 是用来实现 TCP/IP 协议的。</p>
+<p>EndPoint 是一个接口，对应的抽象实现类是 AbstractEndpoint，而 AbstractEndpoint 的具体子类，比如在 NioEndpoint 和 Nio2Endpoint 中，有两个重要的子组件：Acceptor 和 SocketProcessor。</p>
+<p>其中 Acceptor 用于监听 Socket 连接请求。SocketProcessor 用于处理接收到的 Socket 请求，它实现 Runnable 接口，在 Run 方法里调用协议处理组件 Processor 进行处理。为了提高处理能力，SocketProcessor 被提交到线程池来执行。而这个线程池叫作执行器（Executor)。</p>
+<h5 id="3-2-1-2-Processor"><a href="#3-2-1-2-Processor" class="headerlink" title="3.2.1.2. Processor"></a>3.2.1.2. Processor</h5><p>如果说 EndPoint 是用来实现 TCP/IP 协议的，那么 Processor 用来实现 HTTP 协议，Processor 接收来自 EndPoint 的 Socket，读取字节流解析成 Tomcat Request 和 Response 对象，并通过 Adapter 将其提交到容器处理，Processor 是对应用层协议的抽象。</p>
+<p>Processor 是一个接口，定义了请求的处理等方法。它的抽象实现类 AbstractProcessor 对一些协议共有的属性进行封装，没有对方法进行实现。具体的实现有 AJPProcessor、HTTP11Processor 等，这些具体实现类实现了特定协议的解析方法和请求处理方式。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20201113185929.png" alt="img"></p>
+<p>从图中我们看到，EndPoint 接收到 Socket 连接后，生成一个 SocketProcessor 任务提交到线程池去处理，SocketProcessor 的 Run 方法会调用 Processor 组件去解析应用层协议，Processor 通过解析生成 Request 对象后，会调用 Adapter 的 Service 方法。</p>
+<h4 id="3-2-2-Adapter"><a href="#3-2-2-Adapter" class="headerlink" title="3.2.2. Adapter"></a>3.2.2. Adapter</h4><p><strong>连接器通过适配器 Adapter 调用容器</strong>。</p>
+<p>由于协议不同，客户端发过来的请求信息也不尽相同，Tomcat 定义了自己的 Request 类来适配这些请求信息。</p>
+<p>ProtocolHandler 接口负责解析请求并生成 Tomcat Request 类。但是这个 Request 对象不是标准的 ServletRequest，也就意味着，不能用 Tomcat Request 作为参数来调用容器。Tomcat 的解决方案是引入 CoyoteAdapter，这是适配器模式的经典运用，连接器调用 CoyoteAdapter 的 Sevice 方法，传入的是 Tomcat Request 对象，CoyoteAdapter 负责将 Tomcat Request 转成 ServletRequest，再调用容器的 Service 方法。</p>
+<h3 id="3-3-容器"><a href="#3-3-容器" class="headerlink" title="3.3. 容器"></a>3.3. 容器</h3><p>Tomcat 设计了 4 种容器，分别是 Engine、Host、Context 和 Wrapper。</p>
+<ul>
+<li><strong>Engine</strong> - Servlet 的顶层容器，包含一 个或多个 Host 子容器；</li>
+<li><strong>Host</strong> - 虚拟主机，负责 web 应用的部署和 Context 的创建；</li>
+<li><strong>Context</strong> - Web 应用上下文，包含多个 Wrapper，负责 web 配置的解析、管理所有的 Web 资源；</li>
+<li><strong>Wrapper</strong> - 最底层的容器，是对 Servlet 的封装，负责 Servlet 实例的创 建、执行和销毁。</li>
+</ul>
+<h4 id="3-3-1-请求分发-Servlet-过程"><a href="#3-3-1-请求分发-Servlet-过程" class="headerlink" title="3.3.1. 请求分发 Servlet 过程"></a>3.3.1. 请求分发 Servlet 过程</h4><p>Tomcat 是怎么确定请求是由哪个 Wrapper 容器里的 Servlet 来处理的呢？答案是，Tomcat 是用 Mapper 组件来完成这个任务的。</p>
+<p>举例来说，假如有一个网购系统，有面向网站管理人员的后台管理系统，还有面向终端客户的在线购物系统。这两个系统跑在同一个 Tomcat 上，为了隔离它们的访问域名，配置了两个虚拟域名：<code>manage.shopping.com</code>和<code>user.shopping.com</code>，网站管理人员通过<code>manage.shopping.com</code>域名访问 Tomcat 去管理用户和商品，而用户管理和商品管理是两个单独的 Web 应用。终端客户通过<code>user.shopping.com</code>域名去搜索商品和下订单，搜索功能和订单管理也是两个独立的 Web 应用。如下所示，演示了 url 应声 Servlet 的处理流程。</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20201113192022.jpg" alt="img"></p>
+<p>假如有用户访问一个 URL，比如图中的<code>http://user.shopping.com:8080/order/buy</code>，Tomcat 如何将这个 URL 定位到一个 Servlet 呢？</p>
+<ol>
+<li><strong>首先，根据协议和端口号选定 Service 和 Engine。</strong></li>
+<li><strong>然后，根据域名选定 Host。</strong></li>
+<li><strong>之后，根据 URL 路径找到 Context 组件。</strong></li>
+<li><strong>最后，根据 URL 路径找到 Wrapper（Servlet）。</strong></li>
+</ol>
+<p>这个路由分发过程具体是怎么实现的呢？答案是使用 Pipeline-Valve 管道。</p>
+<h4 id="3-3-2-Pipeline-Value"><a href="#3-3-2-Pipeline-Value" class="headerlink" title="3.3.2. Pipeline-Value"></a>3.3.2. Pipeline-Value</h4><p>Pipeline 可以理解为现实中的管道，Valve 为管道中的阀门，Request 和 Response 对象在管道中经过各个阀门的处理和控制。</p>
+<p>Pipeline-Valve 是责任链模式，责任链模式是指在一个请求处理的过程中有很多处理者依次对请求进行处理，每个处理者负责做自己相应的处理，处理完之后将再调用下一个处理者继续处理。Valve 表示一个处理点，比如权限认证和记录日志。</p>
+<p>先来了解一下 Valve 和 Pipeline 接口的设计：</p>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javaweb/tools/tomcat/Pipeline与Valve.png" alt="img"></p>
+<ul>
+<li>每一个容器都有一个 Pipeline 对象，只要触发这个 Pipeline 的第一个 Valve，这个容器里 Pipeline 中的 Valve 就都会被调用到。但是，不同容器的 Pipeline 是怎么链式触发的呢，比如 Engine 中 Pipeline 需要调用下层容器 Host 中的 Pipeline。</li>
+<li>这是因为 Pipeline 中还有个 getBasic 方法。这个 BasicValve 处于 Valve 链表的末端，它是 Pipeline 中必不可少的一个 Valve，负责调用下层容器的 Pipeline 里的第一个 Valve。</li>
+<li>Pipeline 中有 addValve 方法。Pipeline 中维护了 Valve 链表，Valve 可以插入到 Pipeline 中，对请求做某些处理。我们还发现 Pipeline 中没有 invoke 方法，因为整个调用链的触发是 Valve 来完成的，Valve 完成自己的处理后，调用 <code>getNext.invoke()</code> 来触发下一个 Valve 调用。</li>
+<li>Valve 中主要的三个方法：<code>setNext</code>、<code>getNext</code>、<code>invoke</code>。Valve 之间的关系是单向链式结构，本身 <code>invoke</code> 方法中会调用下一个 Valve 的 <code>invoke</code> 方法。</li>
+<li>各层容器对应的 basic valve 分别是 <code>StandardEngineValve</code>、<code>StandardHostValve</code>、 <code>StandardContextValve</code>、<code>StandardWrapperValve</code>。</li>
+<li>由于 Valve 是一个处理点，因此 invoke 方法就是来处理请求的。注意到 Valve 中有 getNext 和 setNext 方法，因此我们大概可以猜到有一个链表将 Valve 链起来了。</li>
+</ul>
+<p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javaweb/tools/tomcat/请求处理过程.png" alt="img"></p>
+<p>整个调用过程由连接器中的 Adapter 触发的，它会调用 Engine 的第一个 Valve：</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">connector.getService().getContainer().getPipeline().getFirst().invoke(request, response);</span><br></pre></td></tr></table></figure>
+<h2 id="4-Tomcat-生命周期"><a href="#4-Tomcat-生命周期" class="headerlink" title="4. Tomcat 生命周期"></a>4. Tomcat 生命周期</h2><h3 id="4-1-Tomcat-的启动过程"><a href="#4-1-Tomcat-的启动过程" class="headerlink" title="4.1. Tomcat 的启动过程"></a>4.1. Tomcat 的启动过程</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20201118145455.png" alt="img"></p>
+<ol>
+<li>Tomcat 是一个 Java 程序，它的运行从执行 <code>startup.sh</code> 脚本开始。<code>startup.sh</code> 会启动一个 JVM 来运行 Tomcat 的启动类 <code>Bootstrap</code>。</li>
+<li><code>Bootstrap</code> 会初始化 Tomcat 的类加载器并实例化 <code>Catalina</code>。</li>
+<li><code>Catalina</code> 会通过 Digester 解析 <code>server.xml</code>，根据其中的配置信息来创建相应组件，并调用 <code>Server</code> 的 <code>start</code> 方法。</li>
+<li><code>Server</code> 负责管理 <code>Service</code> 组件，它会调用 <code>Service</code> 的 <code>start</code> 方法。</li>
+<li><code>Service</code> 负责管理 <code>Connector</code> 和顶层容器 <code>Engine</code>，它会调用 <code>Connector</code> 和 <code>Engine</code> 的 <code>start</code> 方法。</li>
+</ol>
+<h4 id="4-1-1-Catalina-组件"><a href="#4-1-1-Catalina-组件" class="headerlink" title="4.1.1. Catalina 组件"></a>4.1.1. Catalina 组件</h4><p>Catalina 的职责就是解析 server.xml 配置，并据此实例化 Server。接下来，调用 Server 组件的 init 方法和 start 方法，将 Tomcat 启动起来。</p>
+<p>Catalina 还需要处理各种“异常”情况，比如当我们通过“Ctrl + C”关闭 Tomcat 时，Tomcat 将如何优雅的停止并且清理资源呢？因此 Catalina 在 JVM 中注册一个“关闭钩子”。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">start</span><span class="params">()</span> </span>&#123;</span><br><span class="line">    <span class="comment">//1. 如果持有的 Server 实例为空，就解析 server.xml 创建出来</span></span><br><span class="line">    <span class="keyword">if</span> (getServer() == <span class="keyword">null</span>) &#123;</span><br><span class="line">        load();</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2. 如果创建失败，报错退出</span></span><br><span class="line">    <span class="keyword">if</span> (getServer() == <span class="keyword">null</span>) &#123;</span><br><span class="line">        log.fatal(sm.getString(<span class="string">&quot;catalina.noServer&quot;</span>));</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//3. 启动 Server</span></span><br><span class="line">    <span class="keyword">try</span> &#123;</span><br><span class="line">        getServer().start();</span><br><span class="line">    &#125; <span class="keyword">catch</span> (LifecycleException e) &#123;</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 创建并注册关闭钩子</span></span><br><span class="line">    <span class="keyword">if</span> (useShutdownHook) &#123;</span><br><span class="line">        <span class="keyword">if</span> (shutdownHook == <span class="keyword">null</span>) &#123;</span><br><span class="line">            shutdownHook = <span class="keyword">new</span> CatalinaShutdownHook();</span><br><span class="line">        &#125;</span><br><span class="line">        Runtime.getRuntime().addShutdownHook(shutdownHook);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 用 await 方法监听停止请求</span></span><br><span class="line">    <span class="keyword">if</span> (await) &#123;</span><br><span class="line">        await();</span><br><span class="line">        stop();</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>为什么需要关闭钩子？</p>
+<p>如果我们需要在 JVM 关闭时做一些清理工作，比如将缓存数据刷到磁盘上，或者清理一些临时文件，可以向 JVM 注册一个“关闭钩子”。“关闭钩子”其实就是一个线程，JVM 在停止之前会尝试执行这个线程的 <code>run</code> 方法。</p>
+<p>Tomcat 的“关闭钩子”—— <code>CatalinaShutdownHook</code> 做了些什么呢？</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">protected</span> <span class="class"><span class="keyword">class</span> <span class="title">CatalinaShutdownHook</span> <span class="keyword">extends</span> <span class="title">Thread</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="meta">@Override</span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">run</span><span class="params">()</span> </span>&#123;</span><br><span class="line">        <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="keyword">if</span> (getServer() != <span class="keyword">null</span>) &#123;</span><br><span class="line">                Catalina.<span class="keyword">this</span>.stop();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125; <span class="keyword">catch</span> (Throwable ex) &#123;</span><br><span class="line">           ...</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Tomcat 的“关闭钩子”实际上就执行了 <code>Server</code> 的 <code>stop</code> 方法，<code>Server</code> 的 <code>stop</code> 方法会释放和清理所有的资源。</p>
+<h4 id="4-1-2-Server-组件"><a href="#4-1-2-Server-组件" class="headerlink" title="4.1.2. Server 组件"></a>4.1.2. Server 组件</h4><p>Server 组件的具体实现类是 StandardServer，Server 继承了 LifeCycleBase，它的生命周期被统一管理，并且它的子组件是 Service，因此它还需要管理 Service 的生命周期，也就是说在启动时调用 Service 组件的启动方法，在停止时调用它们的停止方法。Server 在内部维护了若干 Service 组件，它是以数组来保存的。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@Override</span></span><br><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">addService</span><span class="params">(Service service)</span> </span>&#123;</span><br><span class="line"></span><br><span class="line">    service.setServer(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">    <span class="keyword">synchronized</span> (servicesLock) &#123;</span><br><span class="line">        <span class="comment">// 创建一个长度 +1 的新数组</span></span><br><span class="line">        Service results[] = <span class="keyword">new</span> Service[services.length + <span class="number">1</span>];</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 将老的数据复制过去</span></span><br><span class="line">        System.arraycopy(services, <span class="number">0</span>, results, <span class="number">0</span>, services.length);</span><br><span class="line">        results[services.length] = service;</span><br><span class="line">        services = results;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 启动 Service 组件</span></span><br><span class="line">        <span class="keyword">if</span> (getState().isAvailable()) &#123;</span><br><span class="line">            <span class="keyword">try</span> &#123;</span><br><span class="line">                service.start();</span><br><span class="line">            &#125; <span class="keyword">catch</span> (LifecycleException e) &#123;</span><br><span class="line">                <span class="comment">// Ignore</span></span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line"></span><br><span class="line">        <span class="comment">// 触发监听事件</span></span><br><span class="line">        support.firePropertyChange(<span class="string">&quot;service&quot;</span>, <span class="keyword">null</span>, service);</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>Server 并没有一开始就分配一个很长的数组，而是在添加的过程中动态地扩展数组长度，当添加一个新的 Service 实例时，会创建一个新数组并把原来数组内容复制到新数组，这样做的目的其实是为了节省内存空间。</p>
+<p>除此之外，Server 组件还有一个重要的任务是启动一个 Socket 来监听停止端口，这就是为什么你能通过 shutdown 命令来关闭 Tomcat。不知道你留意到没有，上面 Caralina 的启动方法的最后一行代码就是调用了 Server 的 await 方法。</p>
+<p>在 await 方法里会创建一个 Socket 监听 8005 端口，并在一个死循环里接收 Socket 上的连接请求，如果有新的连接到来就建立连接，然后从 Socket 中读取数据；如果读到的数据是停止命令“SHUTDOWN”，就退出循环，进入 stop 流程。</p>
+<h4 id="4-1-3-Service-组件"><a href="#4-1-3-Service-组件" class="headerlink" title="4.1.3. Service 组件"></a>4.1.3. Service 组件</h4><p>Service 组件的具体实现类是 StandardService。</p>
+<p>【源码】StandardService 源码定义</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">public</span> <span class="class"><span class="keyword">class</span> <span class="title">StandardService</span> <span class="keyword">extends</span> <span class="title">LifecycleBase</span> <span class="keyword">implements</span> <span class="title">Service</span> </span>&#123;</span><br><span class="line">    <span class="comment">// 名字</span></span><br><span class="line">    <span class="keyword">private</span> String name = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//Server 实例</span></span><br><span class="line">    <span class="keyword">private</span> Server server = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 连接器数组</span></span><br><span class="line">    <span class="keyword">protected</span> Connector connectors[] = <span class="keyword">new</span> Connector[<span class="number">0</span>];</span><br><span class="line">    <span class="keyword">private</span> <span class="keyword">final</span> Object connectorsLock = <span class="keyword">new</span> Object();</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 对应的 Engine 容器</span></span><br><span class="line">    <span class="keyword">private</span> Engine engine = <span class="keyword">null</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 映射器及其监听器</span></span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">final</span> Mapper mapper = <span class="keyword">new</span> Mapper();</span><br><span class="line">    <span class="keyword">protected</span> <span class="keyword">final</span> MapperListener mapperListener = <span class="keyword">new</span> MapperListener(<span class="keyword">this</span>);</span><br><span class="line"></span><br><span class="line">	<span class="comment">// ...</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>StandardService 继承了 LifecycleBase 抽象类。</p>
+<p>StandardService 维护了一个 MapperListener 用于支持 Tomcat 热部署。当 Web 应用的部署发生变化时，Mapper 中的映射信息也要跟着变化，MapperListener 就是一个监听器，它监听容器的变化，并把信息更新到 Mapper 中，这是典型的观察者模式。</p>
+<p>作为“管理”角色的组件，最重要的是维护其他组件的生命周期。此外在启动各种组件时，要注意它们的依赖关系，也就是说，要注意启动的顺序。</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">protected</span> <span class="keyword">void</span> <span class="title">startInternal</span><span class="params">()</span> <span class="keyword">throws</span> LifecycleException </span>&#123;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//1. 触发启动监听器</span></span><br><span class="line">    setState(LifecycleState.STARTING);</span><br><span class="line"></span><br><span class="line">    <span class="comment">//2. 先启动 Engine，Engine 会启动它子容器</span></span><br><span class="line">    <span class="keyword">if</span> (engine != <span class="keyword">null</span>) &#123;</span><br><span class="line">        <span class="keyword">synchronized</span> (engine) &#123;</span><br><span class="line">            engine.start();</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    <span class="comment">//3. 再启动 Mapper 监听器</span></span><br><span class="line">    mapperListener.start();</span><br><span class="line"></span><br><span class="line">    <span class="comment">//4. 最后启动连接器，连接器会启动它子组件，比如 Endpoint</span></span><br><span class="line">    <span class="keyword">synchronized</span> (connectorsLock) &#123;</span><br><span class="line">        <span class="keyword">for</span> (Connector connector: connectors) &#123;</span><br><span class="line">            <span class="keyword">if</span> (connector.getState() != LifecycleState.FAILED) &#123;</span><br><span class="line">                connector.start();</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>从启动方法可以看到，Service 先启动了 Engine 组件，再启动 Mapper 监听器，最后才是启动连接器。这很好理解，因为内层组件启动好了才能对外提供服务，才能启动外层的连接器组件。而 Mapper 也依赖容器组件，容器组件启动好了才能监听它们的变化，因此 Mapper 和 MapperListener 在容器组件之后启动。组件停止的顺序跟启动顺序正好相反的，也是基于它们的依赖关系。</p>
+<h4 id="4-1-4-Engine-组件"><a href="#4-1-4-Engine-组件" class="headerlink" title="4.1.4. Engine 组件"></a>4.1.4. Engine 组件</h4><p>Engine 本质是一个容器，因此它继承了 ContainerBase 基类，并且实现了 Engine 接口。</p>
+<h3 id="4-2-Web-应用的部署方式"><a href="#4-2-Web-应用的部署方式" class="headerlink" title="4.2. Web 应用的部署方式"></a>4.2. Web 应用的部署方式</h3><p>注：catalina.home：安装目录;catalina.base：工作目录;默认值 user.dir</p>
+<ul>
+<li>Server.xml 配置 Host 元素，指定 appBase 属性，默认$catalina.base/webapps/</li>
+<li>Server.xml 配置 Context 元素，指定 docBase，元素，指定 web 应用的路径</li>
+<li>自定义配置：在$catalina.base/EngineName/HostName/XXX.xml 配置 Context 元素</li>
+</ul>
+<p>HostConfig 监听了 StandardHost 容器的事件，在 start 方法中解析上述配置文件：</p>
+<ul>
+<li>扫描 appbase 路径下的所有文件夹和 war 包，解析各个应用的 META-INF/context.xml，并 创建 StandardContext，并将 Context 加入到 Host 的子容器中。</li>
+<li>解析$catalina.base/EngineName/HostName/下的所有 Context 配置，找到相应 web 应 用的位置，解析各个应用的 META-INF/context.xml，并创建 StandardContext，并将 Context 加入到 Host 的子容器中。</li>
+</ul>
+<p>注：</p>
+<ul>
+<li>HostConfig 并没有实际解析 Context.xml，而是在 ContextConfig 中进行的。</li>
+<li>HostConfig 中会定期检查 watched 资源文件(context.xml 配置文件)</li>
+</ul>
+<p>ContextConfig 解析 context.xml 顺序：</p>
+<ul>
+<li>先解析全局的配置 config/context.xml</li>
+<li>然后解析 Host 的默认配置 EngineName/HostName/context.xml.default</li>
+<li>最后解析应用的 META-INF/context.xml</li>
+</ul>
+<p>ContextConfig 解析 web.xml 顺序：</p>
+<ul>
+<li>先解析全局的配置 config/web.xml</li>
+<li>然后解析 Host 的默认配置 EngineName/HostName/web.xml.default 接着解析应用的 MEB-INF/web.xml</li>
+<li>扫描应用 WEB-INF/lib/下的 jar 文件，解析其中的 META-INF/web-fragment.xml 最后合并 xml 封装成 WebXml，并设置 Context</li>
+</ul>
+<p>注：</p>
+<ul>
+<li>扫描 web 应用和 jar 中的注解(Filter、Listener、Servlet)就是上述步骤中进行的。</li>
+<li>容器的定期执行：backgroundProcess，由 ContainerBase 来实现的，并且只有在顶层容器 中才会开启线程。(backgroundProcessorDelay=10 标志位来控制)</li>
+</ul>
+<h3 id="4-3-LifeCycle"><a href="#4-3-LifeCycle" class="headerlink" title="4.3. LifeCycle"></a>4.3. LifeCycle</h3><p><img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/snap/20201118105012.png" alt="img"></p>
+<h4 id="4-3-1-请求处理过程"><a href="#4-3-1-请求处理过程" class="headerlink" title="4.3.1. 请求处理过程"></a>4.3.1. 请求处理过程</h4><div align="center">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javaweb/tools/tomcat/请求处理过程.png" width="600">
+</div>
+
+<ol>
+<li>根据 server.xml 配置的指定的 connector 以及端口监听 http、或者 ajp 请求</li>
+<li>请求到来时建立连接,解析请求参数,创建 Request 和 Response 对象,调用顶层容器 pipeline 的 invoke 方法</li>
+<li>容器之间层层调用,最终调用业务 servlet 的 service 方法</li>
+<li>Connector 将 response 流中的数据写到 socket 中</li>
+</ol>
+<h3 id="4-4-Connector-流程"><a href="#4-4-Connector-流程" class="headerlink" title="4.4. Connector 流程"></a>4.4. Connector 流程</h3><div align="center">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javaweb/tools/tomcat/connector.png" width="600">
+</div>
+
+<h4 id="4-4-1-阻塞-IO"><a href="#4-4-1-阻塞-IO" class="headerlink" title="4.4.1. 阻塞 IO"></a>4.4.1. 阻塞 IO</h4><div align="center">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javaweb/tools/tomcat/阻塞IO.png" width="600">
+</div>
+
+<h4 id="4-4-2-非阻塞-IO"><a href="#4-4-2-非阻塞-IO" class="headerlink" title="4.4.2. 非阻塞 IO"></a>4.4.2. 非阻塞 IO</h4><div align="center">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javaweb/tools/tomcat/非阻塞IO.png" width="600">
+</div>
+
+<h4 id="4-4-3-IO-多路复用"><a href="#4-4-3-IO-多路复用" class="headerlink" title="4.4.3. IO 多路复用"></a>4.4.3. IO 多路复用</h4><div align="center">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javaweb/tools/tomcat/IO多路复用.png" width="600">
+</div>
+
+<p>阻塞与非阻塞的区别在于进行读操作和写操作的系统调用时，如果此时内核态没有数据可读或者没有缓冲空间可写时，是否阻塞。</p>
+<p>IO 多路复用的好处在于可同时监听多个 socket 的可读和可写事件，这样就能使得应用可以同时监听多个 socket，释放了应用线程资源。</p>
+<h4 id="4-4-4-Tomcat-各类-Connector-对比"><a href="#4-4-4-Tomcat-各类-Connector-对比" class="headerlink" title="4.4.4. Tomcat 各类 Connector 对比"></a>4.4.4. Tomcat 各类 Connector 对比</h4><div align="center">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javaweb/tools/tomcat/Tomcat各类Connector对比.jpg" width="500">
+</div>
+
+<ul>
+<li>JIO：用 java.io 编写的 TCP 模块，阻塞 IO</li>
+<li>NIO：用 java.nio 编写的 TCP 模块，非阻塞 IO，（IO 多路复用）</li>
+<li>APR：全称 Apache Portable Runtime，使用 JNI 的方式来进行读取文件以及进行网络传输</li>
+</ul>
+<p>Apache Portable Runtime 是一个高度可移植的库，它是 Apache HTTP Server 2.x 的核心。 APR 具有许多用途，包括访问高级 IO 功能（如 sendfile，epoll 和 OpenSSL），操作系统级功能（随机数生成，系统状态等）和本地进程处理（共享内存，NT 管道和 Unix 套接字）。</p>
+<p>表格中字段含义说明：</p>
+<ul>
+<li>Support Polling - 是否支持基于 IO 多路复用的 socket 事件轮询</li>
+<li>Polling Size - 轮询的最大连接数</li>
+<li>Wait for next Request - 在等待下一个请求时，处理线程是否释放，BIO 是没有释放的，所以在 keep-alive=true 的情况下处理的并发连接数有限</li>
+<li>Read Request Headers - 由于 request header 数据较少，可以由容器提前解析完毕，不需要阻塞</li>
+<li>Read Request Body - 读取 request body 的数据是应用业务逻辑的事情，同时 Servlet 的限制，是需要阻塞读取的</li>
+<li>Write Response - 跟读取 request body 的逻辑类似，同样需要阻塞写</li>
+</ul>
+<p><strong>NIO 处理相关类</strong></p>
+<div align="center">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javaweb/tools/tomcat/NIO处理相关类.jpg" width="500">
+</div>
+
+<p>Poller 线程从 EventQueue 获取 PollerEvent，并执行 PollerEvent 的 run 方法，调用 Selector 的 select 方法，如果有可读的 Socket 则创建 Http11NioProcessor，放入到线程池中执行；</p>
+<p>CoyoteAdapter 是 Connector 到 Container 的适配器，Http11NioProcessor 调用其提供的 service 方法，内部创建 Request 和 Response 对象，并调用最顶层容器的 Pipeline 中的第一个 Valve 的 invoke 方法</p>
+<p>Mapper 主要处理 http url 到 servlet 的映射规则的解析，对外提供 map 方法</p>
+<h3 id="4-5-Comet"><a href="#4-5-Comet" class="headerlink" title="4.5. Comet"></a>4.5. Comet</h3><p>Comet 是一种用于 web 的推送技术，能使服务器实时地将更新的信息传送到客户端，而无须客户端发出请求<br>在 WebSocket 出来之前，如果不适用 comet，只能通过浏览器端轮询 Server 来模拟实现服务器端推送。<br>Comet 支持 servlet 异步处理 IO，当连接上数据可读时触发事件，并异步写数据(阻塞)</p>
+<p>Tomcat 要实现 Comet，只需继承 HttpServlet 同时，实现 CometProcessor 接口</p>
+<ul>
+<li>Begin：新的请求连接接入调用，可进行与 Request 和 Response 相关的对象初始化操作，并保存 response 对象，用于后续写入数据</li>
+<li>Read：请求连接有数据可读时调用</li>
+<li>End：当数据可用时，如果读取到文件结束或者 response 被关闭时则被调用</li>
+<li>Error：在连接上发生异常时调用，数据读取异常、连接断开、处理异常、socket 超时</li>
+</ul>
+<p>Note：</p>
+<ul>
+<li>Read：在 post 请求有数据，但在 begin 事件中没有处理，则会调用 read，如果 read 没有读取数据，在会触发 Error 回调，关闭 socket</li>
+<li>End：当 socket 超时，并且 response 被关闭时也会调用；server 被关闭时调用</li>
+<li>Error：除了 socket 超时不会关闭 socket，其他都会关闭 socket</li>
+<li>End 和 Error 时间触发时应关闭当前 comet 会话，即调用 CometEvent 的 close 方法<br>Note：在事件触发时要做好线程安全的操作</li>
+</ul>
+<h3 id="4-6-异步-Servlet"><a href="#4-6-异步-Servlet" class="headerlink" title="4.6. 异步 Servlet"></a>4.6. 异步 Servlet</h3><div align="center">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javaweb/tools/tomcat/传统Servlet处理流程.png" >
+</div>
+
+<p>传统流程：</p>
+<ul>
+<li>首先，Servlet 接收到请求之后，request 数据解析；</li>
+<li>接着，调用业务接口的某些方法，以完成业务处理；</li>
+<li>最后，根据处理的结果提交响应，Servlet 线程结束</li>
+</ul>
+<div align="center">
+<img src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://raw.githubusercontent.com/dunwu/images/dev/cs/java/javaweb/tools/tomcat/异步Servlet处理流程.png" >
+</div>
+
+<p>异步处理流程：</p>
+<ul>
+<li>客户端发送一个请求</li>
+<li>Servlet 容器分配一个线程来处理容器中的一个 servlet</li>
+<li>servlet 调用 request.startAsync()，保存 AsyncContext, 然后返回</li>
+<li>任何方式存在的容器线程都将退出，但是 response 仍然保持开放</li>
+<li>业务线程使用保存的 AsyncContext 来完成响应（线程池）</li>
+<li>客户端收到响应</li>
+</ul>
+<p>Servlet 线程将请求转交给一个异步线程来执行业务处理，线程本身返回至容器，此时 Servlet 还没有生成响应数据，异步线程处理完业务以后，可以直接生成响应数据（异步线程拥有 ServletRequest 和 ServletResponse 对象的引用）</p>
+<p><strong>为什么 web 应用中支持异步？</strong></p>
+<p>推出异步，主要是针对那些比较耗时的请求：比如一次缓慢的数据库查询，一次外部 REST API 调用, 或者是其他一些 I/O 密集型操作。这种耗时的请求会很快的耗光 Servlet 容器的线程池，继而影响可扩展性。</p>
+<p>Note：从客户端的角度来看，request 仍然像任何其他的 HTTP 的 request-response 交互一样，只是耗费了更长的时间而已</p>
+<p><strong>异步事件监听</strong></p>
+<ul>
+<li>onStartAsync：Request 调用 startAsync 方法时触发</li>
+<li>onComplete：syncContext 调用 complete 方法时触发</li>
+<li>onError：处理请求的过程出现异常时触发</li>
+<li>onTimeout：socket 超时触发</li>
+</ul>
+<p>Note :<br>onError/ onTimeout 触发后，会紧接着回调 onComplete<br>onComplete 执行后，就不可再操作 request 和 response</p>
+<h2 id="5-参考资料"><a href="#5-参考资料" class="headerlink" title="5. 参考资料"></a>5. 参考资料</h2><ul>
+<li><p><strong>官方</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://tomcat.apache.org/">Tomcat 官方网站</a></li>
+<li><a target="_blank" rel="noopener" href="http://wiki.apache.org/tomcat/FrontPage">Tomcat Wiki</a></li>
+<li><a target="_blank" rel="noopener" href="http://tomee.apache.org/">Tomee 官方网站</a></li>
+</ul>
+</li>
+<li><p><strong>文章</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="http://www.oracle.com/webfolder/technetwork/tutorials/obe/java/basic_app_embedded_tomcat/basic_app-tomcat-embedded.html">Creating a Web App with Bootstrap and Tomcat Embedded</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.im/post/58eb5fdda0bb9f00692a78fc">Tomcat 组成与工作原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/java/j-lo-tomcat1/index.html">Tomcat 工作原理</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.ibm.com/developerworks/cn/java/j-lo-tomcat2/index.html?ca=drs-">Tomcat 设计模式分析</a></li>
+</ul>
+</li>
+</ul>
+</article><div class="post-copyright"><div class="copyright-cc-box"><i class="anzhiyufont anzhiyu-icon-copyright"></i></div><div class="post-copyright__author_box"><a class="post-copyright__author_img" href="/" title="头像"><img class="post-copyright__author_img_back" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" title="头像" alt="头像"><img class="post-copyright__author_img_front" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" title="头像" alt="头像"></a><div class="post-copyright__author_name">REAI</div><div class="post-copyright__author_desc">遇见即是上上签</div></div><div class="post-copyright__post__info"><a class="post-copyright__original" title="该文章为原创文章，注意版权协议" href="https://blog.reaicc.com/pages/c50d2b/">原创</a><a class="post-copyright-title"><span onclick="rm.copyPageUrl('https://blog.reaicc.com/pages/c50d2b/')">Tomcat 快速入门</span></a></div><div class="post-tools" id="post-tools"><div class="post-tools-left"><div class="rewardLeftButton"><div class="post-reward" onclick="anzhiyu.addRewardMask()"><div class="reward-button button--animated" title="赞赏作者"><i class="anzhiyufont anzhiyu-icon-hand-heart-fill"></i>打赏作者</div><div class="reward-main"><div class="reward-all"><span class="reward-title">感谢你赐予我前进的力量</span><ul class="reward-group"><li class="reward-item"><a href="/img/reward/wechat.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/wechat.jpg" alt="wechat"/></a><div class="post-qr-code-desc">wechat</div></li><li class="reward-item"><a href="/img/reward/alipay.jpg" target="_blank"><img class="post-qr-code-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/reward/alipay.jpg" alt="alipay"/></a><div class="post-qr-code-desc">alipay</div></li></ul><a class="reward-main-btn" href="/about/#about-reward" target="_blank"><div class="reward-text">赞赏者名单</div><div class="reward-dec">因为你们的支持让我意识到写文章的价值🙏</div></a></div></div></div><div id="quit-box" onclick="anzhiyu.removeRewardMask()" style="display: none"></div></div><div class="shareRight"><div class="share-link mobile"><div class="share-qrcode"><div class="share-button" title="使用手机访问这篇文章"><i class="anzhiyufont anzhiyu-icon-qrcode"></i></div><div class="share-main"><div class="share-main-all"><div id="qrcode" title="https://blog.reaicc.com/pages/c50d2b/"></div><div class="reward-dec">使用手机访问这篇文章</div></div></div></div></div><div class="share-link weibo"><a class="share-button" target="_blank" href="https://service.weibo.com/share/share.php?title=Tomcat 快速入门&amp;url=https://blog.reaicc.com/pages/c50d2b/&amp;pic=" rel="external nofollow noreferrer noopener"><i class="anzhiyufont anzhiyu-icon-weibo"></i></a></div><div class="share-link copyurl"><div class="share-button" id="post-share-url" title="复制链接" onclick="rm.copyPageUrl()"><i class="anzhiyufont anzhiyu-icon-link"></i></div></div></div></div></div><div class="post-copyright__notice"><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://blog.reaicc.com" target="_blank">REAI</a>！</span></div></div><div class="post-tools-right"><div class="tag_share"><div class="post-meta__box"><div class="post-meta__box__tag-list"><a class="post-meta__box__tags" href="/tags/Java/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Java<span class="tagsPageCount">39</span></a><a class="post-meta__box__tags" href="/tags/JavaWeb/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>JavaWeb<span class="tagsPageCount">11</span></a><a class="post-meta__box__tags" href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>服务器<span class="tagsPageCount">6</span></a><a class="post-meta__box__tags" href="/tags/Tomcat/"><span class="tags-punctuation"> <i class="anzhiyufont anzhiyu-icon-tag"></i></span>Tomcat<span class="tagsPageCount">6</span></a></div></div></div><div class="post_share"><div class="social-share" data-image="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://npm.onmicrosoft.cn/butterfly-extsrc@1.1.3/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"/><script src="https://npm.onmicrosoft.cn/butterfly-extsrc@1.1.3/sharejs/dist/js/social-share.min.js" defer="defer"></script></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/pages/3c954b/"><img class="prev-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Tomcat连接器</div></div></a></div><div class="next-post pull-right"><a href="/pages/2fea08/"><img class="next-cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Tomcat容器</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="anzhiyufont anzhiyu-icon-thumbs-up fa-fw" style="font-size: 1.5rem; margin-right: 4px"></i><span>喜欢这篇文章的人也看了</span></div><div class="relatedPosts-list"><div><a href="/pages/6c22f4/" title="Tomcat优化"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">Tomcat优化</div></div></a></div><div><a href="/pages/f1bba6/" title="Tomcat 和 Jetty"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">Tomcat 和 Jetty</div></div></a></div><div><a href="/pages/2fea08/" title="Tomcat容器"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">Tomcat容器</div></div></a></div><div><a href="/pages/3c954b/" title="Tomcat连接器"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">Tomcat连接器</div></div></a></div><div><a href="/pages/9ecdc1/" title="Jetty 快速入门"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2022-02-17</div><div class="title">Jetty 快速入门</div></div></a></div><div><a href="/posts/hcck/" title="JavaWeb 之 Cookie 和 Session"><img class="cover" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/" alt="cover"><div class="content is-center"><div class="date"><i class="anzhiyufont anzhiyu-icon-calendar-days fa-fw"></i> 2020-08-24</div><div class="title">JavaWeb 之 Cookie 和 Session</div></div></a></div></div></div><hr/><div id="post-comment"><div class="comment-head"><div class="comment-headline"><i class="anzhiyufont anzhiyu-icon-comments"></i><span> 评论</span></div><div class="comment-randomInfo"><a onclick="anzhiyu.addRandomCommentInfo()" href="javascript:void(0)">匿名评论</a><a href="/privacy" style="margin-left: 4px">隐私政策</a></div></div><div class="comment-wrap"><div><div id="artalk-wrap"></div></div></div></div><div class="comment-barrage"></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="card-content"><div class="author-info__sayhi" id="author-info__sayhi" onclick="anzhiyu.changeSayHelloText()"></div><div class="author-info-avatar"><img class="avatar-img" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/><div class="author-status"><img class="g-status" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://bu.dusays.com/2023/08/24/64e6ce9c507bb.png" ait="status"/></div></div><div class="author-info__description"><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">这有关于<b style="color:#fff">产品、设计、开发</b>相关的问题和看法，还有<b style="color:#fff">文章翻译</b>和<b style="color:#fff">分享</b>。</div><div style="line-height:1.38;margin:0.6rem 0;text-align:justify;color:rgba(255, 255, 255, 0.8);">相信你可以在这里找到对你有用的<b style="color:#fff">知识</b>和<b style="color:#fff">教程</b>。</div></div></div></div><div class="card-widget anzhiyu-right-widget" id="card-wechat" onclick="null"><div id="flip-wrapper"><div id="flip-content"><div class="face" style="background: url(https://bu.dusays.com/2023/01/13/63c02edf44033.png) center center / 100% no-repeat"></div><div class="back face" style="background: url(/img/qrcode_gzh.jpg) center center / 100% no-repeat"></div></div></div></div><div class="card-widget" id="newYear"><div class="item-headline"><i></i><span></span></div><div class="item-content"><div id="newYear-main"><div class="mask"></div> <p class="title"></p> <div class="newYear-time"></div> <p class="today" style="text-align: right;"></p> </div></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-bars"></i><span>文章目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Tomcat-%E5%BF%AB%E9%80%9F%E5%85%A5%E9%97%A8"><span class="toc-number">1.</span> <span class="toc-text">Tomcat 快速入门</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#1-Tomcat-%E7%AE%80%E4%BB%8B"><span class="toc-number">1.1.</span> <span class="toc-text">1. Tomcat 简介</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#1-1-Tomcat-%E6%98%AF%E4%BB%80%E4%B9%88"><span class="toc-number">1.1.1.</span> <span class="toc-text">1.1. Tomcat 是什么</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-2-Tomcat-%E9%87%8D%E8%A6%81%E7%9B%AE%E5%BD%95"><span class="toc-number">1.1.2.</span> <span class="toc-text">1.2. Tomcat 重要目录</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-3-web-%E5%B7%A5%E7%A8%8B%E5%8F%91%E5%B8%83%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84"><span class="toc-number">1.1.3.</span> <span class="toc-text">1.3. web 工程发布目录结构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-4-Tomcat-%E5%8A%9F%E8%83%BD"><span class="toc-number">1.1.4.</span> <span class="toc-text">1.4. Tomcat 功能</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#2-Tomcat-%E5%85%A5%E9%97%A8"><span class="toc-number">1.2.</span> <span class="toc-text">2. Tomcat 入门</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#2-1-%E5%AE%89%E8%A3%85"><span class="toc-number">1.2.1.</span> <span class="toc-text">2.1. 安装</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-2-%E9%85%8D%E7%BD%AE"><span class="toc-number">1.2.2.</span> <span class="toc-text">2.2. 配置</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-1-Server"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">2.2.1. Server</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-2-Service"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">2.2.2. Service</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-3-Executor"><span class="toc-number">1.2.2.3.</span> <span class="toc-text">2.2.3. Executor</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-4-Connector"><span class="toc-number">1.2.2.4.</span> <span class="toc-text">2.2.4. Connector</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-5-Context"><span class="toc-number">1.2.2.5.</span> <span class="toc-text">2.2.5. Context</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-6-Engine"><span class="toc-number">1.2.2.6.</span> <span class="toc-text">2.2.6. Engine</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-7-Host"><span class="toc-number">1.2.2.7.</span> <span class="toc-text">2.2.7. Host</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-2-8-Cluster"><span class="toc-number">1.2.2.8.</span> <span class="toc-text">2.2.8. Cluster</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-3-%E5%90%AF%E5%8A%A8"><span class="toc-number">1.2.3.</span> <span class="toc-text">2.3. 启动</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-1-%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">2.3.1. 部署方式</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-2-%E5%B5%8C%E5%85%A5%E5%BC%8F"><span class="toc-number">1.2.3.2.</span> <span class="toc-text">2.3.2. 嵌入式</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-2-1-API-%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.3.2.1.</span> <span class="toc-text">2.3.2.1. API 方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#2-3-2-2-%E4%BD%BF%E7%94%A8-maven-%E6%8F%92%E4%BB%B6%E5%90%AF%E5%8A%A8%EF%BC%88%E4%B8%8D%E6%8E%A8%E8%8D%90%EF%BC%89"><span class="toc-number">1.2.3.2.2.</span> <span class="toc-text">2.3.2.2. 使用 maven 插件启动（不推荐）</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#2-3-3-IDE-%E6%8F%92%E4%BB%B6"><span class="toc-number">1.2.3.3.</span> <span class="toc-text">2.3.3. IDE 插件</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#3-Tomcat-%E6%9E%B6%E6%9E%84"><span class="toc-number">1.3.</span> <span class="toc-text">3. Tomcat 架构</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#3-1-Service"><span class="toc-number">1.3.1.</span> <span class="toc-text">3.1. Service</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-2-%E8%BF%9E%E6%8E%A5%E5%99%A8"><span class="toc-number">1.3.2.</span> <span class="toc-text">3.2. 连接器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-1-ProtocolHandler-%E7%BB%84%E4%BB%B6"><span class="toc-number">1.3.2.1.</span> <span class="toc-text">3.2.1. ProtocolHandler 组件</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-1-EndPoint"><span class="toc-number">1.3.2.1.1.</span> <span class="toc-text">3.2.1.1. EndPoint</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#3-2-1-2-Processor"><span class="toc-number">1.3.2.1.2.</span> <span class="toc-text">3.2.1.2. Processor</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-2-2-Adapter"><span class="toc-number">1.3.2.2.</span> <span class="toc-text">3.2.2. Adapter</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-3-%E5%AE%B9%E5%99%A8"><span class="toc-number">1.3.3.</span> <span class="toc-text">3.3. 容器</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-1-%E8%AF%B7%E6%B1%82%E5%88%86%E5%8F%91-Servlet-%E8%BF%87%E7%A8%8B"><span class="toc-number">1.3.3.1.</span> <span class="toc-text">3.3.1. 请求分发 Servlet 过程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#3-3-2-Pipeline-Value"><span class="toc-number">1.3.3.2.</span> <span class="toc-text">3.3.2. Pipeline-Value</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#4-Tomcat-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="toc-number">1.4.</span> <span class="toc-text">4. Tomcat 生命周期</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#4-1-Tomcat-%E7%9A%84%E5%90%AF%E5%8A%A8%E8%BF%87%E7%A8%8B"><span class="toc-number">1.4.1.</span> <span class="toc-text">4.1. Tomcat 的启动过程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-1-Catalina-%E7%BB%84%E4%BB%B6"><span class="toc-number">1.4.1.1.</span> <span class="toc-text">4.1.1. Catalina 组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-2-Server-%E7%BB%84%E4%BB%B6"><span class="toc-number">1.4.1.2.</span> <span class="toc-text">4.1.2. Server 组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-3-Service-%E7%BB%84%E4%BB%B6"><span class="toc-number">1.4.1.3.</span> <span class="toc-text">4.1.3. Service 组件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-1-4-Engine-%E7%BB%84%E4%BB%B6"><span class="toc-number">1.4.1.4.</span> <span class="toc-text">4.1.4. Engine 组件</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-2-Web-%E5%BA%94%E7%94%A8%E7%9A%84%E9%83%A8%E7%BD%B2%E6%96%B9%E5%BC%8F"><span class="toc-number">1.4.2.</span> <span class="toc-text">4.2. Web 应用的部署方式</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-3-LifeCycle"><span class="toc-number">1.4.3.</span> <span class="toc-text">4.3. LifeCycle</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-3-1-%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86%E8%BF%87%E7%A8%8B"><span class="toc-number">1.4.3.1.</span> <span class="toc-text">4.3.1. 请求处理过程</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-4-Connector-%E6%B5%81%E7%A8%8B"><span class="toc-number">1.4.4.</span> <span class="toc-text">4.4. Connector 流程</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-1-%E9%98%BB%E5%A1%9E-IO"><span class="toc-number">1.4.4.1.</span> <span class="toc-text">4.4.1. 阻塞 IO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-2-%E9%9D%9E%E9%98%BB%E5%A1%9E-IO"><span class="toc-number">1.4.4.2.</span> <span class="toc-text">4.4.2. 非阻塞 IO</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-3-IO-%E5%A4%9A%E8%B7%AF%E5%A4%8D%E7%94%A8"><span class="toc-number">1.4.4.3.</span> <span class="toc-text">4.4.3. IO 多路复用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#4-4-4-Tomcat-%E5%90%84%E7%B1%BB-Connector-%E5%AF%B9%E6%AF%94"><span class="toc-number">1.4.4.4.</span> <span class="toc-text">4.4.4. Tomcat 各类 Connector 对比</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-5-Comet"><span class="toc-number">1.4.5.</span> <span class="toc-text">4.5. Comet</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-6-%E5%BC%82%E6%AD%A5-Servlet"><span class="toc-number">1.4.6.</span> <span class="toc-text">4.6. 异步 Servlet</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#5-%E5%8F%82%E8%80%83%E8%B5%84%E6%96%99"><span class="toc-number">1.5.</span> <span class="toc-text">5. 参考资料</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="anzhiyufont anzhiyu-icon-history"></i><span>最近发布</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/58328/" title="发布一个npm包">发布一个npm包</a><time datetime="2024-06-04T22:08:41.090Z" title="发表于 2024-06-05 06:08:41">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/48591/" title="HTTP:报文，缓存，Cookie与HTTPS">HTTP:报文，缓存，Cookie与HTTPS</a><time datetime="2024-06-04T22:05:46.160Z" title="发表于 2024-06-05 06:05:46">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/35707/" title="Linux命令之文件与权限管理">Linux命令之文件与权限管理</a><time datetime="2024-06-04T21:58:39.201Z" title="发表于 2024-06-05 05:58:39">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/64074/" title="Git关联Github和码云并利用IDEA内置工具">Git关联Github和码云并利用IDEA内置工具</a><time datetime="2024-06-04T21:52:50.241Z" title="发表于 2024-06-05 05:52:50">2024-06-05</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/11097/" title="数据库影响因素之硬件、存储引擎和事务">数据库影响因素之硬件、存储引擎和事务</a><time datetime="2024-06-04T21:43:10.296Z" title="发表于 2024-06-05 05:43:10">2024-06-05</time></div></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div id="footer_deal"><a class="deal_link" href="mailto:2877406366@qq.com" title="email"><i class="anzhiyufont anzhiyufont anzhiyu-icon-envelope"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://weibo.com" title="微博"><i class="anzhiyufont anzhiyufont anzhiyu-icon-weibo"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.facebook.com/profile.php" title="facebook"><i class="anzhiyufont anzhiyufont anzhiyu-icon-facebook1"></i></a><a class="deal_link" href="/atom.xml" title="RSS"><i class="anzhiyufont anzhiyu-icon-rss"></i></a><img class="footer_mini_logo" title="返回顶部" alt="返回顶部" onclick="anzhiyu.scrollToDest(0, 500)" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://q1.qlogo.cn/g?b=qq&amp;nk=2877406366&amp;s=640" size="50px"/><a class="deal_link" target="_blank" rel="noopener" href="https://github.com/" title="Github"><i class="anzhiyufont anzhiyufont anzhiyu-icon-github"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://space.bilibili.com" title="Bilibili"><i class="anzhiyufont anzhiyufont anzhiyu-icon-bilibili"></i></a><a class="deal_link" target="_blank" rel="noopener" href="https://www.douyin.com/user/MS4wLjABAAAARlF7u0o6BTIX0KiHreekyz5_nqDUauZDgG6AtnpESAI" title="抖音"><i class="anzhiyufont anzhiyufont anzhiyu-icon-tiktok"></i></a></div><div id="anzhiyu-footer"><div class="footer-group"><div class="footer-title">服务</div><div class="footer-links"><a class="footer-item" title="51la统计" target="_blank" rel="noopener" href="https://v6.51.la/">51la统计</a><a class="footer-item" title="十年之约" target="_blank" rel="noopener" href="https://www.foreverblog.cn/">十年之约</a><a class="footer-item" title="开往" target="_blank" rel="noopener" href="https://github.com/travellings-link/travellings">开往</a></div></div><div class="footer-group"><div class="footer-title">主题</div><div class="footer-links"><a class="footer-item" title="文档" href="/docs/">文档</a><a class="footer-item" title="源码" target="_blank" rel="noopener" href="https://github.com/anzhiyu-c/hexo-theme-anzhiyu">源码</a><a class="footer-item" title="更新日志" href="/update/">更新日志</a></div></div><div class="footer-group"><div class="footer-title">导航</div><div class="footer-links"><a class="footer-item" title="即刻短文" href="/essay/">即刻短文</a><a class="footer-item" title="友链文章" href="/fcircle/">友链文章</a><a class="footer-item" title="留言板" href="/comments/">留言板</a></div></div><div class="footer-group"><div class="footer-title">协议</div><div class="footer-links"><a class="footer-item" title="隐私协议" href="/privacy/">隐私协议</a><a class="footer-item" title="Cookies" href="/cookies/">Cookies</a><a class="footer-item" title="版权协议" href="/copyright/">版权协议</a></div></div><div class="footer-group"><div class="footer-title-group"><div class="footer-title">友链</div><a class="random-friends-btn" id="footer-random-friends-btn" href="javascript:addFriendLinksInFooter();" title="换一批友情链接"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right"></i></a></div><div class="footer-links" id="friend-links-in-footer"></div></div></div></div><div id="footer-bar"><div class="footer-bar-links"><div class="footer-bar-left"><div id="footer-bar-tips"><div class="copyright">&copy;2020 - 2024 By <a class="footer-bar-link" href="/" title="REAI" target="_blank">REAI</a></div></div><div id="footer-type-tips"></div></div><div class="footer-bar-right"><a class="footer-bar-link" target="_blank" rel="noopener" href="https://beian.miit.gov.cn/" title="京ICP备2023019859号-1">京ICP备2023019859号-1</a></div></div></div></footer></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="sidebar-site-data site-data is-center"><a href="/archives/" title="archive"><div class="headline">文章</div><div class="length-num">71</div></a><a href="/tags/" title="tag"><div class="headline">标签</div><div class="length-num">64</div></a><a href="/categories/" title="category"><div class="headline">分类</div><div class="length-num">29</div></a></div><span class="sidebar-menu-item-title">功能</span><div class="sidebar-menu-item"><a class="darkmode_switchbutton menu-child" href="javascript:void(0);" title="显示模式"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span>显示模式</span></a></div><div class="back-menu-list-groups"><div class="back-menu-list-group"><div class="back-menu-list-title">网页</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://music.reaicc.com/" title="网易云音乐"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="/img/wangyiyun.png" alt="网易云音乐"/><span class="back-menu-item-text">网易云音乐</span></a></div></div><div class="back-menu-list-group"><div class="back-menu-list-title">项目</div><div class="back-menu-list"><a class="back-menu-item" target="_blank" rel="noopener" href="https://news.reaicc.com/" title="每日早报"><img class="back-menu-item-icon" src= "data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7" onerror="this.onerror=null,this.src=&quot;/img/404.jpg&quot;" data-lazy-src="https://news.reaicc.com/favicon.svg" alt="每日早报"/><span class="back-menu-item-text">每日早报</span></a></div></div></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 文章</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/archives/"><i class="anzhiyufont anzhiyu-icon-box-archive faa-tada" style="font-size: 0.9em;"></i><span> 隧道</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/categories/"><i class="anzhiyufont anzhiyu-icon-shapes faa-tada" style="font-size: 0.9em;"></i><span> 分类</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags faa-tada" style="font-size: 0.9em;"></i><span> 标签</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 友链</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/link/"><i class="anzhiyufont anzhiyu-icon-link faa-tada" style="font-size: 0.9em;"></i><span> 友人帐</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 我的</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/album/"><i class="anzhiyufont anzhiyu-icon-images faa-tada" style="font-size: 0.9em;"></i><span> 相册集</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/friends/"><i class="anzhiyufont anzhiyu-icon-artstation faa-tada" style="font-size: 0.9em;"></i><span> 朋友圈</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/music/?id=6709358233&amp;server=netease"><i class="anzhiyufont anzhiyu-icon-music faa-tada" style="font-size: 0.9em;"></i><span> 音乐馆</span></a></li></ul></div><div class="menus_item"><a class="site-page" href="javascript:void(0);"><span> 关于</span></a><ul class="menus_item_child"><li><a class="site-page child faa-parent animated-hover" href="/about/"><i class="anzhiyufont anzhiyu-icon-paper-plane faa-tada" style="font-size: 0.9em;"></i><span> 关于</span></a></li><li><a class="site-page child faa-parent animated-hover" href="/notice/"><i class="anzhiyufont anzhiyu-icon-lightbulb faa-tada" style="font-size: 0.9em;"></i><span> 时间轴</span></a></li><li><a class="site-page child faa-parent animated-hover" href="javascript:toRandomPost()"><i class="anzhiyufont anzhiyu-icon-shoe-prints1 faa-tada" style="font-size: 0.9em;"></i><span> 随便逛逛</span></a></li></ul></div></div><span class="sidebar-menu-item-title">标签</span><div class="card-tags"><div class="item-headline"></div><div class="card-tag-cloud"><a href="/tags/Ant/" style="font-size: 0.88rem;">Ant<sup>1</sup></a><a href="/tags/Cookie/" style="font-size: 0.88rem;">Cookie<sup>2</sup></a><a href="/tags/Dozer/" style="font-size: 0.88rem;">Dozer<sup>1</sup></a><a href="/tags/Filter/" style="font-size: 0.88rem;">Filter<sup>1</sup></a><a href="/tags/Freemark/" style="font-size: 0.88rem;">Freemark<sup>1</sup></a><a href="/tags/Freenom/" style="font-size: 0.88rem;">Freenom<sup>1</sup></a><a href="/tags/HTTPS/" style="font-size: 0.88rem;">HTTPS<sup>1</sup></a><a href="/tags/Html/" style="font-size: 0.88rem;">Html<sup>1</sup></a><a href="/tags/JSP/" style="font-size: 0.88rem;">JSP<sup>1</sup></a><a href="/tags/Java/" style="font-size: 0.88rem;">Java<sup>39</sup></a><a href="/tags/JavaBean/" style="font-size: 0.88rem;">JavaBean<sup>2</sup></a><a href="/tags/JavaWeb/" style="font-size: 0.88rem;">JavaWeb<sup>11</sup></a><a href="/tags/Jetty/" style="font-size: 0.88rem;">Jetty<sup>2</sup></a><a href="/tags/Jsoup/" style="font-size: 0.88rem;">Jsoup<sup>1</sup></a><a href="/tags/Linux/" style="font-size: 0.88rem;">Linux<sup>8</sup></a><a href="/tags/Listener/" style="font-size: 0.88rem;">Listener<sup>1</sup></a><a href="/tags/Lombok/" style="font-size: 0.88rem;">Lombok<sup>1</sup></a><a href="/tags/Maven/" style="font-size: 0.88rem;">Maven<sup>6</sup></a><a href="/tags/Mybatis-Plus/" style="font-size: 0.88rem;">Mybatis Plus<sup>1</sup></a><a href="/tags/Reflections/" style="font-size: 0.88rem;">Reflections<sup>1</sup></a><a href="/tags/Servlet/" style="font-size: 0.88rem;">Servlet<sup>2</sup></a><a href="/tags/Session/" style="font-size: 0.88rem;">Session<sup>1</sup></a><a href="/tags/Thumbnailator/" style="font-size: 0.88rem;">Thumbnailator<sup>1</sup></a><a href="/tags/Thymeleaf/" style="font-size: 0.88rem;">Thymeleaf<sup>1</sup></a><a href="/tags/Tomcat/" style="font-size: 0.88rem;">Tomcat<sup>6</sup></a><a href="/tags/Velocity/" style="font-size: 0.88rem;">Velocity<sup>1</sup></a><a href="/tags/ZXing/" style="font-size: 0.88rem;">ZXing<sup>1</sup></a><a href="/tags/css/" style="font-size: 0.88rem;">css<sup>1</sup></a><a href="/tags/flex/" style="font-size: 0.88rem;">flex<sup>1</sup></a><a href="/tags/git/" style="font-size: 0.88rem;">git<sup>1</sup></a><a href="/tags/%E5%8F%8D%E5%B0%84/" style="font-size: 0.88rem;">反射<sup>1</sup></a><a href="/tags/%E5%9B%BE%E5%BD%A2%E5%A4%84%E7%90%86/" style="font-size: 0.88rem;">图形处理<sup>1</sup></a><a href="/tags/%E5%B7%A5%E5%85%B7%E5%8C%85/" style="font-size: 0.88rem;">工具包<sup>1</sup></a><a href="/tags/%E6%95%99%E7%A8%8B/" style="font-size: 0.88rem;">教程<sup>8</sup></a><a href="/tags/%E6%97%A5%E5%BF%97/" style="font-size: 0.88rem;">日志<sup>1</sup></a><a href="/tags/%E6%9C%8D%E5%8A%A1%E5%99%A8/" style="font-size: 0.88rem;">服务器<sup>6</sup></a><a href="/tags/%E6%9D%A1%E5%BD%A2%E7%A0%81/" style="font-size: 0.88rem;">条形码<sup>1</sup></a><a href="/tags/%E6%9E%84%E5%BB%BA/" style="font-size: 0.88rem;">构建<sup>7</sup></a><a href="/tags/%E6%A8%A1%E6%9D%BF%E5%BC%95%E6%93%8E/" style="font-size: 0.88rem;">模板引擎<sup>3</sup></a><a href="/tags/%E9%82%AE%E4%BB%B6/" style="font-size: 0.88rem;">邮件<sup>1</sup></a></div></div><hr/></div></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="anzhiyufont anzhiyu-icon-book-open"></i></button><button id="translateLink" type="button" title="简繁转换">繁</button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="anzhiyufont anzhiyu-icon-arrows-left-right"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="anzhiyufont anzhiyu-icon-gear"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="anzhiyufont anzhiyu-icon-list-ul"></i></button><a id="to_comment" href="#post-comment" title="直达评论"><i class="anzhiyufont anzhiyu-icon-comments"></i></a><button id="go-up" type="button" title="回到顶部"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></button></div></div><div id="nav-music"><a id="nav-music-hoverTips" onclick="anzhiyu.musicToggle()" accesskey="m">播放音乐</a><div id="console-music-bg"></div><meting-js id="6709358233" server="netease" type="playlist" mutex="true" preload="none" theme="var(--anzhiyu-main)" data-lrctype="0" order="none"></meting-js></div><div id="rightMenu"><div class="rightMenu-group rightMenu-small"><div class="rightMenu-item" id="menu-backward"><i class="anzhiyufont anzhiyu-icon-arrow-left"></i></div><div class="rightMenu-item" id="menu-forward"><i class="anzhiyufont anzhiyu-icon-arrow-right"></i></div><div class="rightMenu-item" id="menu-refresh"><i class="anzhiyufont anzhiyu-icon-arrow-rotate-right" style="font-size: 1rem;"></i></div><div class="rightMenu-item" id="menu-top"><i class="anzhiyufont anzhiyu-icon-arrow-up"></i></div></div><div class="rightMenu-group rightMenu-line rightMenuPlugin"><div class="rightMenu-item" id="menu-copytext"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制选中文本</span></div><div class="rightMenu-item" id="menu-pastetext"><i class="anzhiyufont anzhiyu-icon-paste"></i><span>粘贴文本</span></div><a class="rightMenu-item" id="menu-commenttext"><i class="anzhiyufont anzhiyu-icon-comment-medical"></i><span>引用到评论</span></a><div class="rightMenu-item" id="menu-newwindow"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开</span></div><div class="rightMenu-item" id="menu-copylink"><i class="anzhiyufont anzhiyu-icon-link"></i><span>复制链接地址</span></div><div class="rightMenu-item" id="menu-copyimg"><i class="anzhiyufont anzhiyu-icon-images"></i><span>复制此图片</span></div><div class="rightMenu-item" id="menu-downloadimg"><i class="anzhiyufont anzhiyu-icon-download"></i><span>下载此图片</span></div><div class="rightMenu-item" id="menu-newwindowimg"><i class="anzhiyufont anzhiyu-icon-window-restore"></i><span>新窗口打开图片</span></div><div class="rightMenu-item" id="menu-search"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>站内搜索</span></div><div class="rightMenu-item" id="menu-searchBaidu"><i class="anzhiyufont anzhiyu-icon-magnifying-glass"></i><span>百度搜索</span></div><div class="rightMenu-item" id="menu-music-toggle"><i class="anzhiyufont anzhiyu-icon-play"></i><span>播放音乐</span></div><div class="rightMenu-item" id="menu-music-back"><i class="anzhiyufont anzhiyu-icon-backward"></i><span>切换到上一首</span></div><div class="rightMenu-item" id="menu-music-forward"><i class="anzhiyufont anzhiyu-icon-forward"></i><span>切换到下一首</span></div><div class="rightMenu-item" id="menu-music-playlist" onclick="window.open(&quot;https://music.163.com/#/playlist?id=6709358233&quot;, &quot;_blank&quot;);" style="display: none;"><i class="anzhiyufont anzhiyu-icon-radio"></i><span>查看所有歌曲</span></div><div class="rightMenu-item" id="menu-music-copyMusicName"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制歌名</span></div></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item menu-link" id="menu-randomPost"><i class="anzhiyufont anzhiyu-icon-shuffle"></i><span>随便逛逛</span></a><a class="rightMenu-item menu-link" href="/categories/"><i class="anzhiyufont anzhiyu-icon-cube"></i><span>博客分类</span></a><a class="rightMenu-item menu-link" href="/tags/"><i class="anzhiyufont anzhiyu-icon-tags"></i><span>文章标签</span></a></div><div class="rightMenu-group rightMenu-line rightMenuOther"><a class="rightMenu-item" id="menu-copy" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-copy"></i><span>复制地址</span></a><a class="rightMenu-item" id="menu-commentBarrage" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-message"></i><span class="menu-commentBarrage-text">关闭热评</span></a><a class="rightMenu-item" id="menu-darkmode" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-circle-half-stroke"></i><span class="menu-darkmode-text">深色模式</span></a><a class="rightMenu-item" id="menu-translate" href="javascript:void(0);"><i class="anzhiyufont anzhiyu-icon-language"></i><span>轉為繁體</span></a></div></div><div id="rightmenu-mask"></div><div><script src="https://npm.onmicrosoft.cn/hexo-tool-cc@1.1.4/source/js/utils.js"></script><script src="https://npm.onmicrosoft.cn/hexo-tool-cc@1.1.4/source/js/main.js"></script><script src="https://npm.onmicrosoft.cn/hexo-theme-anzhiyu@1.6.8/source/js/tw_cn.js"></script><script src="https://npm.onmicrosoft.cn/@fancyapps/ui@5.0.20/dist/fancybox/fancybox.umd.js"></script><script src="https://npm.onmicrosoft.cn/instant.page@5.2.0/instantpage.js" type="module"></script><script src="https://npm.onmicrosoft.cn/vanilla-lazyload@17.8.4/dist/lazyload.iife.min.js"></script><script src="https://npm.onmicrosoft.cn/node-snackbar@0.1.16/dist/snackbar.min.js"></script><canvas id="universe"></canvas><script async src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.0/dark/dark.js"></script><script async src="/anzhiyu/random.js"></script><div class="js-pjax"><script>(() => {
+  const initArtalk = () => {
+    window.artalkItem = new Artalk(Object.assign({
+      el: '#artalk-wrap',
+      server: 'https://artalk.reaicc.com',
+      site: 'blog.reaicc.com',
+      pageKey: location.pathname,
+      darkMode: document.documentElement.getAttribute('data-theme') === 'dark',
+      countEl: '.artalk-count',
+      emoticons: [
+        "https://artalk.reaicc.com/static/images/artalk.json",
+        "https://emotion-new.acs.pw/aru/artalk.json"
+      ]
+    },null))
+
+    if (GLOBAL_CONFIG.lightbox === 'null') return
+    window.artalkItem.use(ctx => {
+      ctx.on('list-loaded', () => {
+        ctx.getCommentList().forEach(comment => {
+          const $content = comment.getRender().$content
+          anzhiyu.loadLightbox($content.querySelectorAll('img:not([atk-emoticon])'))
+        })
+      })
+    })
+  }
+
+  const loadArtalk = async () => {
+    if (typeof window.artalkItem === 'object') initArtalk()
+    else {
+      await getCSS('https://npm.onmicrosoft.cn/artalk@2.5.5/dist/Artalk.css')
+      await getScript('https://npm.onmicrosoft.cn/artalk@2.5.5/dist/Artalk.js')
+      initArtalk()
+    }
+  }
+
+  const artalkChangeMode = theme => {
+    const artalkWrap = document.getElementById('artalk-wrap')
+    if (!(artalkWrap && artalkWrap.children.length)) return
+    const isDark = theme === 'dark'
+    window.artalkItem.setDarkMode(isDark)
+  }
+
+
+  anzhiyu.addGlobalFn('themeChange', artalkChangeMode, 'artalk')
+  
+  if ('Artalk' === 'Artalk' || !false) {
+    if (false) anzhiyu.loadComment(document.getElementById('artalk-wrap'), loadArtalk)
+    else loadArtalk()
+  } else {
+    window.loadOtherComment = loadArtalk
+  }
+})()</script><input type="hidden" name="page-type" id="page-type" value="post"></div><script>window.addEventListener('load', () => {
+  const changeContent = (content) => {
+    if (content === '') return content
+
+    content = content.replace(/<img.*?src="(.*?)"?[^\>]+>/ig, '[图片]') // replace image link
+    content = content.replace(/<a[^>]+?href=["']?([^"']+)["']?[^>]*>([^<]+)<\/a>/gi, '[链接]') // replace url
+    content = content.replace(/<pre><code>.*?<\/pre>/gi, '[代码]') // replace code
+    content = content.replace(/<[^>]+>/g,"") // remove html tag
+
+    if (content.length > 150) {
+      content = content.substring(0,150) + '...'
+    }
+    return content
+  }
+
+  const generateHtml = array => {
+    let result = ''
+
+    if (array.length) {
+      for (let i = 0; i < array.length; i++) {
+        result += '<div class=\'aside-list-item\'>'
+
+        if (true) {
+          const name = 'data-lazy-src'
+          result += `<a href='${array[i].url}' class='thumbnail'><img ${name}='${array[i].avatar}' alt='${array[i].nick}'></a>`
+        }
+
+        result += `<div class='content'>
+        <a class='comment' href='${array[i].url}' title='${array[i].content}'>${array[i].content}</a>
+        <div class='name'><span>${array[i].nick} / </span><time datetime="${array[i].date}">${anzhiyu.diffDate(array[i].date, true)}</time></div>
+        </div></div>`
+      }
+    } else {
+      result += '没有评论'
+    }
+
+    let $dom = document.querySelector('#card-newest-comments .aside-list')
+    $dom.innerHTML= result
+    window.lazyLoadInstance && window.lazyLoadInstance.update()
+    window.pjax && window.pjax.refresh($dom)
+  }
+
+  const getSetting = async () => {
+    try {
+      const res = await fetch('https://artalk.reaicc.com/api/conf', { method: 'GET' })
+      return await res.json()
+    } catch (e) {
+      console.log(e)
+    }
+  }
+
+  const headerList = {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/x-www-form-urlencoded',
+      'Origin': window.location.origin
+    },
+    body: new URLSearchParams({
+      'site_name': 'blog.reaicc.com',
+      'limit': '6',
+      'type':'latest_comments'
+    })
+  }
+
+  const getComment = async () => {
+    try {
+      const res = await fetch('https://artalk.reaicc.com/api/stat', headerList)
+      const result = await res.json()
+      const avatarStr = await getSetting()
+      const { mirror, params, default:defaults } = avatarStr.data.frontend_conf.gravatar
+      const avatarCdn = false || mirror
+      let avatarDefault = false || params || defaults
+      avatarDefault = avatarDefault.startsWith('d=') ? avatarDefault : `d=${avatarDefault}`
+      const artalk = result.data.map(function (e) {
+        return {
+          'avatar': `${avatarCdn}${e.email_encrypted}?${avatarDefault}`,
+          'content': changeContent(e.content_marked),
+          'nick': e.nick,
+          'url': e.page_url,
+          'date': e.date,
+        }
+      })
+      saveToLocal.set('artalk-newest-comments', JSON.stringify(artalk), 10/(60*24))
+      generateHtml(artalk)
+    } catch (e) {
+      console.log(e)
+      const $dom = document.querySelector('#card-newest-comments .aside-list')
+      $dom.innerHTML= "无法获取评论，请确认相关配置是否正确"
+    }
+  }
+
+  const newestCommentInit = () => {
+    if (document.querySelector('#card-newest-comments .aside-list')) {
+      const data = saveToLocal.get('artalk-newest-comments')
+      if (data) {
+        generateHtml(JSON.parse(data))
+      } else {
+        getComment()
+      }
+    }
+  }
+
+  newestCommentInit()
+  document.addEventListener('pjax:complete', newestCommentInit)
+})</script><script async data-pjax src="https://npm.elemecdn.com/anzhiyu-theme-static@1.0.1/bubble/bubble.js"></script><script>var visitorMail = "visitor@anheyu.com";
+</script><script async data-pjax src="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.0.0/waterfall/waterfall.js"></script><script src="https://lf3-cdn-tos.bytecdntp.com/cdn/expire-1-M/qrcodejs/1.0.0/qrcode.min.js"></script><link rel="stylesheet" href="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.1.9/icon/ali_iconfont_css.css"><script src="https://npm.elemecdn.com/jquery@latest/dist/jquery.min.js"></script><script src="/js/fjGallery.min.js"></script><script>!function(p){"use strict";!function(t){var s=window,e=document,i=p,c="".concat("https:"===e.location.protocol?"https://":"http://","sdk.51.la/js-sdk-pro.min.js"),n=e.createElement("script"),r=e.getElementsByTagName("script")[0];n.type="text/javascript",n.setAttribute("charset","UTF-8"),n.async=!0,n.src=c,n.id="LA_COLLECT",i.d=n;var o=function(){s.LA.ids.push(i)};s.LA?s.LA.ids&&o():(s.LA=p,s.LA.ids=[],o()),r.parentNode.insertBefore(n,r)}()}({id:"JrxUXpJaHkoUhitk",ck:"JrxUXpJaHkoUhitk"});</script><script src="https://unpkg.com/artalk@2.4.4/dist/Artalk.js"></script><script src="/js/bgCh.js"></script><script src="/shuoshuo/coco-message.js"></script><link rel="stylesheet" href="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.0.0/aplayer/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://npm.onmicrosoft.cn/anzhiyu-blog-static@1.0.1/js/APlayer.min.js"></script><script src="https://npm.onmicrosoft.cn/hexo-anzhiyu-music@1.0.1/assets/js/Meting2.min.js"></script><script src="https://npm.onmicrosoft.cn/pjax@0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/link/"]):not([href="/friends/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+  // removeEventListener scroll 
+  anzhiyu.removeGlobalFnEvent('pjax')
+  anzhiyu.removeGlobalFnEvent('themeChange')
+
+  document.getElementById('rightside').classList.remove('rightside-show')
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', e => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script><script charset="UTF-8" src="https://npm.onmicrosoft.cn/anzhiyu-theme-static@1.1.5/accesskey/accesskey.js"></script></div><div id="popup-window"><div class="popup-window-title">通知</div><div class="popup-window-divider"></div><div class="popup-window-content"><div class="popup-tip">你好呀</div><div class="popup-link"><i class="anzhiyufont anzhiyu-icon-arrow-circle-right"></i></div></div></div></body></html>

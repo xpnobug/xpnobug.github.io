@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+	<meta charset="UTF-8">
+	<title>Resume</title>
+	<style>
+		.loadEffect{
+            width: 100px;
+            height: 100px;
+            position: relative;
+            margin: 0 auto;
+            margin-top:400px;
+        }
+        .loadEffect span{
+            display: inline-block;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: lightgreen;
+            position: absolute;
+            -webkit-animation: load 1.04s ease infinite;
+        }
+        @-webkit-keyframes load{
+            0%{
+                opacity: 1;
+            }
+            100%{
+                opacity: 0.2;
+            }
+        }
+        .loadEffect span:nth-child(1){
+            left: 0;
+            top: 50%;
+            margin-top:-8px;
+            -webkit-animation-delay:0.13s;
+        }
+        .loadEffect span:nth-child(2){
+            left: 14px;
+            top: 14px;
+            -webkit-animation-delay:0.26s;
+        }
+        .loadEffect span:nth-child(3){
+            left: 50%;
+            top: 0;
+            margin-left: -8px;
+            -webkit-animation-delay:0.39s;
+        }
+        .loadEffect span:nth-child(4){
+            top: 14px;
+            right:14px;
+            -webkit-animation-delay:0.52s;
+        }
+        .loadEffect span:nth-child(5){
+            right: 0;
+            top: 50%;
+            margin-top:-8px;
+            -webkit-animation-delay:0.65s;
+        }
+        .loadEffect span:nth-child(6){
+            right: 14px;
+            bottom:14px;
+            -webkit-animation-delay:0.78s;
+        }
+        .loadEffect span:nth-child(7){
+            bottom: 0;
+            left: 50%;
+            margin-left: -8px;
+            -webkit-animation-delay:0.91s;
+        }
+        .loadEffect span:nth-child(8){
+            bottom: 14px;
+            left: 14px;
+            -webkit-animation-delay:1.04s;
+        }
+	</style>
+	<script src="./js/jquery.min.js"></script>
+	<script src="./pdf/build/pdf.js"></script>
+	<script src="./pdf/build/pdf.worker.js"></script>
+	<script>
+		var var_win_height = $(window).height();
+        $(document).ready(function () {
+            resetPlayerSize();
+        });
+        $(window).resize(function () {
+            resetPlayerSize();
+        });
+        function resetPlayerSize() {
+            var_win_height = $(window).height();
+            $(".tmPlayer").css({ "height": var_win_height + "px" });
+        }
+	</script>
+</head>
+<body style="margin: 0; overflow: hidden;">
+	<div class="loadEffect">
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+        <span></span>
+	</div>
+	<div id="tmPlayer" class="tmPlayer" style="width: 100%; height: 100%;"></div>
+	<script>
+		/// var_filepath 里面写入服务器上pdf的地址，例如: https://er.com/mypdf
+		var var_filepath = "https://blogcn.ga/cxp/pdf/caoxupei.pdf";
+		$(".loadEffect").attr("style","display:none;");
+		$('.tmPlayer').html('<iframe frameBorder="0" scrolling="no" src="./pdf/web/viewer.html?file=' + var_filepath +'" style="width: 100%;height: 100%;">');
+	</script>
+</body>
+</html>

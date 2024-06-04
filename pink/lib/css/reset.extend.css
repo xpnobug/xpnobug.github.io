@@ -1,0 +1,184 @@
+@font-face {
+    font-family: 'Source Code Pro';
+    src: url('../font/SourceCodePro_regular.woff2') format('woff2');
+    font-weight: normal;
+    font-display: swap;
+}
+
+::-webkit-inner-spin-button {
+    visibility: hidden;
+}
+
+::-webkit-datetime-edit-text {
+    color: transparent;
+}
+
+::-webkit-clear-button,
+::-webkit-search-cancel-button,
+::-webkit-progress-inner-element {
+    -webkit-appearance: none;
+}
+
+:root {
+    --reset_extend_code_text_color: #999;
+    --reset_extend_code_background_color: #f7f7f7;
+    --reset_extend_input_background_color_webkit: #fff;
+}
+
+:root.darkmode {
+    --reset_extend_code_background_color: #363636;
+    --reset_extend_input_background_color_webkit: #2c2c2c;
+}
+
+:root.darkmode.mobile {
+    --reset_extend_input_background_color_webkit: #191919;
+}
+
+html {
+    -webkit-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+}
+
+select,
+input,
+textarea {
+    border: 0 none;
+    color: inherit;
+    background-color: transparent;
+    outline: none;
+    -webkit-border-radius: 0;
+    -webkit-appearance: none;
+}
+
+input[name=log],
+input[name=pwd] {
+    -webkit-box-shadow: 0 0 0 100vmax var(--reset_extend_input_background_color_webkit) inset !important;
+}
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-transition-delay: 99999s;
+    -webkit-transition: color 99999s ease-out, background-color 99999s ease-out;
+}
+
+input::-webkit-credentials-auto-fill-button {
+    position: absolute;
+    right: 0;
+    display: none !important;
+    visibility: hidden;
+    pointer-events: none;
+}
+
+input[type=date]::-webkit-datetime-edit,
+input[type=date]::-webkit-datetime-edit-year-field,
+input[type=date]::-webkit-datetime-edit-month-field,
+input[type=date]::-webkit-datetime-edit-day-field,
+input[type=date]::-webkit-datetime-edit-hour-field,
+input[type=date]::-webkit-datetime-edit-minute-field,
+input[type=date]::-webkit-datetime-edit-second-field,
+input[type=date]::-webkit-datetime-edit-millisecond-field,
+input[type=date]::-webkit-datetime-edit-meridiem-field {
+    padding: 0;
+}
+
+input:placeholder-shown,
+textarea:placeholder-shown {
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+
+select,
+input[type=button],
+input[type=submit] {
+    box-sizing: content-box;
+}
+
+input[type=submit] {
+    text-align: center;
+    cursor: pointer;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+a.underline {
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+
+hr {
+    margin: 0;
+    border: 0 none;
+    box-sizing: content-box;
+}
+
+figure,
+figcaption {
+    margin: 0 !important;
+}
+
+figure.wp-block-image>img,
+figure.wp-block-audio>audio,
+figure.wp-block-video>video {
+    display: block;
+    max-width: 100% !important;
+    height: auto !important;
+}
+
+mark {
+    color: inherit;
+    background-color: transparent;
+}
+
+details>summary {
+    outline: none;
+}
+
+details:not([open])>summary>.collapse,
+details[open]>summary>.expand {
+    display: none;
+}
+
+section.post-content strong {
+    font-weight: bold;
+}
+
+section.post-content em {
+    font-style: italic;
+}
+
+section.post-content del {
+    text-decoration-line: line-through;
+}
+
+section.post-content pre,
+section.post-content code {
+    font-family: 'Source Code Pro', 'Courier New', monospace;
+    -webkit-user-select: text;
+    user-select: text;
+    cursor: text;
+}
+
+section.post-content code {
+    margin: 0 3px;
+    padding: 0 2px;
+    border-radius: 3px;
+    color: var(--reset_extend_code_text_color);
+    background-color: var(--reset_extend_code_background_color);
+}
+
+section.post-content pre>code {
+    margin: 0;
+    padding: 0;
+    border-radius: 0;
+    font-size: 0.85714286em;
+    line-height: 1.5em;
+    background-color: transparent;
+}
